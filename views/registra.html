@@ -1,0 +1,309 @@
+<div class="container" ng-init="inicio()" style="width: 100%">
+      <div class="panel panel-primary">
+                <div class="panel-heading">
+                         <h3 class="panel-title" >Apertura de Expediente</h3>
+                </div>       
+         <div class="panel-body">
+            <fieldset ng-disabled="primeraEtapa">
+            <form ng-submit="guardaEtapa1()">
+            <div class="row">
+               
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <img ng-src="imgs/logosregmv/{{rutaImgCom}}"  title="ASEGURADORA">                       
+                        <input type="hidden" name="ase" id="ase" value="" >
+                        <input type="hidden" name="pro" id="pro" value="" >
+                    </div>
+                </div>
+                <div class="col-md-4" align="center">
+                    <div class="form-group">
+                        <div id="cargaFolio" style="padding-top:1.5em;">
+                           
+                        </div>                                           
+                    </div>
+                </div>
+                <div class="col-md-4" align="right">
+                    <div class="form-group">
+                    <img ng-src="imgs/producto/{{rutaImgPro}}"  title="producto">                                                            
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="form-group">
+                  
+                    <div class="col-md-12">
+                       <h3> <label>Datos del Paciente</label></h3><br>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Nombre(s): </label>
+                        <input type="text" class="form-control" id="nom" name="nom"  required="" ng-model="datos.nombre" >
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>A.Paterno:</label>
+                        <input type="text" ng-model="datos.pat" class="form-control" id="pat" name="pat" required=""  >
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>A. Materno:</label>
+                        <input type="text" ng-model="datos.mat" class="form-control" id="mat" name="mat" required="" >
+                    </div>
+                </div>  
+            </div><br> 
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Fecha de nacimiento:</label>                        
+                        <input type="text" ng-disabled="edicion"  data-date-viewmode="years" data-date-format="DD-MM-YYYY"  class= "form-control" name="fecnac" id="fecnac" ng-model="datos.fecnac" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }" required="required">
+                    </div>                    
+                </div>
+                <div class="col-md-4">                
+                        <label>Tipo Tel&eacute;fono:</label>
+                        <select name="tel" id="tel" ng-model="datos.tel" style="width:100%" required="" class="form-control" >
+                            <option value=""> * Seleccione tipo </option>
+                            <option value="1">Particular</option>
+                            <option value="2">Oficina</option>
+                            <option value="3">M&oacute;vil</option>
+                            <option value="4">Otro</option>                            
+                        </select>                                                                                                                               
+                </div> 
+                <div class="col-md-4">  
+                    <label>No. Tel&eacute;fono:</label>                    
+                        <input  type="text" style="width:100%" ng-model="datos.numeroTel"  class="form-control" id="numeroTel" name="numeroTel" required="" >  
+                    </div> 
+            </div>
+            <br>
+            <div class="row" id="renglonEmail">
+                <div class="col-md-4">
+                    <div class="form-group">
+                                               
+                         <label>E-Mail: </label>                        
+                            <input type="email" ng-disabled="checked" ng-model="datos.mail" class="form-control" id="mail" name="mail"  required="">                        
+                        <label>                           
+                                <input class="checkbox-inline" id="checkSinCorreo" ng-model="checked" type="checkbox"> Sin correo                        
+                        </label>
+                        
+                    </div>
+                </div>
+            </div>        
+            <div class="row">
+                <div class="col-md-4">
+                <div class="form-group">
+                    <input type="submit" ng-hide="btnGuardar" id="btnenvioprimero" class="btn btn-primary">
+                </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                <div ng-show="mensaje">
+                        {{mensaje}}
+                </div>
+            </div>
+            </div>
+            </form> 
+            </fieldset>     
+            <div id="validacionCortesia" ng-show="autoriza" class="paginas">
+                <form id="registraCortesia">
+                    <div class="row">                    
+                        <div class="col-md-12">
+                            <label><h3>Quien Autoriza</h3></label>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="1" checked>
+                                Jos&eacute; S&aacute;nchez
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">
+                                Xavier S&aacute;nchez
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="3">
+                                José Abraham S&aacute;nchez
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="3">
+                                Sergio Sisneros
+                              </label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Observaciones:</label>
+                                <textarea class="form-control" name="obsCort" id="obsCort" onpaste="return false" style="resize:none;" required=""  onblur="this.value=this.value.toUpperCase()"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">                                
+                                <input type="submit" id="btnenvioCor" class="btn btn-primary"  value="Registrar Cortes&iacute;a">
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div id="validacionCort">                                
+                                
+                            </div>
+                        </div>
+                    </div> 
+                </form>               
+            </div>
+            <div id="validacionPaseMedico" ng-show="validaPase">             
+	            <div class="row">
+	                <div class="col-md-12">
+	                    <div class="checkbox">
+	                      <label>
+	                        <input id="check1" ng-model="check1" type="checkbox" value="T" onchange="validaChecks()">
+	                        El pase m&eacute;dico no presenta tachaduras ni enmendaduras  <label style="background:yellow;" id="msj1" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                      </label>
+	                    </div>
+	               	
+	                    <div class="checkbox">
+	                      <label>
+	                        <input id="check2" ng-model="check2" type="checkbox" value="T" onchange="validaChecks()">
+	                        El pase m&eacute;dico se encuantra vigente  <label style="background:yellow;" id="msj2" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                      </label>
+	                    </div>
+	               		
+	                    <div class="checkbox">
+	                      <label>
+	                        <input id="check3" ng-model="check3" type="checkbox" value="T" onchange="validaChecks()">
+	                        El Se corrobor&oacute; la identidad del lesionado<label style="background:yellow;" id="msj3" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                      </label>
+	                    </div>
+	                </div>
+	            </div>               
+	            <div class="row">
+	            	<div class="col-md-12">	
+                        <div id="noAutorizacion" ng-show="validaInputAut">                   
+    						<label>
+    							<input id="noAuto" type="text" value=""  onkeyup="activaBoton()">
+    							     No. de Autorizaci&oacute;n <br>
+                                <small>*comunicarse a <b>ubicacion</b> al n&uacute;mero <b>telefono</b> </small>
+    						</label>
+                        </div>	                    	                	                                   
+						<input type="button" ng-hide="check1 && check2 && check3" id="activaForm" class="btn btn-info"  ng-click="validaAutorizacion()" value="Siguiente">	                       	                     	                    
+						<div id="msjAuth"></div>
+	                </div>
+	            </div>                
+            </div> 
+             <form id="frmreg" name="frmreg">           
+            <div id="datosSiniestro" name="datosSiniestro" ng-show="check1 && check2 && check3" class="mianimacion">
+
+            <div class="row">
+                <div class="form-group">
+
+                    <div class="col-md-8">
+                        <h3><label>Datos del Siniestro</label></h3>
+                    </div>
+                </div>
+            </div>
+            
+                <div class="row">
+                     
+                     <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Cobertura Afectada: </label>
+                        <select name="rie" id="rie" required="" class= "form-control"  >
+                            <option value="-1"> * Seleccione </option>
+                            <option ng-repeat="cobertura in list" value="{{cobertura.RIE_clave}}">
+                                {{cobertura.RIE_nombre}}
+                            </option>                            
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Inciso  </label>
+                         <input id="inciso" name="inciso" type="text" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
+                     </div>
+                 </div>
+                 
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>{{noCompania}}</label>
+                         <input id="noCia" name="noCia" type="text" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
+                     </div>
+                 </div>
+                </div>
+            <br>
+             <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Poliza:</label>
+                        <input type="text" class="form-control" id="pol" name="pol" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Siniestro:</label>
+                        <input type="text" class="form-control" id="sin" name="sin" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Reporte:</label>
+                        <input type="text" class="form-control" id="rep" name="rep" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                    </div>
+                </div>
+            </div><br>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label>Folio de Pase:</label>
+                        <input type="text" class="form-control" id="folPase" name="folPase" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-group">
+                        <label>Observaciones:</label>
+                        <textarea class="form-control" name="obsexp" id="obsexp" onpaste="return false" style="resize:none;" required=""  onblur="this.value=this.value.toUpperCase()"></textarea>
+                    </div>
+                </div>
+            </div>  
+            <div class="row">
+                <div class="col-md-2">
+                     <input type="submit" id="btnenvio" class="btn btn-primary"  value="Registrar">
+                </div>
+                <div class="col-md-2">
+                     <input type="reset" class="btn btn-danger"  value="Limpiar">
+                </div>
+                
+            </div>
+ </div>            
+</form> 
+
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+       $('#fecnac').datetimepicker({
+
+        pickDate: true,                 //en/disables the date picker
+        pickTime: false,                 //en/disables the time picker     
+        showToday: true,                 //shows the today indicator
+        language:'es'                  //sets language locale
+
+    });
+</script>
