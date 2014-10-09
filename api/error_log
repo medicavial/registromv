@@ -1,0 +1,4 @@
+[07-Oct-2014 23:03:48] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 250
+[08-Oct-2014 17:18:46] PHP Warning:  include(../../includes/class/BCGcode39.barcode.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
+[08-Oct-2014 17:18:46] PHP Warning:  include(../../includes/class/BCGcode39.barcode.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
+[08-Oct-2014 17:18:46] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../../includes/class/BCGcode39.barcode.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
