@@ -9,7 +9,7 @@ include('BCGcode39.barcode.php');
 
 // Loading Font
 
-class generaCDB{
+class generaCDB_resp{
 
  public function __construct()
     {
@@ -17,8 +17,8 @@ class generaCDB{
     }
 
     public function generaCodigo($folio){
-    	try{
-			$font = new BCGFont('font/Arial.ttf', 10);
+    	try{    		
+			$font = new BCGFont('classes/font/Arial.ttf', 10);
 
 			// The arguments are R, G, B for color.
 			$color_black = new BCGColor(0, 0, 0);
@@ -43,9 +43,10 @@ class generaCDB{
 			$drawing = new BCGDrawing($archivo, $color_white);
 			$drawing->setBarcode($code);
 			$drawing->draw();
-			return $archivo;
+			
 			// Draw (or save) the image into PNG format.
 			$drawing->finish(BCGDrawing::IMG_FORMAT_PNG);
+			return $archivo;
 		}catch(Exeption $e){
 			echo $e;
 		}

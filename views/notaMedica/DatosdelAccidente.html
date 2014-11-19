@@ -1,0 +1,355 @@
+<form ng-submit="guardaDatAcc()">
+    <div class="container" style="width: 100%"> 
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title" align="center">Datos del Accidente</h3>
+            </div>    
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-4" >
+                    <div class="input-group">
+                        <span class="input-group-addon">El paciente Llega: </span>
+                        <select name="llega" id="llega" ng-model="accidente.llega" class="form-control" ng-options="pacLlega.Llega_clave as pacLlega.Llega_nombre  for pacLlega in listPacLLega" >   <option value=""> * Seleccione </option>                        
+                        </select>
+                    </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon" >Fecha del Accidente</span>
+                            <input type="text" ng-model="accidente.fecha" name="FechaAcc" id="FechaAcc" class= "form-control" >
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon"> Tipo de vehiculo &nbsp; </span>
+                            <select name="vehiculo" id="vehiculo" ng-model="accidente.vehiculo" class= "form-control" ng-change="selectPosicion(this.id)"  onChange="cargaContenidoRed(this.id); cargaSelectRed();" ng-options="TipVehi.id as TipVehi.opcion  for TipVehi in listTipVehi" >
+                                <option value=""> * Seleccione </option>                               
+                            </select>
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <span class="input-group-addon">Posici&oacute;n &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>
+                            <select name="posicion" id="posicion" class= "form-control" ng-model="accidente.posicion" ng-options="posi.id as posi.opcion  for posi in posicion">
+                                <option value=""> * Seleccione *</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+              
+                <div class="row">
+                    <div class="col-md-6">             
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title" align="center">Equipo de Seguridad</h3>
+                                </div> 
+                                <div class="panel-body" style="width:100%;">
+                                    <div class="row" ng-show="arregloOpc.Nod">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Nod" >
+                                                <span class="input-group-addon" class="form-control"><input name="" type="checkbox" value="0" disabled="disabled">
+                                                </span>                                            
+                                                <input type="text" value="*No disponible" readonly="" class="form-control"><br>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Cintu">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Cintu" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.seguridad.1" name="Seguridad[]" value="1" ng-true-value="1" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Cinturon Puesto" readonly="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Bolsa">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Bolsa" >
+                                                <span class="input-group-addon" class="form-control">
+                                                <input type="checkbox" ng-model="accidente.seguridad.2" name="Seguridad[]" value="2" ng-true-value="2" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Abrio bolsa de aire" readonly="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Ropa">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Ropa" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.seguridad.3" name="Seguridad[]" value="3" ng-true-value="3" ng-false-value="">  
+                                                </span>                                          
+                                                <input type="text" value="Ropa Protectora" readonly="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Casco">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Casco" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.seguridad.4" name="Seguridad[]" value="4" ng-true-value="4" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Casco puesto" readonly="" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Rodi">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Rodi" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.seguridad.5" name="Seguridad[]" value="5" ng-true-value="5" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Rodilleras" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Code">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Code" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.seguridad.6" name="Seguridad[]" value="6" ng-true-value="6" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Coderas" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Costi">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Costi" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.seguridad.7" name="Seguridad[]" value="7" ng-true-value="7" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Costilleras" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                                    
+                            </div>                     
+                    </div>  
+                    <div class="col-md-6">                       
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title" align="center">Descripcion</h3>
+                                </div> 
+                                <div class="panel-body" style="width:100%;">
+                                    <div class="row" ng-show="arregloOpc.Nodi">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Nodi"   >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input name="" type="checkbox" value="0"  disabled="disabled" >
+                                                </span>                                            
+                                                <input type="text" value="*No disponible" readonly="" class="form-control" ></div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Volc">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Volc" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.1" name="Mecanismo[]" value="1" ng-true-value="1" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Volcadura" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Alca">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Alca" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.2" name="Mecanismo[]" value="2" ng-true-value="2" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Alcance" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Late">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Late" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.3" name="Mecanismo[]" value="3" ng-true-value="3" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Lateral" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Fron">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Fron" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.4" name="Mecanismo[]" value="4" ng-true-value="4" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Frontal" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Derr">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Derr" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.5" name="Mecanismo[]" value="5" ng-true-value="5" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Derrapon" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Simp">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Simp" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.6" name="Mecanismo[]" value="6" ng-true-value="6" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Solo Impacto" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Imap">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Imap" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.8" name="Mecanismo[]" value="7" ng-true-value="7" ng-false-value="">  
+                                                </span>                                          
+                                                <input type="text" value="Impacto y Aplastamiento" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Caid">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Caid" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.8" name="Mecanismo[]" value="8" ng-true-value="8" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Ca&iacute;da" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Lesdep">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Lesdep" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.9" name="Mecanismo[]" value="9" ng-true-value="9" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Lesi&oacute;n deportiva" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Lestra">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Lestra" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.10" name="Mecanismo[]" value="10" ng-true-value="10" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Lesi&oacute;n traslado" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.ManSub">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="ManSub" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.11" name="Mecanismo[]" value="11" ng-true-value="11" ng-false-value="">  
+                                                </span>                                            
+                                                <input type="text" value="Maniobra s&uacute;bita" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" ng-show="arregloOpc.Otr">
+                                        <div class="col-md-12">
+                                            <div class="input-group" id="Otr" >
+                                                <span class="input-group-addon" class="form-control">
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.12" name="Mecanismo[]" value="12" ng-true-value="12" ng-false-value="">  
+                                                </span>                                           
+                                                <input type="text" value="Otro" readonly="" class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                   
+                    </div> 
+                </div>                
+                <div class="row">
+                    <div class="col-md-6">
+                       
+                            <div class="panel panel-default">
+                                <div class="panel-heading"><h3 class="panel-title" align="center">El paciente Presento</h3></div> 
+                                <center>
+                                    <div class="panel-body" style="width:100%;">
+                                        <div class="row">         
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><input type="checkbox" name="Vomito" ng-model="accidente.vomido" id="Vomito" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <input type="text" value="V&oacute;mito" readonly="" class= "form-control">
+                                                </div> 
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><input type="checkbox" name="Mareo" ng-model="accidente.mareo" id="Mareo" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <input type="text" value="Mareo" readonly="" class= "form-control">
+                                                </div> 
+                                            </div>
+                                        </div>                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><input type="checkbox" name="Nauseas" ng-model="accidente.nauseas" id="Nauseas" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <input type="text" value="Nauseas" readonly="" class= "form-control">
+                                                </div> 
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon">
+                                                    <input type="checkbox" ng-model="accidente.conocimiento" name="Conocimiento" id="Conocimiento" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <input type="text" value="Conocimiento" readonly="" class= "form-control">
+                                                </div> 
+                                            </div>
+                                        </div>                                        
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><input type="checkbox" name="Cefalea" ng-model="accidente.cefalea" id="Cefalea" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <input type="text" value="Cefalea" readonly=""class= " form-control">
+                                                </div> 
+                                            </div> 
+                                        </div>
+                                    </div> 
+                                </center> 
+                            </div>
+                      
+                    </div>
+                    <div class="col-md-6">
+                        
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title" align="center">Mecanismo de la lesi&oacute;n</h3>
+                                </div> 
+                                <div class="panel-body" style="width:100%;">
+                                    <textarea rows="7" id="mecanismo" ng-model="accidente.mecLesion" name="mecanismo"  onpaste="return false" style="resize:none; border:none; width:100% " =""></textarea>
+                                </div>
+                            </div>
+                      
+                    </div>
+                </div>
+                <br>              
+                <div class="row">
+                    <div class="col-md-5">
+                    </div>
+                    <div class="col-md-2">
+                        <input type="Submit" class="btn btn-success btn-lg"  value="Guarda Datos de Acc"   />
+                    </div>
+                </div>
+                <br><br>
+            </div>
+        </div>
+    </div>
+</form>
+<script type="text/javascript">
+       $('#FechaAcc').datetimepicker({ 
+        pickDate: true,                 //en/disables the date picker
+        pickTime: false,                 //en/disables the time picker     
+        showToday: true,                 //shows the today indicator
+        language:'es'                  //sets language locale
+
+    });
+</script>

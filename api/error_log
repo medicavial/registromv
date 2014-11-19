@@ -2,3 +2,103 @@
 [08-Oct-2014 17:18:46] PHP Warning:  include(../../includes/class/BCGcode39.barcode.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
 [08-Oct-2014 17:18:46] PHP Warning:  include(../../includes/class/BCGcode39.barcode.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
 [08-Oct-2014 17:18:46] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../../includes/class/BCGcode39.barcode.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
+[13-Oct-2014 03:15:15] PHP Warning:  require(BCGFont.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 3
+[13-Oct-2014 03:15:15] PHP Warning:  require(BCGFont.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 3
+[13-Oct-2014 03:15:15] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'BCGFont.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/prueba.php on line 3
+[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 18:56:20] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
+[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 19:02:52] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
+[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 19:02:58] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
+[14-Oct-2014 19:04:57] PHP Warning:  require(classes/generaCDB_resp.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 2
+[14-Oct-2014 19:04:57] PHP Warning:  require(classes/generaCDB_resp.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 2
+[14-Oct-2014 19:04:57] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'classes/generaCDB_resp.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/prueba.php on line 2
+[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 19:05:23] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
+[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 19:13:26] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
+[14-Oct-2014 19:16:23] PHP Warning:  Missing argument 1 for BCGFont::__construct(), called in /home/medica/public_html/mvnuevo/api/classes/generaCDB_resp.php on line 21 and defined in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 32
+[14-Oct-2014 19:16:23] PHP Warning:  Missing argument 2 for BCGFont::__construct(), called in /home/medica/public_html/mvnuevo/api/classes/generaCDB_resp.php on line 21 and defined in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 32
+[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 19:16:23] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
+[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
+[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
+[14-Oct-2014 22:22:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
+[14-Oct-2014 22:22:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
+[14-Oct-2014 22:32:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
+[14-Oct-2014 22:32:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
+[27-Oct-2014 20:57:15] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
+[27-Oct-2014 20:57:15] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
+[27-Oct-2014 20:57:22] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
+[27-Oct-2014 20:57:26] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
+[27-Oct-2014 20:57:30] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
+[28-Oct-2014 20:46:36] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/medica/public_html/mvnuevo/api/api.php on line 420
+[28-Oct-2014 23:17:38] PHP Parse error:  syntax error, unexpected '*' in /home/medica/public_html/mvnuevo/api/api.php on line 455
+[28-Oct-2014 23:17:40] PHP Parse error:  syntax error, unexpected '*' in /home/medica/public_html/mvnuevo/api/api.php on line 455
+[28-Oct-2014 23:44:54] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1356
+[28-Oct-2014 23:44:59] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1356
+[28-Oct-2014 23:45:26] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1362
+[28-Oct-2014 23:51:57] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1364
+[29-Oct-2014 15:21:24] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1365
+[29-Oct-2014 15:21:26] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1365
+[10-Nov-2014 16:31:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
+[10-Nov-2014 16:31:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
+[10-Nov-2014 16:31:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
+[10-Nov-2014 16:32:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
+[10-Nov-2014 16:32:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
+[10-Nov-2014 16:32:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
+[13-Nov-2014 18:29:27] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1428
+[18-Nov-2014 18:01:42] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:01:42] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:01:42] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:05:14] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:05:59] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:06:36] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:07:27] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:07:35] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
+[18-Nov-2014 18:10:39] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1524
+[18-Nov-2014 19:02:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/medica/public_html/mvnuevo/api/api.php on line 1494
+[18-Nov-2014 19:02:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/medica/public_html/mvnuevo/api/api.php on line 1494
+[18-Nov-2014 19:03:09] PHP Parse error:  syntax error, unexpected T_ELSE, expecting T_CATCH in /home/medica/public_html/mvnuevo/api/api.php on line 1498
+[18-Nov-2014 19:03:09] PHP Parse error:  syntax error, unexpected T_ELSE, expecting T_CATCH in /home/medica/public_html/mvnuevo/api/api.php on line 1498

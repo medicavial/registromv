@@ -1,0 +1,29 @@
+<div class="container" style="width: 100%">     
+<br>
+	<div class="panel panel-primary">
+    <div style="width:100%; background:gray;color:white">
+			<h2>Historia Clínica <b><label>{{folio}}</label></b></h2>
+		</div>
+		<div class="Panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<wizard on-finish="finished()">
+              <wz-step title="Datos Paciente">
+               <ng-include src="'views/historiaClinica/datosPaciente.html'"></ng-include>                
+              </wz-step>
+              <wz-step title="Antecedentes Heredo-familiares">
+                 <ng-include src="'views/historiaClinica/AntecedentesHeredo.html'"></ng-include>   
+              </wz-step>
+              <wz-step title="Antecedentes Personales">
+                <ng-include src="'views/historiaClinica/AntecedentesPersonales.html'"></ng-include>   
+              </wz-step>
+              <wz-step title="Accidentes Antteriores">
+                <ng-include src="'views/historiaClinica/AccidentesAnteriores.html'"></ng-include>
+              </wz-step>
+            </wizard>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</div>

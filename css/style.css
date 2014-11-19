@@ -14,6 +14,268 @@ body{
 	font-family: 'SourceSansPro', sans-serif;
 }
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
+
+
+/*Estilo de caja de imagenes*/
+
+.balloon-wrapper {
+    padding-top:30px;
+    opacity:1;
+    text-align:center;
+}
+
+.balloon {
+    background:#3498db;
+    border-radius:50%;
+    display:inline-block;
+    font-size:160%;
+    text-align:center;
+    height:100px;
+    line-height:100px;
+    width:100px;
+}
+
+.deckgrid {
+    margin:0 auto;
+    width:100%;
+}
+
+.deckgrid[deckgrid]::before {
+    content: '5 .column.size-1-5';
+    font-size: 0;
+    visibility:hidden;
+}
+
+.deckgrid .column {
+    float:left;
+}
+
+.deckgrid img {
+    max-height: 160px;
+	width: 100%;
+}
+
+.deckgrid a {
+    color:#000;
+    text-decoration:none;
+}
+
+.deckgrid a:visited {
+    color:rgba(0, 0, 0, .5);
+}
+
+
+.photo {
+    background:#fff url(imgs/spinner.gif) center 30px no-repeat;
+    border:1px solid rgba(0, 0, 0, .15);
+    border-radius:3px;
+    margin:0 10px 10px 0;
+    position:relative;
+}
+
+.photo .photo-index {
+    background:rgba(0, 0, 0, .9);
+    color:#fff;
+    position:absolute;
+    height:100%;
+    text-align:center;
+    width:100%;
+    z-index:99;
+}
+
+.photo .photo-index p:first-child {
+    margin-top:10px;
+}
+
+.photo .photo-wrapper {
+    min-height:60px;
+}
+
+.photo .photo-description {
+    padding:15px;
+}
+
+.deckgrid .column.size-1-5 {
+    width:200px;
+}
+
+.deckgrid .column.size-1-4 {
+    width:200px;
+}
+
+.deckgrid .column.size-1-3 {
+    width:250px;
+}
+
+.deckgrid .column.size-1-2 {
+    width:250px;
+}
+
+.deckgrid .column.size-1-1 {
+    width:280px;
+}
+
+
+.padding{
+	padding: 1em;
+}
+
+.padding-top{
+	margin: 0!important;
+	padding-top: 0.5em;
+	font-size: 2em;
+}
+.padding-top a{
+	
+	margin-right: 1em;
+	text-decoration: none;
+}
+
+
+.margin{
+	margin: 1em;
+}
+
+#solicitud >.steps-indicator{
+
+	bottom: 10px;
+}
+
+
+#solicitud >.steps-indicator li.current:after{
+
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid black;
+	border-top: 10px solid transparent;
+	content: " ";
+	position: absolute;
+	top: -40px;
+	left: 45%;
+	right: 0;
+	animation: fadeInLeft 0.5s;
+
+}
+
+#solicitud >.steps-indicator li.editing:after{
+
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid black;
+	border-top: 10px solid transparent;
+	content: " ";
+	position: absolute;
+	top: -40px;
+	left: 45%;
+	right: 0;
+	animation: fadeInLeft 0.5s;
+}
+
+.derecha{
+	width: 100%;
+	font-size: 2em;
+	animation:fadeInLeft 10s infinite linear;
+}
+
+.derecha i{
+	margin-left: 1em;
+}
+
+.derecha i:first{
+	margin-left: 0;
+}
+
+#solicitud > .steps > section{
+	
+	height: 450px;
+	padding: 0 1em;
+	overflow-y:auto; 
+	margin-bottom: 1em;
+}
+
+.tabla{
+	
+	width: 100%;
+	height: 250px;
+	overflow-y:scroll;
+	overflow-x:auto;
+
+}
+
+.fondo .form-group {
+ 	margin-bottom: 0; 
+}
+
+.fondo .row > div {
+ 	margin-bottom: 0; 
+}
+
+.contenedor{
+	position: relative;
+	padding: 1em;
+}
+
+.documento img{
+
+	max-height: 600px;
+	width: 100%;
+}
+
+.duda {
+
+	border-right: none;
+	font-size: 18px;
+	position: absolute;
+	right: -5px;
+	top: 190px;
+	z-index: 999;
+}
+
+.edicion{
+	font-size: 25px;
+	height: 100px;
+	padding-left: 1em;
+	text-align: left;
+}
+
+.fondo{
+	padding: 1em;
+	background: #eee;
+	margin-bottom: 2em;
+}
+
+.largo{
+	width: 200%;
+}
+
+.login{
+	
+	margin: 3em auto;
+	width: 30%;
+
+}
+
+.drop-box {
+	background: #F8F8F8;
+	border: 2px dashed #DDD;
+	width: 100%;
+	height: 100px;
+	text-align: center;
+	padding-top: 1em;
+}
+
+.arrastra {
+	
+	border: 2px dashed rgba(39, 0, 192, 1.0);
+
+}
+
+.texto-grande{
+	font-size: 4.5em;
+}
+
+
 h1{
 
 	margin-left: 15px;

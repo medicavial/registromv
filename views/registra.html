@@ -17,8 +17,8 @@
                 </div>
                 <div class="col-md-4" align="center">
                     <div class="form-group">
-                        <div id="cargaFolio" style="padding-top:1.5em;">
-                           
+                        <div ng-show="veCDB"  style="padding-top:1.5em;">
+                            <!-- <img ng-src="api/codigos/{{folio}}.png"  title="folio"> -->
                         </div>                                           
                     </div>
                 </div>
@@ -88,11 +88,16 @@
                     <div class="form-group">
                                                
                          <label>E-Mail: </label>                        
-                            <input type="email" ng-disabled="checked" ng-model="datos.mail" class="form-control" id="mail" name="mail"  required="">                        
+                            <input type="email" ng-disabled="checked" ng-model="datos.correo" class="form-control" required>                       
                         <label>                           
-                                <input class="checkbox-inline" id="checkSinCorreo" ng-model="checked" type="checkbox"> Sin correo                        
+                                <input class="checkbox-inline" id="checkSinCorreo" ng-model="checked" type="checkbox" data-toggle="confirmation" data-placement="right" data-btn-ok-label="Si"  title="Si el usuario no proporciona el correo perderá los cupones de descuento, ¿Desea continuar?" data-popout="true"> Sin correo                        
                         </label>
                         
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div ng-show="veCupon" class="mianimacion" style="padding-top:2em">
+                        <a href="imgs/cupon.jpg" target="_blank"> Ver cupón de descuento </a> 
                     </div>
                 </div>
             </div>        
@@ -112,7 +117,7 @@
             </div>
             </form> 
             </fieldset>     
-            <div id="validacionCortesia" ng-show="autoriza" class="paginas">
+            <div id="validacionCortesia" ng-show="autoriza" class="mianimacion">
                 <form id="registraCortesia">
                     <div class="row">                    
                         <div class="col-md-12">
@@ -168,47 +173,51 @@
                     </div> 
                 </form>               
             </div>
-            <div id="validacionPaseMedico" ng-show="validaPase">             
+            <div id="validacionPaseMedico" ng-show="validaPase" class="mianimacion">             
 	            <div class="row">
 	                <div class="col-md-12">
 	                    <div class="checkbox">
 	                      <label>
-	                        <input id="check1" ng-model="check1" type="checkbox" value="T" onchange="validaChecks()">
+	                        <input id="check1" ng-model="check1" type="checkbox">
 	                        El pase m&eacute;dico no presenta tachaduras ni enmendaduras  <label style="background:yellow;" id="msj1" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
 	                      </label>
 	                    </div>
 	               	
 	                    <div class="checkbox">
 	                      <label>
-	                        <input id="check2" ng-model="check2" type="checkbox" value="T" onchange="validaChecks()">
-	                        El pase m&eacute;dico se encuantra vigente  <label style="background:yellow;" id="msj2" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                        <input id="check2" ng-model="check2" type="checkbox">
+	                        El pase m&eacute;dico se encuentra vigente  <label style="background:yellow;" id="msj2" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
 	                      </label>
 	                    </div>
 	               		
 	                    <div class="checkbox">
 	                      <label>
-	                        <input id="check3" ng-model="check3" type="checkbox" value="T" onchange="validaChecks()">
-	                        El Se corrobor&oacute; la identidad del lesionado<label style="background:yellow;" id="msj3" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                        <input id="check3" ng-model="check3" type="checkbox">
+	                       Se corrobor&oacute; la identidad del lesionado<label style="background:yellow;" id="msj3" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
 	                      </label>
 	                    </div>
 	                </div>
 	            </div>               
 	            <div class="row">
 	            	<div class="col-md-12">	
-                        <div id="noAutorizacion" ng-show="validaInputAut">                   
+                        <div id="noAutorizacion" ng-show="validaInputAut" class="mianimacion">                   
     						<label>
-    							<input id="noAuto" type="text" value=""  onkeyup="activaBoton()">
+    							<input ng-model="autorizacion" type="text" value="">
     							     No. de Autorizaci&oacute;n <br>
                                 <small>*comunicarse a <b>ubicacion</b> al n&uacute;mero <b>telefono</b> </small>
+                                                     
     						</label>
-                        </div>	                    	                	                                   
+                        </div>	        
+                        <div ng-show="errorAut">
+                            <label>No existe el numero de autorización</label>
+                        </div>                                     
 						<input type="button" ng-hide="check1 && check2 && check3" id="activaForm" class="btn btn-info"  ng-click="validaAutorizacion()" value="Siguiente">	                       	                     	                    
-						<div id="msjAuth"></div>
+						<div id="msjAuth">{{respuesta}}</div>
 	                </div>
 	            </div>                
             </div> 
-             <form id="frmreg" name="frmreg">           
-            <div id="datosSiniestro" name="datosSiniestro" ng-show="check1 && check2 && check3" class="mianimacion">
+             <form ng-submit="guardaEtapa2()">           
+            <div id="datosSiniestro" name="datosSiniestro" ng-show="(check1 && check2 && check3)|| segundaEtapa" class="mianimacion">
 
             <div class="row">
                 <div class="form-group">
@@ -224,7 +233,7 @@
                      <div class="col-md-4">
                     <div class="form-group">
                         <label>Cobertura Afectada: </label>
-                        <select name="rie" id="rie" required="" class= "form-control"  >
+                        <select name="rie" id="rie" required="" ng-model="datosSin.cobAfec" class= "form-control"  >
                             <option value="-1"> * Seleccione </option>
                             <option ng-repeat="cobertura in list" value="{{cobertura.RIE_clave}}">
                                 {{cobertura.RIE_nombre}}
@@ -235,14 +244,14 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Inciso  </label>
-                         <input id="inciso" name="inciso" type="text" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
+                         <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
                      </div>
                  </div>
                  
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{noCompania}}</label>
-                         <input id="noCia" name="noCia" type="text" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
+                         <input id="noCia" name="noCia" type="text" ng-model="datosSin.noCia" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
                      </div>
                  </div>
                 </div>
@@ -251,19 +260,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Poliza:</label>
-                        <input type="text" class="form-control" id="pol" name="pol" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="pol" name="pol" ng-model="datosSin.poliza" required=""  onblur="this.value=this.value.toUpperCase()">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Siniestro:</label>
-                        <input type="text" class="form-control" id="sin" name="sin" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="sin" name="sin" ng-model="datosSin.siniestro" required=""  onblur="this.value=this.value.toUpperCase()">
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Reporte:</label>
-                        <input type="text" class="form-control" id="rep" name="rep" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="rep" name="rep" ng-model="datosSin.reporte" required="" onblur="this.value=this.value.toUpperCase()">
                     </div>
                 </div>
             </div><br>
@@ -272,13 +281,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Folio de Pase:</label>
-                        <input type="text" class="form-control" id="folPase" name="folPase" required=""  onkeypress="return paraDatosAseguradora(event)" onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="folPase" name="folPase" ng-model="datosSin.folPase" required=""   onblur="this.value=this.value.toUpperCase()">
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Observaciones:</label>
-                        <textarea class="form-control" name="obsexp" id="obsexp" onpaste="return false" style="resize:none;" required=""  onblur="this.value=this.value.toUpperCase()"></textarea>
+                        <textarea class="form-control" name="obsexp" id="obsexp" ng-model="datosSin.obs" onpaste="return false" style="resize:none;"  onblur="this.value=this.value.toUpperCase()"></textarea>
                     </div>
                 </div>
             </div>  
@@ -303,7 +312,14 @@
         pickDate: true,                 //en/disables the date picker
         pickTime: false,                 //en/disables the time picker     
         showToday: true,                 //shows the today indicator
-        language:'es'                  //sets language locale
-
+        language:'es'                  //sets language locale        
     });
+    $(function () {    
+    $('#checkSinCorreo').confirmation({
+        onConfirm: function() { $("#checkSinCorreo").prop("checked");
+                                $('#checkSinCorreo').confirmation('destroy');
+                                return false;},
+        onCancel: function() { }
+    });
+});
 </script>

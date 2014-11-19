@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Proyecto Base</title>
+  <title>Médica Vial</title>
   <link rel="stylesheet" href="lib/bootstrap.min.css" />
   <link rel="stylesheet" href="lib/font-awesome.min.css" />
   <link rel="stylesheet" href="lib/animate.css" />
+  <link rel="stylesheet" href="lib/angular-wizard.min.css" />
   <link rel="stylesheet" href="lib/datepicker.css" />
   <link rel="stylesheet" href="css/dashboard/dashboard.css" />
   <link rel="stylesheet" href="css/themes/blue.css" />
@@ -19,7 +20,7 @@
       </script>
   <![endif]-->
 </head>
-<body >
+<body class="ng-cloak">
     <div id="page-wrapper" ng-class="{'active': toggle, 'oculto':cerrar}">
 
       <!-- Sidebar -->
@@ -36,13 +37,25 @@
             <a href="#/home">Inicio <span class="menu-icon fa fa-home"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/aperturaExp">Apertura de expediente<span class="menu-icon glyphicon glyphicon-folder-open"></span></a>
+            <a href="#/aperturaExp">Registro de Paciente<span class="menu-icon glyphicon glyphicon-folder-open"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/clientes">Clientes <span class="menu-icon glyphicon glyphicon-th"></span></a>
+            <a href="#/busqueda">Búsqueda <span class="menu-icon glyphicon glyphicon-th"></span></a>
+          </li>
+          <li class="sidebar-list" ng-hide="cordinacion">
+            <a href="#/solicitud" ng-click="cargar()">Nueva Solicitud <span class="menu-icon glyphicon glyphicon-send"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/home">Configuración <span class="menu-icon fa fa-cogs"></span></a>
+            <a href="#/solicitudes">Sol. Pendientes<span class="menu-icon glyphicon glyphicon-tasks"></span></a>
+          </li>
+          <li class="sidebar-list">
+            <a href="#/home">Documentos de Apoyo <span class="menu-icon fa fa-cogs"></span></a>
+          </li>
+          <li class="sidebar-list">
+            <a href="#/home">Reportes <span class="menu-icon fa fa-cogs"></span></a>
+          </li>
+          <li class="sidebar-list">
+            <a href="#/home">Incidencias <span class="menu-icon fa fa-cogs"></span></a>
           </li>
           <li ng-show="administrador" class="sidebar-list"><a href=""  ng-click="admin = !admin"> Administrador <span class="menu-icon" ng-class="{'glyphicon glyphicon-chevron-right': admin, 'glyphicon glyphicon-chevron-down': !admin}"></span></a></li>
               <div collapse="admin">  
@@ -58,18 +71,13 @@
             <a href="#" target="_blank">Reportes Estadisticos <span class="menu-icon fa fa-bar-chart-o"></span></a>
           </li>
         </ul>
-        <div class="sidebar-footer">
-            <div class="col-xs-4">
-              <a href="https://github.com/Ehesp/Responsive-Dashboard" target="_blank">
-                Github
-              </a>
-            </div>
-            <div class="col-xs-4">
+        <div class="sidebar-footer">           
+            <div class="col-xs-6">
               <a href="#" target="_blank">
                 About
               </a>
             </div>
-            <div class="col-xs-4">
+            <div class="col-xs-6">
               <a href="#">
                 Support
               </a>
@@ -81,7 +89,7 @@
         <div class="col-xs-12 border-bottom">
           <div class="meta pull-left">
             <div class="page">
-              InfoWeb
+              Registro M&eacute;dica Vial
             </div>
             <div class="breadcrumb-links">
               Inicio
@@ -162,20 +170,40 @@
     </div><!-- End Page Wrapper -->
 
     <script src="lib/jquery.min.js"></script>
-    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>  
+    <script src="modules/angular-file-upload-shim.min.js"></script>   
     <script src="lib/angular.min.js"></script>
+    <script src="lib/jspdf.debug.js"></script>
+    <script src="lib/jspdf.plugin.addhtml.js"></script>
     <script src="lib/moment-with-langs.min.js"></script>
     <script src="lib/bootstrap-datetimepicker.min.js"></script>
+    <script src="lib/bootstrap-tooltip.js"></script>
+    <script src="lib/bootstrap-confirmation.js"></script>
+    <script src="lib/bootstrap-popover.js"></script>
+    <script src="lib/lodash.js"></script>
     <script src="modules/ng-bootstrap-tpls.min.js"></script>
     <script src="modules/angular-animate.min.js"></script>
     <script src="modules/angular-cookies.min.js"></script>
     <script src="modules/angular-route.min.js"></script>
+    <script src="modules/angular-wizard.min.js"></script>
+    <script src="modules/angular-deckgrid.min.js"></script>
+    <script src="modules/angular-file-upload.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/directives/cargando.js"></script>
+    <script src="app/directives/textos.js"></script>
+    <script src="app/directives/ng-radial-gauge-dir.js"></script>
+    <script src="app/services/d3-serv.js"></script>
+    <script src="app/controllers/solicitudCtrl.js"></script>
     <script src="app/controllers/loginCtrl.js"></script>
     <script src="app/controllers/homeCtrl.js"></script>
     <script src="app/controllers/aperturaExpCtrl.js"></script>
     <script src="app/controllers/productoCtrl.js"></script>
     <script src="app/controllers/registraCtrl.js"></script>
+    <script src="app/controllers/portadaCtrl.js"></script>
+    <script src="app/controllers/busquedaCtrl.js"></script>
+    <script src="app/controllers/documentosCtrl.js"></script>
+    <script src="app/controllers/historiaClinicaCtrl.js"></script>
+    <script src="app/controllers/signosVitalesCtrl.js"></script>
+    <script src="app/controllers/notaMedicaCtrl.js"></script>
 </body>
 </html>

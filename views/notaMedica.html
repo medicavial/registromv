@@ -1,0 +1,59 @@
+<div class="container" style="width: 100%">     
+<br>
+	<div class="panel panel-primary">
+    <div style="width:100%; background:gray;color:white">
+			<h2>Nota Médica <b><label>{{folio}}</label></b></h2>
+		</div>
+		<div class="Panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<wizard on-finish="finished()" hide-indicators="true">
+              <wz-step title="Datos Paciente">
+               <ng-include src="'views/notaMedica/datosPaciente.html'"></ng-include>                
+              </wz-step>
+              <wz-step title="Ant. Heredo">
+                 <ng-include src="'views/notaMedica/AntecedentesHeredo.html'"></ng-include>   
+              </wz-step>
+              <wz-step title="Ant. Personales">
+                <ng-include src="'views/notaMedica/AntecedentesPersonales.html'"></ng-include>   
+              </wz-step>
+              <wz-step title="Acc. Antteriores">
+                <ng-include src="'views/notaMedica/AccidentesAnteriores.html'"></ng-include>
+              </wz-step>
+              <wz-step title="S. Vitales">
+               <ng-include src="'views/notaMedica/vitales.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Datos Acc.">
+                <ng-include src="'views/notaMedica/DatosdelAccidente.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Embarazo">
+                <ng-include src="'views/notaMedica/EmbarazoRed.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Lesión">
+               <ng-include src="'views/notaMedica/LesionRed.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Estado Gral.">
+                <h1>Finish him</h1>
+                <p>Finally this ends!</p>
+                <input type="button" wz-next value="Click here to end" />
+                <input type="button" ng-click="goBack()" value="Click here to start again" />
+              </wz-step>
+              <wz-step title="Est. Realizados">
+                <h1>Finish him</h1>
+                <p>Finally this ends!</p>
+                <input type="button" wz-next value="Click here to end" />
+                <input type="button" ng-click="goBack()" value="Click here to start again" />
+              </wz-step>
+              <wz-step title="Proc. Médicos">
+                <h1>Finish him</h1>
+                <p>Finally this ends!</p>
+                <input type="button" wz-next value="Click here to end" />
+                <input type="button" ng-click="goBack()" value="Click here to start again" />
+              </wz-step>
+            </wizard>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</div>
