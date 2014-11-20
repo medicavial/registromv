@@ -12,6 +12,9 @@
   <link rel="stylesheet" href="css/dashboard/dashboard.css" />
   <link rel="stylesheet" href="css/themes/blue.css" />
   <link rel="stylesheet" href="css/animaciones.css" />
+  <link rel="stylesheet" href="modules/ngDialog.min.css">
+  <link rel="stylesheet" href="modules/ngDialog-theme-default.min.css">
+  <link rel="stylesheet" href="modules/ngDialog-theme-plain.min.css">
   <link rel="stylesheet" href="css/style.css" />
   <script src="lib/prefixfree.min.js"></script>
   <!--[if lt IE 9]>
@@ -40,7 +43,7 @@
             <a href="#/aperturaExp">Registro de Paciente<span class="menu-icon glyphicon glyphicon-folder-open"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/busqueda">Búsqueda <span class="menu-icon glyphicon glyphicon-th"></span></a>
+            <a href="#/busqueda">Búsqueda <span class="menu-icon glyphicon glyphicon-search"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="cordinacion">
             <a href="#/solicitud" ng-click="cargar()">Nueva Solicitud <span class="menu-icon glyphicon glyphicon-send"></span></a>
@@ -49,13 +52,13 @@
             <a href="#/solicitudes">Sol. Pendientes<span class="menu-icon glyphicon glyphicon-tasks"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/home">Documentos de Apoyo <span class="menu-icon fa fa-cogs"></span></a>
+            <a href="#/home">Documentos de Apoyo <span class="menu-icon glyphicon glyphicon-list-alt"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/home">Reportes <span class="menu-icon fa fa-cogs"></span></a>
+            <a href="#/home">Reportes <span class="menu-icon glyphicon glyphicon-signal"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/home">Incidencias <span class="menu-icon fa fa-cogs"></span></a>
+            <a href="#/home">Incidencias <span class="menu-icon glyphicon glyphicon-plus-sign"></span></a>
           </li>
           <li ng-show="administrador" class="sidebar-list"><a href=""  ng-click="admin = !admin"> Administrador <span class="menu-icon" ng-class="{'glyphicon glyphicon-chevron-right': admin, 'glyphicon glyphicon-chevron-down': !admin}"></span></a></li>
               <div collapse="admin">  
@@ -89,7 +92,7 @@
         <div class="col-xs-12 border-bottom">
           <div class="meta pull-left">
             <div class="page">
-              Registro M&eacute;dica Vial
+              Registro Médica Vial
             </div>
             <div class="breadcrumb-links">
               Inicio
@@ -99,7 +102,7 @@
           <div class="user pull-right">
             <div class="item dropdown">
               <a href="#" class="dropdown-toggle">
-                <img ng-src="">
+                <img ng-src="imgs/avatar.jpg">
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <li class="dropdown-header">
@@ -188,6 +191,7 @@
     <script src="modules/angular-wizard.min.js"></script>
     <script src="modules/angular-deckgrid.min.js"></script>
     <script src="modules/angular-file-upload.min.js"></script>
+    <script src="modules/ngDialog.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/directives/cargando.js"></script>
     <script src="app/directives/textos.js"></script>

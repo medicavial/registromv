@@ -501,7 +501,7 @@ app.controller('solicitudExpedienteCtrl', function ($scope, $cookies, $route, $r
 			usuario:$cookies.usrLogin,
 			folio:$routeParams.folio,
 			lesionado:'',
-			tipo:$routeParams.tipo,
+			tipo:'',
 			cliente:'',
 			clientenombre:'',
 			interconsulta:{

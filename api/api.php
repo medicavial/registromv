@@ -62,7 +62,7 @@ function generar_numero(){
 
 function conectarMySQL(){
 
-    $dbhost="localhost";
+    $dbhost="www.medicavial.net";
     $dbuser="medica_webusr";
     $dbpass="tosnav50";
     $dbname="medica_registromv";
@@ -831,6 +831,16 @@ if($funcion == 'getListLesion'){
     $result = $db->query($query);
     $listLesion = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listLesion);
+    $db = null;    
+}
+
+if($funcion == 'getListLesiones'){
+    $fol=$_GET['fol'];
+    $db = conectarMySQL();
+    $query="SELECT Les_nombre, Cue_nombre, LesN_clave FROM LesionNota inner join Lesion on Lesion.Les_clave=LesionNota.Les_clave inner join Cuerpo on Cuerpo.Cue_clave=LesionNota.Cue_clave Where Exp_folio='".$fol."' ORDER BY LesN_clave ASC";
+    $result = $db->query($query);
+    $listLesiones = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listLesiones);
     $db = null;    
 }
 
@@ -1614,6 +1624,76 @@ if($funcion=='guardaEmbarazo'){
     $db = null;  
 }
 
+if($funcion=='guardaLesion'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $cuerpo        =$datos->cuerpo;
+    $lesion      =$datos->lesion;   
+    $db = conectarMySQL(); 
+    try{    
+        $query="Insert into LesionNota(Exp_folio, Les_clave, Cue_clave)
+                       Values(:Exp_folio,:Les_clave,:Cue_clave)";
+        $temporal = $db->prepare($query);
+        $temporal->bindParam("Exp_folio", $fol);
+        $temporal->bindParam("Les_clave", $lesion);  
+        $temporal->bindParam("Cue_clave", $cuerpo);         
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion == 'eliminaLesion'){
+    $db = conectarMySQL();
+    $query="DELETE FROM LesionNota WHERE Exp_folio = :Exp_folio and LesN_clave = :LesN_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Exp_folio', $fol);
+    $stmt->bindParam('LesN_clave', $cveLes);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
+
+if($funcion=='guardaEdoGral'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $estado        =$datos->estado;   
+    $db = conectarMySQL(); 
+    $query= "select * from ObsNotaMed where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $edoGral = $result->fetch();
+    try{    
+        if($edoGral){
+            $query="UPDATE ObsNotaMed SET ObsNot_edoG=:ObsNot_edoG WHERE Exp_folio=:Exp_folio";                        
+        }else{
+            $query="INSERT INTO  ObsNotaMed( ObsNot_edoG,Exp_folio)
+                             Values(:ObsNot_edoG,:Exp_folio)";                       
+        }
+        $temporal = $db->prepare($query);
+        $temporal->bindParam("Exp_folio", $fol);
+        $temporal->bindParam("ObsNot_edoG", $estado);          
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
 // Solicitudes api
 
 $unidad = $_REQUEST['uniClave'];
@@ -2273,6 +2353,10 @@ if($funcion == 'detalleSolicitudesInfo'){
           array_push($archivosTotales, $archivos);
 
         }
+
+      }else{
+
+        $archivosTotales = array();
 
       }
 

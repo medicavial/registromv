@@ -102,3 +102,5 @@
 [18-Nov-2014 19:02:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/medica/public_html/mvnuevo/api/api.php on line 1494
 [18-Nov-2014 19:03:09] PHP Parse error:  syntax error, unexpected T_ELSE, expecting T_CATCH in /home/medica/public_html/mvnuevo/api/api.php on line 1498
 [18-Nov-2014 19:03:09] PHP Parse error:  syntax error, unexpected T_ELSE, expecting T_CATCH in /home/medica/public_html/mvnuevo/api/api.php on line 1498
+[19-Nov-2014 16:27:12] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 845
+[19-Nov-2014 16:27:13] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 845

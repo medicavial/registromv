@@ -1,4 +1,4 @@
-app.controller('registraCtrl', function($scope,$rootScope, $http,$cookies,$location) {	
+app.controller('registraCtrl', function($scope,$rootScope, $http,$cookies,$location,ngDialog) {	
 
 $scope.inicio = function(){
     

@@ -1,5 +1,5 @@
 //inicializamos la aplicacion
-var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid']);
+var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog']);
 
 //configuramos nuestra aplicacion
 app.config(function($routeProvider){
@@ -72,7 +72,7 @@ app.config(function($routeProvider){
             controller : 'solicitudCtrl'
     });
 
-    $routeProvider.when('/solicitud/:folio/:tipo',{
+    $routeProvider.when('/solicitud/:folio',{
             templateUrl: 'views/solicitudes/solicitudexpediente.html',
             controller : 'solicitudExpedienteCtrl'
     });
@@ -140,6 +140,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location){
 
         $rootScope.cerrar = false;
         $rootScope.username =  $cookies.username;
+        $rootScope.cordinacion =  $cookies.cordinacion;
 
         sesion.checkStatus();
 
@@ -154,6 +155,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location){
 
     //generamos al rootscope las variables que tenemos en las cookies para no perder la sesion 
     $rootScope.username =  $cookies.username;
+    $rootScope.cordinacion =  $cookies.cordinacion;
 
 });
 
@@ -337,8 +339,20 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         listaEmbarazo:function(folio){
             return $http.get('api/api.php?funcion=getListEmbarazo&fol='+folio);
         },
-        listaLesion:function(folio){
-            return $http.get('api/api.php?funcion=getListLesion&fol='+folio);
+        listaLesion:function(){
+            return $http.get('api/api.php?funcion=getListLesion');
+        },
+        listaLesiones:function(folio){
+            return $http.get('api/api.php?funcion=getListLesiones&fol='+folio);
+        },
+        listaRX:function(){
+            return $http.get('api/api.php?funcion=getListRX');
+        },
+        listaEstSol:function(){
+            return $http.get('api/api.php?funcion=getListEstSol');
+        },
+        listaProced:function(){
+            return $http.get('api/api.php?funcion=getListProcedimientos');
         }
 
     }

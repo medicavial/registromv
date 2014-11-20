@@ -2,7 +2,8 @@
       <div class="panel panel-primary">
                 <div class="panel-heading">
                          <h3 class="panel-title" >Apertura de Expediente</h3>
-                </div>       
+                </div>   
+
          <div class="panel-body">
             <fieldset ng-disabled="primeraEtapa">
             <form ng-submit="guardaEtapa1()">
@@ -18,7 +19,7 @@
                 <div class="col-md-4" align="center">
                     <div class="form-group">
                         <div ng-show="veCDB"  style="padding-top:1.5em;">
-                            <!-- <img ng-src="api/codigos/{{folio}}.png"  title="folio"> -->
+                            <img ng-src="api/codigos/{{folio}}.png"  title="folio">
                         </div>                                           
                     </div>
                 </div>
@@ -41,21 +42,21 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Nombre(s): </label>
-                        <input type="text" class="form-control" id="nom" name="nom"  required="" ng-model="datos.nombre" >
+                        <input type="text" class="form-control" id="nom" name="nom"  required="" ng-model="datos.nombre" mayusculas>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>A.Paterno:</label>
-                        <input type="text" ng-model="datos.pat" class="form-control" id="pat" name="pat" required=""  >
+                        <input type="text" ng-model="datos.pat" class="form-control" id="pat" name="pat" required=""  mayusculas>
 
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>A. Materno:</label>
-                        <input type="text" ng-model="datos.mat" class="form-control" id="mat" name="mat" required="" >
+                        <input type="text" ng-model="datos.mat" class="form-control" id="mat" name="mat" required="" mayusculas>
                     </div>
                 </div>  
             </div><br> 
@@ -68,7 +69,7 @@
                     </div>                    
                 </div>
                 <div class="col-md-4">                
-                        <label>Tipo Tel&eacute;fono:</label>
+                        <label>Tipo Teléfono:</label>
                         <select name="tel" id="tel" ng-model="datos.tel" style="width:100%" required="" class="form-control" >
                             <option value=""> * Seleccione tipo </option>
                             <option value="1">Particular</option>
@@ -78,7 +79,7 @@
                         </select>                                                                                                                               
                 </div> 
                 <div class="col-md-4">  
-                    <label>No. Tel&eacute;fono:</label>                    
+                    <label>No. Teléfono:</label>                    
                         <input  type="text" style="width:100%" ng-model="datos.numeroTel"  class="form-control" id="numeroTel" name="numeroTel" required="" >  
                     </div> 
             </div>
@@ -153,14 +154,14 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" name="obsCort" id="obsCort" onpaste="return false" style="resize:none;" required=""  onblur="this.value=this.value.toUpperCase()"></textarea>
+                                <textarea class="form-control" name="obsCort" id="obsCort" onpaste="return false" style="resize:none;" required=""  mayusculas></textarea>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">                                
-                                <input type="submit" id="btnenvioCor" class="btn btn-primary"  value="Registrar Cortes&iacute;a">
+                                <input type="submit" id="btnenvioCor" class="btn btn-primary"  value="Registrar Cortesía">
                             </div>
                         </div>
                     </div> 
@@ -179,21 +180,21 @@
 	                    <div class="checkbox">
 	                      <label>
 	                        <input id="check1" ng-model="check1" type="checkbox">
-	                        El pase m&eacute;dico no presenta tachaduras ni enmendaduras  <label style="background:yellow;" id="msj1" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                        El pase médico no presenta tachaduras ni enmendaduras  <label style="background:yellow;" id="msj1" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
 	                      </label>
 	                    </div>
 	               	
 	                    <div class="checkbox">
 	                      <label>
 	                        <input id="check2" ng-model="check2" type="checkbox">
-	                        El pase m&eacute;dico se encuentra vigente  <label style="background:yellow;" id="msj2" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                        El pase médico se encuentra vigente  <label style="background:yellow;" id="msj2" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
 	                      </label>
 	                    </div>
 	               		
 	                    <div class="checkbox">
 	                      <label>
 	                        <input id="check3" ng-model="check3" type="checkbox">
-	                       Se corrobor&oacute; la identidad del lesionado<label style="background:yellow;" id="msj3" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                       Se corroboró la identidad del lesionado<label style="background:yellow;" id="msj3" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
 	                      </label>
 	                    </div>
 	                </div>
@@ -203,8 +204,8 @@
                         <div id="noAutorizacion" ng-show="validaInputAut" class="mianimacion">                   
     						<label>
     							<input ng-model="autorizacion" type="text" value="">
-    							     No. de Autorizaci&oacute;n <br>
-                                <small>*comunicarse a <b>ubicacion</b> al n&uacute;mero <b>telefono</b> </small>
+    							     No. de Autorización <br>
+                                <small>*comunicarse a <b>ubicacion</b> al número <b>telefono</b> </small>
                                                      
     						</label>
                         </div>	        
@@ -244,14 +245,14 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Inciso  </label>
-                         <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
+                         <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  mayusculas/>
                      </div>
                  </div>
                  
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{noCompania}}</label>
-                         <input id="noCia" name="noCia" type="text" ng-model="datosSin.noCia" class="form-control"  onblur="this.value=this.value.toUpperCase()"/>
+                         <input id="noCia" name="noCia" type="text" ng-model="datosSin.noCia" class="form-control"  mayusculas />
                      </div>
                  </div>
                 </div>
@@ -260,19 +261,19 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Poliza:</label>
-                        <input type="text" class="form-control" id="pol" name="pol" ng-model="datosSin.poliza" required=""  onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="pol" name="pol" ng-model="datosSin.poliza" required="" mayusculas>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Siniestro:</label>
-                        <input type="text" class="form-control" id="sin" name="sin" ng-model="datosSin.siniestro" required=""  onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="sin" name="sin" ng-model="datosSin.siniestro" required=""  mayusculas>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Reporte:</label>
-                        <input type="text" class="form-control" id="rep" name="rep" ng-model="datosSin.reporte" required="" onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="rep" name="rep" ng-model="datosSin.reporte" required="" mayusculas>
                     </div>
                 </div>
             </div><br>
@@ -281,13 +282,13 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Folio de Pase:</label>
-                        <input type="text" class="form-control" id="folPase" name="folPase" ng-model="datosSin.folPase" required=""   onblur="this.value=this.value.toUpperCase()">
+                        <input type="text" class="form-control" id="folPase" name="folPase" ng-model="datosSin.folPase" required=""   mayusculas>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Observaciones:</label>
-                        <textarea class="form-control" name="obsexp" id="obsexp" ng-model="datosSin.obs" onpaste="return false" style="resize:none;"  onblur="this.value=this.value.toUpperCase()"></textarea>
+                        <textarea class="form-control" name="obsexp" id="obsexp" ng-model="datosSin.obs" onpaste="return false" style="resize:none;"  mayusculas></textarea>
                     </div>
                 </div>
             </div>  
@@ -297,8 +298,7 @@
                 </div>
                 <div class="col-md-2">
                      <input type="reset" class="btn btn-danger"  value="Limpiar">
-                </div>
-                
+                </div> 
             </div>
  </div>            
 </form> 
