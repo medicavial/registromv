@@ -21,7 +21,7 @@ body{
 
 /* clase para mostrar cuando esta el bloqueo de pantalla activo */
 .lockscreen {
-  background: url(../images/fondo.jpg) repeat center center fixed;
+  background: url(../imgs/fondo.jpg) repeat center center fixed;
   background-size: cover;
 }
 /* Remove the background from the body element */
@@ -88,6 +88,7 @@ body{
 .lockscreen-item > .lockscreen-credentials {
   margin-left: 60px;
 }
+
 .lockscreen-item > .lockscreen-credentials input {
   border: 0 !important;
 }

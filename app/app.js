@@ -8,7 +8,7 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
     
     // menu y login general
      $routeProvider.when('/bloqueo',{
-            templateUrl: '../documento/vistas/bloqueo.html',
+            templateUrl: 'views/bloqueo.html',
             controller : 'bloqueoCtrl'
     });
 
@@ -523,17 +523,17 @@ app.controller('materialCtrl', function($scope){
 
 
 //bloqueo de sesion
-app.controller('bloqueoCtrl',function($scope, $cookies, $cookieStore, $rootScope, auth){
+app.controller('bloqueoCtrl',function($scope, $cookies, $cookieStore, $rootScope, sesion){
 
     $scope.inicio = function(){
 
-        $scope.usuario = $cookies.user;
+        $scope.usuario = $cookies.usrLogin;
         $scope.nombre = $cookies.username;
 
         $cookieStore.remove("username"),
         $rootScope.username = '';
         $rootScope.mensaje = '';
-        
+
         $('html').addClass('lockscreen');
 
     }
