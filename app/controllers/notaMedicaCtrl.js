@@ -421,7 +421,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         }
         $scope.eliminarProcedimiento = function(clavePro){                    
             $http({
-            url:'api/api.php?funcion=eliminaProcedimiento&fol='+$rootScope.folio+'&clavePro='+clavePro,
+            url:'api/api.php?funcion=eliminaProcedimiento&proClave='+clavePro,
             method:'POST', 
             contentType: 'application/json', 
             dataType: "json", 

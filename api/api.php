@@ -1913,9 +1913,9 @@ if($funcion == 'eliminaProcedimiento'){
     $db = conectarMySQL();
     $query="Delete from NotaProcedimientos where Nproc_clave = :Nproc_clave";
     $stmt = $db->prepare($query);
-    $stmt->bindParam('Nproc_clave', $clavePro);
+    $stmt->bindParam('Nproc_clave', $proClave);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $respuesta = array('respuesta' => 'correcto','pro-clave'=>$proClave);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
     }
