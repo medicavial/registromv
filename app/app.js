@@ -7,6 +7,11 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
     //Configuramos la ruta que queremos el html que le toca y que controlador usara
     
     // menu y login general
+     $routeProvider.when('/bloqueo',{
+            templateUrl: '../documento/vistas/bloqueo.html',
+            controller : 'bloqueoCtrl'
+    });
+
     $routeProvider.when('/home',{
             templateUrl: 'views/home.html',
             controller : 'homeCtrl'
@@ -21,6 +26,8 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/material.html',
             controller : 'materialCtrl'
     });
+
+   
 
     // apertura de un expediente y seguimiento
     $routeProvider.when('/aperturaExp',{
@@ -512,6 +519,34 @@ app.controller('materialCtrl', function($scope){
             {ruta:'imgs/pdf.png',nombre:'Columna Dorsolumbar',ubicacion:'ejercicios/Columna_Dorsolumbar.pdf'}
         ];
     }
+});
+
+
+//bloqueo de sesion
+app.controller('bloqueoCtrl',function($scope, $cookies, $cookieStore, $rootScope, auth){
+
+    $scope.inicio = function(){
+
+        $scope.usuario = $cookies.user;
+        $scope.nombre = $cookies.username;
+
+        $cookieStore.remove("username"),
+        $rootScope.username = '';
+        $rootScope.mensaje = '';
+        
+        $('html').addClass('lockscreen');
+
+    }
+
+    $scope.login = function(){
+
+        
+        $rootScope.mensaje = '';
+        //console.log($scope.usuario);
+        auth.login($scope.usuario, $scope.password);
+
+    }
+
 });
 
 
