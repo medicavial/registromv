@@ -1,5 +1,5 @@
 <?php
-//tiempo de espera en caso de tardar mas de 30 segundos una consulta grande
+//tiempo de espera en caso de tardar mas de 30 segundos una consulta grande prueba
 set_time_limit(3600);
 //sin limite me memoria 
 ini_set('memory_limit', '-1');
