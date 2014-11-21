@@ -248,7 +248,9 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
 
                 if (data.respuesta) {
                     $rootScope.mensaje = data.respuesta;
-                }else{                    
+                }else{     
+                    
+                    $('html').removeClass('lockscreen');               
                     $rootScope.username = data[0].Usu_nombre;
                     $cookies.username = data[0].Usu_nombre;
                     $cookies.uniClave = data[0].Uni_clave;
@@ -543,7 +545,7 @@ app.controller('bloqueoCtrl',function($scope, $cookies, $cookieStore, $rootScope
         
         $rootScope.mensaje = '';
         //console.log($scope.usuario);
-        auth.login($scope.usuario, $scope.password);
+        sesion.login($scope.usuario, $scope.password);
 
     }
 
