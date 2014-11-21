@@ -62,7 +62,7 @@ function generar_numero(){
 
 function conectarMySQL(){
 
-    $dbhost="www.medicavial.net";
+    $dbhost="localhost";
     $dbuser="medica_webusr";
     $dbpass="tosnav50";
     $dbname="medica_registromv";
@@ -843,6 +843,124 @@ if($funcion == 'getListLesiones'){
     echo json_encode($listLesiones);
     $db = null;    
 }
+
+if($funcion == 'getListRX'){    
+    $db = conectarMySQL();
+    $query="SELECT Rx_clave, Rx_nombre FROM Rx";
+    $result = $db->query($query);
+    $listRx = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listRx);
+    $db = null;    
+}
+if($funcion == 'getListEstSol'){    
+    $db = conectarMySQL();
+    $query="SELECT Rxs_clave, Rx_nombre, Rxs_Obs, Rxs_desc 
+            FROM RxSolicitados inner Join Rx on Rx.Rx_clave=RxSolicitados.Rx_clave 
+            Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listEstSol = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listEstSol);
+    $db = null;    
+}
+
+if($funcion == 'getListProRea'){    
+    $db = conectarMySQL();
+    $query="SELECT Nproc_clave, Pro_nombre, Nproc_obs  FROM NotaProcedimientos inner Join Procedimientos on Procedimientos.Pro_clave=NotaProcedimientos.Pro_clave Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listProcedimientos = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listProcedimientos);
+    $db = null;    
+}
+
+if($funcion == 'getListProcedimientos'){    
+    $db = conectarMySQL();
+    $query="SELECT Pro_clave, Pro_nombre FROM Procedimientos";
+    $result = $db->query($query);
+    $listProce = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listProce);
+    $db = null;    
+}
+
+if($funcion == 'getListDiagnostic'){    
+    $db = conectarMySQL();
+    $query="SELECT * FROM DxComunes";
+    $result = $db->query($query);
+    $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listDiagnostic);
+    $db = null;    
+}
+
+if($funcion == 'getListMedicamentos'){    
+    $db = conectarMySQL();
+    $query="SELECT Sum_clave, Sum_nombre, Sum_presentacion, Sum_indicacion  FROM Suministro Where activo=1 and Roma=0 Order by peso desc,Sum_nombre ASC";
+    $result = $db->query($query);
+    $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listDiagnostic);
+    $db = null;    
+}
+
+if($funcion == 'getListOrtesis'){    
+    $db = conectarMySQL();
+    $query="SELECT Ort_clave, Ort_nombre FROM Ortesis order by cuadro desc, Ort_nombre";
+    $result = $db->query($query);
+    $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listDiagnostic);
+    $db = null;    
+}
+
+if($funcion == 'getListIndicaciones'){    
+    $db = conectarMySQL();
+    $query="SELECT Ind_clave, Ind_nombre FROM IndicacionesGenerales";
+    $result = $db->query($query);
+    $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listDiagnostic);
+    $db = null;    
+}
+
+if($funcion == 'getListMedicamentosAgreg'){    
+    $db = conectarMySQL();
+    $query="SELECT Nsum_clave, Sum_nombre, Nsum_obs, Nsum_Cantidad  FROM NotaSuministro inner Join Suministro on Suministro.Sum_clave =NotaSuministro.Sum_clave Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listMediAgre = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listMediAgre);
+    $db = null;    
+}
+
+if($funcion == 'getListOrtesisAgreg'){    
+    $db = conectarMySQL();
+    $query="SELECT Notor_clave, Ort_nombre, Ortpre_nombre, Notor_cantidad, Notor_indicaciones FROM NotaOrtesis inner Join Ortesis on Ortesis.Ort_clave=NotaOrtesis.Ort_clave inner Join  Ortpresentacion on Ortpresentacion.Ortpre_clave=NotaOrtesis.Ortpre_clave Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listMediAgre = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listMediAgre);
+    $db = null;    
+}
+if($funcion == 'getListIndicAgreg'){    
+    $db = conectarMySQL();
+    $query="SELECT Nind_clave, Nind_obs FROM NotaInd Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listMediAgre = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listMediAgre);
+    $db = null;    
+}
+
+if($funcion == 'vePosologia'){    
+    $db = conectarMySQL();
+    $query="SELECT Sum_indicacion  FROM Suministro Where Sum_clave =".$cveMed;
+    $result = $db->query($query);
+    $posologia = $result->fetch(PDO::FETCH_OBJ);
+    echo json_encode($posologia);
+    $db = null;    
+}
+
+if($funcion == 'veIndicacion'){    
+    $db = conectarMySQL();
+    $query="SELECT Sum_indicacion  FROM Suministro Where Sum_clave =".$cveMed;
+    $result = $db->query($query);
+    $posologia = $result->fetch(PDO::FETCH_OBJ);
+    echo json_encode($posologia);
+    $db = null;    
+}
+
 
 if($funcion == 'selectPosicion'){
     $db = conectarMySQL();
@@ -1693,7 +1811,226 @@ if($funcion=='guardaEdoGral'){
     echo json_encode($respuesta);
     $db = null;  
 }
+if($funcion=='guardaEstudios'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $rx         =$datos->rx;
+    $obs        =$datos->obs;
+    $interp     =$datos->interp;
+    $db = conectarMySQL(); 
+    $query= "select * from ObsNotaMed where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $edoGral = $result->fetch();
+    try{    
+       
+            $query="Insert into RxSolicitados(Exp_folio, Rx_clave, Rxs_Obs, Rxs_desc, Usu_solicita, Fecha_solicita, Estatus_rx, Uni_clave, Rxs_desde)
+                          Values(:Exp_folio,:Rx_clave,:Rxs_Obs,:Rxs_desc,:Usu_solicita,now(),'PENDIENTE',:Uni_clave,'NOTA MEDICA')";                               
+        $temporal = $db->prepare($query);
+        $temporal->bindParam("Exp_folio", $fol);
+        $temporal->bindParam("Rx_clave", $rx);
+        $temporal->bindParam("Rxs_Obs", $obs); 
+        $temporal->bindParam("Rxs_desc", $interp);  
+        $temporal->bindParam("Usu_solicita", $usr); 
+        $temporal->bindParam("Uni_clave", $uniClave);             
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
 
+if($funcion == 'eliminaEstRealizado'){
+    $db = conectarMySQL();
+    $query="Delete from RxSolicitados where Rxs_clave = :Rxs_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Rxs_clave', $cveEst);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
+
+if($funcion=='guardaProcedimientos'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $procedimiento         =$datos->procedimiento;
+    $obs        =$datos->obs;   
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Insert into NotaProcedimientos(Exp_folio, Pro_clave, Nproc_obs)
+                                         Values(:Exp_folio,:Pro_clave,:Nproc_obs)";                               
+        $temporal = $db->prepare($query);
+        $temporal->bindParam("Exp_folio", $fol);
+        $temporal->bindParam("Pro_clave", $procedimiento);
+        $temporal->bindParam("Nproc_obs", $obs);                 
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion=='guardaDiagnostico'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $diagnostico         =$datos->diagnostico;
+    $obs        =$datos->obs;   
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Update ObsNotaMed Set ObsNot_diagnosticoRx=:ObsNot_diagnosticoRx,ObsNot_obs=:ObsNot_obs WHERE Exp_folio=:Exp_folio";                               
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("ObsNot_diagnosticoRx", $diagnostico);
+            $temporal->bindParam("ObsNot_obs", $obs);                 
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion == 'eliminaProcedimiento'){
+    $db = conectarMySQL();
+    $query="Delete from NotaProcedimientos where Nproc_clave = :Nproc_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Nproc_clave', $clavePro);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
+
+if($funcion=='guardaMedicamento'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $medica         =$datos->medica;
+    $posologia        =$datos->posologia; 
+    $cantidad        =$datos->cantidad;       
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Insert into NotaSuministro(Exp_folio, Sum_clave, Nsum_obs, Nsum_Cantidad, Nsum_fecha)
+                             Values(:Exp_folio,:Sum_clave,:Nsum_obs,:Nsum_Cantidad,now())";
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("Sum_clave", $medica);
+            $temporal->bindParam("Nsum_obs", $posologia);
+            $temporal->bindParam("Nsum_Cantidad", $cantidad);                 
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion=='guardaOrtesis'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $ortesis         =$datos->ortesis;
+    $presentacion        =$datos->presentacion; 
+    $cantidad        =$datos->cantidad; 
+    $indicaciones        =$datos->indicaciones;       
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Insert into NotaOrtesis(Exp_folio, Ort_clave, Ortpre_clave, Notor_cantidad, Notor_indicaciones)
+                             Values(:Exp_folio,:Ort_clave,:Ortpre_clave,:Notor_cantidad,:Notor_indicaciones)";
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("Ort_clave", $ortesis);
+            $temporal->bindParam("Ortpre_clave", $presentacion);
+            $temporal->bindParam("Notor_cantidad", $cantidad);                 
+            $temporal->bindParam("Notor_indicaciones", $indicaciones);                 
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion=='guardaIndicacion'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $indicacion         =$datos->indicacion;
+    $obs        =$datos->obs;     
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Insert into NotaInd(Exp_folio, Ind_clave, Nind_obs)
+                         Values(:Exp_folio,:Ind_clave,:Nind_obs)";
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("Ind_clave", $indicacion);
+            $temporal->bindParam("Nind_obs", $obs);                
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion=='guardaPronostico'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $pronostico         =$datos->pronostico;
+    $criterio        =$datos->criterio;     
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query=" Update ObsNotaMed Set ObsNot_pron=:ObsNot_pron, ObsNot_waddell=:ObsNot_waddell Where Exp_folio=:Exp_folio";
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("ObsNot_pron", $pronostico);
+            $temporal->bindParam("ObsNot_waddell", $criterio);                
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
 // Solicitudes api
 
 $unidad = $_REQUEST['uniClave'];
@@ -1772,7 +2109,7 @@ if($funcion == 'busquedaFolio'){
 
     $db = conectarMySQL();
         
-    $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo FROM Expediente
+    $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo, Expediente.Cia_clave as idcliente FROM Expediente
             INNER JOIN Compania on Compania.Cia_clave = Expediente.Cia_clave 
             WHERE EXP_folio = '$folio' and Uni_clave = $unidad ";
 
@@ -1789,7 +2126,7 @@ if($funcion == 'busquedaLesionado'){
 
     $db = conectarMySQL();
         
-    $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo FROM Expediente
+    $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo, Expediente.Cia_clave as idcliente FROM Expediente
             INNER JOIN Compania on Compania.Cia_clave = Expediente.Cia_clave 
             WHERE EXP_completo like '% $lesionado %' AND Exp_cancelado = 0 and Uni_clave = $unidad order by EXP_completo limit 0,50";
 
@@ -1802,12 +2139,14 @@ if($funcion == 'busquedaLesionado'){
 };
 
 
+
+
 if($funcion == 'busquedaSolicitudes'){
 
 
     $db = conectarMySQL();
         
-    $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo FROM Expediente
+    $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo, Expediente.Cia_clave as idcliente FROM Expediente
             INNER JOIN Compania on Compania.Cia_clave = Expediente.Cia_clave 
             WHERE EXP_folio = '$folio' and Uni_clave = $unidad ";
 
@@ -2355,9 +2694,7 @@ if($funcion == 'detalleSolicitudesInfo'){
         }
 
       }else{
-
         $archivosTotales = array();
-
       }
 
       $dato['archivos'] = $archivosTotales;

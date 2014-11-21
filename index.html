@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <title>Médica Vial</title>
+   <link rel="shortcut icon" sizes="16x16 24x24 32x32 48x48 64x64" href="http://medicavial.net/mvnuevo/favicon.ico">
+  <link rel="apple-touch-icon" sizes="57x57" href="http://medicavial.net/mvnuevo/favicon-57.png">
+  <link rel="apple-touch-icon-precomposed" sizes="57x57" href="http://medicavial.net/mvnuevo/favicon-57.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="http://medicavial.net/mvnuevo/favicon-72.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="http://medicavial.net/mvnuevo/favicon-114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="http://medicavial.net/mvnuevo/favicon-120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="http://medicavial.net/mvnuevo/favicon-144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="http://medicavial.net/mvnuevo/favicon-152.png">
+  <meta name="application-name" content="mvnuevo MV">
+  <meta name="msapplication-TileImage" content="http://medicavial.net/mvnuevo/favicon-144.png">
+  <meta name="msapplication-TileColor" content="#2A2A2A" />
+  <meta content="yes" name="apple-mobile-web-app-capable" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Registro Médica Vial | Unidades Propias</title>
   <link rel="stylesheet" href="lib/bootstrap.min.css" />
   <link rel="stylesheet" href="lib/font-awesome.min.css" />
   <link rel="stylesheet" href="lib/animate.css" />
@@ -19,7 +32,7 @@
   <script src="lib/prefixfree.min.js"></script>
   <!--[if lt IE 9]>
       <script>
-          location.href="http://www.medicavial.net/infoweb/navegadorviejo.html";
+          location.href="http://www.medicavial.net/mvnuevo/navegadorviejo.html";
       </script>
   <![endif]-->
 </head>
@@ -52,27 +65,33 @@
             <a href="#/solicitudes">Sol. Pendientes<span class="menu-icon glyphicon glyphicon-tasks"></span></a>
           </li>
           <li class="sidebar-list">
-            <a href="#/home">Documentos de Apoyo <span class="menu-icon glyphicon glyphicon-list-alt"></span></a>
+            <a href="#/material">Documentos de Apoyo <span class="menu-icon glyphicon glyphicon-list-alt"></span></a>
           </li>
+          <!-- 
           <li class="sidebar-list">
             <a href="#/home">Reportes <span class="menu-icon glyphicon glyphicon-signal"></span></a>
           </li>
           <li class="sidebar-list">
             <a href="#/home">Incidencias <span class="menu-icon glyphicon glyphicon-plus-sign"></span></a>
           </li>
-          <li ng-show="administrador" class="sidebar-list"><a href=""  ng-click="admin = !admin"> Administrador <span class="menu-icon" ng-class="{'glyphicon glyphicon-chevron-right': admin, 'glyphicon glyphicon-chevron-down': !admin}"></span></a></li>
-              <div collapse="admin">  
-                  <li class="sidebar-list">
-                    <a href="#/usuarios"> Usuarios <span class="menu-icon fa fa-users"></a>
-                  </li>
-              </div>
+          <li ng-show="administrador" class="sidebar-list">
+            <a href=""  ng-click="admin = !admin"> Administrador <span class="menu-icon" ng-class="{'glyphicon glyphicon-chevron-right': admin, 'glyphicon glyphicon-chevron-down': !admin}"></span>
+            </a>
+          </li>
+          <div collapse="admin">  
+              <li class="sidebar-list">
+                <a href="#/usuarios"> Usuarios <span class="menu-icon fa fa-users"></a>
+              </li>
+          </div> -->
+
           <li class="sidebar-title separator"><span>Accesos</span></li>
+
           <li class="sidebar-list">
             <a href="http://www.medicavial.com.mx" target="_blank">MedicaVial <span class="menu-icon">MV</span></a>
           </li>
-          <li class="sidebar-list">
+          <!-- <li class="sidebar-list">
             <a href="#" target="_blank">Reportes Estadisticos <span class="menu-icon fa fa-bar-chart-o"></span></a>
-          </li>
+          </li> -->
         </ul>
         <div class="sidebar-footer">           
             <div class="col-xs-6">
@@ -192,6 +211,7 @@
     <script src="modules/angular-deckgrid.min.js"></script>
     <script src="modules/angular-file-upload.min.js"></script>
     <script src="modules/ngDialog.min.js"></script>
+    <script src="modules/angular-idle.min.js"></script>
     <script src="app/app.js"></script>
     <script src="app/directives/cargando.js"></script>
     <script src="app/directives/textos.js"></script>

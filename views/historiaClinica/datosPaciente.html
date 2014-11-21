@@ -87,10 +87,12 @@
             <div class="col-md-6">
               <div class="input-group">
                 <span class="input-group-addon">Obs.MedicoReligiosas:</span>
-                <input type="text" name="Religion" ng-model="datos.obs" required="" class= "form-control" id="Religion"><br>                
-                  <input type="checkbox" ng-model="accidente.seguridad.4" name="Seguridad[]" value="4" ng-true-value="4" ng-false-value="">                                                             
-                  <input type="text" value="Ninguna" readonly="" class="form-control">               
+                <input type="text" name="Religion" ng-model="datos.obs" required="" class= "form-control" id="Religion">
               </div>
+                
+              <input type="checkbox" ng-change="obsRelig()" ng-model="defaultRelig.obsReligDefault" ng-true-value="Si" ng-false-value="No">                                                             
+              <label>Ninguna</label>
+              
             </div>
         </div>      
         <br/>

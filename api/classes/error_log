@@ -41,3 +41,7 @@
 [16-Nov-2014 00:08:59] PHP Parse error:  syntax error, unexpected '=', expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/classes/FormatoH.php on line 63
 [19-Nov-2014 11:54:03] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/medica/public_html/mvnuevo/api/classes/FormatoH.php on line 36
 [19-Nov-2014 11:54:04] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/medica/public_html/mvnuevo/api/classes/FormatoH.php:36) in /home/medica/public_html/mvnuevo/api/classes/tcpdf.php on line 8416
+[20-Nov-2014 18:57:29] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/medica/public_html/mvnuevo/api/classes/FormatoH.php on line 36
+[20-Nov-2014 18:57:30] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/medica/public_html/mvnuevo/api/classes/FormatoH.php:36) in /home/medica/public_html/mvnuevo/api/classes/tcpdf.php on line 8416
+[20-Nov-2014 18:58:09] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home/medica/public_html/mvnuevo/api/classes/FormatoH.php on line 36
+[20-Nov-2014 18:58:10] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/medica/public_html/mvnuevo/api/classes/FormatoH.php:36) in /home/medica/public_html/mvnuevo/api/classes/tcpdf.php on line 8416

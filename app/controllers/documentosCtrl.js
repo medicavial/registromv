@@ -12,6 +12,10 @@ app.controller('documentosCtrl', function($scope,$rootScope,$location,$cookies) 
 		$cookies.folio = folio;
         $location.path("/notaMedica");
 	}
+	$scope.irSolicitud = function(folio){  
+		$cookies.folio = folio;
+        $location.path("/solicitud/"+$rootScope.folio);
+	}
 
 	
 });

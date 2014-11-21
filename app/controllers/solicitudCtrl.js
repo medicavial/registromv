@@ -114,6 +114,7 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
 
 		var datos = $scope.expedientes[valor];
 		
+		console.log(datos);
 
 		$scope.datos.folio = datos.expediente;
 		$scope.datos.lesionado = datos.lesionado;

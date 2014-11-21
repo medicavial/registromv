@@ -1,0 +1,86 @@
+<div ng-init="inicio()">
+
+	<h1>Formatos</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Formatos prediseñados</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="{{ documento.ubicacion }}" class="list-group-item" ng-repeat="documento in documentos">{{ documento.nombre }}</a>
+					</div>
+		      </div>
+		    </div>
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Formatos prediseñados</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  	<a target="_blank" href="{{ ejercicio.ubicacion }}" class="list-group-item" ng-repeat="ejercicio in ejercicios">{{ ejercicio.nombre }}</a>
+					</div>
+		      </div>
+		    </div>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Formatos prediseñados</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="" class="list-group-item" ng-repeat="proceso in procesos" >{{ proceso.nombre }}</a>
+					</div>
+		      </div>
+		    </div>
+			
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Formatos prediseñados</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="{{ escaner.ubicacion }}" class="list-group-item" ng-repeat="escaner in escaners">{{ escaner.nombre }}</a>
+					</div>
+		      </div>
+		    </div>
+		</div>
+		
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Formatos prediseñados</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="{{ manual.ubicacion }}" class="list-group-item" ng-repeat="manual in manuales">{{ manual.nombre }}</a>
+					</div>
+		      </div>
+		    </div>
+			
+		</div>
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Formatos prediseñados</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="{{ consentimiento.ubicacion }}" class="list-group-item" ng-repeat="consentimiento in consentimientos">{{ consentimiento.nombre }}</a>
+					</div>
+		      </div>
+		    </div>
+		</div>
+	</div>
+</div>

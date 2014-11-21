@@ -9,6 +9,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
     $scope.adic='No';    
     $scope.padObs='';
     $scope.siEmb='No';
+    
     $scope.datos={
         nombre:'',
         pat:'',
@@ -133,6 +134,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         $scope.embarazo={
             controlGine:'No'
         }
+        $scope.defaultRelig={
+            obsReligDefault:'No'
+        }
 
         busquedas.ocupacion().success(function(data){
             $scope.ocupacion=data;    
@@ -180,6 +184,14 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             edad=chkdate($scope.datos.fecnac,1);
             $scope.datos.anios=edad[0];
             $scope.datos.meses=edad[1]; 
+        }
+        $scope.obsRelig = function(){        
+            if($scope.defaultRelig.obsReligDefault=='Si'){
+              $scope.datos.obs='Ninguna';
+            }
+            else{
+              $scope.datos.obs=''; 
+            }
         }
         $scope.enviaDatos = function(){
             //console.log($scope.datos);

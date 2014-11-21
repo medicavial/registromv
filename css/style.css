@@ -44,7 +44,7 @@ body{
 }
 
 .deckgrid[deckgrid]::before {
-    content: '5 .column.size-1-5';
+    content: '6 .column.size-1-5';
     font-size: 0;
     visibility:hidden;
 }
@@ -99,7 +99,7 @@ body{
 }
 
 .deckgrid .column.size-1-5 {
-    width:200px;
+    width:170px;
 }
 
 .deckgrid .column.size-1-4 {

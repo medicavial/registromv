@@ -1,8 +1,8 @@
 //inicializamos la aplicacion
-var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog']);
+var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle']);
 
 //configuramos nuestra aplicacion
-app.config(function($routeProvider){
+app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
 
     //Configuramos la ruta que queremos el html que le toca y que controlador usara
     
@@ -17,6 +17,10 @@ app.config(function($routeProvider){
             controller : 'loginCtrl'
     });
 
+    $routeProvider.when('/material',{
+            templateUrl: 'views/material.html',
+            controller : 'materialCtrl'
+    });
 
     // apertura de un expediente y seguimiento
     $routeProvider.when('/aperturaExp',{
@@ -85,11 +89,17 @@ app.config(function($routeProvider){
 
     $routeProvider.otherwise({redirectTo:'/login'});
 
+    //$locationProvider.html5Mode(true);
+
+    $idleProvider.idleDuration(900); // tiempo en activarse el modo en reposo 
+    $idleProvider.warningDuration(10); // tiempo que dura la alerta de sesion cerrada
+    $keepaliveProvider.interval(10); // 
+
 });
 
 
 //sirve para ejecutar cualquier cosa cuando inicia la aplicacion
-app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location){
+app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
 
     
     $rootScope.admin = true;
@@ -156,6 +166,61 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location){
     //generamos al rootscope las variables que tenemos en las cookies para no perder la sesion 
     $rootScope.username =  $cookies.username;
     $rootScope.cordinacion =  $cookies.cordinacion;
+
+
+
+    //verificamos el estatus del usuario en la aplicacion
+    $idle.watch();
+
+    $rootScope.$on('$idleStart', function() {
+        // the user appears to have gone idle  
+        
+        if($location.path() != "/login"){
+            console.log('iniciando estado temporal'); 
+        }                
+    });
+
+    $rootScope.$on('$idleWarn', function(e, countdown) {
+        // follows after the $idleStart event, but includes a countdown until the user is considered timed out
+        // the countdown arg is the number of seconds remaining until then.
+        // you can change the title or display a warning dialog from here.
+        // you can let them resume their session by calling $idle.watch()
+        if($location.path() != "/login"){
+            //console.log('Cuidado se va a bloquear');
+        }
+         
+    });
+
+    $rootScope.$on('$idleTimeout', function() {
+       //Entra en el estado de reposo cerramos session guardamos la ultima ruta en la que se encontraba
+       //ademas de verificar si no estaban en la pagina del login ni en la de bloqueo 
+        if($location.path() != "/login"){
+
+            if ($location.path() != "/bloqueo") {
+
+                $rootScope.ruta = $location.path(); //Guardamos 
+                $location.path('/bloqueo');
+            };
+        
+        }
+        
+    })
+
+    $rootScope.$on('$idleEnd', function() {
+        // the user has come back from AFK and is doing stuff. if you are warning them, you can use this to hide the dialog 
+         
+        if($location.path() != "/login"){
+            //console.log('llegaste bienvenido');
+        }
+    });
+
+    $rootScope.$on('$keepalive', function() {
+        // do something to keep the user's session alive
+        if($location.path() != "/login"){
+            //console.log('Activo en el sitio'); 
+        }
+        
+    });
 
 });
 
@@ -353,6 +418,36 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaProced:function(){
             return $http.get('api/api.php?funcion=getListProcedimientos');
+        },
+        listaProcedimientos:function(folio){
+            return $http.get('api/api.php?funcion=getListProRea&fol='+folio);
+        },
+        listaDiagnosticos:function(){
+            return $http.get('api/api.php?funcion=getListDiagnostic');
+        },
+        listaMedicamentos:function(){
+            return $http.get('api/api.php?funcion=getListMedicamentos');
+        },
+        listaOrtesis:function(){
+            return $http.get('api/api.php?funcion=getListOrtesis');
+        },
+        listaIndicaciones:function(){
+            return $http.get('api/api.php?funcion=getListIndicaciones');
+        },
+        verPosologia:function(cveMed){
+            return $http.get('api/api.php?funcion=vePosologia&cveMed='+cveMed);
+        },
+        verindicacion:function(cveMed){
+            return $http.get('api/api.php?funcion=veIndicacion&cveMed='+cveMed);
+        },
+        listaMedicamentosAgreg:function(folio){
+            return $http.get('api/api.php?funcion=getListMedicamentosAgreg&fol='+folio);
+        },
+        listaOrtesisAgreg:function(folio){
+            return $http.get('api/api.php?funcion=getListOrtesisAgreg&fol='+folio);
+        },
+        listaIndicAgreg:function(folio){
+            return $http.get('api/api.php?funcion=getListIndicAgreg&fol='+folio);
         }
 
     }
@@ -372,6 +467,52 @@ app.factory("movimientos", function($http, $rootScope){
     }
 });
 
+
+// se genero un controlador para los documentos no es necesario generar archivo adicional
+app.controller('materialCtrl', function($scope){
+
+    $scope.inicio = function(){
+        $scope.documentos = [
+            {ruta:'imgs/pdf.png',nombre:'Nota Médica',ubicacion:'archivos/Nota_Medica.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Historia Clínica',ubicacion:'archivos/Historia_Clinica.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Subsecuencia',ubicacion:'archivos/Suministros.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Rehabilitación',ubicacion:'archivos/Rehabilitacion.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Finiquito (GNP)',ubicacion:'archivos/Finiquito.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Carta Finiquito(GNP)',ubicacion:'archivos/Carta_Finiquito.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Aviso de privacidad',ubicacion:'archivos/Aviso_De_Privacidad.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Id de paciente',ubicacion:'archivos/identificacion.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Informe Médico THONA',ubicacion:'archivos/Informe_Medico_Thona.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Informe Médico Quálitas',ubicacion:'archivos/Informe_Medico_Paciente_ABRIL_2014.pdf'}
+        ];
+
+        $scope.procesos = [
+            {ruta:'imgs/office.png',nombre:'Proceso constancia médica ABA',ubicacion:'archivos/Manual_de_entrega_de_constancia_medica_ABA.doc'},
+            {ruta:'imgs/pdf.png',nombre:'Proceso atención médica THONA',ubicacion:'archivos/Procedimiento_Thona.pdf'}
+        ];
+
+        $scope.escaners = [
+            {ruta:'imgs/pdf.png',nombre:'Guía Visual de Configuración de Escáner HP Scanjet 5590',ubicacion:'archivos/Scaner.pdf'}
+        ];
+
+        $scope.consentimientos = [
+            {ruta:'imgs/pdf.png',nombre:'Carta de Consentimiento',ubicacion:'archivos/carta-consentimiento.pdf'}
+        ];
+
+        $scope.manuales = [
+            {ruta:'imgs/pdf.png',nombre:'Instructivo de Descarga de Medicamentos',ubicacion:'archivos/DescargaMed.pdf'}
+        ];
+
+        $scope.ejercicios = [
+            {ruta:'imgs/pdf.png',nombre:'Cadera y Rodilla',ubicacion:'ejercicios/Cadera_Rodilla.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Higiene de Columna',ubicacion:'ejercicios/Higiene_Columna.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Columna Cervical',ubicacion:'ejercicios/Columna_Cervical.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Hombro',ubicacion:'ejercicios/Hombro.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Codo, Mano , y Muñeca',ubicacion:'ejercicios/Codo_Mano_Muneca.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Tobillo y Pie',ubicacion:'ejercicios/Tobillo_Pie.pdf'},
+            {ruta:'imgs/pdf.png',nombre:'Columna Dorsolumbar',ubicacion:'ejercicios/Columna_Dorsolumbar.pdf'}
+        ];
+    }
+});
 
 
 //funcion que ayuda a ponerl la hora actual 
