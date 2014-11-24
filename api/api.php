@@ -1,5 +1,5 @@
 <?php
-//tiempo de espera en caso de tardar mas de 30 segundos una consulta grande prueba
+//tiempo de espera en caso de tardar mas de 30 segundos una consulta grande
 set_time_limit(3600);
 //sin limite me memoria 
 ini_set('memory_limit', '-1');
@@ -502,6 +502,7 @@ if($funcion == 'guardaDatos'){
     $anios = $datos->anios;
     $meses = $datos->meses;
     $sexo = $datos->sexo;
+    $ocu = $datos->ocu;
     $edoC = $datos->edoC;
     $mail = $datos->mail;
     $obs = $datos->obs;
@@ -511,7 +512,8 @@ if($funcion == 'guardaDatos'){
     $sql = "UPDATE Expediente SET Exp_fechaNac = :Exp_fechaNac, 
             Exp_edad = :Exp_edad, 
             Exp_meses = :Exp_meses,  
-            Exp_sexo = :Exp_sexo,  
+            Exp_sexo = :Exp_sexo,
+            Ocu_clave = :Ocu_clave,  
             Edo_clave = :Edo_clave,
             Exp_mail = :Exp_mail,
             Exp_obs = :Exp_obs            
@@ -522,6 +524,7 @@ if($funcion == 'guardaDatos'){
             $stmt->bindParam('Exp_edad', $anios);
             $stmt->bindParam('Exp_meses', $meses);       
             $stmt->bindParam('Exp_sexo', $sexo);    
+            $stmt->bindParam('Ocu_clave', $ocu);    
             $stmt->bindParam('Edo_clave', $edoC);
             // use PARAM_STR although a number  
             $stmt->bindParam('Exp_mail', $mail); 
@@ -809,7 +812,7 @@ if($funcion == 'getListTipVehi'){
 
 if($funcion == 'getListVitales'){
     $db = conectarMySQL();
-    $query="Select Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."'";
+    $query="Select Vit_clave,Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."' order by Vit_clave desc";
     $result = $db->query($query);
     $listInter = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listInter);
@@ -943,6 +946,17 @@ if($funcion == 'getListIndicAgreg'){
     $db = null;    
 }
 
+if($funcion == 'validaSigVitales'){    
+    $db = conectarMySQL();
+    $query="SELECT count(*) FROM Vitales Where Exp_folio ='".$fol."'";
+    $result = $db->prepare($query); 
+    $result->execute(); 
+    $number_of_rows = $result->fetchColumn();
+    $respuesta = array('respuesta' => 'correcto', 'noRowVit'=>$number_of_rows); 
+    echo json_encode($respuesta);
+    $db = null;    
+}
+
 if($funcion == 'vePosologia'){    
     $db = conectarMySQL();
     $query="SELECT Sum_indicacion  FROM Suministro Where Sum_clave =".$cveMed;
@@ -961,16 +975,6 @@ if($funcion == 'veIndicacion'){
     $db = null;    
 }
 
-if($funcion == 'validaSigVitales'){    
-    $db = conectarMySQL();
-    $query="SELECT count(*) FROM Vitales Where Exp_folio =".$fol;
-    $result = $db->prepare($query);
-    $result->execute();
-    $number_of_rows = $result->fetchColumn(); 
-    $respuesta = array('respuesta' => 'correcto', 'sigVit'=>$number_of_rows);    
-    echo json_encode($respuesta);
-    $db = null;    
-}
 
 if($funcion == 'selectPosicion'){
     $db = conectarMySQL();
@@ -1961,6 +1965,22 @@ if($funcion=='guardaMedicamento'){
     $db = null;  
 }
 
+if($funcion == 'eliminaMedicamento'){
+    $db = conectarMySQL();
+    $query="Delete from NotaSuministro where Nsum_clave = :Nsum_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Nsum_clave', $proClave);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto','pro-clave'=>$proClave);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
+
+
+
 if($funcion=='guardaOrtesis'){
     $postdata = file_get_contents("php://input");
     $datos = json_decode($postdata);
@@ -1990,7 +2010,19 @@ if($funcion=='guardaOrtesis'){
     echo json_encode($respuesta);
     $db = null;  
 }
-
+if($funcion == 'eliminarOrtesis'){
+    $db = conectarMySQL();
+    $query="Delete from NotaOrtesis where Notor_clave = :Notor_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Notor_clave', $proClave);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto','pro-clave'=>$proClave);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
 if($funcion=='guardaIndicacion'){
     $postdata = file_get_contents("php://input");
     $datos = json_decode($postdata);
@@ -2017,6 +2049,19 @@ if($funcion=='guardaIndicacion'){
     $db = null;  
 }
 
+if($funcion == 'eliminarIndicacion'){
+    $db = conectarMySQL();
+    $query="Delete from NotaInd where Nind_clave = :Nind_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Nind_clave', $proClave);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto','pro-clave'=>$proClave);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
 if($funcion=='guardaPronostico'){
     $postdata = file_get_contents("php://input");
     $datos = json_decode($postdata);
