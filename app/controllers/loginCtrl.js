@@ -10,6 +10,7 @@ app.controller('loginCtrl', function($scope, $rootScope, sesion) {
 
     $scope.login = function(){
 
+        $('#boton').button('loading')
         $rootScope.mensaje = '';
         sesion.login($scope.user,$scope.psw);
     }
