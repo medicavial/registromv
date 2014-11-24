@@ -91,6 +91,7 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
 	}
 
 	$scope.buscaFolio = function(folio){
+		console.log(folio);
 		$scope.buscar = true;
 		busquedas.folio(folio).success(function (data){
 			$scope.expedientes = data;
