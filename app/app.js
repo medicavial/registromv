@@ -250,7 +250,8 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
                     $rootScope.mensaje = data.respuesta;
                 }else{     
                     
-                    $('html').removeClass('lockscreen');               
+                    $('html').removeClass('lockscreen');
+                    $('#boton').button('reset');             
                     $rootScope.username = data[0].Usu_nombre;
                     $cookies.username = data[0].Usu_nombre;
                     $cookies.uniClave = data[0].Uni_clave;
