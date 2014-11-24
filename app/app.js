@@ -58,10 +58,12 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/historiaClinica.html',
             controller : 'historiaClinicaCtrl'           
     });
+    
     $routeProvider.when('/signosVitales',{
             templateUrl: 'views/signosVitales.html',
             controller : 'signosVitalesCtrl'           
     });
+
     $routeProvider.when('/notaMedica',{
             templateUrl: 'views/notaMedica.html',
             controller : 'notaMedicaCtrl'           
