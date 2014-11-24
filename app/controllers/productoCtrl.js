@@ -29,6 +29,9 @@ app.controller('productoCtrl', function($scope,$rootScope,$location,$cookies) {
 	    case 7:
 	        imgPro="sn.jpg";
 	        break;
+	    case 8:
+	        imgPro="sn.jpg";
+	        break;
 		}
 		return imgPro;
     }

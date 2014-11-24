@@ -4,6 +4,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
   $rootScope.uniClave=$cookies.uniClave;
    $scope.mensaje=false;
    $scope.mensajeLesion=false;
+  $scope.cargador=false;
     $scope.accidente={
         llega:'',
         fecha:'',
@@ -109,9 +110,8 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
           pronostico:'',
           criterio:''
         }
-        busquedas.validaSigVitales($rootScope.folio).success(function(data){                      
-          $scope.listPacLLega=data; 
-          console.log($scope.listPacLLega);                         
+        busquedas.validaSigVitales($rootScope.folio).success(function(data){                                
+          console.log(data);                         
         });
         busquedas.listaPacLlega($rootScope.folio).success(function(data){                      
           $scope.listPacLLega=data; 
@@ -239,8 +239,10 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         }
          $scope.guardaLesion = function(cuerpo){          
           $scope.lesion.cuerpo=cuerpo;
+          $scope.cargador=true;
           if($scope.lesion.lesion==''|| $scope.lesion.lesion==null){
             $scope.mensajeLesion=true;
+             $scope.cargador=false; 
           }else{
             $http({
             url:'api/api.php?funcion=guardaLesion&fol='+$rootScope.folio,
@@ -253,23 +255,27 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                 $scope.lesion.lesion='';
                 busquedas.listaLesiones($rootScope.folio).success(function(data){                      
                 $scope.listLesiones=data; 
-                console.log($scope.listLesiones);                         
+                console.log($scope.listLesiones);
+                $scope.cargador=false;                         
                 });  
               }              
               else{
                 console.log(data);
                 alert('error en la inserción');
+                $scope.cargador.false;   
               }
               console.log(data);
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
+                $scope.cargador.false;   
             });           
           }
           console.log( $scope.lesion);
         }
 
-         $scope.eliminarLes = function(claveLesion){                    
+         $scope.eliminarLes = function(claveLesion){ 
+            $scope.cargador.true;                   
             $http({
             url:'api/api.php?funcion=eliminaLesion&fol='+$rootScope.folio+'&cveLes='+claveLesion,
             method:'POST', 
@@ -281,17 +287,20 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                 $scope.lesion.lesion='';
                 busquedas.listaLesiones($rootScope.folio).success(function(data){                      
                 $scope.listLesiones=data; 
-                console.log($scope.listLesiones);                         
+                console.log($scope.listLesiones);
+                $scope.cargador.false;                         
                 });  
               }              
               else{
                 console.log(data);
                 alert('error en la inserción');
+                $scope.cargador.false;   
               }
               console.log(data);
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
+                $scope.cargador.false;   
             });                     
           console.log( $scope.lesion);
         }

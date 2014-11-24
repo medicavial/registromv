@@ -148,8 +148,11 @@ ng-options="lesion.LES_clave as lesion.LES_nombre for lesion in listLesion">
       <td><input type='button' class="btn btn-danger btn-xs" ng-click="eliminarLes(les.LesN_clave)" value='Eliminar'>
     </tr>
   </table>
+  
 </div>
-
+<div ng-show="cargador">
+    <img ng-src="imgs/cargador.gif">
+  </div>
 </div>
 </div>
 </div>

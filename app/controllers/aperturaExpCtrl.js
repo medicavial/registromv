@@ -10,7 +10,7 @@ app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies)
     	$cookies.rutaImgCom = rutaImgCompania;
     	rutaImgProducto= "av.jpg";    	
     	$cookies.rutaImgPro = rutaImgProducto;
-        if(claveCompania==7||claveCompania==8||claveCompania==19||claveCompania==9){        
+        if(claveCompania){        
         	$location.path("/producto");
         }
         else{

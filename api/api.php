@@ -961,12 +961,14 @@ if($funcion == 'veIndicacion'){
     $db = null;    
 }
 
-if($funcion == 'veIndicacion'){    
+if($funcion == 'validaSigVitales'){    
     $db = conectarMySQL();
-    $query="SELECT Sum_indicacion  FROM Suministro Where Sum_clave =".$cveMed;
-    $result = $db->query($query);
-    $posologia = $result->fetch(PDO::FETCH_OBJ);
-    echo json_encode($posologia);
+    $query="SELECT count(*) FROM Vitales Where Exp_folio =".$fol;
+    $result = $db->prepare($query);
+    $result->execute();
+    $number_of_rows = $result->fetchColumn(); 
+    $respuesta = array('respuesta' => 'correcto', 'sigVit'=>$number_of_rows);    
+    echo json_encode($respuesta);
     $db = null;    
 }
 
