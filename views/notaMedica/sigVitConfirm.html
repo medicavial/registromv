@@ -1,0 +1,51 @@
+
+<div class="container" style="width: 100%"> 
+	
+	<div class="panel panel-primary">
+  		<div class="panel-heading">
+    		<h3 class="panel-title" align="center"><b>Diagnóstico</b></h3>
+  		</div><!-- End panel-heading -->
+  		<div class="panel-body">
+  		<form ng-submit="guardaDiagnostico()">
+    		<div class="row">
+				<div class="col-md-4">
+					<div class="input-group" style="width:100%">											 
+						  <li class="list-group-item list-group-item-info">Diagnósticos más Comunes</li>					  					
+	    		 		<div style="height:20em; overflow: scroll; width:100%; overflow-x: hidden;">
+				 			<div class="list-group" id="tooltip-ex">					  
+							  <a href="" ng-repeat="diag in listaDiagnostico" class="list-group-item element" tooltip-placement="right" tooltip="{{diag.DX_diagnostico}}" ng-dblclick="agregaDiagnostico(diag.DX_diagnostico)">{{diag.DX_abreviatura}}</a>					  
+							</div>							
+						</div>
+		            </div>
+				</div>    		
+				<div class="col-md-8">
+					<br><br>
+					<div class="input-group">
+						<span class="input-group-addon">Diagnostico a este momento: </span>
+						<textarea class="form-control" ng-model="diagnostico.diagnostico" rows="4" id="obs" name="obs" style="resize:none;" required=""></textarea>
+					</div>
+					<br><br><br><br>
+					<div class="input-group">
+						<span class="input-group-addon">Observaciones: </span>
+						<textarea class="form-control" ng-model="diagnostico.obs" rows="4" id="obs" name="obs" style="resize:none;" ></textarea>
+					</div>
+				</div>
+				
+    		</div><!-- End row -->      		
+    		
+		
+    		<div class="row">
+	 			<div class="col-md-2 col-md-offset-10">
+	 				<input type="submit" class="btn btn-primary" value="Siguiente">
+	 			</div>
+    		</div> 
+    	</form>				    	
+  		</div><!-- End panel-body -->
+	</div><!-- End panel panel-default -->
+	
+	
+	<div id="resultadoPMR">		
+	</div>
+</div><!-- End container -->
+
+

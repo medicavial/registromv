@@ -458,6 +458,9 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaIndicAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListIndicAgreg&fol='+folio);
+        },
+        validaSigVitales:function(folio){
+            return $http.get('api/api.php?funcion=validaSigVitales&fol='+folio);
         }
 
     }

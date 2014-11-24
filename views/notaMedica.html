@@ -8,6 +8,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<wizard on-finish="finished()" hide-indicators="true">             
+              <wz-step title="SVConf.">
+                <ng-include src="'views/notaMedica/sigVitConfirm.html'"></ng-include>
+              </wz-step>
               <wz-step title="Datos Acc.">
                 <ng-include src="'views/notaMedica/DatosdelAccidente.html'"></ng-include>
               </wz-step>

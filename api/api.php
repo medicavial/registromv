@@ -961,6 +961,14 @@ if($funcion == 'veIndicacion'){
     $db = null;    
 }
 
+if($funcion == 'veIndicacion'){    
+    $db = conectarMySQL();
+    $query="SELECT Sum_indicacion  FROM Suministro Where Sum_clave =".$cveMed;
+    $result = $db->query($query);
+    $posologia = $result->fetch(PDO::FETCH_OBJ);
+    echo json_encode($posologia);
+    $db = null;    
+}
 
 if($funcion == 'selectPosicion'){
     $db = conectarMySQL();

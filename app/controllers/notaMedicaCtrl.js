@@ -109,6 +109,10 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
           pronostico:'',
           criterio:''
         }
+        busquedas.validaSigVitales($rootScope.folio).success(function(data){                      
+          $scope.listPacLLega=data; 
+          console.log($scope.listPacLLega);                         
+        });
         busquedas.listaPacLlega($rootScope.folio).success(function(data){                      
           $scope.listPacLLega=data; 
           console.log($scope.listPacLLega);                         
