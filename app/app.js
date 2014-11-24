@@ -201,7 +201,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     $rootScope.$on('$idleTimeout', function() {
        //Entra en el estado de reposo cerramos session guardamos la ultima ruta en la que se encontraba
        //ademas de verificar si no estaban en la pagina del login ni en la de bloqueo 
-        if($location.path() != "/login"){
+        if($location.path() != "/login" && $location.path() != "/solicitud" && $location.path() != '/notaMedica' ){
 
             if ($location.path() != "/bloqueo") {
 
