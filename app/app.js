@@ -390,7 +390,7 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
             return $http.get('api/api.php?funcion=busquedaExpedientes');
         },
         folio:function(folio){
-            return $http.get('api/api.php?funcion=busquedaFolio&folio='+ folio);
+            return $http.get('api/api.php?funcion=busquedaFolio&folioapi='+ folio);
         },
         loginfast:function(usuario){
             return $http.get('api/api.php?funcion=loginfast&usuario='+ usuario);

@@ -7,6 +7,7 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
 		$scope.nombredoc = '';
 		$scope.mensaje = '';
 		$scope.clavesolicitud = '';
+		$scope.folio = '';
 
 		$scope.datos = {
 			usuario:$cookies.usrLogin,

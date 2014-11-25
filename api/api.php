@@ -2160,7 +2160,7 @@ if($funcion == 'busquedaExpedientes'){
 
 if($funcion == 'busquedaFolio'){
 
-    $folio = $_REQUEST['folio'];
+    $folio = $_REQUEST['folioapi'];
 
     $db = conectarMySQL();
         
