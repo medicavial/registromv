@@ -485,8 +485,6 @@ app.controller('solicitudesCtrl', function ($scope, $cookies,$location, busqueda
 		$location.path('/solicitudRespuesta/' + clave);
 	}
 
-
-
 });
 
 
@@ -871,7 +869,7 @@ app.controller('detalleSolicitudCtrl', function ($scope, $routeParams, $cookies,
 	$scope.cargaDetalle = function(clave){
 
 		busquedas.detalleSolicitud(clave).success(function (data){
-			console.log(data);
+			//console.log(data);
 			$scope.datos = data.info;
 			$scope.archivos = data.archivos;
 			$scope.buscar = false;
@@ -1130,8 +1128,6 @@ app.controller('solicitudMasInfoCtrl',function ($scope, $routeParams, $cookies, 
 		}
 
 	}
-
-
 
 });
 

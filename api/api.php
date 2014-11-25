@@ -4,7 +4,7 @@ set_time_limit(3600);
 //sin limite me memoria 
 ini_set('memory_limit', '-1');
 //ocultar los errores
-//error_reporting(0);
+error_reporting(0);
 
 date_default_timezone_set('America/Mexico_City'); //Ajustando zona horaria
 
@@ -2260,9 +2260,6 @@ if($funcion == 'detalleSolicitud'){
     $respuesta = array('info' => $datos, 'archivos' => $archivos);
 
     echo json_encode($respuesta);
-
-
-    echo json_encode($datos);
 
     $conexion = null;
 
