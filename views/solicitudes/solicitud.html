@@ -1,7 +1,5 @@
 <div ng-init="inicio()" id="solicitud">
 	
-	
-
 	<wizard class="wizard" on-finish="final()" current-step="paso"> 
 
 		<div ng-hide="paso == 'Lesionado'" class="row border-bottom alertas">
@@ -40,6 +38,11 @@
 						</div>
 						
 					</fieldset>
+				</div>
+				<div class="col-md-4">
+					<br>
+					<br>
+					<button ng-click="muestraExpedientes()" class="btn btn-default">Actualizar</button>
 				</div>
 	        </div>
 	        <br>

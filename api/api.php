@@ -2160,7 +2160,7 @@ if($funcion == 'busquedaExpedientes'){
 
 if($funcion == 'busquedaFolio'){
 
-    $folio = $_REQUEST['folio'];
+    $folio = $_REQUEST['folioapi'];
 
     $db = conectarMySQL();
         
@@ -2215,7 +2215,7 @@ if($funcion == 'busquedaSolicitudes'){
 
 if($funcion == 'detalleSolicitud'){
     
-    $clave = $_REQUEST['clave'];
+    $clave = $_GET['clave'];
     $archivo = array();
     $archivos = array();
 
@@ -2641,6 +2641,29 @@ if($funcion == 'guardaSolicitudInfo'){
 
 }
 
+if($funcion == 'solicitudesFolio'){
+    
+    $folio = $_GET['folioapi'];
+
+    $conexion = conectarMySQL();
+
+    $sql = "SELECT Solicitudes.SOL_claveint AS clave, TIM_nombreE as tipo, Exp_folio as folio, SOL_lesionado as lesionado, SOL_fechaReg as fecharegistro, 
+            SOL_fechaActualiza as fechaactualiza, Cia_nombrecorto as cliente, DATEDIFF(now() , SOL_fechaReg ) as diferencia FROM Solicitudes 
+            INNER JOIN DetalleSolicitud ON DetalleSolicitud.SOL_claveint = Solicitudes.SOL_claveint
+            LEFT JOIN Compania on Compania.Cia_clave = Solicitudes.Cia_clave
+            LEFT JOIN TipoMovimiento ON TipoMovimiento.TIM_claveint = Solicitudes.TIM_claveint 
+            WHERE SOL_estatus = 1 and Exp_folio = '$folio' ";
+
+    $result = $conexion->query($sql);
+
+    $datos = $result->fetchAll(PDO::FETCH_OBJ);
+    
+    echo json_encode($datos);
+
+    $conexion = null;
+
+}
+
 if($funcion == 'solicitudes'){
     
     $usuario = '';
@@ -2654,8 +2677,8 @@ if($funcion == 'solicitudes'){
             LEFT JOIN TipoMovimiento ON TipoMovimiento.TIM_claveint = Solicitudes.TIM_claveint 
             WHERE SOL_estatus = 1 ";
 
-    if (isset($_REQUEST['userapi'])) {
-      $usuario = $_REQUEST['userapi'];
+    if (isset($_GET['userapi'])) {
+      $usuario = $_GET['userapi'];
       $sql = $sql . " AND USU_login = '$usuario'";
       $sql = $sql . " ORDER BY Solicitudes.SOL_fechaReg ";
     }else{
@@ -2681,7 +2704,6 @@ if($funcion == 'solicitudes'){
 
 if($funcion == 'solicitudesInfo'){
     
-  
     $conexion = conectarMySQL();
 
     $sql = "SELECT Solicitudes.SOL_claveint AS clave, TIM_nombreE as tipo, Exp_folio as folio, SOL_lesionado as lesionado, SOL_fechaReg as fecharegistro, SOL_fechaActualiza as fechaactualiza, Cia_nombrecorto as cliente FROM Solicitudes 
@@ -2690,8 +2712,8 @@ if($funcion == 'solicitudesInfo'){
             LEFT JOIN TipoMovimiento ON TipoMovimiento.TIM_claveint = Solicitudes.TIM_claveint 
             WHERE SOL_estatus = 2 ";
 
-    if (isset($_REQUEST['userapi'])) {
-      $usuario = $_REQUEST['userapi'];
+    if (isset($_GET['userapi'])) {
+      $usuario = $_GET['userapi'];
       $sql = $sql . "AND USU_login = '$usuario'";
     }else{
       $sql = $sql . "LIMIT 0,30";
@@ -2710,7 +2732,7 @@ if($funcion == 'solicitudesInfo'){
 
 if($funcion == 'detalleSolicitudesInfo'){
     
-    $clave = $_REQUEST['clave'];
+    $clave = $_GET['clave'];
     $datos = array();
     $dato = array();
     $archivos = array();
@@ -2775,8 +2797,8 @@ if($funcion == 'solicitudesRespuestas'){
             LEFT JOIN TipoMovimiento ON TipoMovimiento.TIM_claveint = Solicitudes.TIM_claveint 
             WHERE SOL_estatus in (3,4) ";
 
-    if (isset($_REQUEST['userapi'])) {
-      $usuario = $_REQUEST['userapi'];
+    if (isset($_GET['userapi'])) {
+      $usuario = $_GET['userapi'];
       $sql = $sql . "AND USU_login = '$usuario'";
     }else{
       $sql = $sql . "LIMIT 0,30";

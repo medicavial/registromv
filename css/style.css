@@ -228,13 +228,13 @@ body{
 	margin: 1em;
 }
 
-#solicitud >.steps-indicator{
+#solicitud .steps-indicator{
 
 	bottom: 10px;
 }
 
 
-#solicitud >.steps-indicator li.current:after{
+#solicitud .steps-indicator li.current:after{
 
 	border-bottom: 10px solid transparent;
 	border-left: 10px solid black;
@@ -248,7 +248,7 @@ body{
 
 }
 
-#solicitud >.steps-indicator li.editing:after{
+#solicitud .steps-indicator li.editing:after{
 
 	border-bottom: 10px solid transparent;
 	border-left: 10px solid black;
@@ -275,12 +275,12 @@ body{
 	margin-left: 0;
 }
 
-#solicitud > .steps > section{
+#solicitud .steps > section{
 	
-	height: 450px;
+/*	height: 450px;*/
 	padding: 0 1em;
 	overflow-y:auto; 
-	margin-bottom: 1em;
+	margin-bottom: 3em;
 }
 
 .tabla{

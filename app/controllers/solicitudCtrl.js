@@ -7,6 +7,7 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
 		$scope.nombredoc = '';
 		$scope.mensaje = '';
 		$scope.clavesolicitud = '';
+		$scope.folio = '';
 
 		$scope.datos = {
 			usuario:$cookies.usrLogin,
@@ -91,6 +92,7 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
 	}
 
 	$scope.buscaFolio = function(folio){
+		console.log(folio);
 		$scope.buscar = true;
 		busquedas.folio(folio).success(function (data){
 			$scope.expedientes = data;
@@ -483,8 +485,6 @@ app.controller('solicitudesCtrl', function ($scope, $cookies,$location, busqueda
 		$location.path('/solicitudRespuesta/' + clave);
 	}
 
-
-
 });
 
 
@@ -869,7 +869,7 @@ app.controller('detalleSolicitudCtrl', function ($scope, $routeParams, $cookies,
 	$scope.cargaDetalle = function(clave){
 
 		busquedas.detalleSolicitud(clave).success(function (data){
-			console.log(data);
+			//console.log(data);
 			$scope.datos = data.info;
 			$scope.archivos = data.archivos;
 			$scope.buscar = false;
@@ -1128,8 +1128,6 @@ app.controller('solicitudMasInfoCtrl',function ($scope, $routeParams, $cookies, 
 		}
 
 	}
-
-
 
 });
 
