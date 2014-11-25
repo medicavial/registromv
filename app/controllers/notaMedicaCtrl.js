@@ -6,6 +6,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
    $scope.mensajeLesion=false;
    $scope.irVitales=false;
    $scope.verVitales=false;
+   $scope.siEmb='No';
   $scope.cargador=false;
     $scope.accidente={
         llega:'',
@@ -570,10 +571,11 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             data: $scope.medica
             }).success( function (data){                        
               if(data.respuesta=='correcto'){ 
-                $scope.indicacion={
-                  indicacion:'',
-                  obs:''
-                }             
+                 $scope.medica={
+                    medica:'',
+                    posologia:'',
+                    cantidad:1
+                  }            
                 busquedas.listaMedicamentosAgreg($rootScope.folio).success(function(data){                      
                   $scope.listaMedicamentosAgreg=data; 
                   console.log($scope.listaMedicamentosAgreg);

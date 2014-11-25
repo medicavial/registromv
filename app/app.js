@@ -425,8 +425,8 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         listaRX:function(){
             return $http.get('api/api.php?funcion=getListRX');
         },
-        listaEstSol:function(){
-            return $http.get('api/api.php?funcion=getListEstSol');
+        listaEstSol:function(folio){
+            return $http.get('api/api.php?funcion=getListEstSol&fol='+folio);
         },
         listaProced:function(){
             return $http.get('api/api.php?funcion=getListProcedimientos');

@@ -259,7 +259,7 @@ if ($funcion == 'registra') {
     $fecharegistro = $datos->fecnac;
     $tipTel = $datos->tel;
     $tel = $datos->numeroTel;
-    $correo = $datos->mail;
+    $correo = $datos->correo;
 
     $nomComp= $nombre.' '.$apPat.' '.$apMat;
     switch ($tipTel) {
