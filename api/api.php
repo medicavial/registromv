@@ -2641,6 +2641,29 @@ if($funcion == 'guardaSolicitudInfo'){
 
 }
 
+if($funcion == 'solicitudesFolio'){
+    
+    $folio = $_REQUEST['folioapi'];
+
+    $conexion = conectarMySQL();
+
+    $sql = "SELECT Solicitudes.SOL_claveint AS clave, TIM_nombreE as tipo, Exp_folio as folio, SOL_lesionado as lesionado, SOL_fechaReg as fecharegistro, 
+            SOL_fechaActualiza as fechaactualiza, Cia_nombrecorto as cliente, DATEDIFF(now() , SOL_fechaReg ) as diferencia FROM Solicitudes 
+            INNER JOIN DetalleSolicitud ON DetalleSolicitud.SOL_claveint = Solicitudes.SOL_claveint
+            LEFT JOIN Compania on Compania.Cia_clave = Solicitudes.Cia_clave
+            LEFT JOIN TipoMovimiento ON TipoMovimiento.TIM_claveint = Solicitudes.TIM_claveint 
+            WHERE SOL_estatus = 1 and Exp_folio = '$folio' ";
+
+    $result = $conexion->query($sql);
+
+    $datos = $result->fetchAll(PDO::FETCH_OBJ);
+    
+    echo json_encode($datos);
+
+    $conexion = null;
+
+}
+
 if($funcion == 'solicitudes'){
     
     $usuario = '';
