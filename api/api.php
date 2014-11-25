@@ -2177,13 +2177,13 @@ if($funcion == 'busquedaFolio'){
 
 if($funcion == 'busquedaLesionado'){
 
-    $lesionado = $_REQUEST['lesionado'];
+    $lesionado = $_GET['lesionado'];
 
     $db = conectarMySQL();
         
     $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo, Expediente.Cia_clave as idcliente FROM Expediente
             INNER JOIN Compania on Compania.Cia_clave = Expediente.Cia_clave 
-            WHERE EXP_completo like '% $lesionado %' AND Exp_cancelado = 0 and Uni_clave = $unidad order by EXP_completo limit 0,50";
+            WHERE EXP_completo like '%$lesionado%' AND Exp_cancelado = 0 and Uni_clave = $unidad order by EXP_completo limit 0,50";
 
     $result = $db->query($sql);
     $folios = $result->fetchAll(PDO::FETCH_OBJ);

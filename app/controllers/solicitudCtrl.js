@@ -422,7 +422,6 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
     
 });
 
-
 app.controller('solicitudesCtrl', function ($scope, $cookies,$location, busquedas) {
 
 	$scope.inicio = function(){
@@ -486,7 +485,6 @@ app.controller('solicitudesCtrl', function ($scope, $cookies,$location, busqueda
 	}
 
 });
-
 
 app.controller('solicitudExpedienteCtrl', function ($scope, $cookies, $route, $routeParams, busquedas, movimientos, WizardHandler, $upload) {
 
@@ -855,8 +853,6 @@ app.controller('solicitudExpedienteCtrl', function ($scope, $cookies, $route, $r
     
 });
 
-
-
 app.controller('detalleSolicitudCtrl', function ($scope, $routeParams, $cookies, busquedas, movimientos) {
 
 	$scope.inicio = function(){
@@ -922,7 +918,6 @@ app.controller('detalleSolicitudCtrl', function ($scope, $routeParams, $cookies,
 	}
 
 });
-
 
 app.controller('solicitudMasInfoCtrl',function ($scope, $routeParams, $cookies, $upload, busquedas, movimientos){
 
@@ -1130,5 +1125,4 @@ app.controller('solicitudMasInfoCtrl',function ($scope, $routeParams, $cookies, 
 	}
 
 });
-
 
