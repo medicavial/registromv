@@ -34,7 +34,7 @@
                 <div class="form-group">
                   
                     <div class="col-md-12">
-                       <h3> <label>Datos del Paciente</label></h3><br>
+                       <h3> <label>Datos del Paciente</label></h3><br>                                               
                     </div>
                 </div>
             </div>
@@ -180,27 +180,28 @@
 	                    <div class="checkbox">
 	                      <label>
 	                        <input id="check1" ng-model="check1" type="checkbox">
-	                        El pase médico no presenta tachaduras ni enmendaduras  <label style="background:yellow;" id="msj1" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
+	                        El pase médico no presenta tachaduras ni enmendaduras  
+                            <button style="background:transparent; border:0px" tooltip-placement="right" tooltip="Debe comunicarse al 01-800-9991-222"><img src="imgs/signo.jpg" width="25" height="25" class="img-circle" /></button>
 	                      </label>
 	                    </div>
 	               	
 	                    <div class="checkbox">
 	                      <label>
 	                        <input id="check2" ng-model="check2" type="checkbox">
-	                        El pase médico se encuentra vigente  <label style="background:yellow;" id="msj2" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
-	                      </label>
+	                        El pase médico se encuentra vigente  
+                            <button style="background:transparent; border:0px" tooltip-placement="right" tooltip="Debe comunicarse al 01-800-9991-222"><img src="imgs/signo.jpg" width="25" height="25" class="img-circle" /></button>
 	                    </div>
 	               		
 	                    <div class="checkbox">
 	                      <label>
 	                        <input id="check3" ng-model="check3" type="checkbox">
-	                       Se corroboró la identidad del lesionado<label style="background:yellow;" id="msj3" data-toggle="tooltip" data-placement="right" title="Debe comunicarse al 01-800-1-231-123"><span class="glyphicon glyphicon-question-sign" ></span></label>
-	                      </label>
+	                       Se corroboró la identidad del lesionado
+                           <button style="background:transparent; border:0px" tooltip-placement="right" tooltip="Debe comunicarse al 01-800-9991-222"><img src="imgs/signo.jpg" width="25" height="25" class="img-circle" /></button>
 	                    </div>
 	                </div>
 	            </div>               
 	            <div class="row">
-	            	<div class="col-md-12">	
+	            	<div class="col-md-12" ng-hide="check1 && check2 && check3" class="mianimacion">	
                         <div id="noAutorizacion" ng-show="validaInputAut" class="mianimacion">                   
     						<label>
     							<input ng-model="autorizacion" type="text" value="">
@@ -242,11 +243,11 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Inciso  </label>
-                         <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  mayusculas/>
-                     </div>
+                <div class="col-md-4">                    
+                     <div class="form-group">
+                        <label>Poliza:</label>
+                        <input type="text" class="form-control" id="pol" name="pol" ng-model="datosSin.poliza" required="" mayusculas>
+                    </div>
                  </div>
                  
                 <div class="col-md-4">
@@ -260,9 +261,9 @@
              <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label>Poliza:</label>
-                        <input type="text" class="form-control" id="pol" name="pol" ng-model="datosSin.poliza" required="" mayusculas>
-                    </div>
+                        <label>Inciso  </label>
+                         <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  mayusculas/>
+                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">

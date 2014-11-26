@@ -115,6 +115,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     $rootScope.cerrar = false;
 
 
+
     //verifica el tamaño de la pantalle y oculta o muestra el menu
     var mobileView = 992;
 
@@ -259,7 +260,21 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
                     $cookies.uniClave = data[0].Uni_clave;
                     $cookies.usrLogin = data[0].Usu_login;
                     $cookies.cordinacion = data[0].Cordinacion;
+
+                    $http({
+                        url:'api/api.php?funcion=permisos',
+                        method:'POST', 
+                        contentType: 'application/json', 
+                        dataType: "json", 
+                        data:{user:username}
+                    }).success( function (data){
+                        console.log(data);
+                        $cookies.permisos=JSON.stringify(data); 
+                        $rootScope.permisos=JSON.parse($cookies.permisos);                           
+                    });
                     $location.path("/home");
+
+
                     //console.log(data);
                 }
             });
@@ -272,6 +287,8 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
             //al hacer logout eliminamos la cookie con $cookieStore.remove y los rootscope
             $cookieStore.remove("username"),
             $rootScope.username =  '';
+            $cookieStore.remove("permisos"),
+            $rootScope.permisos =  '';
 
             //mandamos al login
             $location.path("/login");

@@ -8,6 +8,9 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
    $scope.verVitales=false;
    $scope.siEmb='No';
   $scope.cargador=false;
+  $scope.regresar=false;
+  $scope.paso='';
+  $scope.sexo='';
     $scope.accidente={
         llega:'',
         fecha:'',
@@ -120,6 +123,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         busquedas.validaSigVitales($rootScope.folio).success(function(data){                                
           console.log(data); 
           if(data.noRowVit==1){
+            $scope.regresar=true;
             WizardHandler.wizard().goTo(1); 
           }
           if(data.noRowVit>1){               
@@ -146,10 +150,20 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         $scope.selectVital = function() {            
             $rootScope.vitSelect=$scope.vital.clave;
             console.log($rootScope.vitSelect);
+            $scope.regresar=true;
             WizardHandler.wizard().next();  
         }       
        
-       
+        $scope.regresaWizard = function() {
+            console.log($scope.paso);
+            WizardHandler.wizard().previous();
+            if($scope.paso=='Lesion'){
+              if($scope.sexo=='M'){
+                WizardHandler.wizard().goTo('Datos Acc.');
+              }
+            }
+        }
+
          $scope.finished = function() {
             alert("Wizard finished :)");
         }
@@ -189,6 +203,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             data: $scope.accidente
             }).success( function (data){                        
               if(data.respuesta=='correcto'){
+                $scope.sexo=data.sexo;
                 if(data.sexo=='F'){                	
                 	 WizardHandler.wizard().next();	
                    busquedas.listaEmbarazo($rootScope.folio).success(function(data){                      
@@ -768,6 +783,21 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         }
          $scope.irDocumentos = function(){         
               $location.path("/documentos");          
+        }
+        $scope.imprimirReceta = function(){          
+            var fileName = "Reporte";
+            var uri = 'api/classes/formatoReceta.php?fol='+$rootScope.folio+'&usr='+$rootScope.usrLogin;
+            var link = document.createElement("a");    
+            link.href = uri;
+            
+            //set the visibility hidden so it will not effect on your web-layout
+            link.style = "visibility:hidden";
+            link.download = fileName + ".pdf";
+            
+            //this part will append the anchor tag and remove it after automatic click
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
                
 });

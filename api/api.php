@@ -116,6 +116,19 @@ if($funcion == 'buscaExpedientes'){
    
 }
 
+if($funcion == 'permisos'){
+    $postdata = file_get_contents("php://input");    
+    $data = json_decode($postdata);
+    $user = trim($data->user);
+    $conexion = conectarMySQL();
+    $sql = "SELECT * FROM Permiso where Usu_login='".$user."'";
+    $result = $conexion->query($sql); 
+    $datos = $result->fetch(PDO::FETCH_OBJ);
+    echo json_encode($datos);
+    $conexion = null;
+   
+}
+
 
 if($funcion == 'unidades'){
 
@@ -504,7 +517,7 @@ if($funcion == 'guardaDatos'){
     $sexo = $datos->sexo;
     $ocu = $datos->ocu;
     $edoC = $datos->edoC;
-    $mail = $datos->mail;
+    $mail = $datos->correo;
     $obs = $datos->obs;
     $folio = $datos->folio;
 

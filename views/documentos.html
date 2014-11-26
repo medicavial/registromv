@@ -7,7 +7,7 @@
 			<br><br>
 				<div class="row">
 					
-						<div class="col-md-4">
+						<div class="col-md-4" ng-show="permisos.Per_HistoriaClinica=='S'">
 						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
 							-moz-border-radius: 4px 4px 4px 4px;
 							-webkit-border-radius: 4px 4px 4px 4px;
@@ -17,7 +17,7 @@
 								<label>Historia Clínica</label>							
 						</button>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4" ng-show="permisos.Per_Vitales=='S'">
 						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
 							-moz-border-radius: 4px 4px 4px 4px;
 							-webkit-border-radius: 4px 4px 4px 4px;
@@ -26,7 +26,7 @@
 								<label>Signos Vitales</label>							
 						</button>
 						</div>
-						<div class="col-md-4">
+						<div class="col-md-4" ng-show="permisos.Per_NotaMedica=='S'">
 						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
 							-moz-border-radius: 4px 4px 4px 4px;
 							-webkit-border-radius: 4px 4px 4px 4px;

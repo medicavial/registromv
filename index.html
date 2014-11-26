@@ -52,10 +52,10 @@
           <li class="sidebar-list">
             <a href="#/home">Inicio <span class="menu-icon fa fa-home"></span></a>
           </li>
-          <li class="sidebar-list">
+          <li class="sidebar-list" ng-show="permisos.Per_registro=='S'">
             <a href="#/aperturaExp">Registro de Paciente<span class="menu-icon glyphicon glyphicon-folder-open"></span></a>
           </li>
-          <li class="sidebar-list">
+          <li class="sidebar-list" ng-show="permisos.Per_busca=='S'">
             <a href="#/busqueda">Búsqueda <span class="menu-icon glyphicon glyphicon-search"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="cordinacion">

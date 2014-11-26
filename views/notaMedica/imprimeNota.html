@@ -1,13 +1,16 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-4" align="center">
-			<button type="button" ng-click="irDocumentos()" id="btn-addProcMedicos" class="btn btn-primary" >Documentos</button>
+		<div class="col-md-2" align="center">
+			<button type="button" ng-click="irDocumentos()" id="btn-addProcMedicos" class="btn btn-primary btn-sm " >Documentos</button>
+		</div>
+		<div class="col-md-2" align="center">
+			<button type="button" ng-click="imprimirNota()" id="btn-addProcMedicos" class="btn btn-success btn-sm" >Imprime</button>
+		</div>
+		<div class="col-md-2" align="center">
+			<button type="button" ng-click="imprimirReceta()" id="btn-addProcMedicos" class="btn btn-success btn-sm" >Imprime Receta</button>
 		</div>
 		<div class="col-md-4" align="center">
-			<button type="button" ng-click="imprimirNota()" id="btn-addProcMedicos" class="btn btn-success" >Imprime</button>
-		</div>
-		<div class="col-md-4" align="center">
-			<a type="button" href="#/solicitud/{{folio}}" id="btn-addProcMedicos" class="btn btn-success">Generar Solicitud de Autorización</a>
+			<a type="button" href="#/solicitud/{{folio}}" id="btn-addProcMedicos" class="btn btn-success btn-sm">Generar Solicitud de Autorización</a>
 		</div>
 	</div>    		
 </div>
