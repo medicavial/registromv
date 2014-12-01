@@ -817,7 +817,8 @@ app.directive('pdf', function(){
                     doc.setFontSize(14);
                     doc.text(20, 190, 'Justificación y Observaciones:'); 
                     doc.setFontSize(12);
-                    doc.text(20, 200, doc.splitTextToSize(datos.DES_justificacion, 170));  
+                    doc.text(20, 200, doc.splitTextToSize(datos.DES_justificacion, 170)); 
+                     
 
                   }
 
