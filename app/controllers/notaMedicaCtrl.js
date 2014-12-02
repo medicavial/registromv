@@ -506,6 +506,12 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             });                  
             WizardHandler.wizard().next();  
         }
+        $scope.despliegaDiagnosticos = function(diagnostic){
+            busquedas.despDiagnosticos(diagnostic).success(function(data){                      
+              $scope.listaDiagnostics=data; 
+            console.log($scope.listaDiagnostics);                         
+            });                              
+        }
         $scope.agregaDiagnostico = function(diag){
             console.log(diag);
             if($scope.diagnostico.diagnostico==''){

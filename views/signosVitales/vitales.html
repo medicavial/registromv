@@ -2,28 +2,35 @@
 	<form ng-submit="guardaVitales()">	
 		<div class="panel panel-primary">
 			<div class="panel-heading">
-				<h3 class="panel-title" align="center"><b>Signos Vitales</b></h3>
+				<div class="row">
+					<div class="col-md-6">
+						<h3 class="panel-title"><b>Signos Vitales</b></h3>
+					</div>
+					<div class="col-md-6" align="right">
+						<a href="imgs/vitales.jpg" id="mylink" data-toggle="lightbox" data-title="Tabla de Signos Vitales" tooltip-placement="right" tooltip="Ver tabla de signos vitales"><img src="imgs/signo.jpg" width="25" height="25" class="img-circle" /></a>
+					</div>
+				</div>				
 			</div><!-- End panel-heading -->
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Temperatura: </span>
-							<input type="number" ng-model="vitales.tem" min="30" max="50" class="form-control" id="temp" name="temp" placeholder="Temperatura" required="" >
+							<input type="number" ng-model="vitales.tem" min="35" max="40" class="form-control" id="temp" name="temp" placeholder="Temperatura" required="" >
 							<span class="input-group-addon">&ordm;C</span>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Talla: </span>
-							<input type="number" ng-model="vitales.talla" min="0" max="230" class="form-control" id="talla" name="talla" placeholder="Talla" required="" >
+							<input type="number" ng-model="vitales.talla" min="40" max="230" class="form-control" id="talla" name="talla" placeholder="Talla" required="" >
 							<span class="input-group-addon">Cm.</span>
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Peso: </span>
-							<input type="number" ng-model="vitales.peso" min="0" max="500" class="form-control" id="peso" name="peso" placeholder="Peso" required="">
+							<input type="number" ng-model="vitales.peso" min="30" max="500" class="form-control" id="peso" name="peso" placeholder="Peso" required="">
 							<span class="input-group-addon">Kg.</span>
 						</div>
 					</div>
@@ -33,16 +40,16 @@
 					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">Frec. Respiratoria: </span>
-							<input type="number" ng-model="vitales.frecResp" min="0" max="250" class="form-control" id="frecResp" name="frecResp" placeholder="F/R" required="">
+							<input type="number" ng-model="vitales.frecResp" min="16" max="80" class="form-control" id="frecResp" name="frecResp" placeholder="F/R" required="">
 							<span class="input-group-addon">Rpm.</span>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">T. Arterial: </span>
-							<input type="number" ng-model="vitales.sistole" min="30" max="250" class="form-control" id="sistole" name="sistole" required="">
+							<input type="number" ng-model="vitales.sistole" min="60" max="140" class="form-control" id="sistole" name="sistole" required="">
 							<span class="input-group-addon"> / </span>
-							<input type="number" ng-model="vitales.astole" min="30" max="250" class="form-control" id="astole" name="astole" required="">
+							<input type="number" ng-model="vitales.astole" min="30" max="90" class="form-control" id="astole" name="astole" required="">
 							<span class="input-group-addon">mmHg.</span>
 						</div>
 					</div>
@@ -53,7 +60,7 @@
 					<div class="col-md-5">
 						<div class="input-group">
 							<span class="input-group-addon">Frecuencia Cardiaca: </span>
-							<input type="number" ng-model="vitales.frecCard" min="0" max="250" class="form-control" id="frecCard" name="frecCard" placeholder="F/C" required="">
+							<input type="number" ng-model="vitales.frecCard" min="60" max="150" class="form-control" id="frecCard" name="frecCard" placeholder="F/C" required="">
 							<span class="input-group-addon">Lpm.</span>
 						</div>
 					</div>
@@ -124,3 +131,9 @@
 		</div>
 	</form>	
 </div><!-- End container -->
+<script type="text/javascript">
+	$(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+});
+</script>

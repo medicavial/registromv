@@ -1,10 +1,5 @@
-app.controller('homeCtrl', function($scope, $rootScope) {
-    
-    $scope.inicio = function(){
-
-        
-
-    }
+app.controller('homeCtrl', function($scope, $rootScope,$cookies) {   
+    $rootScope.permisos=JSON.parse($cookies.permisos);
     
 });
 

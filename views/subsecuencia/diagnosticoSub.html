@@ -6,7 +6,7 @@
     		<h3 class="panel-title" align="center"><b>Diagnóstico</b></h3>
   		</div><!-- End panel-heading -->
   		<div class="panel-body">
-  		<form ng-submit="guardaDiagnostico()">
+  		<form ng-submit="guardaDiagnosticoSub()">
     		<div class="row">
 				<div class="col-md-6">
 					<div class="input-group" style="width:100%">											 
@@ -34,7 +34,7 @@
 				<div class="col-md-12">					
 					<div class="input-group">
 						<span class="input-group-addon">Diagnostico a este momento: </span>
-						<textarea class="form-control" ng-model="diagnostico.diagnostico" rows="4" id="obs" name="obs" style="resize:none;" required=""></textarea>
+						<textarea class="form-control" ng-model="diagnosticoSub.diagnostico" rows="4" id="obs" name="obs" style="resize:none;" required=""></textarea>
 					</div>
 				</div>
 			</div>
@@ -42,7 +42,7 @@
 				<div class="col-md-12">					
 					<div class="input-group">
 						<span class="input-group-addon">Observaciones: </span>
-						<textarea class="form-control" ng-model="diagnostico.obs" rows="4" id="obs" name="obs" style="resize:none;" ></textarea>
+						<textarea class="form-control" ng-model="diagnosticoSub.obs" rows="4" id="obs" name="obs" style="resize:none;" ></textarea>
 					</div>
 				</div>
 				
@@ -62,7 +62,4 @@
 	<div id="resultadoPMR">		
 	</div>
 </div><!-- End container -->
-<script type="text/javascript">
-	$('#mylink').ekkoLightbox(options);
-</script>
 

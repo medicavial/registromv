@@ -7,33 +7,30 @@
         <button ng-click="regresaWizard()" style="background:transparent; border:0px"><img src="imgs/flecha.jpg" width="35" height="35" class="img-circle" /></button>
       </div>
     
-			<h2 style="padding-left:2%;">Nota Médica <b><label>{{folio}}</label></b></h2>
+			<h2 style="padding-left:2%;">Informe Médico de Seguimiento <b><label>{{folio}}</label></b></h2>
     </div>
 		</div>
-     <div class="row">               
-      <div class="col-md-12" >                     
+                        
         <div class="progress progress-striped">
           <div class="progress-bar progress-bar-info" role="progressbar"
-               aria-valuenow="<?echo $progreso?>" aria-valuemin="0" aria-valuemax="100"
-               style="width:<?echo $progreso?>%">
-            <label><?echo (int)$progreso?>%</label>
+               aria-valuenow="{{progreso}}" aria-valuemin="0" aria-valuemax="100"
+               style="width:{{progreso}}%">
+            <label>{{progreso}}%</label>
           </div>         
         </div>
-      </div>
-    </div> 
-    <br>
+
 		<div class="Panel-body">
 				<div class="row">
 					<div class="col-md-12">
 						<wizard on-finish="finished()" current-step="paso" hide-indicators="true">                          
-              <wz-step title="Signos Vitales">
-                <ng-include src="'views/notaMedica/sigVitConfirm.html'"></ng-include>
+              <wz-step title="Subsecuencia">
+                <ng-include src="'views/subsecuencia/subsecuencia.html'"></ng-include>
               </wz-step>
-              <wz-step title="Datos Acc.">
-                <ng-include src="'views/notaMedica/DatosdelAccidente.html'"></ng-include>
+              <wz-step title="Estudios Solicitados">
+                <ng-include src="'views/subsecuencia/EstudiosSolicitadosSub.html'"></ng-include>
               </wz-step>
               <wz-step title="Embarazo">
-                <ng-include src="'views/notaMedica/EmbarazoRed.html'"></ng-include>
+                <ng-include src="'views/subsecuencia/diagnosticoSub.html'"></ng-include>
               </wz-step>
               <wz-step title="Lesion">
                <ng-include src="'views/notaMedica/LesionRed.html'"></ng-include>

@@ -1,0 +1,52 @@
+[02-Oct-2013 10:54:01] PHP Warning:  mysql_fetch_array(): supplied argument is not a valid MySQL result resource in /home3/ortho/public_html/regmv/cuestionarios/formCuest19.php on line 16
+[02-Oct-2013 10:54:02] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home3/ortho/public_html/regmv/cuestionarios/formCuest19.php:16) in /home3/ortho/public_html/regmv/tcpdf.php on line 8416
+[15-Jan-2014 16:17:29] PHP Warning:  opendir(/home/medica/public_html/registro/fonts/) [<a href='function.opendir'>function.opendir</a>]: failed to open dir: No such file or directory in /home/medica/public_html/registro/tcpdf.php on line 4808
+[15-Jan-2014 16:17:29] PHP Warning:  readdir(): supplied argument is not a valid Directory resource in /home/medica/public_html/registro/tcpdf.php on line 4809
+[15-Jan-2014 16:17:29] PHP Warning:  closedir(): supplied argument is not a valid Directory resource in /home/medica/public_html/registro/tcpdf.php on line 4814
+[15-Jan-2014 16:23:58] PHP Warning:  opendir(/home/medica/public_html/registro/fonts/) [<a href='function.opendir'>function.opendir</a>]: failed to open dir: No such file or directory in /home/medica/public_html/registro/tcpdf.php on line 4808
+[15-Jan-2014 16:23:58] PHP Warning:  readdir(): supplied argument is not a valid Directory resource in /home/medica/public_html/registro/tcpdf.php on line 4809
+[15-Jan-2014 16:23:58] PHP Warning:  closedir(): supplied argument is not a valid Directory resource in /home/medica/public_html/registro/tcpdf.php on line 4814
+[15-Jan-2014 16:24:04] PHP Warning:  opendir(/home/medica/public_html/registro/fonts/) [<a href='function.opendir'>function.opendir</a>]: failed to open dir: No such file or directory in /home/medica/public_html/registro/tcpdf.php on line 4808
+[15-Jan-2014 16:24:04] PHP Warning:  readdir(): supplied argument is not a valid Directory resource in /home/medica/public_html/registro/tcpdf.php on line 4809
+[15-Jan-2014 16:24:04] PHP Warning:  closedir(): supplied argument is not a valid Directory resource in /home/medica/public_html/registro/tcpdf.php on line 4814
+[13-Jul-2014 02:23:10] PHP Warning:  Unknown: write failed: Disk quota exceeded (122) in Unknown on line 0
+[13-Jul-2014 02:23:10] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[13-Jul-2014 14:39:24] PHP Warning:  Unknown: write failed: Disk quota exceeded (122) in Unknown on line 0
+[13-Jul-2014 14:39:24] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[13-Jul-2014 14:57:07] PHP Warning:  Unknown: write failed: Disk quota exceeded (122) in Unknown on line 0
+[13-Jul-2014 14:57:07] PHP Warning:  Unknown: Failed to write session data (files). Please verify that the current setting of session.save_path is correct (/tmp) in Unknown on line 0
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:40:02] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 21028
+[22-Aug-2014 14:40:02] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/registro/tcpdf.php on line 22248
+[22-Aug-2014 14:40:02] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/registro/tcpdf.php on line 22280
+[22-Aug-2014 14:40:03] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/medica/public_html/registro/tcpdf.php:19849) in /home/medica/public_html/registro/tcpdf.php on line 8416
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  array_push() [<a href='function.array-push'>function.array-push</a>]: First argument should be an array in /home/medica/public_html/registro/tcpdf.php on line 19849
+[22-Aug-2014 14:44:58] PHP Warning:  Division by zero in /home/medica/public_html/registro/tcpdf.php on line 20886
+[22-Aug-2014 14:44:58] PHP Warning:  array_fill() [<a href='function.array-fill'>function.array-fill</a>]: Number of elements must be positive in /home/medica/public_html/registro/tcpdf.php on line 20888
+[22-Aug-2014 14:44:58] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/registro/tcpdf.php on line 22248
+[22-Aug-2014 14:44:58] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/registro/tcpdf.php on line 22280
+[22-Aug-2014 14:44:59] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/medica/public_html/registro/tcpdf.php:19849) in /home/medica/public_html/registro/tcpdf.php on line 8416
+[21-Oct-2014 18:01:24] PHP Fatal error:  Call to a member function write1DBarcode() on a non-object in /home/medica/public_html/registro/cuestionarios/formCuest32.php on line 91
+[21-Oct-2014 18:05:19] PHP Fatal error:  Call to a member function write1DBarcode() on a non-object in /home/medica/public_html/registro/cuestionarios/formCuest32.php on line 74
+[21-Oct-2014 18:05:24] PHP Fatal error:  Call to a member function write1DBarcode() on a non-object in /home/medica/public_html/registro/cuestionarios/formCuest32.php on line 74
+[21-Oct-2014 18:05:27] PHP Fatal error:  Call to a member function write1DBarcode() on a non-object in /home/medica/public_html/registro/cuestionarios/formCuest32.php on line 74
+[21-Oct-2014 18:12:04] PHP Fatal error:  Using $this when not in object context in /home/medica/public_html/registro/cuestionarios/formCuest32.php on line 126
+[21-Oct-2014 18:12:07] PHP Fatal error:  Using $this when not in object context in /home/medica/public_html/registro/cuestionarios/formCuest32.php on line 126

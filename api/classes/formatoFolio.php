@@ -96,6 +96,7 @@ if($CiaClave==37){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;
 if($CiaClave==38){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==39){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==40){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
+if($CiaClave==41){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==43){ $imagen="../../imgs/logos/ci.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==44){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==45){ $imagen="../../imgs/logos/inbursa.jpg"; $tipo="JPG"; $sise=22;}
@@ -664,12 +665,11 @@ $html="";
 $pdf->SetFont('dejavusans', '', 10);
 $pdf->Ln(10);
 
-$html = <<<EOD
+$html = '
 <h1 style="text-align:center;">RECIBO DE PAGO</h1>
 <h2>Recibo: <span style="color:red;" >$recibo</span></h2>
 <br>
-<div style="border-top:2px solid black;padding:50px;">
-EOD;
+<div style="border-top:2px solid black;padding:50px;">';
 $html = $html . "
 </br>
 </br>
@@ -765,7 +765,7 @@ $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0
 
 
 }
-
+    include '../cuestionarios/formCuest'.$CiaClave.'.php';
     $pdf->output("FL_".$fol.".pdf",'D');
 }
 //////AVISO ORTHOFAM
@@ -932,9 +932,14 @@ if($_dir==1){
  *
  */
 
+     include '../cuestionarios/formCuest'.$CiaClave.'.php';
+
+
+
     $pdf->output("FL_".$fol.".pdf",'D');
 }
 else{
+    include '../cuestionarios/formCuest'.$CiaClave.'.php';
     $pdf->output("FL_".$fol.".pdf",'D');
 }
 

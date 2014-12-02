@@ -469,9 +469,34 @@ if($funcion == 'getFolio'){
 
 if($funcion == 'listadoFolios'){
     $db = conectarMySQL();
-    $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_cancelado=0 and Expediente.Uni_clave=".$uni." order by Exp_folio desc LIMIT 0 , 30";
+    $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_cancelado=0 and Expediente.Uni_clave=".$uni." order by Exp_folio desc LIMIT 0 , 100";
     $result = $db->query($query);
     $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($datosFolio);
+    $db = null;    
+}
+
+if($funcion == 'buscaParametros'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $db = conectarMySQL();
+    $nombre = $datos->nombre;
+    $folio = $datos->folio;
+    $db = conectarMySQL();
+    if($nombre && ($folio==''||$folio==null)){
+        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=8 and Exp_completo like '%".$nombre."%'";
+    }
+    elseif ($nombre && $folio) {
+        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=8 and  Exp_folio='".$folio."' and Exp_completo like '%".$nombre."%'";
+    }
+    elseif ($folio &&($nombre==''||$nombre==null)) {
+       $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=8 and Exp_folio='".$folio."'";
+    }
+    $result = $db->query($query);
+    $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
+    if(empty($datosFolio)){
+        $datosFolio= array('respuesta' =>'error');
+    }
     echo json_encode($datosFolio);
     $db = null;    
 }
@@ -862,7 +887,7 @@ if($funcion == 'getListLesiones'){
 
 if($funcion == 'getListRX'){    
     $db = conectarMySQL();
-    $query="SELECT Rx_clave, Rx_nombre FROM Rx";
+    $query="SELECT Rx_clave, Rx_nombre FROM Rx order by Rx_nombre asc";
     $result = $db->query($query);
     $listRx = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listRx);
@@ -873,6 +898,17 @@ if($funcion == 'getListEstSol'){
     $query="SELECT Rxs_clave, Rx_nombre, Rxs_Obs, Rxs_desc 
             FROM RxSolicitados inner Join Rx on Rx.Rx_clave=RxSolicitados.Rx_clave 
             Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listEstSol = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listEstSol);
+    $db = null;    
+}
+
+if($funcion == 'getlistEstSolSub'){    
+    $db = conectarMySQL();
+    $query="SELECT Rxsub_clave, Rx_nombre, Rxsub_Obs, Rxsub_desc 
+            FROM RxSubSolicitados inner Join Rx on Rx.Rx_clave=RxSubSolicitados.Rx_clave 
+            Where Exp_folio='".$fol."' and Sub_cons=0";
     $result = $db->query($query);
     $listEstSol = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listEstSol);
@@ -900,6 +936,14 @@ if($funcion == 'getListProcedimientos'){
 if($funcion == 'getListDiagnostic'){    
     $db = conectarMySQL();
     $query="SELECT * FROM DxComunes";
+    $result = $db->query($query);
+    $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listDiagnostic);
+    $db = null;    
+}
+if($funcion == 'getListDiag'){    
+    $db = conectarMySQL();
+    $query="SELECT * FROM DxSub where Dx_clave=".$diag;
     $result = $db->query($query);
     $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listDiagnostic);
@@ -994,6 +1038,14 @@ if($funcion == 'selectPosicion'){
     $query="SELECT id, opcion FROM PosicionAcc WHERE relacion=".$opcion;
     $result = $db->query($query);
     $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listInter);   
+    $db = null;    
+}
+if($funcion == 'validaSubsecuencia'){
+    $db = conectarMySQL();
+    $query="Select Max(Sub_cons)+1 As Cons From Subsecuencia Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listInter = $result->fetch(PDO::FETCH_OBJ);
     echo json_encode($listInter);   
     $db = null;    
 }
@@ -1871,11 +1923,58 @@ if($funcion=='guardaEstudios'){
     $db = null;  
 }
 
+if($funcion=='guardaEstudiosSub'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $rx         =$datos->rx;
+    $obs        =$datos->obs;
+    $interp     =$datos->interp;
+    $db = conectarMySQL();     
+    $fecha= date('Y-m-d');
+    $hora= date('H:i:s');
+    try{    
+       
+            $query="Insert Into RxSubSolicitados(Exp_folio, Rx_clave, Rxsub_obs, Rxsub_desc, Rxsub_fecha, Rxsub_hora)
+                                  Values(:Exp_folio,:Rx_clave,:Rxsub_obs,:Rxsub_desc,:Rxsub_fecha,:Rxsub_hora)";                               
+        $temporal = $db->prepare($query);
+        $temporal->bindParam("Exp_folio", $fol);
+        $temporal->bindParam("Rx_clave", $rx);
+        $temporal->bindParam("Rxsub_obs", $obs); 
+        $temporal->bindParam("Rxsub_desc", $interp);  
+        $temporal->bindParam("Rxsub_fecha", $fecha); 
+        $temporal->bindParam("Rxsub_hora", $hora);             
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+
 if($funcion == 'eliminaEstRealizado'){
     $db = conectarMySQL();
     $query="Delete from RxSolicitados where Rxs_clave = :Rxs_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Rxs_clave', $cveEst);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
+
+if($funcion == 'eliminaEstRealizadoSub'){
+    $db = conectarMySQL();
+    $query="Delete from RxSubSolicitados where Rxsub_clave = :Rxsub_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Rxsub_clave', $cveEst);
     if ($stmt->execute()){
         $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
     }else{
@@ -1924,6 +2023,32 @@ if($funcion=='guardaDiagnostico'){
             $temporal->bindParam("Exp_folio", $fol);
             $temporal->bindParam("ObsNot_diagnosticoRx", $diagnostico);
             $temporal->bindParam("ObsNot_obs", $obs);                 
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+if($funcion=='guardaDiagnosticoSub'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $diagnostico         =$datos->diagnostico;
+    $obs        =$datos->obs;   
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Update Subsecuencia Set Sub_diagnostico=:Sub_diagnostico,Sub_obs=:Sub_obs WHERE Exp_folio=:Exp_folio and Sub_cons=:Sub_cons";                               
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("ObsNot_diagnosticoRx", $diagnostico);
+            $temporal->bindParam("ObsNot_obs", $obs); 
+            $temporal->bindParam("Sub_cons", $noSubsec);                 
          if ($temporal->execute()){
             $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
         }else{
@@ -2099,6 +2224,37 @@ if($funcion=='guardaPronostico'){
     echo json_encode($respuesta);
     $db = null;  
 }
+
+////////************************  Subsecuenias    ******************************************/
+if($funcion=='guardaSigYSinSub'){
+    $postdata       = file_get_contents("php://input");
+    $datos          = json_decode($postdata);
+    $sigYSin        = $datos->sigYSin;
+    $evo            = $datos->evo;     
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query=" Insert Into Subsecuencia(Exp_folio, Sub_cons, Sub_SignosSintomas, Sub_evolucion)
+                                values(:Exp_folio,:Sub_cons,:Sub_SignosSintomas,:Sub_evolucion)";
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("Sub_cons", $cons);
+            $temporal->bindParam("Sub_SignosSintomas", $sigYSin);  
+            $temporal->bindParam("Sub_evolucion", $evo);               
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
+/***************************** fin subsecuencias *******************************************/
+
 // Solicitudes api
 
 $unidad = $_REQUEST['uniClave'];

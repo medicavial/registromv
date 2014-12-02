@@ -1,5 +1,5 @@
 app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies) {
-    
+    $rootScope.permisos=JSON.parse($cookies.permisos);
     $scope.asignaProducto = function(claveCompania){
     	claveDefault=1;
     	$rootScope.clave = claveCompania;
@@ -130,5 +130,6 @@ app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies)
         }        
     	return img;
     }
+    
     
 });
