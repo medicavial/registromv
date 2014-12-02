@@ -54,15 +54,15 @@
 			        <table class="table table-hover table-bordered">
 				      <thead>
 				        <tr>
-				          <th>Folio</th>
-				          <th>Cliente</th>
-				          <th>Lesionado</th>
-				          <th>Sexo</th>
-				          <th>Fecha Atención</th>
+				          <th ng-click="predicate = 'expediente'; reverse=!reverse">Folio</th>
+				          <th ng-click="predicate = 'cliente'; reverse=!reverse">Cliente</th>
+				          <th ng-click="predicate = 'lesionado'; reverse=!reverse">Lesionado</th>
+				          <th ng-click="predicate = 'sexo'; reverse=!reverse">Sexo</th>
+				          <th ng-click="predicate = 'fecha'; reverse=!reverse">Fecha Atención</th>
 				        </tr>
 				      </thead>
 				      <tbody>
-				        <tr ng-click="datosPaciente($index)" ng-repeat="expediente in expedientes">
+				        <tr ng-click="datosPaciente($index)" ng-repeat="expediente in expedientes | orderBy:predicate:reverse">
 				          <td>{{expediente.expediente}}</td>
 				          <td>{{expediente.cliente}}</td>
 				          <td>{{expediente.lesionado}}</td>

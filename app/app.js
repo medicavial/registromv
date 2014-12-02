@@ -161,6 +161,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
         $rootScope.cerrar = false;
         $rootScope.username =  $cookies.username;
         $rootScope.cordinacion =  $cookies.cordinacion;
+        $rootScope.permisos=JSON.parse($cookies.permisos);
 
         sesion.checkStatus();
 
@@ -176,6 +177,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     //generamos al rootscope las variables que tenemos en las cookies para no perder la sesion 
     $rootScope.username =  $cookies.username;
     $rootScope.cordinacion =  $cookies.cordinacion;
+    $rootScope.permisos=JSON.parse($cookies.permisos);
 
 
 
@@ -272,9 +274,8 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
                         $cookies.permisos=JSON.stringify(data); 
                         $rootScope.permisos=JSON.parse($cookies.permisos);                           
                     });
+
                     $location.path("/home");
-
-
                     //console.log(data);
                 }
             });
