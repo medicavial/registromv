@@ -146,7 +146,7 @@ app.controller('subsecuenciaCtrl', function($scope,$rootScope,$location,$cookies
          $scope.guardaDiagnosticoSub = function(diag){
             console.log($scope.diagnosticoSub);
             $http({
-            url:'api/api.php?funcion=guardaDiagnosticoSub&fol='+$rootScope.folio,
+            url:'api/api.php?funcion=guardaDiagnosticoSub&fol='+$rootScope.folio+'&subCons='+$scope.noSubsec,
             method:'POST', 
             contentType: 'application/json', 
             dataType: "json", 

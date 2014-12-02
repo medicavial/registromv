@@ -1,5 +1,6 @@
 app.controller('documentosCtrl', function($scope,$rootScope,$location,$cookies) {
 	$rootScope.folio=$cookies.folio;
+	$rootScope.usrLogin= $cookies.usrLogin;
 	$rootScope.permisos=JSON.parse($cookies.permisos);
 	$scope.irHistoriaClinica = function(folio){  
 		$cookies.folio = folio;

@@ -62,7 +62,7 @@ function generar_numero(){
 
 function conectarMySQL(){
 
-    $dbhost="localhost";
+    $dbhost="medicavial.net";
     $dbuser="medica_webusr";
     $dbpass="tosnav50";
     $dbname="medica_registromv";
@@ -2041,8 +2041,7 @@ if($funcion=='guardaDiagnosticoSub'){
     $diagnostico         =$datos->diagnostico;
     $obs        =$datos->obs;   
     $db = conectarMySQL(); 
-    try{    
-       
+    try{           
             $query="Update Subsecuencia Set Sub_diagnostico=:Sub_diagnostico,Sub_obs=:Sub_obs WHERE Exp_folio=:Exp_folio and Sub_cons=:Sub_cons";                               
             $temporal = $db->prepare($query);
             $temporal->bindParam("Exp_folio", $fol);
