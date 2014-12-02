@@ -1,10 +1,11 @@
 //inicializamos la aplicacion
 var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle']);
+
 //configuramos nuestra aplicacion
 app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
 
     //Configuramos la ruta que queremos el html que le toca y que controlador usara
-     
+    
     // menu y login general
      $routeProvider.when('/bloqueo',{
             templateUrl: 'views/bloqueo.html',
@@ -67,10 +68,6 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/notaMedica.html',
             controller : 'notaMedicaCtrl'           
     });
-    $routeProvider.when('/subsecuencia',{
-            templateUrl: 'views/subsecuencia.html',
-            controller : 'subsecuenciaCtrl'           
-    });
 
     // apartado de solicitudes 
     $routeProvider.when('/detalle/solicitud/:clave',{
@@ -117,6 +114,8 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     $rootScope.admin = true;
     $rootScope.cerrar = false;
 
+
+
     //verifica el tamaño de la pantalle y oculta o muestra el menu
     var mobileView = 992;
 
@@ -162,7 +161,9 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
         $rootScope.cerrar = false;
         $rootScope.username =  $cookies.username;
         $rootScope.cordinacion =  $cookies.cordinacion;
-        $rootScope.permisos=JSON.parse($cookies.permisos);
+        if (!$cookies.permisos == undefined) {
+            $rootScope.permisos=JSON.parse($cookies.permisos);
+        };
 
         sesion.checkStatus();
 
@@ -178,8 +179,9 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     //generamos al rootscope las variables que tenemos en las cookies para no perder la sesion 
     $rootScope.username =  $cookies.username;
     $rootScope.cordinacion =  $cookies.cordinacion;
-    $rootScope.permisos=JSON.parse($cookies.permisos);
-
+    if (!$cookies.permisos == undefined) {
+        $rootScope.permisos=JSON.parse($cookies.permisos);
+    };
 
 
     //verificamos el estatus del usuario en la aplicacion
@@ -446,9 +448,6 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaEstSol:function(folio){
             return $http.get('api/api.php?funcion=getListEstSol&fol='+folio);
-        },        
-        listaEstSolSub:function(folio){
-            return $http.get('api/api.php?funcion=getlistEstSolSub&fol='+folio);
         },
         listaProced:function(){
             return $http.get('api/api.php?funcion=getListProcedimientos');
@@ -458,9 +457,6 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaDiagnosticos:function(){
             return $http.get('api/api.php?funcion=getListDiagnostic');
-        },
-        despDiagnosticos:function(diagnos){
-            return $http.get('api/api.php?funcion=getListDiag&diag='+diagnos);
         },
         listaMedicamentos:function(){
             return $http.get('api/api.php?funcion=getListMedicamentos');
@@ -488,9 +484,6 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         validaSigVitales:function(folio){
             return $http.get('api/api.php?funcion=validaSigVitales&fol='+folio);
-        },
-        validaSubsec:function(folio){
-            return $http.get('api/api.php?funcion=validaSubsecuencia&fol='+folio);
         }
 
     }

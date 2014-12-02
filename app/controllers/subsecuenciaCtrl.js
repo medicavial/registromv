@@ -188,7 +188,7 @@ app.controller('subsecuenciaCtrl', function($scope,$rootScope,$location,$cookies
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
-            }); */     
+            });   
         }
 
 
