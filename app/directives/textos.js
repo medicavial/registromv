@@ -75,12 +75,17 @@ app.directive('folio', function() {
             }
           }
           
-          
+          element.on('blur',function(){
+
+            var nuevo = rellenaFolio(modelCtrl.$modelValue);
+            //console.log(nuevo);
+            modelCtrl.$setViewValue(nuevo);
+            modelCtrl.$render();
+            scope.$apply();
+
+          });
 
           element.on('keydown', function(e){
-                
-
-                //console.log(modelCtrl);
                 
 
                 var cantidad = modelCtrl.$modelValue.length;

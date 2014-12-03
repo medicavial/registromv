@@ -70,11 +70,6 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
 
 	}
 
-	$scope.$watch('paso',function(nuevoValor, viejoValor){
-
-
-	});
-
 	$scope.buscaTipoDoc = function(){
 
 		busquedas.tipoDocumento().success(function (data){
@@ -388,37 +383,7 @@ app.controller('solicitudCtrl', function ($scope, $cookies, $route, busquedas, m
         }
     ];
 
-
-    // $scope.verMejora = function(){
-
-	// 	var valor = $scope.datos.mejora;
-	// 	//console.log(valor);
-	// 	if (valor == 0) {
-	// 		$scope.mejoria = 'Ninguna';
-	// 	}else if (valor > 0 && valor < 4) {
-	// 		$scope.mejoria = 'Poca';
-	// 	}else if (valor > 3 && valor < 7) {
-	// 		$scope.mejoria = 'Alguna';
-	// 	}else{
-	// 		$scope.mejoria = 'Mucha';
-	// 	}
-	// }
-
-
-	// $scope.verDolor = function(){
-
-	// 	var valor = $scope.datos.dolor;
-	// 	//console.log(valor);
-	// 	if (valor == 0) {
-	// 		$scope.dolor = 'Ninguno';
-	// 	}else if (valor > 0 && valor < 4) {
-	// 		$scope.dolor = 'Poco';
-	// 	}else if (valor > 3 && valor < 7) {
-	// 		$scope.dolor = 'Molesto';
-	// 	}else{
-	// 		$scope.dolor = 'No tolerable';
-	// 	}
-	// }
+    
     
 });
 
