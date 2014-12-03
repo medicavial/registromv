@@ -68,6 +68,10 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/notaMedica.html',
             controller : 'notaMedicaCtrl'           
     });
+    $routeProvider.when('/subsecuencia',{
+            templateUrl: 'views/subsecuencia.html',
+            controller : 'subsecuenciaCtrl'           
+    });
 
     // apartado de solicitudes 
     $routeProvider.when('/detalle/solicitud/:clave',{
@@ -448,6 +452,9 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaEstSol:function(folio){
             return $http.get('api/api.php?funcion=getListEstSol&fol='+folio);
+        },        
+        listaEstSolSub:function(folio){
+            return $http.get('api/api.php?funcion=getlistEstSolSub&fol='+folio);
         },
         listaProced:function(){
             return $http.get('api/api.php?funcion=getListProcedimientos');
@@ -457,6 +464,9 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaDiagnosticos:function(){
             return $http.get('api/api.php?funcion=getListDiagnostic');
+        },
+        despDiagnosticos:function(diagnos){
+            return $http.get('api/api.php?funcion=getListDiag&diag='+diagnos);
         },
         listaMedicamentos:function(){
             return $http.get('api/api.php?funcion=getListMedicamentos');
@@ -476,6 +486,9 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         listaMedicamentosAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListMedicamentosAgreg&fol='+folio);
         },
+        listaMedicamentosAgregSub:function(folio){
+            return $http.get('api/api.php?funcion=getListMedicamentosAgregSub&fol='+folio);
+        },
         listaOrtesisAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListOrtesisAgreg&fol='+folio);
         },
@@ -484,7 +497,11 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         validaSigVitales:function(folio){
             return $http.get('api/api.php?funcion=validaSigVitales&fol='+folio);
+        },
+        validaSubsec:function(folio){
+            return $http.get('api/api.php?funcion=validaSubsecuencia&fol='+folio);
         }
+
 
     }
 });

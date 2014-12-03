@@ -62,7 +62,7 @@ function generar_numero(){
 
 function conectarMySQL(){
 
-    $dbhost="medicavial.net";
+    $dbhost="localhost";
     $dbuser="medica_webusr";
     $dbpass="tosnav50";
     $dbname="medica_registromv";
@@ -484,13 +484,13 @@ if($funcion == 'buscaParametros'){
     $folio = $datos->folio;
     $db = conectarMySQL();
     if($nombre && ($folio==''||$folio==null)){
-        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=8 and Exp_completo like '%".$nombre."%'";
+        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_completo like '%".$nombre."%'";
     }
     elseif ($nombre && $folio) {
-        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=8 and  Exp_folio='".$folio."' and Exp_completo like '%".$nombre."%'";
+        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and  Exp_folio='".$folio."' and Exp_completo like '%".$nombre."%'";
     }
     elseif ($folio &&($nombre==''||$nombre==null)) {
-       $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=8 and Exp_folio='".$folio."'";
+       $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_folio='".$folio."'";
     }
     $result = $db->query($query);
     $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
@@ -952,7 +952,7 @@ if($funcion == 'getListDiag'){
 
 if($funcion == 'getListMedicamentos'){    
     $db = conectarMySQL();
-    $query="SELECT Sum_clave, Sum_nombre, Sum_presentacion, Sum_indicacion  FROM Suministro Where activo=1 and Roma=0 Order by peso desc,Sum_nombre ASC";
+    $query="SELECT Sum_clave, Sum_nombre, Sum_presentacion, Sum_indicacion  FROM Suministro Order by peso desc,Sum_nombre ASC";
     $result = $db->query($query);
     $listDiagnostic = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listDiagnostic);
@@ -980,6 +980,15 @@ if($funcion == 'getListIndicaciones'){
 if($funcion == 'getListMedicamentosAgreg'){    
     $db = conectarMySQL();
     $query="SELECT Nsum_clave, Sum_nombre, Nsum_obs, Nsum_Cantidad  FROM NotaSuministro inner Join Suministro on Suministro.Sum_clave =NotaSuministro.Sum_clave Where Exp_folio='".$fol."'";
+    $result = $db->query($query);
+    $listMediAgre = $result->fetchAll(PDO::FETCH_OBJ);
+    echo json_encode($listMediAgre);
+    $db = null;    
+}
+
+if($funcion == 'getListMedicamentosAgregSub'){    
+    $db = conectarMySQL();
+    $query="SELECT Subsum_clave, Sum_nombre, Subsum_obs, Subsum_Cantidad  FROM SubSuministros inner Join Suministro on Suministro.Sum_clave =SubSuministros.Sum_clave Where Exp_folio='".$fol."' and Sub_cons=0";
     $result = $db->query($query);
     $listMediAgre = $result->fetchAll(PDO::FETCH_OBJ);
     echo json_encode($listMediAgre);
@@ -1587,9 +1596,13 @@ if($funcion == 'guardaVitales'){
 } 
 
 if($funcion == 'guardaVitalesP'){
+
     $postdata = file_get_contents("php://input");
     $datos = json_decode($postdata);
     $db = conectarMySQL();    
+
+    $fol=$_GET['fol'];
+    $usr=$_GET['usr'];
 
     $tem        =$datos->tem;
     $talla      =$datos->talla;
@@ -2045,8 +2058,8 @@ if($funcion=='guardaDiagnosticoSub'){
             $query="Update Subsecuencia Set Sub_diagnostico=:Sub_diagnostico,Sub_obs=:Sub_obs WHERE Exp_folio=:Exp_folio and Sub_cons=:Sub_cons";                               
             $temporal = $db->prepare($query);
             $temporal->bindParam("Exp_folio", $fol);
-            $temporal->bindParam("ObsNot_diagnosticoRx", $diagnostico);
-            $temporal->bindParam("ObsNot_obs", $obs); 
+            $temporal->bindParam("Sub_diagnostico", $diagnostico);
+            $temporal->bindParam("Sub_obs", $obs); 
             $temporal->bindParam("Sub_cons", $noSubsec);                 
          if ($temporal->execute()){
             $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
@@ -2102,6 +2115,38 @@ if($funcion=='guardaMedicamento'){
     $db = null;  
 }
 
+if($funcion=='guardaMedicamentoSub'){
+    $postdata = file_get_contents("php://input");
+    $datos = json_decode($postdata);
+    $medica         =$datos->medica;
+    $posologia        =$datos->posologia; 
+    $cantidad        =$datos->cantidad; 
+    $fecha= date('Y-m-d');
+    $hora= date('H:i:s');      
+    $db = conectarMySQL(); 
+    try{    
+       
+            $query="Insert Into SubSuministros(Exp_folio, Sum_clave, Subsum_obs, Subsum_cantidad, Subsum_fecha, Subsum_hora)
+                                Values(:Exp_folio,:Sum_clave,:Subsum_obs,:Subsum_cantidad,:Subsum_fecha,:Subsum_hora)";
+            $temporal = $db->prepare($query);
+            $temporal->bindParam("Exp_folio", $fol);
+            $temporal->bindParam("Sum_clave", $medica);
+            $temporal->bindParam("Subsum_obs", $posologia);
+            $temporal->bindParam("Subsum_cantidad", $cantidad);                 
+            $temporal->bindParam("Subsum_fecha", $fecha);                 
+            $temporal->bindParam("Subsum_hora", $hora);                 
+         if ($temporal->execute()){
+            $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        }else{
+            $respuesta = array('respuesta' => 'incorrecto');
+        }    
+    }catch(Exception $e){
+    $respuesta=  array('respuesta' => $e->getMessage() );
+}
+    echo json_encode($respuesta);
+    $db = null;  
+}
+
 if($funcion == 'eliminaMedicamento'){
     $db = conectarMySQL();
     $query="Delete from NotaSuministro where Nsum_clave = :Nsum_clave";
@@ -2116,7 +2161,19 @@ if($funcion == 'eliminaMedicamento'){
     $db = null;    
 }
 
-
+if($funcion == 'eliminaMedicamentoSub'){
+    $db = conectarMySQL();
+    $query="Delete from SubSuministros where Subsum_clave = :Subsum_clave";
+    $stmt = $db->prepare($query);
+    $stmt->bindParam('Subsum_clave', $proClave);
+    if ($stmt->execute()){
+        $respuesta = array('respuesta' => 'correcto','pro-clave'=>$proClave);
+    }else{
+        $respuesta = array('respuesta' => 'incorrecto');
+    }
+    echo json_encode($respuesta);
+    $db = null;    
+}
 
 if($funcion=='guardaOrtesis'){
     $postdata = file_get_contents("php://input");

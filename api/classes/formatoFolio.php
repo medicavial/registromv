@@ -193,7 +193,7 @@ $style = array(
                 'fontsize' => 8,
                 'stretchtext' => 4
                );          
-$pdf->write1DBarcode($fol, 'C39', 95, 18, '', 10, 0.2, $style, 'C');
+$pdf->write1DBarcode($fol, 'C39', 95, 18, '',15, 0.26, $style, 'C');
 		$image_file = $imagen;
 		$pdf->Image($image_file, 15, 18, $sise, '', $tipo, '', 'T', false, 300, '', false, false, 0, false, false, false);
 		$image_file = $imgProd;

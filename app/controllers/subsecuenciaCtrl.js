@@ -15,6 +15,21 @@ app.controller('subsecuenciaCtrl', function($scope,$rootScope,$location,$cookies
           diagnostico:'',
           obs:''
         }
+  $scope.medicaSub={
+          medica:'',
+          posologia:'',
+          cantidad:1
+        }
+  $scope.ortesisSub={
+          ortesis:'',
+          presentacion:'',
+          cantidad:1,
+          indicaciones:''
+        }
+  $scope.indicacionSub={
+          indicacion:'',
+          obs:''
+        }
   $scope.progreso=10;
   busquedas.validaSubsec($rootScope.folio).success(function(data){                      
     if(data.Cons==null){
@@ -164,7 +179,11 @@ app.controller('subsecuenciaCtrl', function($scope,$rootScope,$location,$cookies
                   busquedas.listaIndicaciones().success(function(data){                      
                     $scope.listaIndicacion=data; 
                     console.log($scope.listaIndicacion);                         
-                  });  
+                  }); 
+                   busquedas.listaMedicamentosAgregSub($rootScope.folio).success(function(data){                      
+                  $scope.listaMedicamentosASub=data; 
+                  console.log($scope.listaMedicamentosASub);
+                   }); 
                   /*busquedas.listaMedicamentosAgreg($rootScope.folio).success(function(data){                      
                     $scope.listaMedicamentosAgreg=data; 
                     console.log($scope.listaMedicamentosAgreg);
@@ -190,6 +209,75 @@ app.controller('subsecuenciaCtrl', function($scope,$rootScope,$location,$cookies
                 alert('Error');
             });   
         }
+         $scope.verIndicacion = function(){
+            console.log($scope.medicaSub.medica);
+            busquedas.verPosologia($scope.medicaSub.medica).success(function(data){                      
+                    $scope.medicaSub.posologia=data.Sum_indicacion; 
+                    console.log(data);                         
+                  }); 
+        }  
+        $scope.verIndicacionCam = function(){
+            console.log($scope.indicacionSub.indicacion);
+            if($scope.indicacionSub.obs=='' || $scope.indicacionSub.obs==null){
+              $scope.indicacionSub.obs=$scope.indicacionSub.indicacion;
+            }else{
+              $scope.indicacionSub.obs=$scope.indicacionSub.obs+', '+$scope.indicacionSub.indicacion;
+            }
+        }  
 
+        $scope.guardaMedicamentoSub= function(){
+          console.log($scope.medicamentos);
+          $http({
+            url:'api/api.php?funcion=guardaMedicamentoSub&fol='+$rootScope.folio,
+            method:'POST', 
+            contentType: 'application/json', 
+            dataType: "json", 
+            data: $scope.medicaSub
+            }).success( function (data){                        
+              if(data.respuesta=='correcto'){ 
+                 $scope.medicaSub={
+                    medica:'',
+                    posologia:'',
+                    cantidad:1
+                  }            
+                busquedas.listaMedicamentosAgregSub($rootScope.folio).success(function(data){                      
+                  $scope.listaMedicamentosASub=data; 
+                  console.log($scope.listaMedicamentosASub);
+                });                                                        
+              }              
+              else{
+                console.log(data);
+                alert('error en la inserción');
+              }
+              console.log(data);
+            }).error( function (xhr,status,data){
+                $scope.mensaje ='no entra';            
+                alert('Error');
+            });                      
+        } 
+        $scope.eliminarMedicamentoSub = function(clavePro){                    
+            $http({
+            url:'api/api.php?funcion=eliminaMedicamento&proClave='+clavePro,
+            method:'POST', 
+            contentType: 'application/json', 
+            dataType: "json", 
+            data: {cve:'valor'}
+            }).success( function (data){                        
+              if(data.respuesta=='correcto'){               
+                  busquedas.listaMedicamentosAgregSub($rootScope.folio).success(function(data){                      
+                  $scope.listaMedicamentosASub=data; 
+                  console.log($scope.listaMedicamentosASub);
+                });  
+              }              
+              else{
+                console.log(data);
+                alert('error en la inserción');
+              }
+              console.log(data);
+            }).error( function (xhr,status,data){
+                $scope.mensaje ='no entra';            
+                alert('Error');
+            });                              
+        }        
 
 });

@@ -1,8 +1,13 @@
 app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies) {
     $rootScope.permisos=JSON.parse($cookies.permisos);
+    $rootScope.accPersonal=false;
     $scope.asignaProducto = function(claveCompania){
     	claveDefault=1;
     	$rootScope.clave = claveCompania;
+        if($rootScope.clave==9||$rootScope.clave==7||$rootScope.clave==8||$rootScope.clave==19){
+            $rootScope.accPersonal=true;
+            console.log($rootScope.accPersonal);
+        }
         $cookies.clave = claveCompania;
     	$rootScope.clavePro = claveDefault;
         $cookies.clavePro = claveDefault;

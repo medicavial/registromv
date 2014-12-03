@@ -585,7 +585,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         $scope.guardaMedicamento= function(){
           console.log($scope.medicamentos);
           $http({
-            url:'api/api.php?funcion=guardaMedicamento&fol='+$rootScope.folio,
+            url:'api/api.php?funcion=guardaMedicamentoSub&fol='+$rootScope.folio,
             method:'POST', 
             contentType: 'application/json', 
             dataType: "json", 
@@ -597,9 +597,9 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                     posologia:'',
                     cantidad:1
                   }            
-                busquedas.listaMedicamentosAgreg($rootScope.folio).success(function(data){                      
-                  $scope.listaMedicamentosAgreg=data; 
-                  console.log($scope.listaMedicamentosAgreg);
+                busquedas.listaMedicamentosAgregSub($rootScope.folio).success(function(data){                      
+                  $scope.listaMedicamentosAgregSub=data; 
+                  console.log($scope.listaMedicamentosAgregSub);
                 });                                                        
               }              
               else{
@@ -614,7 +614,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         } 
         $scope.eliminarMedicamento = function(clavePro){                    
             $http({
-            url:'api/api.php?funcion=eliminaMedicamento&proClave='+clavePro,
+            url:'api/api.php?funcion=eliminaMedicamentoSub&proClave='+clavePro,
             method:'POST', 
             contentType: 'application/json', 
             dataType: "json", 
