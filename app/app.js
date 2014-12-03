@@ -121,7 +121,8 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     
     $rootScope.admin = true;
     $rootScope.cerrar = false;
-
+    console.log($cookies.permisos);
+    console.log($rootScope.permisos);
 
 
     //verifica el tamaño de la pantalle y oculta o muestra el menu
@@ -169,8 +170,8 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
         $rootScope.cerrar = false;
         $rootScope.username =  $cookies.username;
         $rootScope.cordinacion =  $cookies.cordinacion;
-        if (!$cookies.permisos == undefined) {
-            $rootScope.permisos=JSON.parse($cookies.permisos);
+        if ($cookies.permisos  && $rootScope.permisos == undefined) {
+            $rootScope.permisos = JSON.parse($cookies.permisos);
         };
 
         sesion.checkStatus();
@@ -187,9 +188,11 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     //generamos al rootscope las variables que tenemos en las cookies para no perder la sesion 
     $rootScope.username =  $cookies.username;
     $rootScope.cordinacion =  $cookies.cordinacion;
-    if (!$cookies.permisos == undefined) {
-        $rootScope.permisos=JSON.parse($cookies.permisos);
+    if ($cookies.permisos  && $rootScope.permisos == undefined) {
+        $rootScope.permisos = JSON.parse($cookies.permisos);
     };
+
+    
 
 
     //verificamos el estatus del usuario en la aplicacion
@@ -500,7 +503,7 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
             return $http.get('api/api.php?funcion=getListIndicAgreg&fol='+folio);
         },
         listaUnidades:function(folio){
-            return $http.get('api/api.php?funcion=unidades';
+            return $http.get('api/api.php?funcion=unidades');
         },
         validaSigVitales:function(folio){
             return $http.get('api/api.php?funcion=validaSigVitales&fol='+folio);

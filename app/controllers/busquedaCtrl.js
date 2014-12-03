@@ -46,7 +46,7 @@ app.controller('busquedaCtrl', function($scope,$rootScope,$location,$cookies,bus
 
 });
 
-
+//busqueda solo para administrador para buscar en todas las unidades
 app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,busquedas,$http) {
 	
 
@@ -84,13 +84,20 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 	}
 	$scope.buscaParametros = function(){ 
 	 	console.log($scope.cveUni);
-		$http({
-            url:'api/api.php?funcion=buscaParametros&cveUnidad='+$scope.cveUni,
-            method:'POST', 
-            contentType: 'application/json', 
-            dataType: "json", 
-            data: $scope.busca
-            }).success( function (data){                                                      
+
+	 	if ($scope.cveUni == '') {
+
+	 		alert('Necesitas seleccionar unidad');
+	 	}else{
+
+			$http({
+	            url:'api/api.php?funcion=buscaParametros&cveUnidad='+$scope.cveUni,
+	            method:'POST', 
+	            contentType: 'application/json', 
+	            dataType: "json", 
+	            data: $scope.busca
+	        }).success( function (data){ 
+
 				if(data.respuesta!='error'){
 					$scope.error=false;
 					console.log(data); 
@@ -102,10 +109,13 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 				}else{
 					$scope.error=true;
 				}
-            }).error( function (xhr,status,data){
-                $scope.mensaje ='no entra';            
-                alert('Error');
-            });                        
+
+	        }).error( function (xhr,status,data){
+	            $scope.mensaje ='no entra';            
+	            alert('Error');
+	        });                        
+
+	 	}
 	}
 
 });

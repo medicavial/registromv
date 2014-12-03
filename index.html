@@ -60,8 +60,11 @@
           <li class="sidebar-list" ng-show="permisos.Per_registro=='S'">
             <a href="#/aperturaExp">Registro de Paciente<span class="menu-icon glyphicon glyphicon-folder-open"></span></a>
           </li>
-          <li class="sidebar-list" ng-show="permisos.Per_busca=='S'">
+          <li class="sidebar-list" ng-show="permisos.Per_busca == 'S'">
             <a href="#/busqueda">Búsqueda <span class="menu-icon glyphicon glyphicon-search"></span></a>
+          </li>
+          <li class="sidebar-list" ng-show="permisos.Per_buscarUnidades =='S'">
+            <a href="#/busqueda/unidad">Búsqueda X Unidad<span class="menu-icon glyphicon glyphicon-search"></span></a>
           </li>
           <li class="sidebar-list" ng-hide="cordinacion">
             <a href="#/solicitud" ng-click="cargar()">Nueva Solicitud <span class="menu-icon glyphicon glyphicon-send"></span></a>

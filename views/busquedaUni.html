@@ -17,23 +17,22 @@
 		                    <input type="text" name="ObsAccidente" id="ObsAccidente" ng-model="busca.nombre" class= "form-control" mayusculas >	                 
 	          			</div>
 					</div>
-					<div class="col-md-4">
+					<div class="col-md-3">
 						<div class="input-group">
 		                 <span class="input-group-addon">Folio: </span>	                 
 		                    <input type="text" name="ObsAccidente" id="ObsAccidente" ng-model="busca.folio" class= "form-control" mayusculas>        
 	          			</div>
 					</div>
 					
-					<div class="col-md-4">
-						<label for="">Unidad: </label>
-						<select class="form-control  input-lg" ng-model="cveUni" ng-options="unidad.Uni_clave as unidad.Uni_nombre for unidad in unidades" ng-change="muestraFolios()">
+					<div class="col-md-3">
+						<select class="form-control" ng-model="cveUni" ng-options="unidad.Uni_clave as unidad.Uni_nombre for unidad in unidades" ng-change="muestraFolios()">
 							<option value="">Selecciona Unidad</option>
 						</select>
 					</div>
 
-					<div class="col-md-4" align="right">
+					<div class="col-md-2" align="right">
 		                <div class="form-group">
-		                    <input type="submit" id="btnenvioprimero" class="btn btn-primary" value="Buscar">
+		                    <input type="submit" id="btnenvioprimero" class="btn btn-primary btn-block" value="Buscar">
 		                </div>
 		            </div>
 	            </form>
