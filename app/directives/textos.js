@@ -77,11 +77,13 @@ app.directive('folio', function() {
           
           element.on('blur',function(){
 
-            var nuevo = rellenaFolio(modelCtrl.$modelValue);
-            //console.log(nuevo);
-            modelCtrl.$setViewValue(nuevo);
-            modelCtrl.$render();
-            scope.$apply();
+            if (modelCtrl.$modelValue.length > 3) {
+              var nuevo = rellenaFolio(modelCtrl.$modelValue);
+              //console.log(nuevo);
+              modelCtrl.$setViewValue(nuevo);
+              modelCtrl.$render();
+              scope.$apply();
+            };
 
           });
 

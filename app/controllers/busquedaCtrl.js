@@ -52,6 +52,7 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 
 	$scope.inicio = function(){
 
+		$scope.buscar = false;
 		$scope.cveUni = '';
 		$scope.busca = {
 			nombre:'',
@@ -67,9 +68,11 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 
 	$scope.muestraFolios = function(){
 
+		$scope.buscar = true;
 		busquedas.listadoFolios($scope.cveUni).success(function(data){
 			console.log(data);		
-			$scope.list=data;	
+			$scope.list=data;
+			$scope.buscar = false;	
 		});
 		
 	}
@@ -84,11 +87,11 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 	}
 	$scope.buscaParametros = function(){ 
 	 	console.log($scope.cveUni);
+	 	$scope.buscar = true;
+	 	// if ($scope.cveUni == '') {
 
-	 	if ($scope.cveUni == '') {
-
-	 		alert('Necesitas seleccionar unidad');
-	 	}else{
+	 	// 	alert('Necesitas seleccionar unidad');
+	 	// }else{
 
 			$http({
 	            url:'api/api.php?funcion=buscaParametros&cveUnidad='+$scope.cveUni,
@@ -110,12 +113,14 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 					$scope.error=true;
 				}
 
+				$scope.buscar = false;
+
 	        }).error( function (xhr,status,data){
 	            $scope.mensaje ='no entra';            
 	            alert('Error');
 	        });                        
 
-	 	}
+	 	// }
 	}
 
 });
