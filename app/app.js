@@ -50,6 +50,10 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/busqueda.html',
             controller : 'busquedaCtrl'           
     });
+    $routeProvider.when('/busqueda/unidad',{
+            templateUrl: 'views/busquedaUni.html',
+            controller : 'busquedaUniCtrl'           
+    });
     $routeProvider.when('/documentos',{
             templateUrl: 'views/documentos.html',
             controller : 'documentosCtrl'           
@@ -494,6 +498,9 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         listaIndicAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListIndicAgreg&fol='+folio);
+        },
+        listaUnidades:function(folio){
+            return $http.get('api/api.php?funcion=unidades';
         },
         validaSigVitales:function(folio){
             return $http.get('api/api.php?funcion=validaSigVitales&fol='+folio);

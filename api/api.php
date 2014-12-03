@@ -134,41 +134,13 @@ if($funcion == 'unidades'){
 
     $conexion = conectarMySQL();
 
-    $sql = "SELECT * FROM Compania order BY Cia_nombrecorto";
+    $sql = "SELECT * FROM Unidad order BY Uni_nombre";
 
     $result = $conexion->query($sql);
 
-    $resultado = array();
-    $total = array();
-
-    //$datos = $result->fetchAll(PDO::FETCH_OBJ);
-    foreach ($result as $value) {
-
-        $clave = $value['Cia_clave'];
-        $nombre = $value['Cia_nombrecorto'];
-        $activa = $value['Cia_activa'];
-
-        if ($activa == 'S') {
-
-            $resultado['clave'] = $clave;
-            $resultado['nombre'] = $nombre;
-
-            array_push($total, $resultado);
-
-        }elseif ($activa == 'N' && $clave == '52') {
-
-            $resultado['clave'] = $clave; 
-            $resultado['nombre'] = $nombre;
-
-            array_push($total, $resultado);
-
-        }
-
-        
-
-    } 
-
-    echo json_encode($total);
+    $datos = $result->fetchAll(PDO::FETCH_OBJ);
+    
+    echo json_encode($datos);
 
     $conexion = null;
 
