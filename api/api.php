@@ -449,28 +449,53 @@ if($funcion == 'listadoFolios'){
 }
 
 if($funcion == 'buscaParametros'){
+
     $postdata = file_get_contents("php://input");
     $datos = json_decode($postdata);
     $db = conectarMySQL();
     $nombre = $datos->nombre;
     $folio = $datos->folio;
     $db = conectarMySQL();
-    if($nombre && ($folio==''||$folio==null)){
-        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_completo like '%".$nombre."%'";
+
+    if (isset($_GET['cveUnidad'])) {
+
+        if($nombre && ($folio==''||$folio==null)){
+            $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_completo like '%".$nombre."%'";
+        }
+        elseif ($nombre && $folio) {
+            $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where  Exp_folio='".$folio."' and Exp_completo like '%".$nombre."%'";
+        }
+        elseif ($folio &&($nombre==''||$nombre==null)) {
+           $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_folio='".$folio."'";
+        }
+        $result = $db->query($query);
+        $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
+        if(empty($datosFolio)){
+            $datosFolio= array('respuesta' =>'error');
+        }
+       
+    }else{
+
+        if($nombre && ($folio==''||$folio==null)){
+            $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_completo like '%".$nombre."%'";
+        }
+        elseif ($nombre && $folio) {
+            $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and  Exp_folio='".$folio."' and Exp_completo like '%".$nombre."%'";
+        }
+        elseif ($folio &&($nombre==''||$nombre==null)) {
+           $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_folio='".$folio."'";
+        }
+        $result = $db->query($query);
+        $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
+        if(empty($datosFolio)){
+            $datosFolio= array('respuesta' =>'error');
+        }
+        
     }
-    elseif ($nombre && $folio) {
-        $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and  Exp_folio='".$folio."' and Exp_completo like '%".$nombre."%'";
-    }
-    elseif ($folio &&($nombre==''||$nombre==null)) {
-       $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_folio='".$folio."'";
-    }
-    $result = $db->query($query);
-    $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
-    if(empty($datosFolio)){
-        $datosFolio= array('respuesta' =>'error');
-    }
+
     echo json_encode($datosFolio);
-    $db = null;    
+    $db = null;
+       
 }
 
 if($funcion == 'getDatosPaciente'){
