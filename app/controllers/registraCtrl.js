@@ -1,7 +1,7 @@
 app.controller('registraCtrl', function($scope,$rootScope, $http,$cookies,$location) {	
 
 $scope.inicio = function(){
-    
+    $scope.mensajeError=false;
     $rootScope.rutaImgPro=$cookies.rutaImgPro;
     $rootScope.rutaImgCom= $cookies.rutaImgCom;
     $rootScope.ciaClave= $cookies.clave;
@@ -148,7 +148,11 @@ $scope.guardaEtapa1 = function(){
     }
 
     $scope.guardaEtapa2 = function(){
-        console.log($scope.folio);
+        console.log($scope.datosSin);
+        if($rootScope.ciaClave==19&&$scope.datosSin.siniestro==''&&$scope.datosSin.reporte==''){
+            $scope.mensajeError=true;
+        }else{
+            $scope.mensajeError=false;
         $http({
             url:'api/api.php?funcion=registraSin&fol='+$scope.folio,
             method:'POST', 
@@ -168,7 +172,8 @@ $scope.guardaEtapa1 = function(){
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';                            
             });
-    }
+        }
+    }    
 });
 
 function valMail(valor) {

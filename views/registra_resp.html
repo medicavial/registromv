@@ -265,34 +265,17 @@
                          <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  mayusculas/>
                      </div>
                 </div>
-                 <div class="col-md-4" ng-hide="ciaClave==19" >
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Siniestro:</label>
-                        <input type="text" class="form-control" ng-disabled="ciaClave==19" ng-model="datosSin.siniestro" required=""  mayusculas>
+                        <input type="text" class="form-control" id="sin" name="sin" ng-model="datosSin.siniestro" required=""  mayusculas>
                     </div>
                 </div>
-                <div class="col-md-4" ng-hide="ciaClave==19" ng-disabled="ciaClave==19">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Reporte:</label>
-                        <input type="text" class="form-control" ng-disabled="ciaClave==19"  ng-model="datosSin.reporte" required="" mayusculas>
+                        <input type="text" class="form-control" id="rep" name="rep" ng-model="datosSin.reporte" required="" mayusculas>
                     </div>
-                </div>
-                <div class="col-md-4" ng-show="ciaClave==19">
-                    <div class="form-group">
-                        <label>Siniestro:</label>
-                        <input type="text" class="form-control"  ng-model="datosSin.siniestro"  mayusculas>
-                    </div>
-                </div>
-                <div class="col-md-4" ng-show="ciaClave==19">
-                    <div class="form-group">
-                        <label>Reporte:</label>
-                        <input type="text" class="form-control"  ng-model="datosSin.reporte" mayusculas>
-                    </div>
-                </div>
-            </div>
-            <div class="row mianimacion" ng-show="mensajeError">
-                <div class="col-md-8 col-md-offset-4">
-                    <div class="alert alert-warning">Debe ingresar siniestro o reporte</div>    
                 </div>
             </div><br>
 

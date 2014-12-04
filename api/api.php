@@ -514,7 +514,7 @@ if($funcion == 'guardaDatos'){
     $sexo = $datos->sexo;
     $ocu = $datos->ocu;
     $edoC = $datos->edoC;
-    $mail = $datos->correo;
+    $mail = $datos->mail;
     $obs = $datos->obs;
     $folio = $datos->folio;
 
