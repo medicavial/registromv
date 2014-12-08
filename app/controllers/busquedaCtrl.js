@@ -108,7 +108,9 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 					$scope.busca={
 						nombre:'',
 						folio:''
-					}                
+					} 
+					$scope.cveUni = '';
+					               
 				}else{
 					$scope.error=true;
 				}

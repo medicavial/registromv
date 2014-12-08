@@ -62,7 +62,7 @@ function generar_numero(){
 
 function conectarMySQL(){
 
-    $dbhost="localhost";
+    $dbhost="www.medicavial.net";
     $dbuser="medica_webusr";
     $dbpass="tosnav50";
     $dbname="medica_registromv";
@@ -74,7 +74,7 @@ function conectarMySQL(){
 //Obtenemos la funcion que necesitamos y yo tengo que mandar 
 //la URL de la siguiente forma api/api.php?funcion=login
 
-$funcion = $_REQUEST['funcion'];
+$funcion = $_GET['funcion'];
 
 
 if($funcion == 'login'){
@@ -441,6 +441,7 @@ if($funcion == 'getFolio'){
 
 if($funcion == 'listadoFolios'){
     $db = conectarMySQL();
+    $uni = $_GET['uni'];
     $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_cancelado=0 and Expediente.Uni_clave=".$uni." order by Exp_folio desc LIMIT 0 , 100";
     $result = $db->query($query);
     $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
@@ -457,7 +458,7 @@ if($funcion == 'buscaParametros'){
     $folio = $datos->folio;
     $db = conectarMySQL();
 
-    if (isset($_GET['cveUnidad'])) {
+    if (empty($_GET['cveUnidad']) || $_GET['cveUnidad'] == 'null') {
 
         if($nombre && ($folio==''||$folio==null)){
             $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_completo like '%".$nombre."%'";
@@ -468,11 +469,7 @@ if($funcion == 'buscaParametros'){
         elseif ($folio &&($nombre==''||$nombre==null)) {
            $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_folio='".$folio."'";
         }
-        $result = $db->query($query);
-        $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
-        if(empty($datosFolio)){
-            $datosFolio= array('respuesta' =>'error');
-        }
+
        
     }else{
 
@@ -485,12 +482,14 @@ if($funcion == 'buscaParametros'){
         elseif ($folio &&($nombre==''||$nombre==null)) {
            $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Expediente.Uni_clave=".$cveUnidad." and Exp_folio='".$folio."'";
         }
-        $result = $db->query($query);
-        $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
-        if(empty($datosFolio)){
-            $datosFolio= array('respuesta' =>'error');
-        }
         
+        
+    }
+
+    $result = $db->query($query);
+    $datosFolio = $result->fetchAll(PDO::FETCH_OBJ);
+    if(empty($datosFolio)){
+        $datosFolio= array('respuesta' =>'error');
     }
 
     echo json_encode($datosFolio);
@@ -2310,13 +2309,13 @@ if($funcion=='guardaSigYSinSub'){
 
 // Solicitudes api
 
-$unidad = $_REQUEST['uniClave'];
+$unidad = $_GET['unidad'];
 
 
 if($funcion == 'ActualizaSolicitud'){
     
-    $clave = $_REQUEST['clave'];
-    $estatus = $_REQUEST['estatus'];
+    $clave = $_GET['clave'];
+    $estatus = $_GET['estatus'];
 
     $conexion = conectarMySQL();
 
@@ -2338,7 +2337,7 @@ if($funcion == 'ActualizaSolicitud'){
 
 if($funcion == 'loginfast'){
     
-    $user = $_REQUEST['usuario'];
+    $user = $_GET['usuario'];
  
     $conexion = conectarMySQL();
         
@@ -2382,7 +2381,7 @@ if($funcion == 'busquedaExpedientes'){
 
 if($funcion == 'busquedaFolio'){
 
-    $folio = $_REQUEST['folioapi'];
+    $folio = $_GET['folioapi'];
 
     $db = conectarMySQL();
         

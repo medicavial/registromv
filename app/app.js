@@ -1,5 +1,5 @@
 //inicializamos la aplicacion
-var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle','datatables']);
+var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle','datatables','ngMessages']);
 
 //configuramos nuestra aplicacion
 app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
@@ -170,6 +170,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
         $rootScope.cerrar = false;
         $rootScope.username =  $cookies.username;
         $rootScope.cordinacion =  $cookies.cordinacion;
+        $rootScope.uniClave = $cookies.uniClave;
         if ($cookies.permisos  && $rootScope.permisos == undefined) {
             $rootScope.permisos = JSON.parse($cookies.permisos);
         };
@@ -188,6 +189,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     //generamos al rootscope las variables que tenemos en las cookies para no perder la sesion 
     $rootScope.username =  $cookies.username;
     $rootScope.cordinacion =  $cookies.cordinacion;
+    $rootScope.uniClave = $cookies.uniClave;
     if ($cookies.permisos  && $rootScope.permisos == undefined) {
         $rootScope.permisos = JSON.parse($cookies.permisos);
     };
@@ -419,7 +421,7 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
             return $http.get('api/api.php?funcion=detalleSolicitudesInfo&clave='+ clave);
         },
         expedientes:function(){
-            return $http.get('api/api.php?funcion=busquedaExpedientes');
+            return $http.get('api/api.php?funcion=busquedaExpedientes&unidad=' + $rootScope.uniClave);
         },
         folio:function(folio){
             return $http.get('api/api.php?funcion=busquedaFolio&folioapi='+ folio);
@@ -519,13 +521,13 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
 app.factory("movimientos", function($http, $rootScope){
     return{
         actualizaSolicitud:function(clave,estatus){
-            return $http.get('api/api.php?funcion=ActualizaSolicitud&clave='+clave+'&estatus='+estatus);
+            return $http.get('api/api.php?funcion=ActualizaSolicitud&clave='+clave+'&estatus='+estatus+'&unidad=' + $rootScope.uniClave);
         },
         guardaSolicitudInfo:function(datos){
-            return $http.post('api/api.php?funcion=guardaSolicitudInfo',datos);
+            return $http.post('api/api.php?funcion=guardaSolicitudInfo&unidad=' + $rootScope.uniClave,datos);
         },
         ingresaSolicitud:function(datos){
-            return $http.post('api/api.php?funcion=guardaSolicitud',datos);
+            return $http.post('api/api.php?funcion=guardaSolicitud&unidad=' + $rootScope.uniClave,datos);
         }
     }
 });
