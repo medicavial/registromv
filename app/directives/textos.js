@@ -19,10 +19,13 @@ app.directive('mayusculas', function() {
         element.on('keyup',function(e){
 
           if (typeof modelCtrl.$modelValue != 'undefined') {
-            var nuevo = modelCtrl.$modelValue.toUpperCase();
-            modelCtrl.$setViewValue(nuevo);
-            modelCtrl.$render();
-            scope.$apply();
+
+            if(e.keyCode != 32){
+              var nuevo = modelCtrl.$modelValue.toUpperCase();
+              modelCtrl.$setViewValue(nuevo);
+              modelCtrl.$render();
+              scope.$apply();
+            }
           };
 
         });
