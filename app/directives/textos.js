@@ -6,16 +6,26 @@ app.directive('mayusculas', function() {
    return {
      require: 'ngModel',
      link: function(scope, element, attrs, modelCtrl) {
-        var capitalize = function(inputValue) {
-           var capitalized = inputValue.toUpperCase();
-           if(capitalized !== inputValue) {
-              modelCtrl.$setViewValue(capitalized);
-              modelCtrl.$render();
-            }         
-            return capitalized;
-         }
-         modelCtrl.$parsers.push(capitalize);
-         capitalize(scope[attrs.ngModel]);  // capitalize initial value
+        // var capitalize = function(inputValue) {
+        //    var capitalized = inputValue.toUpperCase();
+        //    if(capitalized !== inputValue) {
+        //       modelCtrl.$setViewValue(capitalized);
+        //       modelCtrl.$render();
+        //     }         
+        //     return capitalized;
+        //  }
+        //  modelCtrl.$parsers.push(capitalize);
+        //  capitalize(scope[attrs.ngModel]);  // capitalize initial value
+        element.on('keyup',function(e){
+
+          if (typeof modelCtrl.$modelValue != 'undefined') {
+            var nuevo = modelCtrl.$modelValue.toUpperCase();
+            modelCtrl.$setViewValue(nuevo);
+            modelCtrl.$render();
+            scope.$apply();
+          };
+
+        });
      }
    };
 });

@@ -2387,7 +2387,7 @@ if($funcion == 'busquedaFolio'){
         
     $sql = "SELECT Exp_folio as expediente, Cia_nombrecorto as cliente, Exp_completo as lesionado, Exp_fecreg as fecha, Exp_sexo as sexo, Expediente.Cia_clave as idcliente FROM Expediente
             INNER JOIN Compania on Compania.Cia_clave = Expediente.Cia_clave 
-            WHERE EXP_folio = '$folio' and Uni_clave = $unidad ";
+            WHERE EXP_folio = '$folio' and Uni_clave = $unidad";
 
     $result = $db->query($sql);
     $folios = $result->fetchAll(PDO::FETCH_OBJ);
