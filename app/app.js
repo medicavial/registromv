@@ -1,5 +1,5 @@
 //inicializamos la aplicacion
-var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle','datatables','ngMessages']);
+var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle','datatables','ngMessages','xml']);
 
 //configuramos nuestra aplicacion
 app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
@@ -26,8 +26,7 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/material.html',
             controller : 'materialCtrl'
     });
-
-   
+    
 
     // apertura de un expediente y seguimiento
     $routeProvider.when('/aperturaExp',{
