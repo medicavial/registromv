@@ -4,11 +4,13 @@ app.controller('busquedaCtrl', function($scope,$rootScope,$location,$cookies,bus
 		nombre:'',
 		folio:''
 	}	
+	$rootScope.cargador=false;
+	$rootScope.cargador1=false;
 	$scope.error=false;
 	$rootScope.permisos=JSON.parse($cookies.permisos);	
-	busquedas.listadoFolios($rootScope.cveUni).success(function(data){
-		console.log(data);		
+	busquedas.listadoFolios($rootScope.cveUni).success(function(data){		
 		$scope.list=data;	
+		$rootScope.cargador=false;
 	});
 	$scope.mandaPortada = function(folio){  
 		$cookies.folio = folio;
@@ -19,7 +21,7 @@ app.controller('busquedaCtrl', function($scope,$rootScope,$location,$cookies,bus
         $location.path("/documentos");
 	}
 	$scope.buscaParametros = function(){ 
-	 	console.log($rootScope.cveUni);
+	$rootScope.cargador1=true;	 
 		$http({
             url:'api/api.php?funcion=buscaParametros&cveUnidad='+$rootScope.cveUni,
             method:'POST', 
@@ -27,9 +29,9 @@ app.controller('busquedaCtrl', function($scope,$rootScope,$location,$cookies,bus
             dataType: "json", 
             data: $scope.busca
             }).success( function (data){                                                      
+            	$rootScope.cargador1=false;
 				if(data.respuesta!='error'){
-					$scope.error=false;
-					console.log(data); 
+					$scope.error=false;					
 					$scope.listaFolPar=data;   
 					$scope.busca={
 						nombre:'',
@@ -69,8 +71,7 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 	$scope.muestraFolios = function(){
 
 		$scope.buscar = true;
-		busquedas.listadoFolios($scope.cveUni).success(function(data){
-			console.log(data);		
+		busquedas.listadoFolios($scope.cveUni).success(function(data){			
 			$scope.list=data;
 			$scope.buscar = false;	
 		});
@@ -85,8 +86,7 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 		$cookies.folio = folio;
         $location.path("/documentos");
 	}
-	$scope.buscaParametros = function(){ 
-	 	console.log($scope.cveUni);
+	$scope.buscaParametros = function(){ 	 	
 	 	$scope.buscar = true;
 	 	// if ($scope.cveUni == '') {
 
@@ -102,8 +102,7 @@ app.controller('busquedaUniCtrl', function($scope,$rootScope,$location,$cookies,
 	        }).success( function (data){ 
 
 				if(data.respuesta!='error'){
-					$scope.error=false;
-					console.log(data); 
+					$scope.error=false;					
 					$scope.listaFolPar=data;   
 					$scope.busca={
 						nombre:'',

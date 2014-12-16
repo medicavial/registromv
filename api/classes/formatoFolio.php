@@ -5,7 +5,7 @@ require 'tcpdf.php';
 require 'config/lang/eng.php';
 
 ////////// Datos del Expediente/////
-
+$fol=$_GET['fol'];
 $query= "Select Expediente.Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Expediente.Cia_clave, Expediente.Usu_registro, Exp_fecreg, Uni_nombre, Uni_propia, Cia_nombrecorto, RIE_clave, Exp_RegCompania, Exp_obs, Pro_clave, DProd_Asegurado, DProd_NoReporte, DProd_Obs, DProd_Deducible, Esc_nombre, cia_recibo
 			From Expediente inner join Unidad on Expediente.UNI_clave=Unidad.UNI_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave
                         left join DatosProducto on Expediente.Exp_folio=DatosProducto.Exp_folio

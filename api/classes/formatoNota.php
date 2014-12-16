@@ -220,7 +220,7 @@ class MYPDF extends TCPDF {
                 'fontsize' => 8,
                 'stretchtext' => 4
                );          
-    $this->write1DBarcode($fol, 'C39', '87', '10', '', 10, 0.2, $style, 'C');
+    $this->write1DBarcode($fol, 'C39', '83', '10', '', 15, 0.26, $style, 'C');
 		$image_file = '../../imgs/logos/mv.jpg';
 		$this->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
                 /*$image_file = K_PATH_IMAGES.$fol.'.png';
@@ -316,7 +316,7 @@ $html = "
           <b>Fecha de nacimiento:</b>  ".$FechaNac."
       </td>
       <td colspan=\"2\">
-          <b>Tel. Domicilio:</b>  ".$Telefono."
+          <b>Teléfono:</b>  ".utf8_encode($Telefono)."
       </td>
       <td colspan=\"\">
            <b>E-Mail:</b>  ".utf8_encode($Mail)."

@@ -1,5 +1,16 @@
 app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cookies,WizardHandler,busquedas,$http) {
-	$rootScope.folio=$cookies.folio;	
+	$rootScope.folio=$cookies.folio;
+  $scope.formularios={};	
+  $scope.cargador=false;
+  $scope.cargador1=false;
+  $scope.cargador2=false;
+  $scope.cargador3=false;
+  $scope.cargador4=false;
+  $scope.cargador5=false;
+  $scope.cargador6=false;
+  $scope.cargador7=false;
+  $scope.cargador8=false;
+  $scope.cargador9=false;
     $scope.padEsp1='No';
     $scope.quiro='No';
     $scope.plant='No';
@@ -61,7 +72,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
     };
     $scope.acc={      
         opc:'Si',
-        lugar:0,
+        lugar:'',
         obs:''
     };
      $scope.vitales={      
@@ -138,12 +149,36 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             obsReligDefault:'No'
         }
 
+        $scope.interacted = function(field) {
+          //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input
+          return $scope.formularios.pac.$submitted && field.$invalid;          
+        };
+
+        $scope.interacted1 = function(field) {
+          //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input          
+          return $scope.formularios.heredo.$submitted && field.$invalid;          
+        };
+
+        $scope.interacted2 = function(field) {
+          //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input          
+          return $scope.formularios.cronicos.$submitted && field.$invalid;          
+        };
+         $scope.interacted3 = function(field) {
+          //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input          
+          return $scope.formularios.enfermedades.$submitted && field.$invalid;          
+        };
+         $scope.interacted4 = function(field) {
+          //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input          
+          return $scope.formularios.alergi.$submitted && field.$invalid;          
+        };
+
+        $scope.interacted5 = function(field) {
+          //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input          
+          return $scope.formularios.ante.$submitted && field.$invalid;          
+        };
+
         busquedas.ocupacion().success(function(data){
-            $scope.ocupacion=data;    
-            if($cookies.estatus){
-        		
-        	}
-            //console.log(data);
+            $scope.ocupacion=data;               
         });
         busquedas.edoCivil().success(function(data){
             $scope.edoCivil=data;
@@ -155,7 +190,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             $rootScope.nombre= data.Exp_nombre + ' '+data.Exp_paterno+ ' ' + data.Exp_materno;                                  
             $scope.datos.fecnac= data.Exp_fechaNac;            
             $scope.datos.mail=data.Exp_mail;
-            $scope.datos.obs=data.Exp_obs;
+            $scope.datos.obs=data.Rel_clave;
             $scope.datos.tel=data.Exp_telefono;
             $scope.datos.ocu = data.Ocu_clave;
             $scope.datos.edoC= data.Edo_clave;
@@ -166,7 +201,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             $scope.datos.meses=edad[1]; 
             $scope.datos.folio= $rootScope.folio;      
             
-        });
+        });     
          $scope.finished = function() {
             alert("Wizard finished :)");
         }
@@ -186,15 +221,16 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             $scope.datos.meses=edad[1]; 
         }
         $scope.obsRelig = function(){        
-            if($scope.defaultRelig.obsReligDefault=='Si'){
+            if($scope.defaultRelig.obsReligDefault){
               $scope.datos.obs='Ninguna';
             }
             else{
               $scope.datos.obs=''; 
             }
         }
-        $scope.enviaDatos = function(){
-            //console.log($scope.datos);
+        $scope.enviaDatos = function(){            
+            if($scope.formularios.pac.$valid){
+              $scope.cargador=true;
             $http({
                     url:'api/api.php?funcion=guardaDatos',
                     method:'POST', 
@@ -202,6 +238,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     dataType: "json", 
                     data: $scope.datos
                     }).success( function (data){   
+                      
                         busquedas.enfermedad().success(function(data){
                             $scope.enfermedad=data;                                                  
                         });
@@ -212,8 +249,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                             $scope.estatus=data;                            
                         });
                         busquedas.listaEnfHeredo($rootScope.folio).success(function(data){
+                            if(data.length>0){
                             $scope.listEnfeHe=data;
-                            console.log($scope.listEnfeHe);                            
+                            }
+                            $scope.cargador=false;                                                
                         });
                         $cookies.estatus=1;
                         WizardHandler.wizard().next();
@@ -222,28 +261,29 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.mensaje ='no entra';            
                         alert('Error');
                     });
+                  }
         }
         $scope.guardaAntedente = function(){          
           //console.log($scope.datos1);
+            if($scope.formularios.heredo.$valid){
+            $scope.cargador=true;
             $http({
                     url:'api/api.php?funcion=guardaEnfH&fol='+$rootScope.folio,
                     method:'POST', 
                     contentType: 'application/json', 
                     dataType: "json", 
                     data: $scope.datos1
-                    }).success( function (data){   
-                      //console.log(data);
-                      if(data.respuesta=='correcto'){
-                       busquedas.listaEnfHeredo($rootScope.folio).success(function(data){                      
-                            $scope.listEnfeHe=data;
-                            //console.log($scope.listEnfeHe);                            
-                        });
+                    }).success( function (data){                        
+                      if(!data.respuesta){                                                                                      
+                        $scope.listEnfeHe=data;
+                        $scope.cargador=false;                           
                         $scope.datos1={
-                            enfermedad:'',
-                            familiar:'',
-                            estatus:'',
-                            observaciones:''        
-                        };
+                          enfermedad:'',
+                          familiar:'',
+                          estatus:'',
+                          observaciones:''        
+                        }
+                        $scope.formularios.heredo.$submitted=false;                                                                                               
                       }
                       else{
                         alert('error en la inserción');
@@ -252,8 +292,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.mensaje ='no entra';            
                         alert('Error');
                     });
+              }
         }
-        $scope.borrarEnfHeredo = function(contEnf){                   
+        $scope.borrarEnfHeredo = function(contEnf){   
+            $scope.cargador=true;                
             $http({
                     url:'api/api.php?funcion=borraEnfH&fol='+$rootScope.folio+'&cont='+contEnf,
                     method:'POST', 
@@ -262,10 +304,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'calve':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                       busquedas.listaEnfHeredo($rootScope.folio).success(function(data){                      
-                            $scope.listEnfeHe=data;                          
-                        });                        
+                      if(!data.respuesta){
+                        if(data.length>0){                                                                                    
+                            $scope.listEnfeHe=data;                                                      
+                         }else{
+                            $scope.listEnfeHe=undefined;
+                         }
+                          $scope.cargador=false;
                       }
                       else{
                         alert('error en la inserción');
@@ -275,54 +320,73 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.antPersonales = function(){
+        $scope.antPersonales = function(){         
             busquedas.padecimientos().success(function(data){                      
-              $scope.padecimientos=data;                          
+              $scope.padecimientos=data;                                 
             }); 
-            busquedas.otrasEnf().success(function(data){                      
-              $scope.otrasE=data;                          
+            busquedas.otrasEnf().success(function(data){                                 
+                $scope.otrasE=data;                                      
             });
             busquedas.alergias().success(function(data){                      
               $scope.alergias=data;                          
             });    
-            busquedas.listaPadecimientos($rootScope.folio).success(function(data){                      
-              $scope.listaPad=data; 
-              //console.log($scope.listaPad);                         
+            busquedas.listaPadecimientos($rootScope.folio).success(function(data){                                                 
+              if(data.length>0){   
+                 $scope.listaPad=data;
+              }                        
             });  
             busquedas.listaOtrasEnf($rootScope.folio).success(function(data){                      
-              $scope.listaOtras=data; 
+              if(data.length>0){   
+                $scope.listaOtras=data; 
+              }
               //console.log($scope.listaOtras);                         
             });  
             busquedas.listaAlergias($rootScope.folio).success(function(data){                      
-              $scope.listaAlergias=data; 
+              if(data.length>0){   
+                $scope.listaAlergias=data; 
+              }
               //console.log($scope.listaAlergias);                         
             }); 
             busquedas.listaPadEsp($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaPadEsp=data; 
+              }
               //console.log($scope.listaPadEsp);                         
             }); 
             busquedas.listaTratQuiro($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaTratQui=data; 
+              }
               //console.log($scope.listaPadEsp);                         
             }); 
             busquedas.listaPlantillas($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaPlantillas=data; 
+              }
               //console.log($scope.listaPlantillas);                        
             }); 
             busquedas.listaTratamientos($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaTratamientos=data; 
+              }
               //console.log($scope.listaTratamientos);                        
             });
             busquedas.listaIntervenciones($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaIntervenciones=data; 
+              }
               //console.log($scope.listaIntervenciones);                        
             });
             busquedas.listaDeportes($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaDeportes=data; 
+              }
               //console.log($scope.listaDeportes);                      
             }); 
              busquedas.listaAdicciones($rootScope.folio).success(function(data){                      
+              if(data.length>0){   
               $scope.listaAdicciones=data; 
+              }
               //console.log($scope.listaAdicciones);                      
             }); 
              $cookies.estatus=2;
@@ -331,6 +395,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.agregaCronDeg= function(){
             //console.log($scope.padecimiento);
+            if($scope.formularios.cronicos.$valid){
+            $scope.cargador=true;           
             $http({
                     url:'api/api.php?funcion=guardaPad&fol='+$rootScope.folio,
                     method:'POST', 
@@ -338,16 +404,15 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     dataType: "json", 
                     data: $scope.padecimiento
                     }).success( function (data){   
-                      //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaPadecimientos($rootScope.folio).success(function(data){                      
-                          $scope.listaPad=data; 
-                          //console.log($scope.listaPad);                         
-                        });  
+                    //console.log(data);
+                      if(!data.respuesta){
+                        $scope.cargador=false;                                     
+                        $scope.listaPad=data;                                                                      
                         $scope.padecimiento={
                             nombre:'',
                             obs:''                            
                         };
+                        $scope.formularios.cronicos.$submitted=false;
                       }
                       else{
                         alert('error en la inserción');
@@ -356,8 +421,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.mensaje ='no entra';            
                         alert('Error');
                     });
+                  }
         }
-        $scope.borrarPadecimiento = function(idPad){                             
+        $scope.borrarPadecimiento = function(idPad){ 
+         $scope.cargador=true;                            
             $http({
                     url:'api/api.php?funcion=borraPadec&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -366,11 +433,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'calve':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                      busquedas.listaPadecimientos($rootScope.folio).success(function(data){                      
-                          $scope.listaPad=data; 
-                          //console.log($scope.listaPad);                         
-                        });                                      
+                      if(!data.respuesta){
+                        if(data.length>0){                                        
+                          $scope.listaPad=data;  
+                          }else{
+                            $scope.listaPad=undefined;
+                          }
+                        $scope.cargador=false;                                                            
                       }
                       else{
                         alert('error en la inserción');
@@ -381,7 +450,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     });
         }
         $scope.guardaOtras= function(){
+           if($scope.formularios.enfermedades.$valid){
             //console.log($scope.otras);
+            $scope.cargador1=true;
             $http({
                     url:'api/api.php?funcion=guardaOtras&fol='+$rootScope.folio,
                     method:'POST', 
@@ -390,15 +461,15 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.otras
                     }).success( function (data){   
                      // console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaOtrasEnf($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                                       
                           $scope.listaOtras=data; 
-                         // console.log($scope.listaOtras);                         
-                        });  
+                          $scope.cargador1=false;
+                         // console.log($scope.listaOtras);                                               
                         $scope.otras={
                             enf:'',
                             obs:''                            
                         };
+                        $scope.formularios.enfermedades.$submitted=false;
                       }
                       else{
                         alert('error en la inserción');
@@ -407,8 +478,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.mensaje ='no entra';            
                         alert('Error');
                     });
+            }
         }
-        $scope.borrarOtras = function(idPad){                             
+        $scope.borrarOtras = function(idPad){
+          $scope.cargador1=true;                             
             $http({
                     url:'api/api.php?funcion=borraOtrasEnf&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -417,11 +490,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'calve':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                      busquedas.listaOtrasEnf($rootScope.folio).success(function(data){                      
-                          $scope.listaOtras=data; 
-                         // console.log($scope.listaOtras);                         
-                        });                                     
+                      if(!data.respuesta){  
+                        if(data.length>0){                                                              
+                          $scope.listaOtras=data;                                                                                                 
+                        }else{
+                          $scope.listaOtras=undefined;
+                        }
+                         $scope.cargador1=false;
                       }
                       else{
                         alert('error en la eliminación');
@@ -431,7 +506,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.guardaAlergia= function(){           
+        $scope.guardaAlergia= function(){
+          if($scope.formularios.alergi.$valid){
+            $scope.cargador2=true;            
             $http({
                     url:'api/api.php?funcion=guardaAlergia&fol='+$rootScope.folio,
                     method:'POST', 
@@ -440,15 +517,15 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.alergia
                     }).success( function (data){   
                      // console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaAlergias($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                                
                           $scope.listaAlergias=data; 
-                          //console.log($scope.listaAlergias);                         
-                        });  
+                          $scope.cargador2=false; 
+                          //console.log($scope.listaAlergias);                                               
                         $scope.alergia={
                             alergia:'',
                             obs:''
                         };
+                        $scope.formularios.alergi.$submitted=false;
                       }
                       else{
                         alert('error en la inserción');
@@ -457,8 +534,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.mensaje ='no entra';            
                         alert('Error');
                     });
+          }
         }
-        $scope.borrarAlergia = function(idPad){                             
+        $scope.borrarAlergia = function(idPad){ 
+            $scope.cargador2=true;                             
             $http({
                     url:'api/api.php?funcion=borraAlergia&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -467,11 +546,14 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'calve':'valor'}
                     }).success( function (data){   
                      // console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaAlergias($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){
+                       if(data.length>0){                                                
                           $scope.listaAlergias=data; 
-                         // console.log($scope.listaAlergias);                         
-                        });                                    
+                        }else{
+                          $scope.listaAlergias=undefined;
+                        }
+                          $scope.cargador2=false; 
+                         // console.log($scope.listaAlergias);                                                                                 
                       }
                       else{
                         alert('error en la eliminación');
@@ -483,6 +565,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaPadEspalda= function(){           
           //console.log($scope.padEsp);
+            $scope.cargador3=true; 
             $http({
                     url:'api/api.php?funcion=guardaPadEspalda&fol='+$rootScope.folio,
                     method:'POST', 
@@ -491,11 +574,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.padEsp
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                         busquedas.listaPadEsp($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                                              
                             $scope.listaPadEsp=data; 
-                            //console.log($scope.listaPadEsp);                         
-                          }); 
+                            $scope.cargador3=false; 
+                            //console.log($scope.listaPadEsp);                                                 
                         $scope.padEsp={
                           obs:''
                         }
@@ -508,7 +590,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.eliminaPadEspalda = function(idPad){                             
+        $scope.eliminaPadEspalda = function(idPad){
+            $scope.cargador3=true;                              
             $http({
                     url:'api/api.php?funcion=borraPadEspalda&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -517,11 +600,12 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'calve':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaPadEsp($rootScope.folio).success(function(data){                      
-                          $scope.listaPadEsp=data; 
-                          //console.log($scope.listaPadEsp);                         
-                        });                                  
+                      if(!data.respuesta){ 
+                        if(data.length>0){                                                                           
+                          $scope.listaPadEsp=data;                           
+                        }else{
+                          $scope.listaPadEsp=undefined;
+                        }                             
                       }
                       else{
                         alert('error en la eliminación');
@@ -533,6 +617,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaTratQui= function(){           
           //console.log($scope.quiropractico);
+          $scope.cargador4=true; 
             $http({
                     url:'api/api.php?funcion=guardaTratQuiro&fol='+$rootScope.folio,
                     method:'POST', 
@@ -541,11 +626,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.quiropractico
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaTratQuiro($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                        
                           $scope.listaTratQui=data; 
-                          //console.log($scope.listaPadEsp);                         
-                        });
+                          $scope.cargador4=false;                          
                         $scope.quiropractico={
                           obs:''
                         }
@@ -558,7 +641,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.eliminaTratQui = function(idPad){                             
+        $scope.eliminaTratQui = function(idPad){ 
+            $scope.cargador4=true;                             
             $http({
                     url:'api/api.php?funcion=borraTratQui&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -567,11 +651,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'calve':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaTratQuiro($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){  
+                        if(data.length>0){                                          
                           $scope.listaTratQui=data; 
-                          //console.log($scope.listaPadEsp);                         
-                        });                                  
+                        }else{
+                          $scope.listaTratQui=undefined;
+                        }
+                          $scope.cargador4=false;                                                                               
                       }
                       else{
                         alert('error en la eliminación');
@@ -583,6 +669,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaPlantillas= function(){           
           //console.log($scope.plantillas);
+          $scope.cargador5=true; 
             $http({
                     url:'api/api.php?funcion=guardaPlantillas&fol='+$rootScope.folio,
                     method:'POST', 
@@ -591,11 +678,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.plantillas
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaPlantillas($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                                          
                           $scope.listaPlantillas=data; 
-                          //console.log($scope.listaPlantillas);                        
-                        }); 
+                          $scope.cargador5=false;                          
                         $scope.plantillas={
                           obs:''
                         }
@@ -609,6 +694,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     });
         }
          $scope.eliminaPlantillas = function(idPad){                             
+            $scope.cargador5=true; 
             $http({
                     url:'api/api.php?funcion=borraPlatillas&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -617,12 +703,14 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'clave':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaPlantillas($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){
+                        if(data.length>0){                                           
                           $scope.listaPlantillas=data; 
-                          //console.log($scope.listaPlantillas);                        
-                        });                               
-                      }
+                        }else{
+                          $scope.listaPlantillas=undefined;
+                        }
+                          $scope.cargador5=false;                                
+                        }                      
                       else{
                         alert('error en la eliminación');
                       }
@@ -633,6 +721,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaTratamiento= function(){           
           //console.log($scope.tratamiento);
+          $scope.cargador6=true; 
             $http({
                     url:'api/api.php?funcion=guardaTratamiento&fol='+$rootScope.folio,
                     method:'POST', 
@@ -641,11 +730,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.tratamiento
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaTratamientos($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                                          
                           $scope.listaTratamientos=data; 
-                         // console.log($scope.listaTratamientos);                        
-                        }); 
+                          $scope.cargador6=false; 
                         $scope.tratamiento={
                           obs:''
                         }
@@ -659,6 +746,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     });
         }
         $scope.eliminaTratamiento = function(idPad){                             
+            $scope.cargador6=true; 
             $http({
                     url:'api/api.php?funcion=borraTratamiento&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -667,11 +755,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'clave':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaTratamientos($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){
+                        if(data.length>0){                                          
                           $scope.listaTratamientos=data; 
-                          //console.log($scope.listaTratamientos);                        
-                        });                               
+                        }else{
+                          $scope.listaTratamientos=undefined;
+                        }
+                          $scope.cargador6=false;                                                                            
                       }
                       else{
                         alert('error en la eliminación');
@@ -683,6 +773,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaIntervenciones= function(){           
           //console.log($scope.tratamiento);
+          $scope.cargador7=true; 
             $http({
                     url:'api/api.php?funcion=guardaIntervenciones&fol='+$rootScope.folio,
                     method:'POST', 
@@ -691,11 +782,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.intervenciones
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaIntervenciones($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                        
                           $scope.listaIntervenciones=data; 
-                          console.log($scope.listaIntervenciones);                        
-                        }); 
+                          $scope.cargador7=false;                                                   
                         $scope.intervenciones={
                           obs:''
                         }
@@ -708,7 +797,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.eliminaIntervencion = function(idPad){                             
+        $scope.eliminaIntervencion = function(idPad){ 
+            $scope.cargador7=true;                             
             $http({
                     url:'api/api.php?funcion=borraIntervencion&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -717,11 +807,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'clave':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaIntervenciones($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){  
+                        if(data.length>0){                      
                           $scope.listaIntervenciones=data; 
-                          //console.log($scope.listaIntervenciones);                        
-                        });                              
+                        }else{
+                          $scope.listaIntervenciones=undefined;
+                          }                        
+                          $scope.cargador7=false;                                                       
                       }
                       else{
                         alert('error en la eliminación');
@@ -733,6 +825,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaDeporte= function(){           
           //console.log($scope.tratamiento);
+          $scope.cargador8=true; 
             $http({
                     url:'api/api.php?funcion=guardaDeporte&fol='+$rootScope.folio,
                     method:'POST', 
@@ -741,11 +834,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.deporte
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaDeportes($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                        
                           $scope.listaDeportes=data; 
-                          //console.log($scope.listaDeportes);                      
-                        }); 
+                          $scope.cargador8=false;  
                         $scope.deporte={
                           obs:''
                         }
@@ -758,7 +849,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.eliminaDeporte = function(idPad){                             
+        $scope.eliminaDeporte = function(idPad){  
+            $scope.cargador8=true;                            
             $http({
                     url:'api/api.php?funcion=borraDeporte&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -767,11 +859,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'clave':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaDeportes($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){   
+                        if(data.length>0){                     
                           $scope.listaDeportes=data; 
-                          //console.log($scope.listaDeportes);                      
-                        });                              
+                        }else{
+                          $scope.listaDeportes=undefined;
+                        }
+                          $scope.cargador8=false;                                            
                       }
                       else{
                         alert('error en la eliminación');
@@ -783,6 +877,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaAdiccion= function(){           
           //console.log($scope.adiccion);
+            $scope.cargador9=true; 
             $http({
                     url:'api/api.php?funcion=guardaAdiccion&fol='+$rootScope.folio,
                     method:'POST', 
@@ -791,11 +886,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: $scope.adiccion
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaAdicciones($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){                        
                           $scope.listaAdicciones=data; 
-                          //console.log($scope.listaAdicciones);                      
-                        }); 
+                          $scope.cargador9=false;  
                         $scope.adiccion={
                           obs:''
                         }
@@ -808,7 +901,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.eliminaAdiccion = function(idPad){                             
+        $scope.eliminaAdiccion = function(idPad){ 
+            $scope.cargador9=true;                             
             $http({
                     url:'api/api.php?funcion=borraAdiccion&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -817,11 +911,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'clave':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                         busquedas.listaAdicciones($rootScope.folio).success(function(data){                      
+                      if(!data.respuesta){    
+                        if(data.length>0){                     
                           $scope.listaAdicciones=data; 
-                          //console.log($scope.listaAdicciones);                      
-                        });                             
+                        }else{
+                          $scope.listaAdicciones=undefined;
+                        }
+                          $scope.cargador9=false;                              
                       }
                       else{
                         alert('error en la eliminación');
@@ -835,8 +931,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
           busquedas.catLugar().success(function(data){                      
             $scope.lugar=data;                          
           }); 
-          busquedas.listaAccAnteriores($rootScope.folio).success(function(data){                      
-            $scope.listAccAnt=data;
+          busquedas.listaAccAnteriores($rootScope.folio).success(function(data){
+            if(data.length>0){                      
+              $scope.listAccAnt=data;
+            }
             //console.log($scope.listAccAnt);                          
           }); 
           $cookies.estatus=3;
@@ -844,23 +942,24 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
         $scope.guardaAccAnt= function(){           
           //console.log($scope.acc);
+          if($scope.formularios.ante.$valid){
+          $scope.cargador=true;
             $http({
                     url:'api/api.php?funcion=guardaAccAnt&fol='+$rootScope.folio,
                     method:'POST', 
                     contentType: 'application/json', 
                     dataType: "json", 
                     data: $scope.acc
-                    }).success( function (data){                        
-                      if(data.respuesta=='correcto'){
-                        busquedas.listaAccAnteriores($rootScope.folio).success(function(data){                      
-                          $scope.listAccAnt=data; 
-                          console.log($scope.listAccAnt);                         
-                        }); 
+                    }).success( function (data){                      
+                      if(!data.respuesta){                        
+                          $scope.listAccAnt=data;                            
                         $scope.acc={
                           opc:'Si',
                           lugar:'',
                           obs:''                          
                         }
+                        $scope.formularios.ante.$submitted=false;
+                        $scope.cargador=false;
                       }
                       else{
                         alert('error en la inserción');
@@ -869,8 +968,10 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.mensaje ='no entra';            
                         alert('Error');
                     });
+            }
         }
         $scope.eliminaAccAnt = function(idPad){                             
+            $scope.cargador=true;
             $http({
                     url:'api/api.php?funcion=borraAccAnt&fol='+$rootScope.folio+'&cont='+idPad,
                     method:'POST', 
@@ -879,11 +980,13 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                     data: {'clave':'valor'}
                     }).success( function (data){   
                       //console.log(data);
-                      if(data.respuesta=='correcto'){
-                         busquedas.listaAccAnteriores($rootScope.folio).success(function(data){                      
-                          $scope.listAccAnt=data; 
-                          //console.log($scope.listAccAnt);                         
-                        });                             
+                      if(!data.respuesta){        
+                        if(data.length>0){
+                          $scope.listAccAnt=data;
+                        }else{
+                          $scope.listAccAnt=undefined;
+                        }                                     
+                        $scope.cargador=false                                                                            
                       }
                       else{
                         alert('error en la eliminación');

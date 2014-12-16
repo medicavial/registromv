@@ -35,9 +35,16 @@
 					<div class="alert alert-warning">No se encontraron coincidencias.</div>
 				</div>
 			</div>
-			<div class="row" ng-show="listaFolPar">
+			<div class="row">
 				<div class="col-md-12">
-					<table  align="center" style='font-size:13px;' class="table table-striped table-hover table-condensed table-responsive">
+                    <div ng-show="cargador1" align="center">
+                            <img ng-src="imgs/cargador.gif">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+				<div class="col-md-12" ng-show="listaFolPar">
+					<table  align="center" style='font-size:13px;' class="table table-striped table-hover table-condensed table-responsive" >
 						<tr>          
 							<th width="10%"><b>Folio</b></th>
 							<th width="10%"><b>Aseguradora</b></th>
@@ -62,7 +69,12 @@
 			</div>	
 			<br>
 			<div class="row">
-				<div class="col-md-12">
+			<div class="col-md-12">
+                    <div ng-show="cargador" align="center">
+                            <img ng-src="imgs/cargador.gif">
+                    </div>
+                </div>
+				<div class="col-md-12" ng-show="list">
 					<table  align="center" style='font-size:13px;' class="table table-striped table-hover table-condensed table-responsive">
 						<tr>          
 							<th width="10%"><b>Folio</b></th>

@@ -1,13 +1,14 @@
 app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,WizardHandler,busquedas,$http) {
-	$rootScope.folio=$cookies.folio;	
+	debugger;
+  $rootScope.folio=$cookies.folio;	
   $rootScope.usrLogin= $cookies.usrLogin;
   $rootScope.uniClave=$cookies.uniClave;
+  $rootScope.cargador=false;
    $scope.mensaje=false;
    $scope.mensajeLesion=false;
    $scope.irVitales=false;
    $scope.verVitales=false;
-   $scope.siEmb='No';
-  $scope.cargador=false;
+   $scope.siEmb='No';  
   $scope.regresar=false;
   $scope.paso='';
   $scope.sexo='';
@@ -23,50 +24,50 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
         conocimiento:'',
         cefalea:'',
         mecLesion:''
-    }; 
-    $scope.arregloOpc={  
-               Nod:'1',
-               Nodtx:'1',
-               Cintu:'',
-               Cintutx:'',
-               Bolsa:'',
-               Bolsatx:'',
-               Ropa:'',
-               Ropatx:'',
-               Casco:'',
-               Cascotx:'',
-               Rodi:'',
-               Roditx:'',
-               Code:'',
-               Codetx:'',
-               Costi:'',
-               Costitx:'',
-               Nodi:'1',
-               Noditx:'',
-               Volc:'',
-               Volctx:'',
-               Alca:'',
-               Alcatx:'',
-               Late:'',
-               Latetx:'',
-               Fron:'',
-               Frontx:'',
-               Derr:'',
-               Derrtx:'',
-               Simp:'',
-               Simptx:'',
-               Imap:'',
-               Imaptx:'',
-               Caid:'',
-               Caidtx:'',
-               Lesdep:'',
-               Lesdeptx:'',
-               Lestra:'',
-               Lestratx:'',
-               ManSub:'',
-               ManSubtx:'',
-               Otr:'',
-               Otrtx:''
+    }
+    $rootScope.arregloOpc={  
+               Nod:'SI',
+               Nodtx:'SI',
+               Cintu:'NO',
+               Cintutx:'NO',
+               Bolsa:'NO',
+               Bolsatx:'NO',
+               Ropa:'NO',
+               Ropatx:'NO',
+               Casco:'NO',
+               Cascotx:'NO',
+               Rodi:'NO',
+               Roditx:'NO',
+               Code:'NO',
+               Codetx:'NO',
+               Costi:'NO',
+               Costitx:'NO',
+               Nodi:'NO',
+               Noditx:'NO',
+               Volc:'NO',
+               Volctx:'NO',
+               Alca:'NO',
+               Alcatx:'NO',
+               Late:'NO',
+               Latetx:'NO',
+               Fron:'NO',
+               Frontx:'NO',
+               Derr:'NO',
+               Derrtx:'NO',
+               Simp:'NO',
+               Simptx:'NO',
+               Imap:'NO',
+               Imaptx:'NO',
+               Caid:'NO',
+               Caidtx:'NO',
+               Lesdep:'NO',
+               Lesdeptx:'NO',
+               Lestra:'NO',
+               Lestratx:'NO',
+               ManSub:'NO',
+               ManSubtx:'NO',
+               Otr:'NO',
+               Otrtx:'NO'
               }   
         $scope.embarazo={
             controlGine:'No',
@@ -120,8 +121,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
           clave:'',
           
         }
-        busquedas.validaSigVitales($rootScope.folio).success(function(data){                                
-          console.log(data); 
+        busquedas.validaSigVitales($rootScope.folio).success(function(data){                                          
           if(data.noRowVit==1){
             $scope.regresar=true;
             WizardHandler.wizard().goTo(1); 
@@ -129,10 +129,9 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
           if(data.noRowVit>1){               
             $scope.verVitales=true;
              busquedas.listaVitales($rootScope.folio).success(function(data){
-
               $scope.vital.clave=data[0].Vit_clave;
-            $scope.listVitales=data;                
-            console.log(data);
+            $scope.listVitales=data;                          
+            $rootScope.cargador=false;
           });  
           }
           if(data.noRowVit==0||data.noRowVit==null){
@@ -140,22 +139,17 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
           }                        
         });
         busquedas.listaPacLlega($rootScope.folio).success(function(data){                      
-          $scope.listPacLLega=data; 
-          console.log($scope.listPacLLega);                         
+          $scope.listPacLLega=data;                   
         });
         busquedas.listaTipVehi($rootScope.folio).success(function(data){                      
-          $scope.listTipVehi=data; 
-          console.log($scope.listTipVehi);                         
+          $scope.listTipVehi=data;                             
         });
         $scope.selectVital = function() {            
-            $rootScope.vitSelect=$scope.vital.clave;
-            console.log($rootScope.vitSelect);
+            $rootScope.vitSelect=$scope.vital.clave;          
             $scope.regresar=true;
             WizardHandler.wizard().next();  
-        }       
-       
-        $scope.regresaWizard = function() {
-            console.log($scope.paso);
+        }              
+        $scope.regresaWizard = function() {           
             WizardHandler.wizard().previous();
             if($scope.paso=='Lesion'){
               if($scope.sexo=='M'){
@@ -183,18 +177,18 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             method:'POST', 
             contentType: 'application/json', 
             dataType: "json", 
-            data: {'clave':'valor'}
-            }).success( function (data){                        
+            data: {1:'valor'}
+            }).success( function (data){
+              console.log(data);                        
               $scope.posicion=data;
-              $scope.arregloOpc=verOpciones($scope.accidente.vehiculo);
-              console.log($scope.arregloOpc);
+              $rootScope.arregloOpc=verOpciones($scope.accidente.vehiculo);
+              console.log($rootScope.arregloOpc);           
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
             });    
         }
-         $scope.guardaDatAcc = function(){
-          console.log($scope.accidente);
+         $scope.guardaDatAcc = function(){         
           $http({
             url:'api/api.php?funcion=guardaDatAcc&fol='+$rootScope.folio+'&usr='+$rootScope.usrLogin,
             method:'POST', 
@@ -207,30 +201,25 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                 if(data.sexo=='F'){                	
                 	 WizardHandler.wizard().next();	
                    busquedas.listaEmbarazo($rootScope.folio).success(function(data){                      
-                      $scope.listEmbarazo=data; 
-                      console.log($scope.listEmbarazo);                         
+                      $scope.listEmbarazo=data;                                           
                     }); 
                 }
                 else{
                    busquedas.listaLesion().success(function(data){                      
-                      $scope.listLesion=data; 
-                      console.log($scope.listLesion);                         
+                      $scope.listLesion=data;                       
                     }); 
                 	 WizardHandler.wizard().goTo(3);
                 }
               }
-              else{
-                console.log(data);
+              else{               
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }             
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
             }); 
         }
-        $scope.guardaEmbarazo = function(){
-          console.log($scope.embarazo);
+        $scope.guardaEmbarazo = function(){          
           $http({
             url:'api/api.php?funcion=guardaEmbarazo&fol='+$rootScope.folio+'&usr='+$rootScope.usrLogin,
             method:'POST', 
@@ -240,18 +229,15 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){
                 busquedas.listaEmbarazo($rootScope.folio).success(function(data){                      
-                  $scope.listEmbarazo=data; 
-                  console.log($scope.listEmbarazo);                         
+                  $scope.listEmbarazo=data;                                 
                 }); 
               }
               if(data.respuesta=='lleno'){
                 $scope.mensaje=true;
               }
-              else{
-                console.log(data);
+              else{               
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }             
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -260,12 +246,10 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
       
         $scope.lesionSig = function(){
           busquedas.listaLesion().success(function(data){                      
-            $scope.listLesion=data; 
-            console.log($scope.listLesion);                         
+            $scope.listLesion=data;                                 
           }); 
            busquedas.listaLesiones($rootScope.folio).success(function(data){                      
-            $scope.listLesiones=data; 
-            console.log($scope.listLesiones);                         
+            $scope.listLesiones=data;                                   
           }); 
 
           WizardHandler.wizard().next(); 
@@ -296,24 +280,20 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
               if(data.respuesta=='correcto'){
                 $scope.lesion.lesion='';
                 busquedas.listaLesiones($rootScope.folio).success(function(data){                      
-                $scope.listLesiones=data; 
-                console.log($scope.listLesiones);
+                $scope.listLesiones=data;               
                 $scope.cargador=false;                         
                 });  
               }              
-              else{
-                console.log(data);
+              else{               
                 alert('error en la inserción');
                 $scope.cargador.false;   
-              }
-              console.log(data);
+              }            
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
                 $scope.cargador.false;   
             });           
-          }
-          console.log( $scope.lesion);
+          }         
         }
 
          $scope.eliminarLes = function(claveLesion){ 
@@ -328,29 +308,24 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
               if(data.respuesta=='correcto'){
                 $scope.lesion.lesion='';
                 busquedas.listaLesiones($rootScope.folio).success(function(data){                      
-                $scope.listLesiones=data; 
-                console.log($scope.listLesiones);
+                $scope.listLesiones=data;                 
                 $scope.cargador.false;                         
                 });  
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
                 $scope.cargador.false;   
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
                 $scope.cargador.false;   
-            });                     
-          console.log( $scope.lesion);
+            });                               
         }
         $scope.siguienteEdoGral= function(){
           WizardHandler.wizard().next();             
         }
-        $scope.guardaEdoGral= function(){
-          console.log($scope.edoGral);
+        $scope.guardaEdoGral= function(){          
           $http({
             url:'api/api.php?funcion=guardaEdoGral&fol='+$rootScope.folio,
             method:'POST', 
@@ -360,27 +335,22 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){ 
                 busquedas.listaRX().success(function(data){                      
-                  $scope.listRX=data; 
-                console.log($scope.listRX);                         
+                  $scope.listRX=data;                                         
                 });
                 busquedas.listaEstSol($rootScope.folio).success(function(data){                      
-                  $scope.listEstSoli=data; 
-                console.log($scope.listEstSoli);                         
+                  $scope.listEstSoli=data;                 
                 });                                  
                 WizardHandler.wizard().next();                                        
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
             });                        
         }
-        $scope.guardaEstudios= function(){
-          console.log($scope.estudios);
+        $scope.guardaEstudios= function(){          
           $http({
             url:'api/api.php?funcion=guardaEstudios&fol='+$rootScope.folio+'&usr='+$rootScope.usrLogin+'&uniClave='+$rootScope.uniClave,
             method:'POST', 
@@ -395,15 +365,12 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                   interp:''
                 }
                 busquedas.listaEstSol($rootScope.folio).success(function(data){                      
-                  $scope.listEstSoli=data; 
-                console.log($scope.listEstSoli);                         
+                  $scope.listEstSoli=data;                 
                 });                                                                              
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -419,34 +386,27 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){               
                  busquedas.listaEstSol($rootScope.folio).success(function(data){                      
-                  $scope.listEstSoli=data; 
-                console.log($scope.listEstSoli);                         
+                  $scope.listEstSoli=data;                 
                 });  
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
-            });                     
-          console.log( $scope.lesion);
+            });                               
         }
         $scope.proMedSig = function(){
             busquedas.listaProced().success(function(data){                      
-              $scope.listaProced=data; 
-            console.log($scope.listaProced);                         
+              $scope.listaProced=data;             
             });  
             busquedas.listaProcedimientos($rootScope.folio).success(function(data){                      
-              $scope.listaProcedimientos=data; 
-            console.log($scope.listaProced);
+              $scope.listaProcedimientos=data;             
             });       
             WizardHandler.wizard().next();  
         }
-        $scope.guardaProcMedicos= function(){
-          console.log($scope.procedimientos);
+        $scope.guardaProcMedicos= function(){          
           $http({
             url:'api/api.php?funcion=guardaProcedimientos&fol='+$rootScope.folio,
             method:'POST', 
@@ -460,15 +420,12 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                   obs:''
                 }
                 busquedas.listaProcedimientos($rootScope.folio).success(function(data){                      
-                  $scope.listaProcedimientos=data; 
-                  console.log($scope.listaProced);
+                  $scope.listaProcedimientos=data;                   
                 });                                                        
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -484,36 +441,29 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){               
                 busquedas.listaProcedimientos($rootScope.folio).success(function(data){                      
-                  $scope.listaProcedimientos=data; 
-                  console.log($scope.listaProced);
+                  $scope.listaProcedimientos=data;                   
                 }); 
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
-            });                     
-          console.log( $scope.lesion);
+            });                               
         }
         $scope.diagnosticoSig = function(){
             busquedas.listaDiagnosticos().success(function(data){                      
-              $scope.listaDiagnostico=data; 
-            console.log($scope.listaDiagnostico);                         
+              $scope.listaDiagnostico=data;             
             });                  
             WizardHandler.wizard().next();  
         }
         $scope.despliegaDiagnosticos = function(diagnostic){
             busquedas.despDiagnosticos(diagnostic).success(function(data){                      
-              $scope.listaDiagnostics=data; 
-            console.log($scope.listaDiagnostics);                         
+              $scope.listaDiagnostics=data;             
             });                              
         }
-        $scope.agregaDiagnostico = function(diag){
-            console.log(diag);
+        $scope.agregaDiagnostico = function(diag){            
             if($scope.diagnostico.diagnostico==''){
               $scope.diagnostico.diagnostico=diag;
             }else{
@@ -521,8 +471,7 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }
             $scope.diagnostico.diagnostico = $scope.diagnostico.diagnostico 
         }
-         $scope.guardaDiagnostico = function(diag){
-            console.log(diag);
+         $scope.guardaDiagnostico = function(diag){            
             $http({
             url:'api/api.php?funcion=guardaDiagnostico&fol='+$rootScope.folio,
             method:'POST', 
@@ -532,58 +481,46 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){                
                   busquedas.listaMedicamentos().success(function(data){                      
-                    $scope.listaMedicamento=data; 
-                    console.log($scope.listaMedicamento);                         
+                    $scope.listaMedicamento=data;                     
                   });
                   busquedas.listaOrtesis().success(function(data){                      
-                    $scope.listaOrt=data; 
-                    console.log($scope.listaOrt);                         
+                    $scope.listaOrt=data;                     
                   });
                   busquedas.listaIndicaciones().success(function(data){                      
-                    $scope.listaIndicacion=data; 
-                    console.log($scope.listaIndicacion);                         
+                    $scope.listaIndicacion=data;                     
                   });  
                   busquedas.listaMedicamentosAgreg($rootScope.folio).success(function(data){                      
-                    $scope.listaMedicamentosAgreg=data; 
-                    console.log($scope.listaMedicamentosAgreg);
+                    $scope.listaMedicamentosAgreg=data;                     
                   }); 
                   busquedas.listaOrtesisAgreg($rootScope.folio).success(function(data){                      
-                    $scope.listaOrtesisAgreg=data; 
-                    console.log($scope.listaOrtesisAgreg);
+                    $scope.listaOrtesisAgreg=data;                     
                   });  
                   busquedas.listaIndicAgreg($rootScope.folio).success(function(data){                      
-                    $scope.listaIndicAgreg=data; 
-                    console.log($scope.listaIndicAgreg);
+                    $scope.listaIndicAgreg=data;                     
                   });      
                   WizardHandler.wizard().next();                                                               
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
             });      
         }
-        $scope.verIndicacion = function(){
-            console.log($scope.medica.medica);
+        $scope.verIndicacion = function(){            
             busquedas.verPosologia($scope.medica.medica).success(function(data){                      
-                    $scope.medica.posologia=data.Sum_indicacion; 
-                    console.log(data);                         
+                    $scope.medica.posologia=data.Sum_indicacion;                                         
                   }); 
         }  
-        $scope.verIndicacionCam = function(){
-            console.log($scope.indicacion.indicacion);
+        $scope.verIndicacionCam = function(){            
             if($scope.indicacion.obs=='' || $scope.indicacion.obs==null){
               $scope.indicacion.obs=$scope.indicacion.indicacion;
             }else{
               $scope.indicacion.obs=$scope.indicacion.obs+', '+$scope.indicacion.indicacion;
             }
         }  
-        $scope.guardaMedicamento= function(){
-          console.log($scope.medicamentos);
+        $scope.guardaMedicamento= function(){          
           $http({
             url:'api/api.php?funcion=guardaMedicamentoSub&fol='+$rootScope.folio,
             method:'POST', 
@@ -598,15 +535,12 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                     cantidad:1
                   }            
                 busquedas.listaMedicamentosAgregSub($rootScope.folio).success(function(data){                      
-                  $scope.listaMedicamentosAgregSub=data; 
-                  console.log($scope.listaMedicamentosAgregSub);
+                  $scope.listaMedicamentosAgregSub=data;                   
                 });                                                        
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -622,23 +556,18 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){               
                  busquedas.listaMedicamentosAgreg($rootScope.folio).success(function(data){                      
-                  $scope.listaMedicamentosAgreg=data; 
-                  console.log($scope.listaMedicamentosAgreg);
+                  $scope.listaMedicamentosAgreg=data;                   
                 }); 
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
-            });                     
-          console.log( $scope.lesion);
+            });                               
         }        
-        $scope.guardaOrtesis= function(){
-          console.log($scope.ortesis);
+        $scope.guardaOrtesis= function(){          
           $http({
             url:'api/api.php?funcion=guardaOrtesis&fol='+$rootScope.folio,
             method:'POST', 
@@ -654,15 +583,12 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                   indicaciones:''
                 }             
                 busquedas.listaOrtesisAgreg($rootScope.folio).success(function(data){                      
-                  $scope.listaOrtesisAgreg=data; 
-                  console.log($scope.listaOrtesisAgreg);
+                  $scope.listaOrtesisAgreg=data;                   
                 });                                                        
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -678,23 +604,18 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){               
                busquedas.listaOrtesisAgreg($rootScope.folio).success(function(data){                      
-                  $scope.listaOrtesisAgreg=data; 
-                  console.log($scope.listaOrtesisAgreg);
+                  $scope.listaOrtesisAgreg=data;                   
                 });    
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
-            });                     
-          console.log( $scope.lesion);
+            });                               
         }           
-        $scope.guardaIndicaciones= function(){
-          console.log($scope.indicacion);
+        $scope.guardaIndicaciones= function(){          
           $http({
             url:'api/api.php?funcion=guardaIndicacion&fol='+$rootScope.folio,
             method:'POST', 
@@ -708,15 +629,12 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
                   obs:''
                 }           
                 busquedas.listaIndicAgreg($rootScope.folio).success(function(data){                      
-                  $scope.listaIndicAgreg=data; 
-                  console.log($scope.listaIndicAgreg);
+                  $scope.listaIndicAgreg=data;                   
                 });                                                        
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -732,26 +650,21 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
             }).success( function (data){                        
               if(data.respuesta=='correcto'){               
                 busquedas.listaIndicAgreg($rootScope.folio).success(function(data){                      
-                  $scope.listaIndicAgreg=data; 
-                  console.log($scope.listaIndicAgreg);
+                  $scope.listaIndicAgreg=data;                   
                 });
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
-            });                     
-          console.log( $scope.lesion);
+            });                               
         }           
         $scope.pronosSiguiente = function(){                            
             WizardHandler.wizard().next();  
         }        
-        $scope.guardaPronostico= function(){
-          console.log($scope.indicacion);
+        $scope.guardaPronostico= function(){          
           $http({
             url:'api/api.php?funcion=guardaPronostico&fol='+$rootScope.folio,
             method:'POST', 
@@ -762,11 +675,9 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
               if(data.respuesta=='correcto'){ 
                      WizardHandler.wizard().next();                                                   
               }              
-              else{
-                console.log(data);
+              else{                
                 alert('error en la inserción');
-              }
-              console.log(data);
+              }              
             }).error( function (xhr,status,data){
                 $scope.mensaje ='no entra';            
                 alert('Error');
@@ -814,8 +725,8 @@ app.controller('notaMedicaCtrl', function($scope,$rootScope,$location,$cookies,W
 function verOpciones(opcion){
   switch(opcion){
     case '0':
-            validos={Nod:'1',
-               Nodtx:'1',
+            validos={Nod:'SI',
+               Nodtx:'SI',
                Cintu:'',
                Cintutx:'',
                Bolsa:'',
@@ -830,8 +741,8 @@ function verOpciones(opcion){
                Codetx:'',
                Costi:'',
                Costitx:'',
-               Nodi:'1',
-               Noditx:'1',
+               Nodi:'SI',
+               Noditx:'SI',
                Volc:'',
                Volctx:'',
                Alca:'',
@@ -861,10 +772,10 @@ function verOpciones(opcion){
      case '1':
             validos={Nod:'',
                Nodtx:'',
-               Cintu:'1',
-               Cintutx:'1',
-               Bolsa:'1',
-               Bolsatx:'1',
+               Cintu:'SI',
+               Cintutx:'SI',
+               Bolsa:'SI',
+               Bolsatx:'SI',
                Ropa:'',
                Ropatx:'',
                Casco:'',
@@ -877,14 +788,14 @@ function verOpciones(opcion){
                Costitx:'',
                Nodi:'',
                Noditx:'',
-               Volc:'1',
-               Volctx:'1',
-               Alca:'1',
-               Alcatx:'1',
-               Late:'1',
-               Latetx:'1',
-               Fron:'1',
-               Frontx:'1',
+               Volc:'SI',
+               Volctx:'SI',
+               Alca:'SI',
+               Alcatx:'SI',
+               Late:'SI',
+               Latetx:'SI',
+               Fron:'SI',
+               Frontx:'SI',
                Derr:'',
                Derrtx:'',
                Simp:'',
@@ -897,10 +808,10 @@ function verOpciones(opcion){
                Lesdeptx:'',
                Lestra:'',
                Lestratx:'',
-               ManSub:'1',
-               ManSubtx:'1',
-               Otr:'1',
-               Otrtx:'1'
+               ManSub:'SI',
+               ManSubtx:'SI',
+               Otr:'SI',
+               Otrtx:'SI'
               }
     break; 
      case '2':
@@ -910,10 +821,10 @@ function verOpciones(opcion){
                Cintutx:'',
                Bolsa:'',
                Bolsatx:'',
-               Ropa:'1',
-               Ropatx:'1',
-               Casco:'1',
-               Cascotx:'1',
+               Ropa:'SI',
+               Ropatx:'SI',
+               Casco:'SI',
+               Cascotx:'SI',
                Rodi:'',
                Roditx:'',
                Code:'',
@@ -924,14 +835,14 @@ function verOpciones(opcion){
                Noditx:'',
                Volc:'',
                Volctx:'',
-               Alca:'1',
-               Alcatx:'1',
-               Late:'1',
-               Latetx:'1',
-               Fron:'1',
-               Frontx:'1',
-               Derr:'1',
-               Derrtx:'1',
+               Alca:'SI',
+               Alcatx:'SI',
+               Late:'SI',
+               Latetx:'SI',
+               Fron:'SI',
+               Frontx:'SI',
+               Derr:'SI',
+               Derrtx:'SI',
                Simp:'',
                Simptx:'',
                Imap:'',
@@ -949,8 +860,8 @@ function verOpciones(opcion){
               }
     break; 
      case '3':
-            validos={Nod:'1',
-               Nodtx:'1',
+            validos={Nod:'SI',
+               Nodtx:'SI',
                Cintu:'',
                Cintutx:'',
                Bolsa:'',
@@ -981,12 +892,12 @@ function verOpciones(opcion){
                Simptx:'',
                Imap:'',
                Imaptx:'',
-               Caid:'1',
-               Caidtx:'1',
-               Lesdep:'1',
-               Lesdeptx:'1',
-               Lestra:'1',
-               Lestratx:'1',
+               Caid:'SI',
+               Caidtx:'SI',
+               Lesdep:'SI',
+               Lesdeptx:'SI',
+               Lestra:'SI',
+               Lestratx:'SI',
                ManSub:'',
                ManSubtx:'',
                Otr:'',
@@ -1002,24 +913,24 @@ function verOpciones(opcion){
                Bolsatx:'',
                Ropa:'',
                Ropatx:'',
-               Casco:'1',
-               Cascotx:'1',
-               Rodi:'1',
-               Roditx:'1',
-               Code:'1',
-               Codetx:'1',
-               Costi:'1',
-               Costitx:'1',
+               Casco:'SI',
+               Cascotx:'SI',
+               Rodi:'SI',
+               Roditx:'SI',
+               Code:'SI',
+               Codetx:'SI',
+               Costi:'SI',
+               Costitx:'SI',
                Nodi:'',
                Noditx:'',
                Volc:'',
                Volctx:'',
-               Alca:'1',
-               Alcatx:'1',
-               Late:'1',
-               Latetx:'1',
-               Fron:'1',
-               Frontx:'1',
+               Alca:'SI',
+               Alcatx:'SI',
+               Late:'SI',
+               Latetx:'SI',
+               Fron:'SI',
+               Frontx:'SI',
                Derr:'',
                Derrtx:'',
                Simp:'',
@@ -1039,8 +950,8 @@ function verOpciones(opcion){
               }
     break; 
      case '5':
-            validos={Nod:'1',
-               Nodtx:'1',
+            validos={Nod:'SI',
+               Nodtx:'SI',
                Cintu:'',
                Cintutx:'',
                Bolsa:'',
@@ -1067,10 +978,10 @@ function verOpciones(opcion){
                Frontx:'',
                Derr:'',
                Derrtx:'',
-               Simp:'1',
-               Simptx:'1',
-               Imap:'1',
-               Imaptx:'1',
+               Simp:'SI',
+               Simptx:'SI',
+               Imap:'SI',
+               Imaptx:'SI',
                Caid:'',
                Caidtx:'',
                Lesdep:'',
@@ -1084,8 +995,8 @@ function verOpciones(opcion){
               }
     break; 
      case '6':
-            validos={Nod:'1',
-               Nodtx:'1',
+            validos={Nod:'SI',
+               Nodtx:'SI',
                Cintu:'',
                Cintutx:'',
                Bolsa:'',
@@ -1102,14 +1013,14 @@ function verOpciones(opcion){
                Costitx:'',
                Nodi:'',
                Noditx:'',
-               Volc:'1',
-               Volctx:'1',
-               Alca:'1',
-               Alcatx:'1',
-               Late:'1',
-               Latetx:'1',
-               Fron:'1',
-               Frontx:'1',
+               Volc:'SI',
+               Volctx:'SI',
+               Alca:'SI',
+               Alcatx:'SI',
+               Late:'SI',
+               Latetx:'SI',
+               Fron:'SI',
+               Frontx:'SI',
                Derr:'',
                Derrtx:'',
                Simp:'',
@@ -1122,15 +1033,15 @@ function verOpciones(opcion){
                Lesdeptx:'',
                Lestra:'',
                Lestratx:'',
-               ManSub:'1',
-               ManSubtx:'1',
-               Otr:'1',
-               Otrtx:'1'
+               ManSub:'SI',
+               ManSubtx:'SI',
+               Otr:'SI',
+               Otrtx:'SI'
               }
     break; 
      case '7':
-            validos={Nod:'1',
-               Nodtx:'1',
+            validos={Nod:'SI',
+               Nodtx:'SI',
                Cintu:'',
                Cintutx:'',
                Bolsa:'',
@@ -1145,8 +1056,8 @@ function verOpciones(opcion){
                Codetx:'',
                Costi:'',
                Costitx:'',
-               Nodi:'1',
-               Noditx:'1',
+               Nodi:'SI',
+               Noditx:'SI',
                Volc:'',
                Volctx:'',
                Alca:'',
@@ -1174,8 +1085,8 @@ function verOpciones(opcion){
               }
     break; 
      default:
-            validos={Nod:'1',
-               Nodtx:'1',
+            validos={Nod:'SI',
+               Nodtx:'SI',
                Cintu:'',
                Cintutx:'',
                Bolsa:'',
@@ -1190,8 +1101,8 @@ function verOpciones(opcion){
                Codetx:'',
                Costi:'',
                Costitx:'',
-               Nodi:'1',
-               Noditx:'1',
+               Nodi:'SI',
+               Noditx:'SI',
                Volc:'',
                Volctx:'',
                Alca:'',

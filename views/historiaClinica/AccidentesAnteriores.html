@@ -1,4 +1,4 @@
-<form ng-submit="guardaAccAnt()">
+
   <div class="container" style="width: 100%"> 
     <div class="panel panel-primary">
       <div class="panel-heading">
@@ -6,7 +6,7 @@
       </div>    
       <div class="panel-body">
         <div class="row">
-          <form guardaAccAnt()>  
+          <form name="formularios.ante" ng-submit="guardaAccAnt()" novalidate>  
             <div class="col-md-3" >
               <div class="input-group">
                  <span class="input-group-addon" style="height:35px">Accidente: </span>
@@ -19,10 +19,13 @@
               <div class="input-group">
                 <span class="input-group-addon">Lugar: </span>
                 <!--<select name="Lugar" id="Lugar" class="requerido" style="width: 150px;">-->
-                <select name="Lugar" id="Lugar" ng-model="acc.lugar"  class= "form-control" ng-options="lug.Lug_clave as lug.Lug_nombre for lug in lugar" required="">
+                <select name="lugar" id="lugar" ng-model="acc.lugar"  class= "form-control" required ng-options="lug.Lug_clave as lug.Lug_nombre for lug in lugar" >
                   <option value=""> * Seleccione </option>               
                 </select>
               </div>
+              <div class="validacion" role="alert" ng-if="interacted5(formularios.ante.lugar)" ng-messages="formularios.ante.lugar.$error">
+                <div ng-message="required">campo requerido</div>
+            </div>
             </div>          
             <div class="col-md-5" >
               <div class="input-group">
@@ -37,8 +40,13 @@
             </div>
           </form> 
         </div>
-        <br/>
-        <br/>
+         <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>         
         <!-- *******************-->
         <div class="row">
           <div class="col-md-12">
@@ -60,7 +68,7 @@
             </div>              
           </div>
         </div>
-        
+       
         <div class="row">
           <div class="col-md-2">
           <input type="Button" class="btn btn-primary btn-lg"  value="Documentos" ng-click="irDocumentos()" />
@@ -72,7 +80,6 @@
       </div>
     </div>
   </div>
-</form>
 <!--   **************************-->
 
 

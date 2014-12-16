@@ -6,7 +6,7 @@
 
          <div class="panel-body">
             <fieldset ng-disabled="primeraEtapa">
-            <form ng-submit="guardaEtapa1()">
+            <form name="etapa1" ng-submit="guardaEtapa1()" novalidate>
             <div class="row">
                
                 <div class="col-md-4">
@@ -42,21 +42,29 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Nombre(s): </label>
-                        <input type="text" class="form-control" id="nom" name="nom"  required="" ng-model="datos.nombre" mayusculas>
+                        <input type="text" class="form-control" id="nom" name="nombre" ng-model="datos.nombre" required mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.nombre)" ng-messages="etapa1.nombre.$error">
+                          <div ng-message="required">Se requiere el valor del nombre</div>
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>A.Paterno:</label>
-                        <input type="text" ng-model="datos.pat" class="form-control" id="pat" name="pat" required=""  mayusculas>
-
+                        <input type="text" ng-model="datos.pat" class="form-control" id="pat" name="pat" required  mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.pat)" ng-messages="etapa1.pat.$error">
+                          <div ng-message="required">Se requiere el valor del apellido paterno</div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>A. Materno:</label>
-                        <input type="text" ng-model="datos.mat" class="form-control" id="mat" name="mat" required="" mayusculas>
+                        <input type="text" ng-model="datos.mat" class="form-control" id="mat" name="mat" required mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.mat)" ng-messages="etapa1.mat.$error">
+                          <div ng-message="required">Se requiere el valor del apellido materno</div>
+                        </div>
                     </div>
                 </div>  
             </div><br> 
@@ -65,7 +73,10 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Fecha de nacimiento:</label>                        
-                        <input type="text" ng-disabled="edicion"  data-date-viewmode="years" data-date-format="DD-MM-YYYY"  class= "form-control" name="fecnac" id="fecnac" ng-model="datos.fecnac" data-datetimepicker-config="{ dropdownSelector: '.dropdown-toggle' }" required="required">
+                        <input type="text" ng-disabled="edicion"  data-date-viewmode="years" data-date-format="DD-MM-YYYY"  class= "form-control" name="fecnac" id="fecnac" ng-model="datos.fecnac" data-datetimepicker-confg="{ dropdownSelector: '.dropdown-toggle' }" required mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.fecnac)" ng-messages="etapa1.fecnac.$error">
+                          <div ng-message="required">Se requiere el valor de la fecha de nacimiento</div>
+                        </div>
                     </div>                    
                 </div>
                 <div class="col-md-4">                
@@ -76,11 +87,18 @@
                             <option value="2">Oficina</option>
                             <option value="3">M&oacute;vil</option>
                             <option value="4">Otro</option>                            
-                        </select>                                                                                                                               
+                        </select> 
+                        <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.tel)" ng-messages="etapa1.tel.$error">
+                          <div ng-message="required">Se requiere el valor del tipo de teléfono</div>
+                        </div>
+
                 </div> 
                 <div class="col-md-4">  
                     <label>No. Teléfono:</label>                    
-                        <input  type="text" style="width:100%" ng-model="datos.numeroTel"  class="form-control" id="numeroTel" name="numeroTel" required="" >  
+                        <input  type="text" style="width:100%" ng-model="datos.numeroTel"  class="form-control" id="numeroTel" name="numeroTel" required="" > 
+                        <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.numeroTel)" ng-messages="etapa1.numeroTel.$error">
+                          <div ng-message="required">Se requiere el valor del número de teléfono</div>
+                        </div> 
                     </div> 
             </div>
             <br>
@@ -89,7 +107,11 @@
                     <div class="form-group">
                                                
                          <label>E-Mail: </label>                        
-                            <input type="email" ng-disabled="checked" ng-model="datos.correo" class="form-control" required>                       
+                            <input type="email"  name="correo" ng-model="datos.correo" class="form-control" ng-required="!checked">  
+                            <div class="alert alert-danger" role="alert" ng-if="interacted(etapa1.correo)" ng-messages="etapa1.correo.$error">
+                          <div ng-message="required">Se requiere el valor del correo</div>
+                          <div ng-message="email">el formato no es el indicado</div>
+                        </div>                             
                         <label>                           
                                 <input class="checkbox-inline" id="checkSinCorreo" ng-model="checked" type="checkbox" data-toggle="confirmation" data-placement="right" data-btn-ok-label="Si"  title="Si el usuario no proporciona el correo perderá los cupones de descuento, ¿Desea continuar?" data-popout="true"> Sin correo                        
                         </label>
@@ -110,6 +132,11 @@
             </div>
             </div>
             <div class="row">
+                <div class="col-md-12">
+                    <div ng-show="cargador" align="center">
+                            <img ng-src="imgs/cargador.gif">
+                    </div>
+                </div>
                 <div class="col-md-12">
                 <div ng-show="mensaje">
                         {{mensaje}}
@@ -154,7 +181,7 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" name="obsCort" id="obsCort" onpaste="return false" style="resize:none;" required=""  mayusculas></textarea>
+                                <textarea class="form-control" name="obsCort" id="obsCort" onpaste="return false" style="resize:none;" required=""  ></textarea>
                             </div>
                         </div>
                     </div>
@@ -174,7 +201,7 @@
                     </div> 
                 </form>               
             </div>
-            <div id="validacionPaseMedico" ng-show="validaPase" class="mianimacion">             
+            <div id="validacionPaseMedico" ng-show="validaPase" class="mianimacion" style="width:100%">             
 	            <div class="row">
 	                <div class="col-md-12">
 	                    <div class="checkbox">
@@ -190,6 +217,7 @@
 	                        <input id="check2" ng-model="check2" type="checkbox">
 	                        El pase médico se encuentra vigente  
                             <button style="background:transparent; border:0px" tooltip-placement="right" tooltip="Debe comunicarse al 01-800-9991-222"><img src="imgs/signo.jpg" width="25" height="25" class="img-circle" /></button>
+                            </label>
 	                    </div>
 	               		
 	                    <div class="checkbox">
@@ -197,6 +225,7 @@
 	                        <input id="check3" ng-model="check3" type="checkbox">
 	                       Se corroboró la identidad del lesionado
                            <button style="background:transparent; border:0px" tooltip-placement="right" tooltip="Debe comunicarse al 01-800-9991-222"><img src="imgs/signo.jpg" width="25" height="25" class="img-circle" /></button>
+                           </label>
 	                    </div>
 	                </div>
 	            </div>               
@@ -218,13 +247,13 @@
 	                </div>
 	            </div>                
             </div> 
-             <form ng-submit="guardaEtapa2()">           
-            <div id="datosSiniestro" name="datosSiniestro" ng-show="(check1 && check2 && check3)|| segundaEtapa" class="mianimacion">
-
+                     
+            <div id="datosSiniestro" name="datosSiniestro" ng-show="(check1 && check2 && check3)|| segundaEtapa" class="mianimacion" style="width:100%">
+             <form ng-submit="guardaEtapa2()" name="etapa2" novalidate>  
             <div class="row">
                 <div class="form-group">
 
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <h3><label>Datos del Siniestro</label></h3>
                     </div>
                 </div>
@@ -232,28 +261,34 @@
             
                 <div class="row">
                      
-                     <div class="col-md-4">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Cobertura Afectada: </label>
-                        <select name="rie" id="rie" required="" ng-model="datosSin.cobAfec" class= "form-control"  >
-                            <option value="-1"> * Seleccione </option>
+                        <select name="cobAfec" id="rie"  ng-model="datosSin.cobAfec" class= "form-control" required >
+                            <option value=""> * Seleccione </option>
                             <option ng-repeat="cobertura in list" value="{{cobertura.RIE_clave}}">
                                 {{cobertura.RIE_nombre}}
                             </option>                            
                         </select>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted1(etapa2.cobAfec)" ng-messages="etapa2.cobAfec.$error">
+                          <div ng-message="required">Se requiere el valor de la cobertura afectada</div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">                    
                      <div class="form-group">
                         <label>Poliza:</label>
-                        <input type="text" class="form-control" id="pol" name="pol" ng-model="datosSin.poliza" required="" mayusculas>
+                        <input type="text" class="form-control" id="pol" name="poliza" ng-model="datosSin.poliza" required  mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted1(etapa2.poliza)" ng-messages="etapa2.poliza.$error">
+                          <div ng-message="required">Se requiere el valor de la póliza</div>
+                        </div>
                     </div>
                  </div>
                  
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>{{noCompania}}</label>
-                         <input id="noCia" name="noCia" type="text" ng-model="datosSin.noCia" class="form-control"  mayusculas />
+                         <input id="noCia" name="noCia" type="text" ng-model="datosSin.noCia" class="form-control" mayusculas  />
                      </div>
                  </div>
                 </div>
@@ -265,48 +300,45 @@
                          <input id="inciso" name="inciso" ng-model="datosSin.inciso" type="text" class="form-control"  mayusculas/>
                      </div>
                 </div>
-                 <div class="col-md-4" ng-hide="ciaClave==19" >
+                 <div class="col-md-4" >
                     <div class="form-group">
                         <label>Siniestro:</label>
-                        <input type="text" class="form-control" ng-disabled="ciaClave==19" ng-model="datosSin.siniestro" required=""  mayusculas>
+                        <input type="text" class="form-control" name="siniestro" ng-model="datosSin.siniestro" ng-required="!valida" mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted1(etapa2.siniestro)" ng-messages="etapa2.siniestro.$error">
+                          <div ng-message="required">Se requiere el valor del siniestro</div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-4" ng-hide="ciaClave==19" ng-disabled="ciaClave==19">
+                <div class="col-md-4">
                     <div class="form-group">
                         <label>Reporte:</label>
-                        <input type="text" class="form-control" ng-disabled="ciaClave==19"  ng-model="datosSin.reporte" required="" mayusculas>
+                        <input type="text" class="form-control" name="reporte"  ng-model="datosSin.reporte" ng-required="!valida" mayusculas>
+                         <div class="alert alert-danger" role="alert" ng-if="interacted1(etapa2.reporte)" ng-messages="etapa2.reporte.$error">
+                          <div ng-message="required">Se requiere el valor del reporte</div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4" ng-show="ciaClave==19">
-                    <div class="form-group">
-                        <label>Siniestro:</label>
-                        <input type="text" class="form-control"  ng-model="datosSin.siniestro"  mayusculas>
-                    </div>
-                </div>
-                <div class="col-md-4" ng-show="ciaClave==19">
-                    <div class="form-group">
-                        <label>Reporte:</label>
-                        <input type="text" class="form-control"  ng-model="datosSin.reporte" mayusculas>
-                    </div>
-                </div>
+                </div>                
             </div>
             <div class="row mianimacion" ng-show="mensajeError">
                 <div class="col-md-8 col-md-offset-4">
                     <div class="alert alert-warning">Debe ingresar siniestro o reporte</div>    
                 </div>
-            </div><br>
-
+            </div>
+            <br>
             <div class="row">
                 <div class="col-md-4">
                     <div class="form-group">
                         <label>Folio de Pase:</label>
-                        <input type="text" class="form-control" id="folPase" name="folPase" ng-model="datosSin.folPase" required=""   mayusculas>
+                        <input type="text" class="form-control" id="folPase" name="folPase" ng-model="datosSin.folPase" required mayusculas>
+                        <div class="alert alert-danger" role="alert" ng-if="interacted1(etapa2.folPase)" ng-messages="etapa2.folPase.$error">
+                          <div ng-message="required">Se requiere el valor de la póliza</div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-8">
                     <div class="form-group">
                         <label>Observaciones:</label>
-                        <textarea class="form-control" name="obsexp" id="obsexp" ng-model="datosSin.obs" onpaste="return false" style="resize:none;"  mayusculas></textarea>
+                        <textarea class="form-control" name="obsexp" id="obsexp" ng-model="datosSin.obs" onpaste="return false" style="resize:none;" mayusculas ></textarea>
                     </div>
                 </div>
             </div>  
@@ -318,8 +350,16 @@
                      <input type="reset" class="btn btn-danger"  value="Limpiar">
                 </div> 
             </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div ng-show="cargador1" align="center">
+                            <img ng-src="imgs/cargador.gif">
+                    </div>
+                </div>
+            </div>
+            </form> 
+
  </div>            
-</form> 
 
         </div>
     </div>

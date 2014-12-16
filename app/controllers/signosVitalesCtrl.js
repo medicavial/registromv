@@ -1,6 +1,7 @@
 app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookies,busquedas,$http) {
 	$rootScope.folio=$cookies.folio;	
   $rootScope.usrLogin =$cookies.usrLogin;
+  $scope.formularios={};  
    $scope.vitales={      
       tem:"",
       talla:"",
@@ -11,14 +12,21 @@ app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookie
       frecCard:"",
       obs:''
   };
+  $rootScope.cargador=false;
+
+  $scope.interacted = function(field) {
+    //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input
+    return $scope.formularios.vital.$submitted && field.$invalid;          
+  };
 
   busquedas.listaVitales($rootScope.folio).success(function(data){
             $scope.listVitales=data;                
-            console.log(data);
+            $rootScope.cargador=false;            
         });
        
   $scope.guardaVitales = function(){
-    console.log($scope.vitales);
+    if($scope.formularios.vital.$valid){    
+    $scope.cargador=true;
     $http({
       url:'api/api.php?funcion=guardaVitalesP&fol='+$rootScope.folio+'&usr='+$rootScope.usrLogin,
       method:'POST', 
@@ -26,11 +34,8 @@ app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookie
       dataType: "json", 
       data: $scope.vitales
       }).success( function (data){                        
-        if(data.respuesta=='correcto'){
-          busquedas.listaVitales($rootScope.folio).success(function(data){
-            $scope.listVitales=data;                
-            console.log(data);
-          });         
+        if(!data.respuesta){                                            
+          $scope.listVitales=data;           
           $scope.vitales={      
             tem:"",
             talla:"",
@@ -40,17 +45,20 @@ app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookie
             astole:"",
             frecCard:"",
             obs:''
-        };
+          };
+          $scope.formularios.vital.$submitted=false;
+          $scope.cargador=false;
         }
         else{
-          console.log(data);
-          alert('error en la inserción');
-        }
-        console.log(data);
+          $scope.cargador=false;          
+          alert('error en la inserción');         
+        }      
       }).error( function (xhr,status,data){
+          $scope.cargador=false;
           $scope.mensaje ='no entra';            
           alert('Error');
-      });  
+      }); 
+      } 
   }
 
   $scope.irDocumentos = function(){         

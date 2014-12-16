@@ -62,7 +62,7 @@ function generar_numero(){
 
 function conectarMySQL(){
 
-    $dbhost="www.medicavial.net";
+    $dbhost="medicavial.net";
     $dbuser="medica_webusr";
     $dbpass="tosnav50";
     $dbname="medica_registromv";
@@ -236,6 +236,13 @@ if ($funcion == 'registra') {
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
+    $usr=$_GET['usr'];
+    $uniClave=$_GET['uniClave'];
+    $ciaClave=$_GET['ciaClave'];
+    $prod=$_GET['prod'];
+    $anios=$_GET['anios'];
+    $meses =$_GET['meses'];
+
     $datos = json_decode($postdata);
 
     $nombre = $datos->nombre;
@@ -245,6 +252,10 @@ if ($funcion == 'registra') {
     $tipTel = $datos->tel;
     $tel = $datos->numeroTel;
     $correo = $datos->correo;
+
+    $fecha = explode("-", $fecharegistro);
+    $fechaNac2= date('Y-m-d', strtotime($fecha[2]."-".$fecha[1]."-".$fecha[0])); 
+
 
     $nomComp= $nombre.' '.$apPat.' '.$apMat;
     switch ($tipTel) {
@@ -304,13 +315,15 @@ if ($funcion == 'registra') {
                         Exp_materno,  
                         Exp_nombre,Exp_completo, 
                         Exp_fechaNac, 
-                        Exp_fechaNac2, 
+                        Exp_fechaNac2,
+                        Exp_edad,
+                        Exp_meses, 
                         Exp_mail, 
                         Exp_telefono, 
                         Exp_fecreg, 
                         Cia_clave,                       
                         Pro_clave)
-            VALUES(:folio,:prefijo,:cons,:uni_clave,:usu_registro,:apPat,:apMat,:nombre,:nomComp,:fecNa,:fecNa1,:mail,:telefono,now(),:ciaClave,:proClave)";
+            VALUES(:folio,:prefijo,:cons,:uni_clave,:usu_registro,:apPat,:apMat,:nombre,:nomComp,:fecNa,:fecNa1,:edad,:meses,:mail,:telefono,now(),:ciaClave,:proClave)";
 
 
 
@@ -327,7 +340,9 @@ if ($funcion == 'registra') {
     $temporal->bindParam("nombre", $nombre);
     $temporal->bindParam("nomComp", $nomComp);
     $temporal->bindParam("fecNa", $fecharegistro);
-    $temporal->bindParam("fecNa1", $fecharegistro);
+    $temporal->bindParam("fecNa1", $fechaNac2);
+    $temporal->bindParam("edad", $anios);
+    $temporal->bindParam("meses", $meses);
     $temporal->bindParam("mail", $correo);
     $temporal->bindParam("telefono", $telefono);        
     $temporal->bindParam("ciaClave", $ciaClave);
@@ -375,7 +390,7 @@ if ($funcion == 'validaAut') {
 }
 
 if($funcion == 'registraSin'){
-
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -426,6 +441,7 @@ if($funcion == 'registraSin'){
 }
 
 if($funcion == 'getFolio'){
+    $folio=$_GET['folio'];
     $db = conectarMySQL();
     $sql = "Select Exp_folio,Expediente.UNI_clave, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Expediente.Cia_clave, Usu_registro, Exp_fecreg, USU_registro, Exp_obs, Uni_nombre, Uni_propia, Cia_nombrecorto, RIE_nombre, Exp_RegCompania,
             Pro_clave
@@ -440,6 +456,7 @@ if($funcion == 'getFolio'){
 }
 
 if($funcion == 'listadoFolios'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $uni = $_GET['uni'];
     $query="Select Exp_folio, Cia_nombrecorto, Date_Format(Exp_fecreg, '%d-%m-%Y') as Fecha, Exp_paterno, Exp_materno, Exp_nombre, Exp_obs From Expediente inner join Unidad on Expediente.Uni_clave=Unidad.Uni_clave inner join Compania on Expediente.Cia_clave=Compania.Cia_clave Where Exp_cancelado=0 and Expediente.Uni_clave=".$uni." order by Exp_folio desc LIMIT 0 , 100";
@@ -456,6 +473,7 @@ if($funcion == 'buscaParametros'){
     $db = conectarMySQL();
     $nombre = $datos->nombre;
     $folio = $datos->folio;
+    $cveUnidad= $_GET['cveUnidad'];
     $db = conectarMySQL();
 
     if (empty($_GET['cveUnidad']) || $_GET['cveUnidad'] == 'null') {
@@ -498,8 +516,9 @@ if($funcion == 'buscaParametros'){
 }
 
 if($funcion == 'getDatosPaciente'){
+    $folio = $_GET['folio'];
     $db = conectarMySQL();
-    $query="Select Exp_folio, Exp_paterno, Exp_materno, Exp_nombre, Exp_fechaNac,Exp_edad,Exp_meses, Exp_sexo, Ocu_clave,Edo_clave,Exp_telefono,Exp_mail, Exp_obs From Expediente  Where Exp_folio='".$folio."'";
+    $query="Select Exp_folio, Exp_paterno, Exp_materno, Exp_nombre, Exp_fechaNac,Exp_edad,Exp_meses, Exp_sexo, Ocu_clave,Edo_clave,Exp_telefono,Exp_mail, Rel_clave From Expediente  Where Exp_folio='".$folio."'";
     $result = $db->query($query);
     $datosPaciente = $result->fetch(PDO::FETCH_OBJ);
     echo json_encode($datosPaciente);
@@ -550,7 +569,7 @@ if($funcion == 'guardaDatos'){
             Ocu_clave = :Ocu_clave,  
             Edo_clave = :Edo_clave,
             Exp_mail = :Exp_mail,
-            Exp_obs = :Exp_obs            
+            Rel_clave = :Rel_clave            
             WHERE Exp_folio = :Exp_folio";
 
             $stmt = $conexion->prepare($sql);
@@ -562,7 +581,7 @@ if($funcion == 'guardaDatos'){
             $stmt->bindParam('Edo_clave', $edoC);
             // use PARAM_STR although a number  
             $stmt->bindParam('Exp_mail', $mail); 
-            $stmt->bindParam('Exp_obs', $obs);           
+            $stmt->bindParam('Rel_clave', $obs);           
             $stmt->bindParam('Exp_folio', $folio);               
 
     if ($stmt->execute()){
@@ -603,6 +622,7 @@ if($funcion == 'getEstatus'){
 }
 
 if($funcion == 'getListEnfHeredo'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT FamE_clave, Enf_nombre, Fam_nombre, Est_nombre, FamE_obs 
                                FROM FamEnfermedad 
@@ -617,6 +637,7 @@ if($funcion == 'getListEnfHeredo'){
 }
 
 if($funcion == 'guardaEnfH'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -640,29 +661,51 @@ if($funcion == 'guardaEnfH'){
     $temporal->bindParam("FamE_obs", $observaciones);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        //cuando se haya insertado el dato, consultamos el listado de enfermedades agregadas y se manda al controlador
+         $query="SELECT FamE_clave, Enf_nombre, Fam_nombre, Est_nombre, FamE_obs 
+                               FROM FamEnfermedad 
+                               Inner Join Enfermedad on FamEnfermedad.Enf_clave=Enfermedad.Enf_clave 
+                               Inner Join Familia on FamEnfermedad.Fam_clave=Familia.Fam_clave 
+                               Inner Join EstatusFam on FamEnfermedad.Est_clave=EstatusFam.Est_clave 
+                               Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listEnfHeredo = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listEnfHeredo);
+        $db = null;            
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}    
     $db = null;    
 }
 
 if($funcion == 'borraEnfH'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM FamEnfermedad WHERE Exp_folio =  :Exp_folio and FamE_clave = :FamE_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('FamE_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+       $query="SELECT FamE_clave, Enf_nombre, Fam_nombre, Est_nombre, FamE_obs 
+                               FROM FamEnfermedad 
+                               Inner Join Enfermedad on FamEnfermedad.Enf_clave=Enfermedad.Enf_clave 
+                               Inner Join Familia on FamEnfermedad.Fam_clave=Familia.Fam_clave 
+                               Inner Join EstatusFam on FamEnfermedad.Est_clave=EstatusFam.Est_clave 
+                               Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listEnfHeredo = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listEnfHeredo);                
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
-    echo json_encode($respuesta);
+    
     $db = null;    
 }
 
@@ -694,6 +737,7 @@ if($funcion == 'getAlergias'){
 }
 
 if($funcion == 'getListPadecimientos'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT Hist_clave, Pad_nombre, Pad_obs 
            FROM HistoriaPadecimiento 
@@ -706,6 +750,7 @@ if($funcion == 'getListPadecimientos'){
 }
 
 if($funcion == 'getListOtrasEnf'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistOt_clave, Otr_nombre, HistOt_obs 
            FROM HistoriaOtras 
@@ -718,6 +763,7 @@ if($funcion == 'getListOtrasEnf'){
 }
 
 if($funcion == 'getListAlergias'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistA_clave, Ale_nombre, Ale_obs 
              FROM HistoriaAlergias
@@ -730,6 +776,7 @@ if($funcion == 'getListAlergias'){
 }
 
 if($funcion == 'getListPadEsp'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistE_clave, Esp_estatus, Esp_obs 
             FROM HistoriaEspalda
@@ -741,6 +788,7 @@ if($funcion == 'getListPadEsp'){
 }
 
 if($funcion == 'getListTratQuiro'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistoriaQ_clave, Quiro_estatus, Quiro_obs 
             FROM HistoriaQuiro 
@@ -752,6 +800,7 @@ if($funcion == 'getListTratQuiro'){
 }
 
 if($funcion == 'getListPlantillas'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistP_clave, Plantillas_estatus, Plantillas_obs 
             FROM HistoriaPlantillas
@@ -763,6 +812,7 @@ if($funcion == 'getListPlantillas'){
 }
 
 if($funcion == 'getListTratamientos'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistT_clave, HistT_estatus, HistT_obs 
             FROM HistoriaTrat
@@ -774,6 +824,7 @@ if($funcion == 'getListTratamientos'){
 }
 
 if($funcion == 'getListIntervenciones'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistO_clave, HistO_estatus, HistO_obs 
                    FROM HistoriaOperacion 
@@ -785,6 +836,7 @@ if($funcion == 'getListIntervenciones'){
 }
 
 if($funcion == 'getListDeportes'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistD_clave, Dep_estatus, Dep_obs 
             FROM HistoriaDeporte
@@ -796,6 +848,7 @@ if($funcion == 'getListDeportes'){
 }
 
 if($funcion == 'getListAdicciones'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistA_clave, Adic_estatus, Adic_obs 
             FROM HistoriaAdiccion 
@@ -816,6 +869,7 @@ if($funcion == 'getCatLugar'){
 }
 
 if($funcion == 'getListAccAnt'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="SELECT HistAcc_clave, Acc_estatus, Lug_nombre, Acc_obs FROM HistoriaAcc
               Inner Join Lugar on HistoriaAcc.Lug_clave=Lugar.Lug_clave
@@ -845,6 +899,7 @@ if($funcion == 'getListTipVehi'){
 }
 
 if($funcion == 'getListVitales'){
+    $fol=$_GET['fol'];
     $db = conectarMySQL();
     $query="Select Vit_clave,Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."' order by Vit_clave desc";
     $result = $db->query($query);
@@ -1008,7 +1063,8 @@ if($funcion == 'getListIndicAgreg'){
     $db = null;    
 }
 
-if($funcion == 'validaSigVitales'){    
+if($funcion == 'validaSigVitales'){ 
+    $fol=$_GET['fol'];   
     $db = conectarMySQL();
     $query="SELECT count(*) FROM Vitales Where Exp_folio ='".$fol."'";
     $result = $db->prepare($query); 
@@ -1039,6 +1095,7 @@ if($funcion == 'veIndicacion'){
 
 
 if($funcion == 'selectPosicion'){
+    $opcion=$_GET['opcion'];
     $db = conectarMySQL();
     $query="SELECT id, opcion FROM PosicionAcc WHERE relacion=".$opcion;
     $result = $db->query($query);
@@ -1056,6 +1113,7 @@ if($funcion == 'validaSubsecuencia'){
 }
 
 if($funcion == 'guardaPad'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1074,37 +1132,54 @@ if($funcion == 'guardaPad'){
     $temporal->bindParam("Pad_clave", $padecimiento);
     $temporal->bindParam("Pad_obs", $obs);
 
-    if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+    if ($temporal->execute()){        
+        $query="SELECT Hist_clave, Pad_nombre, Pad_obs 
+           FROM HistoriaPadecimiento 
+           Inner Join Padecimientos on HistoriaPadecimiento.Pad_clave=Padecimientos.Pad_clave 
+           Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPad = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPad);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}   
     $db = null;    
 }
 
 if($funcion == 'borraPadec'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaPadecimiento WHERE Exp_folio = :Exp_folio and Hist_clave = :Hist_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('Hist_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT Hist_clave, Pad_nombre, Pad_obs 
+           FROM HistoriaPadecimiento 
+           Inner Join Padecimientos on HistoriaPadecimiento.Pad_clave=Padecimientos.Pad_clave 
+           Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPad = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPad);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+        echo json_encode($respuesta);
+    }    
     $db = null;    
 }
 
 if($funcion == 'guardaOtras'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
+    $fol=$_GET['fol'];
     $datos = json_decode($postdata);
 
     $enfermedad = $datos->enf;
@@ -1120,33 +1195,52 @@ if($funcion == 'guardaOtras'){
     $temporal->bindParam("HistOt_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistOt_clave, Otr_nombre, HistOt_obs 
+           FROM HistoriaOtras 
+           Inner Join Otras on HistoriaOtras.Otr_clave=Otras.Otr_clave 
+           Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listOtras = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listOtras);
+        $db = null;    
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}
+    
     $db = null;    
 }
 
 if($funcion == 'borraOtrasEnf'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaOtras WHERE Exp_folio = :Exp_folio and HistOt_clave = :HistOt_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistOt_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistOt_clave, Otr_nombre, HistOt_obs 
+           FROM HistoriaOtras 
+           Inner Join Otras on HistoriaOtras.Otr_clave=Otras.Otr_clave 
+           Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listOtras = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listOtras);
+        $db = null;    
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+         echo json_encode($respuesta);
+    }   
     $db = null;    
 }
 
 if($funcion == 'guardaAlergia'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1165,34 +1259,52 @@ if($funcion == 'guardaAlergia'){
     $temporal->bindParam("Ale_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistA_clave, Ale_nombre, Ale_obs 
+             FROM HistoriaAlergias
+             Inner Join Alergias on HistoriaAlergias.Ale_clave=Alergias.Ale_clave 
+             Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listAlergias = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listAlergias);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}
+    
     $db = null;    
 }
 
 
 if($funcion == 'borraAlergia'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaAlergias WHERE Exp_folio = :Exp_folio and HistA_clave = :HistA_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistA_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistA_clave, Ale_nombre, Ale_obs 
+             FROM HistoriaAlergias
+             Inner Join Alergias on HistoriaAlergias.Ale_clave=Alergias.Ale_clave 
+             Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listAlergias = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listAlergias);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
-    echo json_encode($respuesta);
+    
     $db = null;    
 }
 
 if($funcion == 'guardaPadEspalda'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1210,33 +1322,48 @@ if($funcion == 'guardaPadEspalda'){
     $temporal->bindParam("Esp_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistE_clave, Esp_estatus, Esp_obs 
+            FROM HistoriaEspalda
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}   
     $db = null;    
 }
 
 if($funcion == 'borraPadEspalda'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaEspalda WHERE Exp_folio = :Exp_folio and HistE_clave = :HistE_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistE_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+         $query="SELECT HistE_clave, Esp_estatus, Esp_obs 
+            FROM HistoriaEspalda
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
-    echo json_encode($respuesta);
+    
     $db = null;    
 }
 
 if($funcion == 'guardaTratQuiro'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1254,33 +1381,48 @@ if($funcion == 'guardaTratQuiro'){
     $temporal->bindParam("Quiro_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistoriaQ_clave, Quiro_estatus, Quiro_obs 
+            FROM HistoriaQuiro 
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}
+    
     $db = null;    
 }
 
 if($funcion == 'borraTratQui'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaQuiro WHERE Exp_folio = :Exp_folio and HistoriaQ_clave = :HistoriaQ_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistoriaQ_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistoriaQ_clave, Quiro_estatus, Quiro_obs 
+            FROM HistoriaQuiro 
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+        echo json_encode($respuesta);
+    }    
     $db = null;    
 }
 
 if($funcion == 'guardaPlantillas'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1298,33 +1440,49 @@ if($funcion == 'guardaPlantillas'){
     $temporal->bindParam("Plantillas_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistP_clave, Plantillas_estatus, Plantillas_obs 
+            FROM HistoriaPlantillas
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}
+    
     $db = null;   
 } 
 
 if($funcion == 'borraPlatillas'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaPlantillas WHERE Exp_folio = :Exp_folio and HistP_clave = :HistP_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistP_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+         $query="SELECT HistP_clave, Plantillas_estatus, Plantillas_obs 
+            FROM HistoriaPlantillas
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
-    echo json_encode($respuesta);
+    
     $db = null;    
 }
 
 if($funcion == 'guardaTratamiento'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1340,33 +1498,47 @@ if($funcion == 'guardaTratamiento'){
     $temporal->bindParam("HistT_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistT_clave, HistT_estatus, HistT_obs 
+            FROM HistoriaTrat
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}    
     $db = null;   
 } 
 
 if($funcion == 'borraTratamiento'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaTrat WHERE Exp_folio = :Exp_folio and HistT_clave = :HistT_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistT_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistT_clave, HistT_estatus, HistT_obs 
+            FROM HistoriaTrat
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listPadEsp = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listPadEsp);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+        echo json_encode($respuesta);
+    }    
     $db = null;    
 }
 
 if($funcion == 'guardaIntervenciones'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1383,33 +1555,47 @@ if($funcion == 'guardaIntervenciones'){
     $temporal->bindParam("HistO_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistO_clave, HistO_estatus, HistO_obs 
+                   FROM HistoriaOperacion 
+                   Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}    
     $db = null;   
 } 
 
 if($funcion == 'borraIntervencion'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaOperacion WHERE Exp_folio = :Exp_folio and HistO_clave = :HistO_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistO_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistO_clave, HistO_estatus, HistO_obs 
+                   FROM HistoriaOperacion 
+                   Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+         echo json_encode($respuesta);
+    }   
     $db = null;    
 }
 
 if($funcion == 'guardaDeporte'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1426,33 +1612,47 @@ if($funcion == 'guardaDeporte'){
     $temporal->bindParam("Dep_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistD_clave, Dep_estatus, Dep_obs 
+            FROM HistoriaDeporte
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+         echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
-    echo json_encode($respuesta);
+     echo json_encode($respuesta);
+}   
     $db = null;   
 } 
 
 if($funcion == 'borraDeporte'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaDeporte WHERE Exp_folio = :Exp_folio and HistD_clave = :HistD_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistD_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistD_clave, Dep_estatus, Dep_obs 
+            FROM HistoriaDeporte
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+        echo json_encode($respuesta);
+    }    
     $db = null;    
 }
 
 if($funcion == 'guardaAdiccion'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1470,33 +1670,48 @@ if($funcion == 'guardaAdiccion'){
     $temporal->bindParam("Adic_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistA_clave, Adic_estatus, Adic_obs 
+            FROM HistoriaAdiccion 
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}    
     $db = null;   
 } 
 
 if($funcion == 'borraAdiccion'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaAdiccion WHERE Exp_folio = :Exp_folio and HistA_clave = :HistA_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistA_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistA_clave, Adic_estatus, Adic_obs 
+            FROM HistoriaAdiccion 
+            Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
-    echo json_encode($respuesta);
+    
     $db = null;    
 }
 
 if($funcion == 'guardaAccAnt'){
+    $fol=$_GET['fol'];
     $postdata = file_get_contents("php://input");
     //aplicacmos json_decode para manejar los datos como arreglos de php
     //En este caso lo que mando es este objeto JSON {user:username,psw:password}
@@ -1518,29 +1733,42 @@ if($funcion == 'guardaAccAnt'){
     $temporal->bindParam("Acc_obs", $obs);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistAcc_clave, Acc_estatus, Lug_nombre, Acc_obs FROM HistoriaAcc
+              Inner Join Lugar on HistoriaAcc.Lug_clave=Lugar.Lug_clave
+              Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+        echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}    
     $db = null;   
 } 
 
 if($funcion == 'borraAccAnt'){
+    $fol=$_GET['fol'];
+    $cont=$_GET['cont'];
     $db = conectarMySQL();
     $query="DELETE FROM HistoriaAcc WHERE Exp_folio = :Exp_folio and HistAcc_clave = :HistAcc_clave";
     $stmt = $db->prepare($query);
     $stmt->bindParam('Exp_folio', $fol);
     $stmt->bindParam('HistAcc_clave', $cont);
     if ($stmt->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="SELECT HistAcc_clave, Acc_estatus, Lug_nombre, Acc_obs FROM HistoriaAcc
+              Inner Join Lugar on HistoriaAcc.Lug_clave=Lugar.Lug_clave
+              Where Exp_folio='".$fol."'";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
-    }
-    echo json_encode($respuesta);
+        echo json_encode($respuesta);
+    }    
     $db = null;    
 }
 
@@ -1580,14 +1808,17 @@ if($funcion == 'guardaVitales'){
      $temporal->bindParam("Exp_folio", $fol);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="Select Vit_clave,Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."' order by Vit_clave desc";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
     echo json_encode($respuesta);
+}    
     $db = null;   
 } 
 
@@ -1642,14 +1873,18 @@ if($funcion == 'guardaVitalesP'){
      $temporal->bindParam("Exp_folio", $fol);
 
     if ($temporal->execute()){
-        $respuesta = array('respuesta' => 'correcto', 'folio'=>$fol);
+        $query="Select Vit_clave,Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."' order by Vit_clave desc";
+        $result = $db->query($query);
+        $listInter = $result->fetchAll(PDO::FETCH_OBJ);
+        echo json_encode($listInter);
     }else{
         $respuesta = array('respuesta' => 'incorrecto');
+         echo json_encode($respuesta);
     }
 }catch(Exception $e){
     $respuesta=  array('respuesta' => $e->getMessage() );
-}
-    echo json_encode($respuesta);
+     echo json_encode($respuesta);
+}   
     $db = null;   
 } 
 

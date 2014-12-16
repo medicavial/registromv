@@ -13,11 +13,7 @@
      <div class="row">               
       <div class="col-md-12" >                     
         <div class="progress progress-striped">
-          <div class="progress-bar progress-bar-info" role="progressbar"
-               aria-valuenow="<?echo $progreso?>" aria-valuemin="0" aria-valuemax="100"
-               style="width:<?echo $progreso?>%">
-            <label><?echo (int)$progreso?>%</label>
-          </div>         
+               
         </div>
       </div>
     </div> 
@@ -29,7 +25,7 @@
               <wz-step title="Signos Vitales">
                 <ng-include src="'views/notaMedica/sigVitConfirm.html'"></ng-include>
               </wz-step>
-              <wz-step title="Datos Acc.">
+              <wz-step title="Datos Accidente">
                 <ng-include src="'views/notaMedica/DatosdelAccidente.html'"></ng-include>
               </wz-step>
               <wz-step title="Embarazo">
@@ -47,16 +43,16 @@
               <wz-step title="Proc. Médicos">
                 <ng-include src="'views/notaMedica/procMedicos.html'"></ng-include>
               </wz-step>
-              <wz-step title="">
+              <wz-step title="Diagnostico">
                 <ng-include src="'views/notaMedica/diagnostico.html'"></ng-include>
               </wz-step>
-              <wz-step title="">
+              <wz-step title="Suministros">
                 <ng-include src="'views/notaMedica/suministros.html'"></ng-include>
               </wz-step>
-              <wz-step title="">
+              <wz-step title="Pronostico">
                 <ng-include src="'views/notaMedica/pronostico.html'"></ng-include>
               </wz-step>
-              <wz-step title="">
+              <wz-step title="Imprimir Nota">
                 <ng-include src="'views/notaMedica/imprimeNota.html'"></ng-include>
               </wz-step>
             </wizard>

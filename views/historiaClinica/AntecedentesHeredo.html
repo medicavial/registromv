@@ -4,31 +4,40 @@
       <h3 class="panel-title" align="center">Antecedentes Heredo Familiares</h3>
     </div>
     <div class="panel-body">
-    <form ng-submit="guardaAntedente()">
+    <form name="formularios.heredo" ng-submit="guardaAntedente()" novalidate>
       <div class="row">
         <div class="col-md-4" >
           <div class="input-group">
             <span class="input-group-addon">Enfermedad:</span>
-            <select name="Enfermedad" ng-model="datos1.enfermedad" id="Enfermedad" class= "form-control" required="required" ng-options="enf.Enf_clave as enf.Enf_nombre  for enf in enfermedad">
+            <select name="enfermedad" ng-model="datos1.enfermedad" id="Enfermedad" class= "form-control" required ng-options="enf.Enf_clave as enf.Enf_nombre  for enf in enfermedad">
               <option value=""> * Seleccione </option>
             </select>
+          </div>
+          <div class="validacion" role="alert" ng-if="interacted1(formularios.heredo.enfermedad)" ng-messages="formularios.heredo.enfermedad.$error">
+              <div ng-message="required">campo requerido</div>
           </div> 
         </div >
         <div class="col-md-4" >
           <div class="input-group">
             <span class="input-group-addon">Familiar:</span>
-            <select name="Familiar" ng-model="datos1.familiar" id="Familiar" class= "form-control" required="required" ng-options="fam.Fam_clave as fam.Fam_nombre for fam in familiar">
+            <select name="familiar" ng-model="datos1.familiar" id="familiar" class= "form-control" required ng-options="fam.Fam_clave as fam.Fam_nombre for fam in familiar">
               <option value=""> * Seleccione </option>
             </select>
+          </div> 
+          <div class="validacion" role="alert" ng-if="interacted1(formularios.heredo.familiar)" ng-messages="formularios.heredo.familiar.$error">
+              <div ng-message="required">campo requerido</div>
           </div> 
         </div >
         <div class="col-md-4" >
           <div class="input-group">
             <span class="input-group-addon">Estatus:</span>
-            <select name="Estatus" ng-model="datos1.estatus" id="Estatus" class= "form-control" required="required" ng-options="est.Est_clave as est.Est_nombre for est in estatus">
+            <select name="estatus" ng-model="datos1.estatus" id="estatus" class= "form-control" required ng-options="est.Est_clave as est.Est_nombre for est in estatus">
               <option value=""> * Seleccione </option>                
             </select>
-          </div> 
+          </div>
+          <div class="validacion" role="alert" ng-if="interacted1(formularios.heredo.estatus)" ng-messages="formularios.heredo.estatus.$error">
+              <div ng-message="required">campo requerido</div>
+          </div>  
         </div>
       </div>
       <br/>
@@ -43,6 +52,13 @@
           <input type="submit" class="btn btn-success" value="Agregar Antecedente" />
         </div>
       </div>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>  
       </form>
     
       <div class="row">

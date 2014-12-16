@@ -1,6 +1,6 @@
 app.controller('productoCtrl', function($scope,$rootScope,$location,$cookies) {
 	$scope.cveUnidad= $cookies.uniClave;
-	console.log($scope.cveUnidad);
+	
 	$scope.registraLesionado = function(claveProducto){
 		rutaImgProd = $scope.validarutaProducto(claveProducto);
     	$cookies.rutaImgPro = rutaImgProd;    

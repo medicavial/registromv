@@ -5,19 +5,22 @@
     </div>
     <div class="panel-body">
       <div class='row'>
-        <form ng-submit="agregaCronDeg()">
+        <form name="formularios.cronicos" ng-submit="agregaCronDeg()" novalidate>
           <div class='col-md-5'>
             <div class='input-group'>
-              <span class='input-group-addon'>Cr&oacutenico-Degenerativos:</span>
-              <select name="PadecimientosCronicos" ng-model="padecimiento.nombre" id="PadecimientosCronicos" class="form-control" ng-options="pad.Pad_clave as pad.Pad_nombre for pad in padecimientos" required="">
+              <span class='input-group-addon'>Crónico-Degenerativos:</span>
+              <select name="nombre" ng-model="padecimiento.nombre" id="PadecimientosCronicos" class="form-control" ng-options="pad.Pad_clave as pad.Pad_nombre for pad in padecimientos" required>
                 <option value=""> * Seleccione </option>
               </select>
             </div>
+            <div class="validacion" role="alert" ng-if="interacted2(formularios.cronicos.nombre)" ng-messages="formularios.cronicos.nombre.$error">
+              <div ng-message="required">campo requerido</div>
+            </div>  
           </div>
           <div class='col-md-5'>
             <div class='input-group'>
               <span class='input-group-addon'>Observaciones:</span>
-              <input type="text" name="ObsCronico" ng-model="padecimiento.obs" id="ObsCronico" class='form-control' required="">
+              <input type="text" name="ObsCronico" ng-model="padecimiento.obs" id="ObsCronico" class='form-control'>
             </div>
           </div>    
           <div class='col-md-2'>
@@ -27,7 +30,13 @@
           </div> 
         </form>                                                     
       </div>
-      <br>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>     
       <div class="row">
         <div class="col-md-12">
            <div ng-show="listaPad" class="mianimacion">
@@ -35,7 +44,7 @@
               <tr>
                 <th width="10%"><b>#</b></th>
                 <th width="35%"><b>Padecimiento</b></th>
-                <th width="40%"><b>Observaciones</b></th>                
+                <th width="40%"><b>Observaciones</b></th>
                 <th width="15%" align="right"><b>Eliminar</b></th>
               </tr>
               <tr ng-show="listaPad" class="mianimacion" ng-repeat="padecimiento in listaPad">
@@ -49,19 +58,22 @@
         </div>                             
       </div>
       <div class='row'>
-        <form ng-submit="guardaOtras()">
+        <form name="formularios.enfermedades" ng-submit="guardaOtras()" novalidate>
           <div class='col-md-5'>
             <div class='input-group'>
               <span class='input-group-addon' >Otras enfermedades:</span>
-              <select name="Otras" ng-model="otras.enf" id="Otras" class="form-control" ng-options="oEnf.Otr_clave as oEnf.Otr_nombre for oEnf in otrasE" required="">
+              <select name="enf" ng-model="otras.enf" id="enf" class="form-control" ng-options="oEnf.Otr_clave as oEnf.Otr_nombre for oEnf in otrasE" required="">
                 <option value=""> * Seleccione </option>
               </select>
             </div>
+            <div class="validacion" role="alert" ng-if="interacted3 (formularios.enfermedades.enf)" ng-messages="formularios.enfermedades.enf.$error">
+            <div ng-message="required">campo requerido</div>
+            </div>  
           </div>
           <div class='col-md-5'>
             <div class='input-group'>
               <span class='input-group-addon'>Observaciones:</span>
-              <input type="text" ng-model="otras.obs" name="ObsOtras" id="ObsOtras" class='form-control' required="">
+              <input type="text" ng-model="otras.obs" name="ObsOtras" id="ObsOtras" class='form-control'>
             </div>
           </div>    
           <div class='col-md-2'>
@@ -71,7 +83,13 @@
           </div>
         </form>                                                      
       </div>
-      <br/>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador1" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>     
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaOtras" class="mianimacion">
@@ -93,19 +111,22 @@
         </div>
       </div>   
       <div class='row'>
-        <form ng-submit="guardaAlergia()">
+        <form name="formularios.alergi" ng-submit="guardaAlergia()" novalidate>
           <div class='col-md-5'>
             <div class='input-group'>
               <span class='input-group-addon' >Alergias:</span>
-              <select name="Alergias" ng-model="alergia.alergia" id="Alergias"  class='form-control' ng-options="aler.Ale_clave as aler.Ale_nombre for aler in alergias" required="">
+              <select name="alergia" ng-model="alergia.alergia" id="alergia"  class='form-control' ng-options="aler.Ale_clave as aler.Ale_nombre for aler in alergias" required>
                 <option value=""> * Seleccione </option>
               </select>
             </div>
+            <div class="validacion" role="alert" ng-if="interacted4(formularios.alergi.alergia)" ng-messages="formularios.alergi.alergia.$error">
+              <div ng-message="required">campo requerido</div>
+            </div>  
           </div>
           <div class='col-md-5'>
             <div class='input-group'>
               <span class='input-group-addon'>Observaciones:</span>
-              <input type="text" name="ObsAlergias" ng-model="alergia.obs"  id="ObsAlergias" class='form-control' required="">
+              <input type="text" name="ObsAlergias" ng-model="alergia.obs"  id="ObsAlergias" class='form-control'>
             </div>
           </div>    
           <div class='col-md-2'>
@@ -115,7 +136,13 @@
           </div>
         </form>                                                       
       </div>
-      <br/>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador2" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>   
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaAlergias" class="mianimacion">
@@ -149,7 +176,7 @@
           <div class='col-md-5' ng-show="padEsp1=='Si'" class="muestraderecha" >
             <div class='input-group'>
               <span class='input-group-addon'id="Oesp" >Observaciones:</span>   
-              <input type="text" name="ObsEspalda" ng-model="padEsp.obs" id="ObsEspalda" class='form-control' required="required">
+              <input type="text" name="ObsEspalda" ng-model="padEsp.obs" id="ObsEspalda" class='form-control'>
             </div>
           </div>  
           <div class='col-md-2' ng-show="padEsp1=='Si'" class="muestraderecha">
@@ -159,7 +186,13 @@
           </div>
         </form>                                                    
       </div>
-      <br/>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador3" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>   
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaPadEsp" class="mianimacion">
@@ -191,7 +224,7 @@
           <div class='col-md-5' ng-show="quiro=='Si'" class="muestraderecha">
             <div class='input-group'>
             <span class='input-group-addon'  id="Oplan" >Observaciones:</span>   
-            <input type="text" name="ObsPlan" ng-model="quiropractico.obs" id="ObsPlan" Class='form-control' required="" >                          
+            <input type="text" name="ObsPlan" ng-model="quiropractico.obs" id="ObsPlan" Class='form-control'>                          
             </div>
           </div>  
           <div class='col-md-2' ng-show="quiro=='Si'" class="muestraderecha">
@@ -201,7 +234,13 @@
           </div>
         </form>                                                 
       </div>
-      <br/>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador4" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>   
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaTratQui" class="mianimacion">
@@ -243,7 +282,13 @@
           </div>
         </form>                                                    
       </div>
-      <br/>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador5" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>   
       <div class="row">
         <div class="col-md-12">                                       
           <div ng-show="listaPlantillas" class="mianimacion">
@@ -285,7 +330,13 @@
           </div>
         </form>                                                    
       </div>
-      <br/>                      
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador6" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>                         
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaTratamientos" class="mianimacion">
@@ -316,7 +367,7 @@
           <div class='col-md-5' ng-show="inter=='Si'" class="muestraderecha">
             <div class='input-group'>
               <span class='input-group-addon' id="Oqui" >Observaciones:</span>  
-              <input type="text" name="ObsOperaciones" ng-model="intervenciones.obs" id="ObsOperaciones" Class='form-control' required="">                                                                                         
+              <input type="text" name="ObsOperaciones" ng-model="intervenciones.obs" id="ObsOperaciones" Class='form-control'>                                                                                         
             </div>
           </div>  
           <div class='col-md-2' ng-show="inter=='Si'" class="muestraderecha">
@@ -325,7 +376,14 @@
             </div>                                 
           </div>
         </form>                                                    
-      </div>                                
+      </div>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador7" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>                                   
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaIntervenciones" class="mianimacion">
@@ -357,7 +415,7 @@
           <div class='col-md-5'  ng-show="dep=='Si'" class="muestraderecha">
             <div class='input-group'>
               <span class='input-group-addon' id="Odep" >Observaciones:</span>  
-              <input type="text" name="ObsDeporte" ng-model="deporte.obs" id="ObsDeporte" Class='form-control' required=""/>                                                                                      
+              <input type="text" name="ObsDeporte" ng-model="deporte.obs" id="ObsDeporte" Class='form-control'/>                                                                                      
             </div>
           </div>  
           <div class='col-md-2' ng-show="dep=='Si'" class="muestraderecha">
@@ -366,7 +424,14 @@
             </div>                                 
           </div>
         </form>                                                      
-      </div>    
+      </div>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador8" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>       
       <div class="row">
         <div class="col-md-12">
           <div ng-show="listaDeportes" class="mianimacion">
@@ -398,7 +463,7 @@
           <div class='col-md-5' ng-show="adic=='Si'" class="muestraderecha">
             <div class='input-group'>
               <span class='input-group-addon' id="Oacc" >Observaciones:</span>  
-              <input type="text" name="ObsAdiccion" ng-model="adiccion.obs" id="ObsAdiccion" Class='form-control' required="">                                                                                                        
+              <input type="text" name="ObsAdiccion" ng-model="adiccion.obs" id="ObsAdiccion" Class='form-control'>                                                                                                        
             </div>
           </div>  
           <div class='col-md-2' ng-show="adic=='Si'" class="muestraderecha">
@@ -407,7 +472,14 @@
             </div>                                 
           </div>
         </form>                                                    
-      </div>   
+      </div>
+      <div class="row"> 
+        <div class="col-md-12">
+          <div ng-show="cargador9" align="center">
+            <img ng-src="imgs/cargador.gif">
+          </div>
+        </div>
+      </div>     
       <div class="row">
         <div class="col-md-12">
          <div ng-show="listaAdicciones" class="mianimacion">

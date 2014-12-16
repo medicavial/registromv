@@ -1,5 +1,5 @@
 <?php
-$host	="localhost";
+$host	="medicavial.net";
 $user	="medica_webusr";
 $pwd	="tosnav50";
 $db	="medica_registromv";

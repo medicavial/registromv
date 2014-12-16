@@ -669,6 +669,19 @@ h1{
 
 }
 
+.validacion{
+	 background: #FFf;          
+        border:1px solid #FF8F35;
+        border-radius: 5px;  
+        color: #FF8F35;          
+        top: -5px;  
+        content: attr(alt);  
+        position: abslute;          
+        margin: 2px;  
+        z-index: 95;
+        padding-left: 3px;
+}
+
 /*
 cornflowerblue
 dimgrey

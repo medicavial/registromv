@@ -1,5 +1,5 @@
 <div class="container" style="width: 100%"> 
-	<form ng-submit="guardaVitales()">	
+	<form name="formularios.vital" ng-submit="guardaVitales()" novalidate>	
 		<div class="panel panel-primary">
 			<div class="panel-heading">
 				<div class="row">
@@ -16,23 +16,41 @@
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Temperatura: </span>
-							<input type="number" ng-model="vitales.tem" min="35" max="40" class="form-control" id="temp" name="temp" placeholder="Temperatura" required="" >
+							<input type="number" step="any" ng-model="vitales.tem" min="35" max="40" class="form-control" id="tem" name="tem" placeholder="Temperatura" required>
 							<span class="input-group-addon">&ordm;C</span>
 						</div>
+						<div class="validacion" role="alert" ng-if="interacted(formularios.vital.tem)" ng-messages="formularios.vital.tem.$error">
+			              <div ng-message="required">campo requerido</div>
+			              <div ng-message="number">valor numérico</div>
+			              <div ng-message="max">valor menor a 40°</div>
+			              <div ng-message="min">valor mayor a 35°</div>
+			            </div>  
 					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Talla: </span>
-							<input type="number" ng-model="vitales.talla" min="40" max="230" class="form-control" id="talla" name="talla" placeholder="Talla" required="" >
+							<input type="number" step="any" ng-model="vitales.talla" min="40" max="230" class="form-control" id="talla" name="talla" placeholder="Talla" required >
 							<span class="input-group-addon">Cm.</span>
 						</div>
+						<div class="validacion" role="alert" ng-if="interacted(formularios.vital.talla)" ng-messages="formularios.vital.talla.$error">
+			              <div ng-message="required">campo requerido</div>
+			              <div ng-message="number">valor numérico</div>
+			              <div ng-message="min">valor mayor a 40</div>
+			              <div ng-message="max">valor menor a 230</div>
+			            </div> 
 					</div>
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Peso: </span>
-							<input type="number" ng-model="vitales.peso" min="30" max="500" class="form-control" id="peso" name="peso" placeholder="Peso" required="">
+							<input type="number" ng-model="vitales.peso" min="1" max="500" class="form-control" id="peso" name="peso" placeholder="Peso" required>
 							<span class="input-group-addon">Kg.</span>
 						</div>
+						<div class="validacion" role="alert" ng-if="interacted(formularios.vital.peso)" ng-messages="formularios.vital.peso.$error">
+			              <div ng-message="required">campo requerido</div>
+			              <div ng-message="number">valor numérico</div>
+			              <div ng-message="min">valor mayor a 1</div>
+			              <div ng-message="max">valor menor a 500</div>
+			            </div> 
 					</div>
 				</div><!-- End row -->
 				<br />
@@ -40,18 +58,36 @@
 					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">Frec. Respiratoria: </span>
-							<input type="number" ng-model="vitales.frecResp" min="16" max="80" class="form-control" id="frecResp" name="frecResp" placeholder="F/R" required="">
+							<input type="number" ng-model="vitales.frecResp" min="16" max="80" class="form-control" id="frecResp" name="frecResp" placeholder="F/R" required>
 							<span class="input-group-addon">Rpm.</span>
 						</div>
+						<div class="validacion" role="alert" ng-if="interacted(formularios.vital.frecResp)" ng-messages="formularios.vital.frecResp.$error">
+			              <div ng-message="required">campo requerido</div>
+			              <div ng-message="number">valor numérico</div>
+			              <div ng-message="min">valor mayor a 16</div>
+			              <div ng-message="max">valor menor a 80</div>
+			            </div> 
 					</div>
 					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">T. Arterial: </span>
-							<input type="number" ng-model="vitales.sistole" min="60" max="140" class="form-control" id="sistole" name="sistole" required="">
+							<input type="number" ng-model="vitales.sistole" min="60" max="140" class="form-control" id="sistole" name="sistole" >
 							<span class="input-group-addon"> / </span>
-							<input type="number" ng-model="vitales.astole" min="30" max="90" class="form-control" id="astole" name="astole" required="">
+							<input type="number" ng-model="vitales.astole" min="30" max="90" class="form-control" id="astole" name="astole">
 							<span class="input-group-addon">mmHg.</span>
 						</div>
+						<div>
+							<div class="validacion" role="alert" ng-if="interacted(formularios.vital.sistole)" ng-messages="formularios.vital.sistole.$error">	
+								<div ng-message="number">valor numérico</div>			              
+				              <div ng-message="min">valor mayor a 60</div>
+				              <div ng-message="max">valor menor a 140</div>
+				            </div>
+				            <div class="validacion" role="alert" ng-if="interacted(formularios.vital.astole)" ng-messages="formularios.vital.astole.$error">
+				            <div ng-message="number">valor numérico</div>
+				            <div ng-message="min">valor mayor a 30</div>				              			              
+				              <div ng-message="max">valor menor a 90</div>
+				            </div>
+			            </div> 
 					</div>
 					
 				</div><!-- End row -->
@@ -60,9 +96,15 @@
 					<div class="col-md-5">
 						<div class="input-group">
 							<span class="input-group-addon">Frecuencia Cardiaca: </span>
-							<input type="number" ng-model="vitales.frecCard" min="60" max="150" class="form-control" id="frecCard" name="frecCard" placeholder="F/C" required="">
+							<input type="number" ng-model="vitales.frecCard" min="60" max="150" class="form-control" id="frecCard" name="frecCard" placeholder="F/C" required>
 							<span class="input-group-addon">Lpm.</span>
 						</div>
+						<div class="validacion" role="alert" ng-if="interacted(formularios.vital.frecCard)" ng-messages="formularios.vital.frecCard.$error">
+			              <div ng-message="required">campo requerido</div>
+			              <div ng-message="number">valor numérico</div>
+			              <div ng-message="min">valor mayor a 60</div>
+			              <div ng-message="max">valor menor a 150</div>
+			            </div> 
 					</div>
 					<div class="col-md-7">
 						<div class="input-group">
@@ -71,6 +113,21 @@
 						</div>
 					</div>
 				</div><!-- End row -->
+				<div class="row">
+					 <div class="col-md-2">
+			          	<input type="Button" class="btn btn-primary"  value="Documentos" ng-click="irDocumentos()" />
+			          </div>
+					<div class="col-md-3 col-md-offset-7" >						
+						<input type="submit" name="guardaVit" id="guardaVit" class="btn btn-success"  value="Guarda Signos Vitales" />						
+					</div> 
+				</div>
+				<div class="row"> 
+			        <div class="col-md-12">
+			          <div ng-show="cargador" align="center">
+			            <img ng-src="imgs/cargador.gif">
+			          </div>
+			        </div>
+		      	</div>   
 				<div class="row">
 					<div class="col-md-12">
 						<div ng-show="listVitales" class="mianimacion">
@@ -117,16 +174,7 @@
 						</div> 
 					</div>
 				</div>
-				<br />
-				<div class="row">
-					 <div class="col-md-2">
-			          	<input type="Button" class="btn btn-primary"  value="Documentos" ng-click="irDocumentos()" />
-			          </div>
-					<div class="col-md-3 col-md-offset-7" >						
-						<input type="submit" name="guardaVit" id="guardaVit" class="btn btn-success"  value="Guarda Signos Vitales" />						
-					</div> 
-				</div>
-				<br>
+				
 			</div><!-- End panel-body -->
 		</div>
 	</form>	

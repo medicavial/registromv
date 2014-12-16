@@ -16,13 +16,13 @@
                     <div class="col-md-4">
                         <div class="input-group">
                             <span class="input-group-addon" >Fecha del Accidente</span>
-                            <input type="text" ng-model="accidente.fecha" name="FechaAcc" id="FechaAcc" class= "form-control" >
+                            <input type="text" ng-model="accidente.fecha" name="FechaAcc" id="FechaAcc" class= "form-control" data-date-format="DD-MM-YYYY" data-datetimepicker-confg="{ dropdownSelector: '.dropdown-toggle' }" >
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="input-group">
                             <span class="input-group-addon"> Tipo de vehiculo &nbsp; </span>
-                            <select name="vehiculo" id="vehiculo" ng-model="accidente.vehiculo" class= "form-control" ng-change="selectPosicion(this.id)"  onChange="cargaContenidoRed(this.id); cargaSelectRed();" ng-options="TipVehi.id as TipVehi.opcion  for TipVehi in listTipVehi" >
+                            <select name="vehiculo" id="vehiculo" ng-model="accidente.vehiculo" class= "form-control" ng-change="selectPosicion(this.id)" ng-options="TipVehi.id as TipVehi.opcion  for TipVehi in listTipVehi" >
                                 <option value=""> * Seleccione </option>                               
                             </select>
                         </div>
@@ -47,7 +47,7 @@
                                     <h3 class="panel-title" align="center">Equipo de Seguridad</h3>
                                 </div> 
                                 <div class="panel-body" style="width:100%;">
-                                    <div class="row" ng-show="arregloOpc.Nod">
+                                    <div class="row" ng-show="!arregloOpc.Nod">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Nod" >
                                                 <span class="input-group-addon" class="form-control"><input name="" type="checkbox" value="0" disabled="disabled">
@@ -56,7 +56,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Cintu">
+                                    <div class="row" ng-show="!arregloOpc.Cintu">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Cintu" >
                                                 <span class="input-group-addon" class="form-control">
@@ -66,7 +66,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Bolsa">
+                                    <div class="row" ng-show="!arregloOpc.Bolsa">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Bolsa" >
                                                 <span class="input-group-addon" class="form-control">
@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Ropa">
+                                    <div class="row" ng-show="!arregloOpc.Ropa">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Ropa" >
                                                 <span class="input-group-addon" class="form-control">
@@ -86,7 +86,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Casco">
+                                    <div class="row" ng-show="!arregloOpc.Casco">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Casco" >
                                                 <span class="input-group-addon" class="form-control">
@@ -96,7 +96,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Rodi">
+                                    <div class="row" ng-show="!arregloOpc.Rodi">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Rodi" >
                                                 <span class="input-group-addon" class="form-control">
@@ -106,7 +106,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Code">
+                                    <div class="row" ng-show="!arregloOpc.Code">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Code" >
                                                 <span class="input-group-addon" class="form-control">
@@ -116,7 +116,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Costi">
+                                    <div class="row" ng-show="!arregloOpc.Costi">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Costi" >
                                                 <span class="input-group-addon" class="form-control">
@@ -135,7 +135,7 @@
                                     <h3 class="panel-title" align="center">Descripcion</h3>
                                 </div> 
                                 <div class="panel-body" style="width:100%;">
-                                    <div class="row" ng-show="arregloOpc.Nodi">
+                                    <div class="row" ng-show="arregloOpc.Nodi=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Nodi"   >
                                                 <span class="input-group-addon" class="form-control">
@@ -144,7 +144,7 @@
                                                 <input type="text" value="*No disponible" readonly="" class="form-control" ></div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Volc">
+                                    <div class="row" ng-show="arregloOpc.Volc=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Volc" >
                                                 <span class="input-group-addon" class="form-control">
@@ -154,7 +154,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Alca">
+                                    <div class="row" ng-show="arregloOpc.Alca=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Alca" >
                                                 <span class="input-group-addon" class="form-control">
@@ -164,7 +164,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Late">
+                                    <div class="row" ng-show="arregloOpc.Late=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Late" >
                                                 <span class="input-group-addon" class="form-control">
@@ -174,7 +174,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Fron">
+                                    <div class="row" ng-show="arregloOpc.Fron=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Fron" >
                                                 <span class="input-group-addon" class="form-control">
@@ -184,7 +184,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Derr">
+                                    <div class="row" ng-show="arregloOpc.Derr=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Derr" >
                                                 <span class="input-group-addon" class="form-control">
@@ -194,7 +194,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Simp">
+                                    <div class="row" ng-show="arregloOpc.Simp=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Simp" >
                                                 <span class="input-group-addon" class="form-control">
@@ -204,7 +204,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Imap">
+                                    <div class="row" ng-show="arregloOpc.Imap=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Imap" >
                                                 <span class="input-group-addon" class="form-control">
@@ -214,7 +214,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Caid">
+                                    <div class="row" ng-show="arregloOpc.Caid=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Caid" >
                                                 <span class="input-group-addon" class="form-control">
@@ -224,7 +224,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Lesdep">
+                                    <div class="row" ng-show="arregloOpc.Lesdep=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Lesdep" >
                                                 <span class="input-group-addon" class="form-control">
@@ -234,7 +234,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Lestra">
+                                    <div class="row" ng-show="arregloOpc.Lestra=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Lestra" >
                                                 <span class="input-group-addon" class="form-control">
@@ -244,7 +244,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.ManSub">
+                                    <div class="row" ng-show="arregloOpc.ManSub=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="ManSub" >
                                                 <span class="input-group-addon" class="form-control">
@@ -254,7 +254,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="arregloOpc.Otr">
+                                    <div class="row" ng-show="arregloOpc.Otr=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Otr" >
                                                 <span class="input-group-addon" class="form-control">

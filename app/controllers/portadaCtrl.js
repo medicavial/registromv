@@ -8,8 +8,7 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
 	$scope.sinicestro='';
 	$scope.reporte='';
 	$scope.riesgo='';
-	busquedas.buscarFolio($rootScope.folio).success(function(data){
-		console.log(data);
+	busquedas.buscarFolio($rootScope.folio).success(function(data){		
         $scope.cia_clave=data.Cia_clave;
         $scope.pro_clave=data.Pro_clave;  	
 		$scope.cia=data.Cia_nombrecorto;	
@@ -20,14 +19,11 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
 		$scope.riesgo =data.RIE_nombre;
 		$scope.lesionado = data.Exp_nombre+' '+data.Exp_paterno+' '+data.Exp_materno;
 		$scope.usuario=data.Usu_registro;
-		$scope.registro=data.Exp_fecreg;
-        console.log($rootScope.rutaAse);
+		$scope.registro=data.Exp_fecreg;       
          if($rootScope.rutaAse==''||$rootScope.rutaAse==null){
         cveCia=$scope.cia_clave;
-        imgCia=$scope.imgCompania(cveCia);
-        console.log($scope.cia_clave);
-        $rootScope.rutaAse=imgCia;
-        console.log($rootScope.rutaAse);
+        imgCia=$scope.imgCompania(cveCia);        
+        $rootScope.rutaAse=imgCia;       
         }
         if($rootScope.rutaPro==''||$rootScope.rutaPro==null){
             cvePro=$scope.pro_clave;
@@ -77,8 +73,7 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
     }
 
     $scope.imgCompania = function(claveCompania){
-        var img=0;
-        console.log(claveCompania);
+        var img=0;        
         switch(claveCompania){          
         case '1':
             img="aba.jpg";

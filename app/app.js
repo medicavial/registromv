@@ -121,8 +121,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     
     $rootScope.admin = true;
     $rootScope.cerrar = false;
-    console.log($cookies.permisos);
-    console.log($rootScope.permisos);
+   
 
 
     //verifica el tamaño de la pantalle y oculta o muestra el menu
@@ -204,7 +203,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
         // the user appears to have gone idle  
         
         if($location.path() != "/login"){
-            console.log('iniciando estado temporal'); 
+           
         }                
     });
 
@@ -285,8 +284,7 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
                         contentType: 'application/json', 
                         dataType: "json", 
                         data:{user:username}
-                    }).success( function (data){
-                        console.log(data);
+                    }).success( function (data){                        
                         $cookies.permisos=JSON.stringify(data); 
                         $rootScope.permisos=JSON.parse($cookies.permisos);                           
                     });
@@ -335,7 +333,8 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         buscarFolio: function(folio){
             return $http.get('api/api.php?funcion=getFolio&folio='+folio);
         },
-        listadoFolios: function(usuUni){            
+        listadoFolios: function(usuUni){
+            $rootScope.cargador=1;            
             return $http.get('api/api.php?funcion=listadoFolios&uni='+usuUni);
         },
         datosPaciente: function(folio){            
@@ -411,6 +410,7 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
             return $http.get('api/api.php?funcion=getListTipVehi&fol='+folio);
         },
         listaVitales: function(folio){
+            $rootScope.cargador=true;
             return $http.get('api/api.php?funcion=getListVitales&fol='+folio);
         },
         // Apartado de solicitudes
