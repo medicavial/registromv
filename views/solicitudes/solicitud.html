@@ -62,12 +62,12 @@
 				        </tr>
 				      </thead>
 				      <tbody>
-				        <tr ng-click="datosPaciente($index)" ng-repeat="expediente in expedientes | orderBy:predicate:reverse">
-				          <td>{{expediente.expediente}}</td>
-				          <td>{{expediente.cliente}}</td>
-				          <td>{{expediente.lesionado}}</td>
-				          <td>{{expediente.sexo}}</td>
-				          <td>{{expediente.fecha}}</td>
+				        <tr  ng-repeat="expediente in expedientes">
+				          <td ng-click="datosPaciente($index)">{{expediente.expediente}}</td>
+				          <td ng-click="datosPaciente($index)">{{expediente.cliente}}</td>
+				          <td ng-click="datosPaciente($index)">{{expediente.lesionado}}</td>
+				          <td ng-click="datosPaciente($index)">{{expediente.sexo}}</td>
+				          <td ng-click="datosPaciente($index)">{{expediente.fecha}}</td>
 				        </tr>
 				      </tbody>
 				    </table>

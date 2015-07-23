@@ -1,7 +1,6 @@
 <?php
 
-
-$query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Usu_registro, Exp_fecreg, USU_registro, Uni_nombre, Uni_propia
+$query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Usu_registro, Exp_fecreg, USU_registro, Uni_nombre
 			From Expediente inner join Unidad on Expediente.UNI_clave=Unidad.UNI_clave
 			where Exp_folio='".$fol."';";
 
@@ -20,7 +19,6 @@ $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, 
 		$unidad		= $row["Uni_nombre"];
 		$fechahora	= $row["Exp_fecreg"];
 		$usuario	= $row["Usu_registro"];
-                $propia         = $row["Uni_propia"];
 
                 $dir='codigos/'.$fol.'.png';
 
@@ -35,8 +33,9 @@ $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, 
          ///////////////////////////////////                       PDF                      /////////////////////////////
          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+         
 $pdf->AddPage();
-/////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////
 ///// código de barras creado en el pdf
 $style = array(
@@ -55,16 +54,16 @@ $style = array(
                 'fontsize' => 8,
                 'stretchtext' => 4
                );          
-$pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
+$pdf->write1DBarcode($fol, 'C39', '87', '10', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
-		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/goa.jpg";
-		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-		// Set font
+ $image_file = '../../imgs/logomv.jpg';
+    $pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+                $image_file = "../../imgs/logos/multiasistencia.jpg";
+    $pdf->Image($image_file, 15, 10, 30, '', 'JPG', '', 'T', false, 100, '', false, false, 0, false, false, false);
+    // Set font
                 $pdf->Ln(15);
-		$pdf->SetFont('helvetica', 'B', 12);
-		// Title
+    $pdf->SetFont('helvetica', 'B', 12);
+    // Title
                 $pdf->Cell(0, 10, 'Encuesta de calidad', 0, 1, 'C', 0, '', 0, false, 'M', 'M');
                 $pdf->SetFont('helvetica', 'B', 10);
                 $pdf->Cell(0, 15, 'Folio Asignado:'.$fol, 0, 1, 'R', 0, '', 0, false, 'M', 'M');
@@ -72,9 +71,12 @@ $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
                 $pdf->SetFont('helvetica', 'B', 8);
                 $pdf->Cell(0, 10,"Fecha:".date('d'.'/'.'m'.'/'.'Y')." "."Hora:".date('g'.':'.'i'.' '.'A'), 0, 1, 'R', 0, '', 0, false, 'M', 'M');
 /////////////////////////////////////////////////////////////////
+
+
 /*$image_file = "../codigos/".$fol.".png";
 $pdf->Image($image_file, 90, 10, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-$pdf->Ln(25);*/
+$pdf->Ln(25);
+*/
 $pdf->SetFont('helvetica', 'B', 12);
 $pdf->Cell($w, $h, "Paciente: ".$folio." - ".$nombre." ".$paterno." ".$materno." ", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->SetFont('dejavusans', '', 8, '', true);
@@ -87,7 +89,7 @@ $pdf->Cell($w, $h, "Estimado Paciente:", $border, $ln, $align, $fill, $link, $st
 $pdf->Ln(5);
 $pdf->Cell($w, $h, "Con el propósito de conocer su opinión acerca del servico médico ofrecido, le agradeceremos contestar el siguiente cuestionario.", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Ln(5);
-$pdf->Cell($w=119, $h, "Acude a esta unidad medica:", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
+$pdf->Cell($w=119, $h, "Acude a esta unidad médica:", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Cell($w=27, $h, "en ambulacia (   )", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Cell($w=20, $h, "por sus propios medios (   )", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Ln(5);
@@ -194,7 +196,6 @@ $html="
            <td align=\"center\"></td>
            <td align=\"center\"></td>
            </tr>
-
       </table>
      ";
 

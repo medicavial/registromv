@@ -1,6 +1,5 @@
 <?php
 
-
 $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Usu_registro, Exp_fecreg, USU_registro, Uni_nombre, Uni_propia
 			From Expediente inner join Unidad on Expediente.UNI_clave=Unidad.UNI_clave
 			where Exp_folio='".$fol."';";
@@ -35,6 +34,7 @@ $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, 
          ///////////////////////////////////                       PDF                      /////////////////////////////
          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        
 $pdf->AddPage();
 /////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////
@@ -57,9 +57,9 @@ $style = array(
                );          
 $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
+ $image_file = '../../imgs/logomv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/goa.jpg";
+                $image_file = "../../imgs/logos/primero.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
                 $pdf->Ln(15);
@@ -67,7 +67,7 @@ $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 		// Title
                 $pdf->Cell(0, 10, 'Encuesta de calidad', 0, 1, 'C', 0, '', 0, false, 'M', 'M');
                 $pdf->SetFont('helvetica', 'B', 10);
-                $pdf->Cell(0, 15, 'Folio Asignado:'.$fol, 0, 1, 'R', 0, '', 0, false, 'M', 'M');
+                $pdf->Cell(0, 15, 'Folio Asignado:'.$_SESSION['FOLIO'], 0, 1, 'R', 0, '', 0, false, 'M', 'M');
                 $pdf->SetFont('helvetica', 'B', 8);
                 $pdf->SetFont('helvetica', 'B', 8);
                 $pdf->Cell(0, 10,"Fecha:".date('d'.'/'.'m'.'/'.'Y')." "."Hora:".date('g'.':'.'i'.' '.'A'), 0, 1, 'R', 0, '', 0, false, 'M', 'M');
@@ -282,5 +282,8 @@ $pdf->Ln(20);
          ";
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
+
+      $pdf->output("cuest1_".$_SESSION["FOLIO"].".pdf",'D');
 
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-
 $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Usu_registro, Exp_fecreg, USU_registro, Uni_nombre, Uni_propia
 			From Expediente inner join Unidad on Expediente.UNI_clave=Unidad.UNI_clave
 			where Exp_folio='".$fol."';";
@@ -57,9 +56,9 @@ $style = array(
                );          
 $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
+ $image_file = '../../imgs/logomv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/goa.jpg";
+                $image_file = "../../imgs/logos/general.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
                 $pdf->Ln(15);
@@ -282,5 +281,6 @@ $pdf->Ln(20);
          ";
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
 
 ?>

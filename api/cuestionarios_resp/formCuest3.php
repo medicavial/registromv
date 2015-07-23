@@ -35,8 +35,9 @@ $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, 
          ///////////////////////////////////                       PDF                      /////////////////////////////
          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        
 $pdf->AddPage();
-/////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////
 ///// código de barras creado en el pdf
 $style = array(
@@ -57,9 +58,10 @@ $style = array(
                );          
 $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
+/////////////////////////////////////////////////////////////////
+ $image_file = '../../imgs/logomv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/goa.jpg";
+                $image_file = "../../imgs/logos/aguila.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
                 $pdf->Ln(15);
@@ -87,7 +89,7 @@ $pdf->Cell($w, $h, "Estimado Paciente:", $border, $ln, $align, $fill, $link, $st
 $pdf->Ln(5);
 $pdf->Cell($w, $h, "Con el propósito de conocer su opinión acerca del servico médico ofrecido, le agradeceremos contestar el siguiente cuestionario.", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Ln(5);
-$pdf->Cell($w=119, $h, "Acude a esta unidad medica:", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
+$pdf->Cell($w=119, $h, "Acude a esta unidad médica:", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Cell($w=27, $h, "en ambulacia (   )", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Cell($w=20, $h, "por sus propios medios (   )", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Ln(5);
@@ -95,7 +97,7 @@ $pdf->Cell($w, $h, "Coloque una 'X' en la columna que mejor refleje el nivel de 
 $pdf->Ln(5);
 
 $html="
-     <table cellspacing=\"2\" cellpadding=\"3\">
+    <table cellspacing=\"2\" cellpadding=\"3\">
            <tr>
                 <th   align=\"center\" width=\"50%\">
                 </th>
@@ -194,7 +196,6 @@ $html="
            <td align=\"center\"></td>
            <td align=\"center\"></td>
            </tr>
-
       </table>
      ";
 
@@ -220,7 +221,7 @@ $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, 
 $html="";
 
 $html="
-    <table border=\"1\" cellspacing=\"2\" cellpadding=\"3\">
+   <table border=\"1\" cellspacing=\"2\" cellpadding=\"3\">
             <tr>
                     <th valing=\"middle\" colspan=\"4\" align=\"center\" bgcolor=\"#cccccc\" >
                         Contacto
@@ -282,5 +283,6 @@ $pdf->Ln(20);
          ";
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+      
 
 ?>

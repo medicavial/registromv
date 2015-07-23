@@ -57,7 +57,7 @@ $style = array(
                );          
 $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
+ $image_file = '../../mv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
                 $image_file = "../../imgs/logos/goa.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);

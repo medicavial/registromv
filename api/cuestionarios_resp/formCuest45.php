@@ -1,6 +1,5 @@
 <?php
 
-
 $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Usu_registro, Exp_fecreg, USU_registro, Uni_nombre, Uni_propia
 			From Expediente inner join Unidad on Expediente.UNI_clave=Unidad.UNI_clave
 			where Exp_folio='".$fol."';";
@@ -36,7 +35,7 @@ $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, 
          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $pdf->AddPage();
-/////////////////////////////////////////////////////////////////
+
 ////////////////////////////////////////////////////////////////
 ///// código de barras creado en el pdf
 $style = array(
@@ -55,11 +54,12 @@ $style = array(
                 'fontsize' => 8,
                 'stretchtext' => 4
                );          
-$pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
+$pdf->write1DBarcode($fol, 'C39', '87', '10', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
+/////////////////////////////////////////////////////////////////
+ $image_file = '../../imgs/logomv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/goa.jpg";
+                $image_file = "../../imgs/logos/inbursa.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
                 $pdf->Ln(15);
@@ -72,9 +72,11 @@ $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
                 $pdf->SetFont('helvetica', 'B', 8);
                 $pdf->Cell(0, 10,"Fecha:".date('d'.'/'.'m'.'/'.'Y')." "."Hora:".date('g'.':'.'i'.' '.'A'), 0, 1, 'R', 0, '', 0, false, 'M', 'M');
 /////////////////////////////////////////////////////////////////
+
 /*$image_file = "../codigos/".$fol.".png";
 $pdf->Image($image_file, 90, 10, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-$pdf->Ln(25);*/
+$pdf->Ln(25);
+*/
 $pdf->SetFont('helvetica', 'B', 12);
 $pdf->Cell($w, $h, "Paciente: ".$folio." - ".$nombre." ".$paterno." ".$materno." ", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->SetFont('dejavusans', '', 8, '', true);
@@ -87,7 +89,7 @@ $pdf->Cell($w, $h, "Estimado Paciente:", $border, $ln, $align, $fill, $link, $st
 $pdf->Ln(5);
 $pdf->Cell($w, $h, "Con el propósito de conocer su opinión acerca del servico médico ofrecido, le agradeceremos contestar el siguiente cuestionario.", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Ln(5);
-$pdf->Cell($w=119, $h, "Acude a esta unidad medica:", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
+$pdf->Cell($w=119, $h, "Acude a esta unidad médica:", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Cell($w=27, $h, "en ambulacia (   )", $border, $ln=0, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Cell($w=20, $h, "por sus propios medios (   )", $border, $ln=1, $align, $fill, $link, $stretch, $ignore_min_height);
 $pdf->Ln(5);
@@ -95,106 +97,74 @@ $pdf->Cell($w, $h, "Coloque una 'X' en la columna que mejor refleje el nivel de 
 $pdf->Ln(5);
 
 $html="
-     <table cellspacing=\"2\" cellpadding=\"3\">
+    <table cellspacing=\"2\" cellpadding=\"3\">
            <tr>
-                <th   align=\"center\" width=\"50%\">
+                <th   align=\"center\" width=\"70%\">
                 </th>
-                <th valing=\"middle\" align=\"center\" bgcolor=\"#cccccc\" width=\"10%\"><b>Excelente</b>
-                </th>
-                <th valing=\"middle\" align=\"center\" bgcolor=\"#cccccc\" width=\"10%\">
+               
+                <th valing=\"middle\" align=\"center\" bgcolor=\"#cccccc\" width=\"15%\">
                 <b>Bueno</b>
                 </th>
-                <th valing=\"middle\" align=\"center\" bgcolor=\"#cccccc\" width=\"10%\">
-                <b>Regular</b>
-                </th>
-                <th valing=\"middle\"  align=\"center\" bgcolor=\"#cccccc\" width=\"10%\">
+                
+                <th valing=\"middle\"  align=\"center\" bgcolor=\"#cccccc\" width=\"15%\">
                 <b>Malo</b>
                 </th>
-                <th valing=\"middle\" align=\"center\" bgcolor=\"#cccccc\" width=\"10%\">
-                <b>No aplica</b>
-                </th>
+                
+           </tr>
+                      <tr>
+           <td bgcolor=\"#E2EFED\">Independiente de esta atención médica.¿La asesoría proporcionada por el Ajustador fue?</td>           
+           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
+           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
+           </tr>
+
+           <tr>
+           <td>¿El trato del Personal de Recepción fue?</td>
+           <td align=\"center\" >(    )</td>
+           <td align=\"center\" >(    )</td>
+           
            </tr>
            <tr>
-           <td bgcolor=\"#E2EFED\">¿El trato del Personal de Recepción fue?</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
+           <td bgcolor=\"#E2EFED\">¿La rapidez con que le atendieron a su llegada fue?</td>
+           <td align=\"center\" bgcolor=\"#E2EFED\">(   )</td>
+           <td align=\"center\" bgcolor=\"#E2EFED\">(   )</td>
+           
            </tr>
            <tr>
-           <td >¿El tiempo transcurrido desde su llegada a la recepción y hasta que le atendio el médico tratante fue?</td>
-           <td align=\"center\">5 min(   )</td>
-           <td align=\"center\">15 min(   )</td>
-           <td align=\"center\">20 min(   )</td>
-           <td align=\"center\">30 min(   )</td>
-           <td align=\"center\">+ de 30 min(   )</td>
+           <td >¿En cuestión de comodidad, iluminación, limpieza las instalaciones son?</td>
+           <td align=\"center\" >(    )</td>
+           <td align=\"center\" >(    )</td>
+           
            </tr>
            <tr>
-           <td bgcolor=\"#E2EFED\">¿En cuestión de comodidad, iluminación, limpieza las instalaciones son?</td>
+           <td bgcolor=\"#E2EFED\">¿La presentación del médico que le atendió fue?</td>
            <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
            <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
+           
            </tr>
            <tr>
-           <td>¿La presentación del médico que le atendió fue?</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
+           <td >¿El trato del médico que le atendió. Usted lo calificaría como?</td>
+           <td align=\"center\" >(    )</td>
+           <td align=\"center\" >(    )</td>
+           
            </tr>
            <tr>
-           <td bgcolor=\"#E2EFED\">¿El trato del médico que le atendió. Usted lo calificaría como?</td>
+           <td bgcolor=\"#E2EFED\">¿La información proporcionada de su padecimiento y tratamiento por el médico tratante fue?</td>
            <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
            <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
+           
            </tr>
            <tr>
-           <td>¿La información proporcionada de su padecimiento y tratamiento por el médico tratante fue?</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           </tr>
-           <tr>
-           <td bgcolor=\"#E2EFED\">¿Los servicios de Rayos X fueron?</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           </tr>
-           <tr>
-           <td>¿Los servicios de Rehabilitación fueron?</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           <td align=\"center\">(    )</td>
-           </tr>
+           <td >¿Los servicios de Rayos X fueron?</td>
+           <td align=\"center\" >(    )</td>
+           <td align=\"center\" >(    )</td>
+           
+           </tr>           
            <tr>
            <td bgcolor=\"#E2EFED\">¿En general, el servicio ofrecido por MÉDICAVIAL fue?</td>
            <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
            <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
-           <td align=\"center\" bgcolor=\"#E2EFED\">(    )</td>
+           
            </tr>
-           <tr>
-           <td>¿Recomendaría usted nuestro servicio?</td>
-           <td align=\"center\">Si(   )</td>
-           <td align=\"center\">Tal vez(   )</td>
-           <td align=\"center\">No(   )</td>
-           <td align=\"center\"></td>
-           <td align=\"center\"></td>
-           </tr>
-
       </table>
      ";
 
@@ -220,7 +190,7 @@ $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, 
 $html="";
 
 $html="
-    <table border=\"1\" cellspacing=\"2\" cellpadding=\"3\">
+   <table border=\"1\" cellspacing=\"2\" cellpadding=\"3\">
             <tr>
                     <th valing=\"middle\" colspan=\"4\" align=\"center\" bgcolor=\"#cccccc\" >
                         Contacto
@@ -282,5 +252,6 @@ $pdf->Ln(20);
          ";
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
 
 ?>

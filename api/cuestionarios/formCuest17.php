@@ -56,7 +56,7 @@ $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
  $image_file = '../../imgs/logomv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../imgs/logos/multiva.jpg";
+                $image_file = "../../imgs/logos/multiva.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
                 $pdf->Ln(15);
@@ -280,7 +280,6 @@ $pdf->Ln(20);
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
 
-
-      $pdf->output("cuest1_".$_SESSION["FOLIO"].".pdf",'D');
+    
 
 ?>

@@ -1,6 +1,5 @@
 <?php
 
-
 $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, Exp_poliza, Exp_reporte, Exp_fecreg, Usu_registro, Exp_fecreg, USU_registro, Uni_nombre, Uni_propia
 			From Expediente inner join Unidad on Expediente.UNI_clave=Unidad.UNI_clave
 			where Exp_folio='".$fol."';";
@@ -36,7 +35,7 @@ $query= "Select Exp_folio, Exp_nombre, Exp_paterno, Exp_materno, Exp_siniestro, 
          ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 $pdf->AddPage();
-/////////////////////////////////////////////////////////////////
+////////////////
 ////////////////////////////////////////////////////////////////
 ///// código de barras creado en el pdf
 $style = array(
@@ -57,9 +56,9 @@ $style = array(
                );          
 $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/logos/mv.jpg';
+  $image_file = '../../imgs/logomv.jpg';
 		$pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/goa.jpg";
+                $image_file = "../../imgs/logos/gnp.jpg";
 		$pdf->Image($image_file, 10, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 		// Set font
                 $pdf->Ln(15);
@@ -71,7 +70,8 @@ $pdf->write1DBarcode($fol, 'C39', '87', '', '', 10, 0.2, $style, 'C');
                 $pdf->SetFont('helvetica', 'B', 8);
                 $pdf->SetFont('helvetica', 'B', 8);
                 $pdf->Cell(0, 10,"Fecha:".date('d'.'/'.'m'.'/'.'Y')." "."Hora:".date('g'.':'.'i'.' '.'A'), 0, 1, 'R', 0, '', 0, false, 'M', 'M');
-/////////////////////////////////////////////////////////////////
+
+////////
 /*$image_file = "../codigos/".$fol.".png";
 $pdf->Image($image_file, 90, 10, 30, '', 'PNG', '', 'T', false, 300, '', false, false, 0, false, false, false);
 $pdf->Ln(25);*/
@@ -253,7 +253,7 @@ $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, 
 $html="";
 
 
-$pdf->Ln(20);
+$pdf->Ln(10);
    $html="
           <table border=\"0\"  width=\"400\">
                  <tr>
@@ -282,5 +282,226 @@ $pdf->Ln(20);
          ";
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
+
+/////////////Ricardo Pliego
+$pdf->AddPage();
+
+                $image_file = '../../imgs/logomv.jpg';
+		$pdf->Image($image_file, 80, 10, 60, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Ln(35);
+
+$pdf->SetFont('helvetica', 'B', 16);
+$pdf->Cell($w, $h, "ESTIMADO PACIENTE: ", $border, $ln, $align, $fill, $link, $stretch, $ignore_min_height);
+$pdf->SetFont('helvetica', '', 14);
+$pdf->Ln(10);
+
+$html="
+<p align=\"justify\">
+<b>GRUPO NACIONAL PROVINCIAL ( GNP )</b> nos ha encomendado su TRATAMIENTO MÉDICO AMBULATORIO  con motivo del accidente automovilístico recientemente ocurrido.
+<br />
+<br />
+Nos es  grato informarle que en esta clínica le brindaremos la atención médica ambulatoria de Traumatología y Ortopedia  que requiera  por las lesiones  sufridas;  al mismo tiempo le agradeceremos se sirva firmar la carta finiquito que se adjunta.
+<br />
+<br />
+MEDICAVIAL le estará otorgando las consultas médicas ortopédicas, los medicamentos, las órtesis y las sesiones de terapia física que  requiera en el transcurso de  su recuperación.
+<br />
+<br />
+Para cualquier duda o comentarios en relación a la firma del finiquito favor de comunicarse a la <b>LINEA GNP</b> en la Ciudad de México al 52-27-90-00 y en el resto de la República Mexicana al  01800 400 9000. Favor de digitar en ambos casos la opción  número 9.
+<br />
+<br />
+Así mismo recibimos sus dudas y  comentarios en el correo electrónico  amartinez@medicavial.com.mx.
+<br />
+<br />
+</p>
+";
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+$html="";
+$pdf->Ln(2);
+$pdf->Cell($w, $h, $txt="A T E N T A M E N T E ", $border, $ln, $align="C", $fill, $link, $stretch, $ignore_min_height);
+$image_file = "../../imgs/FirmaSC.jpg";
+$pdf->Image($image_file, 88, 205, 38, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+$pdf->Ln(28);
+$pdf->SetFont('helvetica', 'b', 14);
+$pdf->Cell($w, $h, $txt="Dr. Sergio Sinue Cisneros Mora", $border, $ln, $align="C", $fill, $link, $stretch, $ignore_min_height);
+$pdf->Ln(10);
+
+$pdf->SetFont('helvetica', $style, 10, $fontfile=1);
+
+$html="
+    <p align=\"center\">
+    MEDICA VIAL S.A. de C.V.
+    <br />
+    Av. Álvaro Obregón No. 121, Piso 10, Colonia Roma, Delegación Cuauhtémoc, CP. 06700
+    <br />
+    Tel: (52) 55 14 4700   Fax: (52) 55 14 5599
+    </p>
+";
+
+
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+$html="";
+
+
+////////Finiquito
+
+$pdf->AddPage();
+$pdf->SetFont('dejavusans', 'B', 12);
+$pdf->Cell($w, $h, $txt="Finiquito de Pago de Daños al Asegurado", $border, $ln=1, $align='C', $fill, $link, $stretch, $ignore_min_height);
+
+$pdf->Ln(8);
+$pdf->SetFont('dejavusans', '', 10);
+$html="
+<p align=\"justify\">
+Muy señores Míos (Nuestros):
+<br />
+<br />
+Me (nos) es grato manifestarles que la reclamación arriba citada ha sido debidamente atendida por ustedes a mi (nuestra) entera satisfacción, en vista de lo cual hago (hacemos) constar por la presente que relevo (relevamos) a ustedes de cualquier responsabilidad posterior con motivo de la citada reclamación.
+<br />
+<br />
+Además, quedo (quedamos) enterado (s) que de acuerdo con las condiciones de la póliza y con motivo del pago de dicha reclamación, queda reducida la suma asegurada de cada inciso por las cantidades correspondientes a las erogaciones hechas por ustedes en cada una de ellas.
+<br />
+<br />
+En atención al pago de dicha indemnización, otorgo (otorgamos) a Grupo Nacional Provincial, S.A.B. El más amplio y completo finiquito de mi (nuestra) reclamación por esa pérdida subrogándola en los términos al Artículo 111 de la Ley Sobre el Contrato de Seguro, comprometiéndome (nos) a proporcionarle conforme a mi (nuestras) obligaciones legales y contractuales todos los informes y documentos que le sean necesarios para ejercer la acción del cobro. Si en relación con la pérdida que se me (nos) cubre obtuviera (nos) de los terceros responsables de alguna indemnización o la devolución de los bienes asegurados me (nos) obligo (obligamos) a entregar a Grupo Nacional Provincial, S.A.B.  la parte que le corresponda, en un término no mayor a 15 días naturales contados a partir de la fecha en que reciba la indemnización, o bien,  la devolución de los bienes asegurados.
+</p>
+";
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+$html="";
+$pdf->Ln(2);
+
+$html="
+    <table cellspacing=\"2\" cellpadding=\"3\">
+            <tr>
+                    <th valing=\"middle\" colspan=\"4\" >
+                      <b>Nombre:_______________________________________________________________________________________</b>
+                      </th>
+            </tr>
+            <tr>
+                   <td colspan=\"2\">
+                 <b>Dirección:___________________________________</b>
+                   </td>
+                   <td colspan=\"2\">
+                 <b>Colonia:_____________________________________</b>
+                   </td>
+           </tr>
+           <tr>
+                   <td colspan=\"2\">
+                 <b>Población:___________________________________</b>
+                   </td>
+                   <td colspan=\"2\">
+                 <b>Teléfono:____________________________________</b>
+                   </td>
+            </tr>
+            </table>
+";
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+$html="";
+
+$pdf->Ln(3);
+$html="
+          <table border=\"0\"  width=\"400\">
+                 <tr>
+                      <td width=\"40%\">
+                                        <hr />
+                      </td>
+                      <td width=\"20%\">
+                     </td>
+                     <td width=\"40%\">
+                                        <hr />
+                     </td>
+                 </tr>
+                 <tr>
+                      <td width=\"40%\" align=\"center\">
+                                                Lugar y Fecha
+                      </td>
+                      <td width=\"20%\">
+                      </td>
+                      <td width=\"40%\" align=\"center\">
+                                                Firma
+                      </td>
+                 </tr>
+          </table>
+         ";
+
+$pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
+
+
+
+$pdf->Ln(12);
+$pdf->SetFont('dejavusans', 'B', 12);
+$pdf->Cell($w, $h, $txt="Finiquito de Responsabilidad Civil por Daños a Terceros", $border, $ln=1, $align='C', $fill, $link, $stretch, $ignore_min_height);
+$pdf->Ln(8);
+$pdf->SetFont('dejavusans', '', 10);
+
+$html="
+<p align=\"justify\">
+
+Muy señores Míos (Nuestros):
+<br />
+<br />
+Con la atención recibida queda totalmente cubierta la responsabilidad civil y la reparación del daño, que por el concepto indicado son a cargo del asegurado, de acuerdo a la legislación civil y penal aplicables, por lo que habiendo sido debidamente atendida mi (nuestra) reclamación por Grupo Nacional Provincial, S.A.B. y terminada a mi (nuestra) entera satisfacción, manifiesto (manifestamos) por dicho concepto no me (nos) reservo (reservamos) ningún derecho ni acción legal en contra de la citada compañía, el propietario del vehículo causante del accidente, ni el conductor.
+</p>
+";
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+$html="";
+
+$pdf->Ln(2);
+
+$html="
+    <table cellspacing=\"2\" cellpadding=\"3\">
+            <tr>
+                    <th valing=\"middle\" colspan=\"4\" >
+                      <b>Nombre:_______________________________________________________________________________________</b>
+                      </th>
+            </tr>
+            <tr>
+                   <td colspan=\"2\">
+                 <b>Dirección:___________________________________</b>
+                   </td>
+                   <td colspan=\"2\">
+                 <b>Colonia:_____________________________________</b>
+                   </td>
+           </tr>
+           <tr>
+                   <td colspan=\"2\">
+                 <b>Población:___________________________________</b>
+                   </td>
+                   <td colspan=\"2\">
+                 <b>Teléfono:____________________________________</b>
+                   </td>
+            </tr>
+            </table>
+";
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+$html="";
+$pdf->Ln(3);
+ $html="
+          <table border=\"0\"  width=\"400\">
+                 <tr>
+                      <td width=\"40%\">
+                                        <hr />
+                      </td>
+                      <td width=\"20%\">
+                     </td>
+                     <td width=\"40%\">
+                                        <hr />
+                     </td>
+                 </tr>
+                 <tr>
+                      <td width=\"40%\" align=\"center\">
+                                                Lugar y Fecha
+                      </td>
+                      <td width=\"20%\">
+                      </td>
+                      <td width=\"40%\" align=\"center\">
+                                                Firma
+                      </td>
+                 </tr>
+          </table>
+         ";
+
+$pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
 
 ?>

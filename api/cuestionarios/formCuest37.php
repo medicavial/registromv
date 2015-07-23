@@ -54,10 +54,10 @@ $style = array(
                );          
 $pdf->write1DBarcode($fol, 'C39', '87', '10', '', 10, 0.2, $style, 'C');
 //////////      fin de creacion de codigo de barras       ////////
- $image_file = '../../imgs/mv.jpg';
+ $image_file = '../../imgs/logomv.jpg';
     $pdf->Image($image_file, 160, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
-                $image_file = "../../imgs/logos/blanco.jpg";
-    $pdf->Image($image_file, 15, 10, 30, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
+                $image_file = "../../imgs/logos/multiafirme.jpg";
+    $pdf->Image($image_file, 15, 10, 40, '', 'JPG', '', 'T', false, 300, '', false, false, 0, false, false, false);
     // Set font
                 $pdf->Ln(15);
     $pdf->SetFont('helvetica', 'B', 12);
