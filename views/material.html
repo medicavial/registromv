@@ -10,6 +10,7 @@
 		      <div class="panel-body">
 		        	<div class="list-group">
 					  <a target="_blank" href="{{ documento.ubicacion }}" class="list-group-item" ng-repeat="documento in documentos">{{ documento.nombre }}</a>
+					  <a target="_blank" href="{{ consentimiento.ubicacion }}" class="list-group-item" ng-repeat="consentimiento in consentimientos">{{ consentimiento.nombre }}</a>
 					</div>
 		      </div>
 		    </div>
@@ -17,7 +18,7 @@
 		<div class="col-md-6">
 			<div class="panel panel-primary">
 		      <div class="panel-heading">
-		        <h3 class="panel-title">Formatos prediseñados</h3>
+		        <h3 class="panel-title">Ejercicios en casa</h3>
 		      </div>
 		      <div class="panel-body">
 		        	<div class="list-group">
@@ -28,59 +29,111 @@
 		</div>
 	</div>
 	
-	<div class="row">
+	<div class="row">		
 		<div class="col-md-6">
 			<div class="panel panel-primary">
 		      <div class="panel-heading">
-		        <h3 class="panel-title">Formatos prediseñados</h3>
+		        <h3 class="panel-title">Normas y políticas de recursos rumanos</h3>
 		      </div>
 		      <div class="panel-body">
 		        	<div class="list-group">
-					  <a target="_blank" href="" class="list-group-item" ng-repeat="proceso in procesos" >{{ proceso.nombre }}</a>
+					  <a target="_blank" href="archivos/politicas_aliato_medica_vial.pdf" class="list-group-item"  >Normas y políticas</a>					  
+					</div>
+		      </div>
+		    </div>			
+		</div>		
+
+		<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Normas y políticas de coordinación médica</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="archivos/politica_coordinacion_medica.pdf" class="list-group-item"  >Política para autorizaciones</a>					  
+					</div>
+		      </div>
+		    </div>			
+		</div>		
+		
+	</div>
+	<div class="row">
+			<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Bonos a clínicas</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+		        		<a href="" class="list-group-item" ng-click="abreVideo(1)">1.-Objetivo y mecánica de bono. por LIC. MARIANA SANCHEZ</a>					  						
+						<a href="" class="list-group-item" ng-click="abreVideo(2)">2.- Cero quejas MARICURZ FLOREZ</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(3)">3.- Número de faltas y retardos LIC. MARIANA SANCHEZ</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(4)">4.- Inventario LIC. ANGELICALOZANO</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(5)">5.- Expedientes completos ING. ALFREDO GUTIERREZ</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(6)">6.- Ventas particulares LIC. HUGO ZARICH</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(7)">7.- Tiempo de espera ING. ALFREDO GUTIERREZ</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(8)">8.- Sondeo de calidad LIC. MARIANA SANCHEZ</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(9)">9.- Reglamento de clínicas ANGELICA MERCADO</a>
+						<a href="" class="list-group-item" ng-click="abreVideo(10)">10.- Requisitos por persona_LIC. MARIANA SANCHEZ</a>
+					</div>
+
+
+
+		      </div>
+		    </div>	
+
+		    <div id="pruebaModal" class="modal fade">
+			    <div class="modal-dialog">
+			        <div class="modal-content">
+			            <div class="modal-header">
+			                <button type="button" class="close" ng-click="pausarVideo()" data-dismiss="modal" aria-hidden="true">&times;</button>
+			                <h4 class="modal-title">{{titulo}}</h4>
+			            </div>
+			            <div class="modal-body">
+
+			            <div ng-include="ruta"></div>	
+			             		
+			            </div>
+			            <div class="modal-footer">
+			                <button type="button" ng-click="pausarVideo()" class="btn btn-default" data-dismiss="modal">Cerrar</button>			                
+			            </div>
+			        </div>
+			    </div>
+			</div>			
+					
+					
+			
+		</div>
+			
+	</div>
+	<div class="row">
+			<div class="col-md-6">
+			<div class="panel panel-primary">
+		      <div class="panel-heading">
+		        <h3 class="panel-title">Procedimientos</h3>
+		      </div>
+		      <div class="panel-body">
+		        	<div class="list-group">
+					  <a target="_blank" href="archivos/Manual_de_entrega_de_constancia_medica_ABA.doc" class="list-group-item"  >Proceso constancia médica ABA</a>
+					  <a target="_blank" href="archivos/Procedimiento_Thona.pdf" class="list-group-item"  >Proceso atención médica THONA</a>
 					</div>
 		      </div>
 		    </div>
 			
 		</div>
-		<div class="col-md-6">
+			<div class="col-md-6">
 			<div class="panel panel-primary">
 		      <div class="panel-heading">
-		        <h3 class="panel-title">Formatos prediseñados</h3>
+		        <h3 class="panel-title">Guías técnicas</h3>
 		      </div>
 		      <div class="panel-body">
 		        	<div class="list-group">
 					  <a target="_blank" href="{{ escaner.ubicacion }}" class="list-group-item" ng-repeat="escaner in escaners">{{ escaner.nombre }}</a>
+					   <a target="_blank" href="{{ manual.ubicacion }}" class="list-group-item" ng-repeat="manual in manuales">{{ manual.nombre }}</a>
 					</div>
 		      </div>
 		    </div>
 		</div>
-		
-	</div>
-	<div class="row">
-		<div class="col-md-6">
-			<div class="panel panel-primary">
-		      <div class="panel-heading">
-		        <h3 class="panel-title">Formatos prediseñados</h3>
-		      </div>
-		      <div class="panel-body">
-		        	<div class="list-group">
-					  <a target="_blank" href="{{ manual.ubicacion }}" class="list-group-item" ng-repeat="manual in manuales">{{ manual.nombre }}</a>
-					</div>
-		      </div>
-		    </div>
 			
-		</div>
-		<div class="col-md-6">
-			<div class="panel panel-primary">
-		      <div class="panel-heading">
-		        <h3 class="panel-title">Formatos prediseñados</h3>
-		      </div>
-		      <div class="panel-body">
-		        	<div class="list-group">
-					  <a target="_blank" href="{{ consentimiento.ubicacion }}" class="list-group-item" ng-repeat="consentimiento in consentimientos">{{ consentimiento.nombre }}</a>
-					</div>
-		      </div>
-		    </div>
-		</div>
 	</div>
 </div>

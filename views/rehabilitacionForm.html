@@ -1,0 +1,310 @@
+<div class="container" style="width: 100%">     
+<br>
+	<div class="panel panel-primary">
+    <div style="width:100%; background:gray;color:white">
+    <div class="row">
+      <div class="col-md-1" style="padding-top:1.2em" ng-show="regresar">
+        <button ng-click="regresaWizard()" style="background:transparent; border:0px"><img src="imgs/flecha.jpg" width="35" height="35" class="img-circle" /></button>
+      </div>
+    
+			<h2 style="padding-left:2%;">Solicitud de Rehabilitación <b><label>{{folio}}</label></b></h2>
+    </div>
+		</div>                                
+
+		<div class="Panel-body">
+				<div class="row">
+					<div class="col-md-12">
+					  <ul class="nav nav-tabs">
+                 <li class="active">
+                     <a data-target="#tab-one"  data-toggle="tab">Datos del paciente</a>
+                 </li>
+                 <li >
+                     <a data-target="#tab-two" ng-click="verDatosAcc()" data-toggle="tab">Datos del Accidente</a>
+                 </li>
+                 <li >
+                     <a data-target="#tab-three" ng-click="verExpdiente()"  data-toggle="tab">Expediente</a>
+                 </li>
+                 <li >
+                     <a data-target="#tab-four" ng-click="VerDatosPase()"  data-toggle="tab">Datos del Pase a Rehabilitación</a>
+                 </li>
+             </ul>
+            <div class="tab-content">
+              <div id="tab-one" class="tab-pane active">
+                 <table class="table table-bordered table-hover" ng-hide="cargador">
+                    <thead>
+                        <tr>
+                            <td>Folio: <b>{{folio}}</b></td>
+                            <td>Nombre: <b>{{nombre}}</b></td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Aseguradora: <b>{{datos.cia}}</b></td>
+                            <td>Siniestro: <b>{{datos.sin}}</b></td>
+                            <td>Póliza: <b>{{datos.pol}}</b></td>
+                            <td>Reporte: <b>{{datos.rep}}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Fecha nacimiento:</td>
+                            <td><b>{{datos.fecnac}}</b></td>
+                            <td>Edad: <b>{{datos.anios}} años {{datos.meses}} meses</b></td>
+                            <td>Sexo: <b>{{datos.sexo}}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Tipo de Trabajo: </td>
+                            <td><b>{{datos.ocu}}</b></td>
+                            <td>Estado Civil:</td>
+                            <td><b>{{datos.edoC}}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Teléfono: </td>
+                            <td><b>{{datos.tel}}</b></td>
+                            <td>Email:</td>
+                            <td><b>{{datos.mail}}</b></td>
+                        </tr>
+                        <tr>
+                            <td>Observaciones Religiosas: </td>
+                            <td><b>{{datos.obs}}</b></td>
+                            
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row" ng-show='cargador'> 
+                <div class="col-md-12">
+                  <div ng-show="cargador" align="center" style="hight:10em;">
+                    <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>   
+              </div>
+              <div id="tab-two" class="tab-pane">
+                  <div class="row"> 
+                <div class="col-md-12">
+                  <table class="table table-bordered table-hover" ng-hide="cargador">
+                    <thead>
+                        <tr>
+                            <td>Fecha de siniestro: <b>{{acc.fecSin}}</b></td>
+                            <td>Fecha de primera atención: <b>{{acc.fecAtn}}</b></td>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2">Medico de primera atencion:  <b>{{acc.doc}}</b></td>                                                        
+                        </tr>
+                        <tr>
+                            <td colspan="2">Diagnóstico Actual: 
+                            <b>{{acc.diag}}</b></td>                            
+                        </tr>                        
+                    </tbody>
+                </table>
+                  <div ng-show="cargador" align="center" style="hight:10em;">
+                    <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>   
+              </div>
+              <div id="tab-three" class="tab-pane">
+              <div class="row"> 
+                <div class="col-md-6">
+                  <table class="table table-bordered table-hover" ng-hide="cargador">
+                    <thead>
+                        <tr>
+                            <th><b>Primera Atención</b></th>                            
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-show="nota">
+                            <td><a href="#">  Nota Médica</a></td> 
+                        <tr ng-hide="nota">
+                            <td>Nota Médica</td>
+                        </tr>                                                       
+                        </tr>
+                        <tr>
+                            <td><a href="#"> Historia Clínica</a></td>                            
+                        </tr>                        
+                    </tbody>
+                </table>                  
+                </div>
+                <div class="col-md-6">
+                  <table class="table table-bordered table-hover" ng-hide="cargador">
+                    <thead>
+                        <tr>
+                            <th><b>Subsecuencias:</b></th>                                                      
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="sub in subsec">
+                            <td><a href="#"> Subsecuencia {{sub.Sub_cons}} </a></td>                                                        
+                        </tr>                                          
+                    </tbody>
+                </table>
+                  
+                </div>
+                <div class="col-md-12">
+                    <div ng-show="cargador" align="center" style="hight:10em;">
+                      <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>   
+              </div>
+
+              <div id="tab-four" class="tab-pane">
+              <div class="row"> 
+                <div class="col-md-12">
+                  <table class="table table-bordered table-hover" ng-hide="cargador">
+                    <thead>
+                        <tr>
+                            <td>Médico que envió a rehabilitación: <b>{{datosPase.medic}}</b></td>
+                            <td>Fecha: <b>{{datosPase.fech}}</b></td> 
+                            <td>Rehabilitaciones Aproximandas: <b>{{datosPase.noSes}}</b></td>                                                        
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Observaciones previas a Rehabilitación: <b>{{datosPase.obs}}</b></td> 
+                        
+                            <td colspan="2">Diagnóstico previo a Rehabilitación: <b>{{datosPase.diag}}</b></td>
+                        </tr>                                                                         
+                    </tbody>
+                </table>                  
+                </div>               
+                <div class="col-md-12">
+                    <div ng-show="cargador" align="center" style="hight:10em;">
+                      <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>   
+              </div>
+
+              <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-primary">
+                    <div class="panel-heading">Rehabilitacion {{noR}}</div>
+                      <div class="Panel-body">
+                      <fieldset ng-disabled="formu">
+                          <form name="formularios.rehabForm" ng-submit="guardaRehabilitacion()" novalidate> 
+                              <br><br>                           
+                              <div class="row">
+                                <div class="col-md-6">
+                                  <div class="input-group">
+                                    <span class="input-group-addon">Tipo de terapia: </span>
+                                    <input type="text" class="form-control" ng-model="rehabilitacionForm.tipo"  id="tipo" name="tipo" required>
+                                  </div>
+                                  <div class="validacion" role="alert" ng-if="interacted(formularios.rehabForm.tipo)" ng-messages="formularios.rehabForm.tipo.$error">
+                                    <div ng-message="required">campo requerido</div>                                        
+                                  </div>
+                                </div>                                                              
+                                <div class="col-md-3">
+                                 <div class="input-group">
+                                  <span class="input-group-addon">Escala de dolor:</span>
+                                  <select  class="form-control" ng-model="rehabilitacionForm.escala"  id="escala" name="escala" required >
+                                            <option value="">Seleccione</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                  </select>
+                                </div>
+                                <div class="validacion" role="alert" ng-if="interacted(formularios.rehabForm.escala)" ng-messages="formularios.rehabForm.escala.$error">
+                                    <div ng-message="required">campo requerido</div>                                    
+                                  </div>   
+                                </div>
+                                 <div class="col-md-3">
+                                 <div class="input-group">
+                                  <span class="input-group-addon">Escala de mejoría:</span>
+                                  <select  class="form-control" ng-model="rehabilitacionForm.mejoria"  id="mejoria" name="mejoria" style="resize:none;" required >
+                                            <option value="">Seleccione</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                  </select>
+                                </div>
+                                <div class="validacion" role="alert" ng-if="interacted(formularios.rehabForm.mejoria)" ng-messages="formularios.rehabForm.mejoria.$error">
+                                    <div ng-message="required">campo requerido</div>                                    
+                                  </div>   
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                  <span class="input-group-addon">Criterios de Waddell: </span>
+                                  <textarea class="form-control" ng-model="rehabilitacionForm.criterios" rows="4" id="criterios" name="criterios" style="resize:none;" mayusculas></textarea>
+                                </div>   
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                  <span class="input-group-addon">Observaciones </span>
+                                  <textarea class="form-control" ng-model="rehabilitacionForm.observa" rows="4" id="observa" name="observa" style="resize:none;" mayusculas required></textarea>
+                                </div>
+                                <div class="validacion" role="alert" ng-if="interacted(formularios.rehabForm.observa)" ng-messages="formularios.rehabForm.observa.$error">
+                                    <div ng-message="required">campo requerido</div>                                    
+                                  </div>      
+                                </div>
+                              </div>
+
+                              <div class="row">
+                                <div class="col-md-6">
+                                    <div class="input-group">
+                                    <span class="input-group-addon">Duracion de la rehabilitacion:</span>
+                                    <input type="number" class="form-control" ng-model="rehabilitacionForm.duracion"  id="duracion" name="duracion" required>
+                                  </div>
+                                  <div class="validacion" role="alert" ng-if="interacted(formularios.rehabForm.duracion)" ng-messages="formularios.rehabForm.duracion.$error">
+                                    <div ng-message="required">campo requerido</div>
+                                    <div ng-message="number">valor numérico</div>            
+                                  </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="input-group">
+                                      <span class="input-group-addon">  El paciente acudió a su cita anterior: </span> 
+                                      <span class="input-group-addon">                 
+                                      <input type='radio' name='acudio' id='acudio' value='S' ng-model="rehabilitacionForm.acudio" required ng-checked="rehabilitacionForm.acudio== S" />  Si <input type='radio' name='acudio' id='acudio' value='N' ng-model="rehabilitacionForm.acudio" required/>  No
+                                      </span>              
+                                    </div>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="col-md-12">
+                                    <div ng-show="cargador1" align="center" style="hight:10em;">
+                                      <img ng-src="imgs/cargador.gif">
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="row">                                                          
+                                <div class="col-md-2 col-md-offset-10">
+                                  <input type="submit" class="btn btn-primary" value="Guardar">
+                                </div>
+                              </div>                           
+                          </form>
+                          </fieldset>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-2">
+                        <input type="button" class="btn btn-primary" ng-click="irDocumentos()" value="Documentos"> 
+                      </div>  
+                    </div>
+
+                </div>
+              </div>
+
+            </div>
+				  </div>
+		    </div>
+    </div>
+  </div>

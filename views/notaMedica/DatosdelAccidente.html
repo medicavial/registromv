@@ -1,4 +1,4 @@
-<form ng-submit="guardaDatAcc()">
+<form name="formularios.dAccidente" ng-submit="guardaDatAcc()" novalidate>
     <div class="container" style="width: 100%"> 
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -7,24 +7,34 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-4" >
-                    <div class="input-group">
-                        <span class="input-group-addon">El paciente Llega: </span>
-                        <select name="llega" id="llega" ng-model="accidente.llega" class="form-control" ng-options="pacLlega.Llega_clave as pacLlega.Llega_nombre  for pacLlega in listPacLLega" >   <option value=""> * Seleccione </option>                        
-                        </select>
+                        <div class="input-group">
+                            <span class="input-group-addon">El paciente Llega: </span>
+                            <select name="llega" id="llega" ng-model="accidente.llega" class="form-control" ng-options="pacLlega.Llega_clave as pacLlega.Llega_nombre  for pacLlega in listPacLLega" required >   <option value=""> * Seleccione </option>                        
+                            </select>
+                        </div>
+                        <div class="validacion" role="alert" ng-if="interacted(formularios.dAccidente.llega)" ng-messages="formularios.dAccidente.llega.$error">
+                            <div ng-message="required">campo requerido</div>                          
+                        </div>  
                     </div>
-                    </div>
+
                     <div class="col-md-4">
                         <div class="input-group">
                             <span class="input-group-addon" >Fecha del Accidente</span>
-                            <input type="text" ng-model="accidente.fecha" name="FechaAcc" id="FechaAcc" class= "form-control" data-date-format="DD-MM-YYYY" data-datetimepicker-confg="{ dropdownSelector: '.dropdown-toggle' }" >
+                            <input type="text" ng-model="accidente.fecha" name="fecha" id="fecha" class= "form-control" data-date-format="DD-MM-YYYY" data-datetimepicker-confg="{ dropdownSelector: '.dropdown-toggle' }" required>
+                        </div>
+                         <div class="validacion" role="alert" ng-if="interacted(formularios.dAccidente.fecha)" ng-messages="formularios.dAccidente.fecha.$error">
+                            <div ng-message="required">campo requerido</div>                          
                         </div>
                     </div>
                     <div class="col-md-4">
                         <div class="input-group">
                             <span class="input-group-addon"> Tipo de vehiculo &nbsp; </span>
-                            <select name="vehiculo" id="vehiculo" ng-model="accidente.vehiculo" class= "form-control" ng-change="selectPosicion(this.id)" ng-options="TipVehi.id as TipVehi.opcion  for TipVehi in listTipVehi" >
+                            <select name="vehiculo" id="vehiculo" ng-model="accidente.vehiculo" class= "form-control" ng-change="selectPosicion(this.id)" ng-options="TipVehi.id as TipVehi.opcion  for TipVehi in listTipVehi" required>
                                 <option value=""> * Seleccione </option>                               
                             </select>
+                        </div>
+                        <div class="validacion" role="alert" ng-if="interacted(formularios.dAccidente.vehiculo)" ng-messages="formularios.dAccidente.vehiculo.$error">
+                            <div ng-message="required">campo requerido</div>                          
                         </div>
                     </div>
                 </div>
@@ -47,7 +57,14 @@
                                     <h3 class="panel-title" align="center">Equipo de Seguridad</h3>
                                 </div> 
                                 <div class="panel-body" style="width:100%;">
-                                    <div class="row" ng-show="!arregloOpc.Nod">
+                                    <div class="row"> 
+                                        <div class="col-md-12">
+                                          <div ng-show="cargador1" align="center">
+                                            <img ng-src="imgs/cargador.gif">
+                                          </div>
+                                        </div>
+                                    </div>   
+                                    <div class="row" ng-show="arregloOpc.Nod">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Nod" >
                                                 <span class="input-group-addon" class="form-control"><input name="" type="checkbox" value="0" disabled="disabled">
@@ -56,71 +73,71 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Cintu">
+                                    <div class="row" ng-show="arregloOpc.Cintu=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Cintu" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.seguridad.1" name="Seguridad[]" value="1" ng-true-value="1" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.seguridad.seg1"   ng-true-value="1" >  
                                                 </span>                                            
                                                 <input type="text" value="Cinturon Puesto" readonly="" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Bolsa">
+                                    <div class="row" ng-show="arregloOpc.Bolsa=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Bolsa" >
                                                 <span class="input-group-addon" class="form-control">
-                                                <input type="checkbox" ng-model="accidente.seguridad.2" name="Seguridad[]" value="2" ng-true-value="2" ng-false-value="">  
+                                                <input type="checkbox" ng-model="accidente.seguridad.seg2" ng-true-value="2">  
                                                 </span>                                            
                                                 <input type="text" value="Abrio bolsa de aire" readonly="" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Ropa">
+                                    <div class="row" ng-show="arregloOpc.Ropa=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Ropa" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.seguridad.3" name="Seguridad[]" value="3" ng-true-value="3" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.seguridad.seg3" name="Seguridad[]" value="3" ng-true-value="3" ng-false-value="0">  
                                                 </span>                                          
                                                 <input type="text" value="Ropa Protectora" readonly="" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Casco">
+                                    <div class="row" ng-show="arregloOpc.Casco=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Casco" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.seguridad.4" name="Seguridad[]" value="4" ng-true-value="4" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.seguridad.seg4" name="Seguridad[]" value="4" ng-true-value="4" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Casco puesto" readonly="" class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Rodi">
+                                    <div class="row" ng-show="arregloOpc.Rodi=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Rodi" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.seguridad.5" name="Seguridad[]" value="5" ng-true-value="5" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.seguridad.seg5" name="Seguridad[]" value="5" ng-true-value="5" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Rodilleras" readonly="" class="form-control" >
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Code">
+                                    <div class="row" ng-show="arregloOpc.Code=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Code" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.seguridad.6" name="Seguridad[]" value="6" ng-true-value="6" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.seguridad.seg6" name="Seguridad[]" value="6" ng-true-value="6" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Coderas" readonly="" class="form-control" >
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row" ng-show="!arregloOpc.Costi">
+                                    <div class="row" ng-show="arregloOpc.Costi=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Costi" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.seguridad.7" name="Seguridad[]" value="7" ng-true-value="7" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.seguridad.seg7" name="Seguridad[]" value="7" ng-true-value="7" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Costilleras" readonly="" class="form-control" >
                                             </div>
@@ -132,7 +149,7 @@
                     <div class="col-md-6">                       
                             <div class="panel panel-default">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title" align="center">Descripcion</h3>
+                                    <h3 class="panel-title" align="center">Descripción</h3>
                                 </div> 
                                 <div class="panel-body" style="width:100%;">
                                     <div class="row" ng-show="arregloOpc.Nodi=='SI'">
@@ -144,11 +161,18 @@
                                                 <input type="text" value="*No disponible" readonly="" class="form-control" ></div>
                                         </div>
                                     </div>
+                                    <div class="row"> 
+                                        <div class="col-md-12">
+                                          <div ng-show="cargador2" align="center">
+                                            <img ng-src="imgs/cargador.gif">
+                                          </div>
+                                        </div>
+                                    </div>   
                                     <div class="row" ng-show="arregloOpc.Volc=='SI'">
                                         <div class="col-md-12">
                                             <div class="input-group" id="Volc" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.1" name="Mecanismo[]" value="1" ng-true-value="1" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec1" name="Mecanismo[]" value="1" ng-true-value="1" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Volcadura" readonly="" class="form-control" >
                                             </div>
@@ -158,7 +182,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Alca" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.2" name="Mecanismo[]" value="2" ng-true-value="2" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec2" name="Mecanismo[]" value="2" ng-true-value="2" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Alcance" readonly="" class="form-control" >
                                             </div>
@@ -168,7 +192,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Late" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.3" name="Mecanismo[]" value="3" ng-true-value="3" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec3" name="Mecanismo[]" value="3" ng-true-value="3" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Lateral" readonly="" class="form-control" >
                                             </div>
@@ -178,7 +202,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Fron" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.4" name="Mecanismo[]" value="4" ng-true-value="4" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec4" name="Mecanismo[]" value="4" ng-true-value="4" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Frontal" readonly="" class="form-control" >
                                             </div>
@@ -188,7 +212,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Derr" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.5" name="Mecanismo[]" value="5" ng-true-value="5" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec5" name="Mecanismo[]" value="5" ng-true-value="5" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Derrapon" readonly="" class="form-control" >
                                             </div>
@@ -198,7 +222,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Simp" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.6" name="Mecanismo[]" value="6" ng-true-value="6" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec6" name="Mecanismo[]" value="6" ng-true-value="6" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Solo Impacto" readonly="" class="form-control" >
                                             </div>
@@ -208,7 +232,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Imap" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.8" name="Mecanismo[]" value="7" ng-true-value="7" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec8" name="Mecanismo[]" value="7" ng-true-value="7" ng-false-value="0">  
                                                 </span>                                          
                                                 <input type="text" value="Impacto y Aplastamiento" readonly="" class="form-control" >
                                             </div>
@@ -218,7 +242,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Caid" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.8" name="Mecanismo[]" value="8" ng-true-value="8" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec8" name="Mecanismo[]" value="8" ng-true-value="8" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Ca&iacute;da" readonly="" class="form-control" >
                                             </div>
@@ -228,7 +252,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Lesdep" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.9" name="Mecanismo[]" value="9" ng-true-value="9" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec9" name="Mecanismo[]" value="9" ng-true-value="9" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Lesi&oacute;n deportiva" readonly="" class="form-control" >
                                             </div>
@@ -238,7 +262,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Lestra" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.10" name="Mecanismo[]" value="10" ng-true-value="10" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec10" name="Mecanismo[]" value="10" ng-true-value="10" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Lesi&oacute;n traslado" readonly="" class="form-control" >
                                             </div>
@@ -248,7 +272,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="ManSub" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.11" name="Mecanismo[]" value="11" ng-true-value="11" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec11" name="Mecanismo[]" value="11" ng-true-value="11" ng-false-value="0">  
                                                 </span>                                            
                                                 <input type="text" value="Maniobra s&uacute;bita" readonly="" class="form-control" >
                                             </div>
@@ -258,7 +282,7 @@
                                         <div class="col-md-12">
                                             <div class="input-group" id="Otr" >
                                                 <span class="input-group-addon" class="form-control">
-                                                    <input type="checkbox" ng-model="accidente.mecanismo.12" name="Mecanismo[]" value="12" ng-true-value="12" ng-false-value="">  
+                                                    <input type="checkbox" ng-model="accidente.mecanismo.mec12" name="Mecanismo[]" value="12" ng-true-value="12" ng-false-value="0">  
                                                 </span>                                           
                                                 <input type="text" value="Otro" readonly="" class="form-control" >
                                             </div>
@@ -279,13 +303,13 @@
                                         <div class="row">         
                                             <div class="col-md-6">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><input type="checkbox" name="Vomito" ng-model="accidente.vomido" id="Vomito" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <span class="input-group-addon"><input type="checkbox" name="Vomito" ng-model="accidente.vomido" id="Vomito" ng-true-value="'S'" ng-false-value="'N'"></span>
                                                     <input type="text" value="V&oacute;mito" readonly="" class= "form-control">
                                                 </div> 
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><input type="checkbox" name="Mareo" ng-model="accidente.mareo" id="Mareo" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <span class="input-group-addon"><input type="checkbox" name="Mareo" ng-model="accidente.mareo" id="Mareo" value="S" ng-true-value="'S'" ng-false-value="'N'"></span>
                                                     <input type="text" value="Mareo" readonly="" class= "form-control">
                                                 </div> 
                                             </div>
@@ -293,14 +317,14 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><input type="checkbox" name="Nauseas" ng-model="accidente.nauseas" id="Nauseas" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <span class="input-group-addon"><input type="checkbox" name="Nauseas" ng-model="accidente.nauseas" id="Nauseas" value="S" ng-true-value="'S'" ng-false-value="'N'"></span>
                                                     <input type="text" value="Nauseas" readonly="" class= "form-control">
                                                 </div> 
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="input-group">
                                                     <span class="input-group-addon">
-                                                    <input type="checkbox" ng-model="accidente.conocimiento" name="Conocimiento" id="Conocimiento" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <input type="checkbox" ng-model="accidente.conocimiento" name="Conocimiento" id="Conocimiento" value="S" ng-true-value="'S'" ng-false-value="'N'"></span>
                                                     <input type="text" value="Conocimiento" readonly="" class= "form-control">
                                                 </div> 
                                             </div>
@@ -308,7 +332,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="input-group">
-                                                    <span class="input-group-addon"><input type="checkbox" name="Cefalea" ng-model="accidente.cefalea" id="Cefalea" value="S" ng-true-value="S" ng-false-value=""></span>
+                                                    <span class="input-group-addon"><input type="checkbox" name="Cefalea" ng-model="accidente.cefalea" id="Cefalea" value="S" ng-true-value="'S'" ng-false-value="'N'"></span>
                                                     <input type="text" value="Cefalea" readonly=""class= " form-control">
                                                 </div> 
                                             </div> 
@@ -325,13 +349,24 @@
                                     <h3 class="panel-title" align="center">Mecanismo de la lesi&oacute;n</h3>
                                 </div> 
                                 <div class="panel-body" style="width:100%;">
-                                    <textarea rows="7" id="mecanismo" ng-model="accidente.mecLesion" name="mecanismo"  onpaste="return false" style="resize:none; border:none; width:100% " =""></textarea>
+                                    <textarea rows="7" id="mecLesion" ng-model="accidente.mecLesion" name="mecLesion"  onpaste="return false" style="resize:none; border:none; width:100%" required mayusculas></textarea>
                                 </div>
+                                 <div class="validacion" role="alert" ng-if="interacted(formularios.dAccidente.mecLesion)" ng-messages="formularios.dAccidente.mecLesion.$error">
+                                    <div ng-message="required">campo requerido</div>                          
+                                </div>
+
                             </div>
                       
                     </div>
                 </div>
-                <br>              
+                <br> 
+                <div class="row"> 
+                    <div class="col-md-12">
+                      <div ng-show="cargador" align="center">
+                        <img ng-src="imgs/cargador.gif">
+                      </div>
+                    </div>
+                </div>                
                 <div class="row">
                     <div class="col-md-5">
                     
@@ -346,7 +381,7 @@
     </div>
 </form>
 <script type="text/javascript">
-       $('#FechaAcc').datetimepicker({ 
+       $('#fecha').datetimepicker({ 
         pickDate: true,                 //en/disables the date picker
         pickTime: false,                 //en/disables the time picker     
         showToday: true,                 //shows the today indicator

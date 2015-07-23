@@ -1,4 +1,6 @@
-app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookies,busquedas,$http) {
+app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookies,busquedas,$http,webStorage) {
+  $rootScope.folio= webStorage.session.get('folio'); 
+  console.log($rootScope.folio);
 	$rootScope.folio=$cookies.folio;	
   $rootScope.usrLogin =$cookies.usrLogin;
   $scope.formularios={};  
@@ -61,10 +63,24 @@ app.controller('signosVitalesCtrl', function($scope,$rootScope,$location,$cookie
       } 
   }
 
+  $scope.imprimirSignosVitales = function(){            
+            var fileName = "Reporte";
+            var uri = 'api/classes/formatoVitales.php?fol='+$rootScope.folio;
+            var link = document.createElement("a");    
+            link.href = uri;
+            
+            //set the visibility hidden so it will not effect on your web-layout
+            link.style = "visibility:hidden";
+            link.download = fileName + ".pdf";
+            
+            //this part will append the anchor tag and remove it after automatic click
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
   $scope.irDocumentos = function(){         
               $location.path("/documentos");          
         }
         
 });
-
-

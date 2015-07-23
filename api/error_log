@@ -1,106 +1,1025 @@
-[07-Oct-2014 23:03:48] PHP Parse error:  syntax error, unexpected T_VARIABLE, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 250
-[08-Oct-2014 17:18:46] PHP Warning:  include(../../includes/class/BCGcode39.barcode.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
-[08-Oct-2014 17:18:46] PHP Warning:  include(../../includes/class/BCGcode39.barcode.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
-[08-Oct-2014 17:18:46] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../../includes/class/BCGcode39.barcode.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/classes/generaCDB.php on line 8
-[13-Oct-2014 03:15:15] PHP Warning:  require(BCGFont.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 3
-[13-Oct-2014 03:15:15] PHP Warning:  require(BCGFont.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 3
-[13-Oct-2014 03:15:15] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'BCGFont.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/prueba.php on line 3
-[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 18:56:20] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 18:56:20] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
-[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:52] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 19:02:52] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
-[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:02:58] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 19:02:58] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
-[14-Oct-2014 19:04:57] PHP Warning:  require(classes/generaCDB_resp.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 2
-[14-Oct-2014 19:04:57] PHP Warning:  require(classes/generaCDB_resp.php) [<a href='function.require'>function.require</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/prueba.php on line 2
-[14-Oct-2014 19:04:57] PHP Fatal error:  require() [<a href='function.require'>function.require</a>]: Failed opening required 'classes/generaCDB_resp.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/prueba.php on line 2
-[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:05:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 19:05:23] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
-[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:13:26] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 19:13:26] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
-[14-Oct-2014 19:16:23] PHP Warning:  Missing argument 1 for BCGFont::__construct(), called in /home/medica/public_html/mvnuevo/api/classes/generaCDB_resp.php on line 21 and defined in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 32
-[14-Oct-2014 19:16:23] PHP Warning:  Missing argument 2 for BCGFont::__construct(), called in /home/medica/public_html/mvnuevo/api/classes/generaCDB_resp.php on line 21 and defined in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 32
-[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:16:23] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 19:16:23] PHP Warning:  file_put_contents(../codigos/OPMV000432.png) [<a href='function.file-put-contents'>function.file-put-contents</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/classes/drawer/BCGDrawPNG.php on line 71
-[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:18:43] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 45
-[14-Oct-2014 19:29:00] PHP Warning:  imagettftext() [<a href='function.imagettftext'>function.imagettftext</a>]: Could not find/open font in /home/medica/public_html/mvnuevo/api/classes/BCGFont.php on line 98
-[14-Oct-2014 22:22:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
-[14-Oct-2014 22:22:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
-[14-Oct-2014 22:32:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
-[14-Oct-2014 22:32:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 351
-[27-Oct-2014 20:57:15] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
-[27-Oct-2014 20:57:15] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
-[27-Oct-2014 20:57:22] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
-[27-Oct-2014 20:57:26] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
-[27-Oct-2014 20:57:30] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 384
-[28-Oct-2014 20:46:36] PHP Parse error:  syntax error, unexpected T_DOUBLE_ARROW in /home/medica/public_html/mvnuevo/api/api.php on line 420
-[28-Oct-2014 23:17:38] PHP Parse error:  syntax error, unexpected '*' in /home/medica/public_html/mvnuevo/api/api.php on line 455
-[28-Oct-2014 23:17:40] PHP Parse error:  syntax error, unexpected '*' in /home/medica/public_html/mvnuevo/api/api.php on line 455
-[28-Oct-2014 23:44:54] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1356
-[28-Oct-2014 23:44:59] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1356
-[28-Oct-2014 23:45:26] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1362
-[28-Oct-2014 23:51:57] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1364
-[29-Oct-2014 15:21:24] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1365
-[29-Oct-2014 15:21:26] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 1365
-[10-Nov-2014 16:31:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
-[10-Nov-2014 16:31:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
-[10-Nov-2014 16:31:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
-[10-Nov-2014 16:32:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
-[10-Nov-2014 16:32:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
-[10-Nov-2014 16:32:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 965
-[13-Nov-2014 18:29:27] PHP Parse error:  syntax error, unexpected '=', expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1428
-[18-Nov-2014 18:01:42] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:01:42] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:01:42] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:05:14] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:05:59] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:06:36] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:07:27] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:07:35] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1492
-[18-Nov-2014 18:10:39] PHP Parse error:  syntax error, unexpected ')' in /home/medica/public_html/mvnuevo/api/api.php on line 1524
-[18-Nov-2014 19:02:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/medica/public_html/mvnuevo/api/api.php on line 1494
-[18-Nov-2014 19:02:06] PHP Parse error:  syntax error, unexpected T_ELSE in /home/medica/public_html/mvnuevo/api/api.php on line 1494
-[18-Nov-2014 19:03:09] PHP Parse error:  syntax error, unexpected T_ELSE, expecting T_CATCH in /home/medica/public_html/mvnuevo/api/api.php on line 1498
-[18-Nov-2014 19:03:09] PHP Parse error:  syntax error, unexpected T_ELSE, expecting T_CATCH in /home/medica/public_html/mvnuevo/api/api.php on line 1498
-[19-Nov-2014 16:27:12] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 845
-[19-Nov-2014 16:27:13] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 845
+[20-Apr-2015 15:52:13] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:52:13] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:52:13] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:52:13] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:10] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:12] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:17] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:17] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:19] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:27] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:27] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:28] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:38] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:38] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:39] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:58] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:59] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:53:59] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:31] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:31] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:31] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:38] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:55] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:56] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:54:56] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:03] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:05] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:05] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:06] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:08] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:08] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:08] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:09] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:11] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:17] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:26] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:30] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:32] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:36] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:36] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:36] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:37] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:37] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:38] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:38] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:41] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:48] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:49] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:49] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:55:49] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:13] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:18] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:18] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:18] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:35] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:40] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:40] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:40] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:43] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:43] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 15:56:43] PHP Parse error:  syntax error, unexpected ';' in /home/medica/public_html/mvnuevo/api/api.php on line 3938
+[20-Apr-2015 16:59:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5190
+[20-Apr-2015 19:24:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 160
+[20-Apr-2015 19:25:16] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:16] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:16] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:26] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:27] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:27] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:32] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:32] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:32] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:54] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:54] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:25:54] PHP Parse error:  syntax error, unexpected '}' in /home/medica/public_html/mvnuevo/api/api.php on line 921
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 439
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 439
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 439
+[20-Apr-2015 19:40:33] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 517
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 517
+[20-Apr-2015 19:40:33] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 517
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 517
+[20-Apr-2015 19:40:33] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 517
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 517
+[20-Apr-2015 19:40:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 609
+[20-Apr-2015 19:40:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6853
+[20-Apr-2015 19:42:07] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2796
+[20-Apr-2015 20:03:02] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5604
+[27-Apr-2015 22:43:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3031
+[27-Apr-2015 22:46:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 153
+[27-Apr-2015 22:46:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1193
+[27-Apr-2015 22:46:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2179
+[27-Apr-2015 22:46:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2219
+[27-Apr-2015 22:46:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2219
+[27-Apr-2015 22:46:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2219
+[27-Apr-2015 22:46:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2219
+[27-Apr-2015 22:46:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2219
+[27-Apr-2015 22:46:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2219
+[27-Apr-2015 22:48:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1072
+[27-Apr-2015 22:48:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2179
+[29-Apr-2015 21:32:28] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 3974
+[29-Apr-2015 21:32:28] PHP Parse error:  syntax error, unexpected $end, expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 3974
+[29-Apr-2015 21:36:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1340
+[29-Apr-2015 21:50:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6231
+[08-May-2015 16:15:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6028
+[08-May-2015 16:15:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6152
+[08-May-2015 16:15:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6302
+[08-May-2015 16:15:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6400
+[08-May-2015 16:15:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6400
+[08-May-2015 16:15:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6400
+[08-May-2015 16:27:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3128
+[08-May-2015 16:28:02] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:02] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:10] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:43] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:47] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:28:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:02] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6117
+[08-May-2015 16:29:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 545
+[08-May-2015 16:29:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 545
+[08-May-2015 16:29:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 545
+[08-May-2015 16:29:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 571
+[08-May-2015 16:29:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:29:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 153
+[08-May-2015 16:29:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 153
+[08-May-2015 16:29:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 153
+[08-May-2015 16:29:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 434
+[08-May-2015 16:29:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:50] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 906
+[08-May-2015 16:29:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1158
+[08-May-2015 16:29:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1158
+[08-May-2015 16:29:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1158
+[08-May-2015 16:29:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1599
+[08-May-2015 16:30:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:24] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:30:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:31:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:31:02] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:31:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:31:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1687
+[08-May-2015 16:31:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3367
+[08-May-2015 16:31:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3568
+[08-May-2015 16:31:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3636
+[08-May-2015 16:31:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3636
+[08-May-2015 16:31:23] PHP Parse error:  syntax error, unexpected $end, expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 4084
+[08-May-2015 16:31:23] PHP Parse error:  syntax error, unexpected $end, expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 4084
+[08-May-2015 16:31:23] PHP Parse error:  syntax error, unexpected $end, expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 4084
+[08-May-2015 16:31:24] PHP Parse error:  syntax error, unexpected $end, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 4844
+[08-May-2015 16:31:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5175
+[08-May-2015 16:31:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5175
+[08-May-2015 16:31:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7326
+[08-May-2015 16:34:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2244
+[08-May-2015 16:34:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 571
+[08-May-2015 16:34:42] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1031
+[08-May-2015 16:34:42] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 1031
+[08-May-2015 16:34:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1878
+[08-May-2015 16:34:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2839
+[08-May-2015 16:34:55] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 3312
+[08-May-2015 16:34:55] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 3312
+[08-May-2015 16:34:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3431
+[08-May-2015 16:35:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:02] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:35:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3500
+[08-May-2015 16:36:07] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 264
+[08-May-2015 16:36:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 503
+[08-May-2015 16:36:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 503
+[08-May-2015 16:36:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:24] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:36:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:16] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:37:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:06] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:10] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:10] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:10] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:10] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:24] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:53] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:38:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:39:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:13] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:40:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:33] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:34] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:41:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:13] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:16] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:16] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:24] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:42:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:43:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[08-May-2015 16:43:07] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 589
+[11-May-2015 22:01:44] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 800
+[11-May-2015 22:01:44] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 800
+[11-May-2015 22:01:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1230
+[11-May-2015 22:01:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1230
+[11-May-2015 22:01:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1230
+[11-May-2015 22:01:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1230
+[11-May-2015 22:01:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1230
+[11-May-2015 22:01:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1338
+[11-May-2015 22:01:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1338
+[11-May-2015 22:01:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1338
+[11-May-2015 22:01:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1909
+[11-May-2015 22:01:54] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 2090
+[11-May-2015 22:01:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2090
+[11-May-2015 22:01:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2201
+[13-May-2015 22:49:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2045
+[13-May-2015 22:49:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4459
+[13-May-2015 22:49:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4971
+[13-May-2015 22:49:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5100
+[13-May-2015 22:49:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5100
+[13-May-2015 22:49:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6922
+[13-May-2015 22:49:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6962
+[13-May-2015 22:49:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7102
+[13-May-2015 22:55:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3993
+[13-May-2015 22:55:13] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 7306
+[13-May-2015 22:55:13] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 7306
+[13-May-2015 22:55:13] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 7372
+[13-May-2015 22:55:13] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 7372
+[13-May-2015 22:55:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:30] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:55:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:06] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:10] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7588
+[13-May-2015 22:56:41] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 4618
+[13-May-2015 22:56:41] PHP Parse error:  syntax error, unexpected $end, expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 4618
+[13-May-2015 23:35:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5256
+[13-May-2015 23:35:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6269
+[13-May-2015 23:36:18] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 881
+[13-May-2015 23:36:18] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 881
+[18-May-2015 18:58:15] PHP Parse error:  syntax error, unexpected $end, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 2506
+[18-May-2015 18:58:15] PHP Parse error:  syntax error, unexpected $end, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 2506
+[18-May-2015 18:58:15] PHP Parse error:  syntax error, unexpected $end, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 2506
+[18-May-2015 18:58:15] PHP Parse error:  syntax error, unexpected $end, expecting ',' or ';' in /home/medica/public_html/mvnuevo/api/api.php on line 2506
+[18-May-2015 18:58:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2627
+[18-May-2015 18:58:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3324
+[18-May-2015 18:58:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3324
+[18-May-2015 18:58:17] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 3335
+[18-May-2015 18:58:17] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 3335
+[18-May-2015 18:58:17] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 3335
+[18-May-2015 18:58:17] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 3335
+[18-May-2015 18:58:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3850
+[18-May-2015 18:58:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4231
+[18-May-2015 18:58:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6698
+[18-May-2015 18:58:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6698
+[18-May-2015 18:58:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6698
+[19-May-2015 22:14:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3367
+[19-May-2015 22:14:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3396
+[19-May-2015 22:14:45] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 3400
+[19-May-2015 22:14:45] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 3400
+[19-May-2015 22:14:45] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 3400
+[19-May-2015 22:14:45] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 3400
+[19-May-2015 22:14:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3757
+[19-May-2015 22:14:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4924
+[19-May-2015 22:25:44] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 840
+[19-May-2015 22:25:44] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 840
+[19-May-2015 22:25:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1322
+[19-May-2015 22:25:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1322
+[19-May-2015 22:41:24] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6203
+[20-May-2015 15:55:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1546
+[20-May-2015 15:55:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1400
+[20-May-2015 15:55:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2463
+[20-May-2015 15:55:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4275
+[20-May-2015 15:55:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5263
+[21-May-2015 17:24:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5890
+[21-May-2015 17:25:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7728
+[21-May-2015 18:16:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 471
+[21-May-2015 18:16:40] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1375
+[21-May-2015 18:16:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1943
+[21-May-2015 18:16:54] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3931
+[21-May-2015 21:57:20] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3953
+[21-May-2015 21:57:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5564
+[21-May-2015 21:57:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6014
+[21-May-2015 21:57:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6090
+[21-May-2015 21:57:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6090
+[28-May-2015 22:39:59] PHP Parse error:  syntax error, unexpected $end, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/medica/public_html/mvnuevo/api/api.php on line 946
+[28-May-2015 22:40:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2595
+[28-May-2015 22:40:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2595
+[28-May-2015 22:40:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2741
+[28-May-2015 22:40:13] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2741
+[28-May-2015 22:40:18] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2741
+[28-May-2015 22:40:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2741
+[28-May-2015 22:40:24] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2860
+[28-May-2015 22:40:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2860
+[28-May-2015 22:40:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2860
+[28-May-2015 22:40:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2983
+[28-May-2015 22:40:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2983
+[28-May-2015 22:40:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2983
+[28-May-2015 22:41:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1057
+[28-May-2015 22:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1057
+[28-May-2015 22:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1057
+[28-May-2015 22:41:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1057
+[28-May-2015 22:41:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1468
+[28-May-2015 22:41:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1468
+[28-May-2015 22:41:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1468
+[28-May-2015 22:41:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3613
+[28-May-2015 22:41:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3613
+[28-May-2015 22:41:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3613
+[28-May-2015 22:41:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3990
+[28-May-2015 22:41:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3990
+[28-May-2015 22:41:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3990
+[28-May-2015 22:41:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3990
+[28-May-2015 22:41:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:41:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4135
+[28-May-2015 22:42:28] PHP Parse error:  syntax error, unexpected $end, expecting ')' in /home/medica/public_html/mvnuevo/api/api.php on line 5935
+[28-May-2015 22:42:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5989
+[28-May-2015 22:42:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5989
+[28-May-2015 22:42:29] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5989
+[28-May-2015 22:42:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7402
+[28-May-2015 22:55:47] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2550
+[28-May-2015 22:55:50] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:01] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:03] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:09] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:10] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:25] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:32] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:33] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:38] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:38] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:38] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:38] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:38] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:39] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:43] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:43] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:43] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:45] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:47] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:56:52] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:05] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:06] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:07] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:07] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:08] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:13] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:16] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:16] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:16] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:17] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:17] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:19] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:23] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:23] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:23] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:29] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:29] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:29] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:33] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:33] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:36] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:41] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:41] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:42] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:42] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:46] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:46] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:48] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:48] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:48] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:49] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:49] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:49] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:49] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:49] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:50] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:50] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:50] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:57:57] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:00] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:09] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:09] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:10] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:10] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:12] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:12] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:12] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:12] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:12] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:12] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:14] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:14] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:15] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:15] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:19] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:19] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:19] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:19] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:19] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:21] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:21] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:21] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:21] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:23] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:29] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:34] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:35] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:35] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:58:35] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:04] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:05] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:05] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:05] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:07] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:07] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:07] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:18] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:18] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:20] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:21] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:24] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:24] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:25] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:25] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:26] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:27] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:27] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:28] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:34] PHP Parse error:  syntax error, unexpected '{' in /home/medica/public_html/mvnuevo/api/api.php on line 4774
+[28-May-2015 22:59:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 153
+[28-May-2015 22:59:39] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 995
+[28-May-2015 22:59:39] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 995
+[28-May-2015 23:18:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3512
+[28-May-2015 23:18:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3545
+[28-May-2015 23:18:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3599
+[28-May-2015 23:18:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3628
+[28-May-2015 23:18:26] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 4046
+[28-May-2015 23:18:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6782
+[28-May-2015 23:18:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6782
+[28-May-2015 23:18:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6917
+[29-May-2015 12:35:40] PHP Notice:  Undefined variable: cargaSuministros in /home/medica/public_html/mvnuevo/api/api1.php on line 42
+[29-May-2015 12:35:41] PHP Fatal error:  Call to a member function setSuministros() on a non-object in /home/medica/public_html/mvnuevo/api/api1.php on line 42
+[29-May-2015 12:35:46] PHP Notice:  Undefined variable: cargaSuministros in /home/medica/public_html/mvnuevo/api/api1.php on line 42
+[29-May-2015 12:35:46] PHP Fatal error:  Call to a member function setSuministros() on a non-object in /home/medica/public_html/mvnuevo/api/api1.php on line 42
+[29-May-2015 12:37:08] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/mvnuevo/api/myClasses/Suministros.php on line 130
+[29-May-2015 12:37:22] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/mvnuevo/api/myClasses/Suministros.php on line 130
+[29-May-2015 12:42:00] PHP Warning:  Invalid argument supplied for foreach() in /home/medica/public_html/mvnuevo/api/myClasses/Suministros.php on line 129
+[05-Jun-2015 17:49:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 475
+[05-Jun-2015 17:49:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 475
+[05-Jun-2015 17:49:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 475
+[05-Jun-2015 17:49:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 475
+[05-Jun-2015 17:49:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1095
+[05-Jun-2015 17:49:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1635
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:49:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2307
+[05-Jun-2015 17:50:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2440
+[05-Jun-2015 17:50:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2440
+[05-Jun-2015 17:50:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2440
+[05-Jun-2015 17:50:05] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2440
+[05-Jun-2015 17:50:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2440
+[05-Jun-2015 17:50:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2514
+[05-Jun-2015 17:50:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2514
+[05-Jun-2015 17:50:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2514
+[05-Jun-2015 17:50:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2514
+[05-Jun-2015 17:50:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2514
+[05-Jun-2015 17:50:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2514
+[05-Jun-2015 17:50:25] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 315
+[05-Jun-2015 17:50:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 315
+[05-Jun-2015 17:50:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 315
+[05-Jun-2015 17:50:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 315
+[05-Jun-2015 17:50:31] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 315
+[05-Jun-2015 17:50:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 315
+[05-Jun-2015 17:50:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:43] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:50:52] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 398
+[05-Jun-2015 17:51:01] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1188
+[05-Jun-2015 17:51:01] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 1188
+[05-Jun-2015 17:52:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 435
+[05-Jun-2015 17:52:25] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 732
+[05-Jun-2015 17:52:25] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 732
+[05-Jun-2015 17:52:25] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 732
+[05-Jun-2015 17:52:25] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 732
+[05-Jun-2015 17:52:28] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:28] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:29] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:52:30] PHP Parse error:  syntax error, unexpected $end, expecting T_VARIABLE or '$' in /home/medica/public_html/mvnuevo/api/api.php on line 1673
+[05-Jun-2015 17:52:30] PHP Parse error:  syntax error, unexpected $end, expecting T_VARIABLE or '$' in /home/medica/public_html/mvnuevo/api/api.php on line 1673
+[05-Jun-2015 17:52:30] PHP Parse error:  syntax error, unexpected $end, expecting T_VARIABLE or '$' in /home/medica/public_html/mvnuevo/api/api.php on line 1673
+[05-Jun-2015 17:52:41] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1716
+[05-Jun-2015 17:52:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:47] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:49] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1729
+[05-Jun-2015 17:52:58] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 844
+[05-Jun-2015 17:53:01] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 859
+[05-Jun-2015 17:53:01] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 859
+[05-Jun-2015 17:53:04] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1246
+[05-Jun-2015 17:53:04] PHP Parse error:  syntax error, unexpected '<' in /home/medica/public_html/mvnuevo/api/api.php on line 1246
+[05-Jun-2015 17:53:05] PHP Warning:  Unexpected character in input:  ''' (ASCII=39) state=1 in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:53:05] PHP Parse error:  syntax error, unexpected '@' in /home/medica/public_html/mvnuevo/api/api.php on line 1324
+[05-Jun-2015 17:53:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2737
+[05-Jun-2015 17:53:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2737
+[05-Jun-2015 17:53:23] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2737
+[05-Jun-2015 17:53:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:43] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:43] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:43] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:43] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3024
+[05-Jun-2015 17:53:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:45] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:53:59] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:03] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:07] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:09] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:14] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:16] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:16] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:16] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:17] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:28] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:37] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:46] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:55] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:56] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:54:57] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:04] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:08] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:11] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:15] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:19] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:27] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:32] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:36] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[05-Jun-2015 17:55:39] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3145
+[09-Jun-2015 23:09:26] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[09-Jun-2015 23:09:26] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[09-Jun-2015 23:09:26] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../classes/nomad_mimemail.inc.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[09-Jun-2015 23:09:30] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[09-Jun-2015 23:09:30] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[09-Jun-2015 23:09:30] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../classes/nomad_mimemail.inc.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 05:00:51] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 05:00:52] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 05:00:52] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../classes/nomad_mimemail.inc.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 14:53:04] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 14:53:04] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 14:53:04] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../classes/nomad_mimemail.inc.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 15:22:44] PHP Parse error:  syntax error, unexpected T_CATCH in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 158
+[10-Jun-2015 15:25:02] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 15:25:02] PHP Warning:  include(../classes/nomad_mimemail.inc.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 15:25:02] PHP Warning:  include() [<a href='function.include'>function.include</a>]: Failed opening '../classes/nomad_mimemail.inc.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 15:26:58] PHP Warning:  require_once(../classes/nomad_mimemail.inc.php) [<a href='function.require-once'>function.require-once</a>]: failed to open stream: No such file or directory in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 15:26:58] PHP Fatal error:  require_once() [<a href='function.require'>function.require</a>]: Failed opening required '../classes/nomad_mimemail.inc.php' (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/medica/public_html/mvnuevo/api/myClasses/Incidencias.php on line 5
+[10-Jun-2015 16:47:21] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7445
+[10-Jun-2015 16:47:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7593
+[10-Jun-2015 16:47:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7678
+[10-Jun-2015 16:47:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7678
+[10-Jun-2015 16:47:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7678
+[10-Jun-2015 16:47:22] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7717
+[15-Jun-2015 21:39:42] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 153
+[15-Jun-2015 21:39:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3540
+[15-Jun-2015 21:39:46] PHP Parse error:  syntax error, unexpected $end, expecting '(' in /home/medica/public_html/mvnuevo/api/api.php on line 5760
+[15-Jun-2015 21:39:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7108
+[15-Jun-2015 21:39:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7304
+[15-Jun-2015 21:39:48] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 7347
+[17-Jun-2015 17:12:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2477
+[17-Jun-2015 17:12:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2892
+[17-Jun-2015 17:12:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2930
+[17-Jun-2015 17:12:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 2975
+[17-Jun-2015 17:12:50] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3465
+[17-Jun-2015 17:12:51] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5271
+[17-Jun-2015 17:33:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1409
+[17-Jun-2015 17:33:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 1541
+[17-Jun-2015 17:33:01] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3980
+[29-Jun-2015 17:44:44] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 5972
+[02-Jul-2015 19:04:12] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 6191
+[02-Jul-2015 19:13:00] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3844
+[02-Jul-2015 19:13:35] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 475
+[02-Jul-2015 19:13:38] PHP Parse error:  syntax error, unexpected $end in /home/medica/public_html/mvnuevo/api/api.php on line 3876

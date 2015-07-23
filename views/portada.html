@@ -31,12 +31,12 @@
 					   <td width=\"33%\"><b>Compañia: </b>{{cia}}</td>
 					   <td width=\"33%\"><b>Unidad Médica: </b>{{uniMed}}</td>         					   
 					</tr>
-					<tr>          
+					<tr ng-show="verDetalle">          
 					   <td width=\"33%\"><b>Póliza: </b>{{poliza}}</td>
 					   <td width=\"33%\"><b>Siniestro: </b>{{sinicestro}}</td>
 					   <td width=\"33%\"><b>Reporte: </b>{{reporte}}</td>         					   
 					</tr>
-					<tr>          
+					<tr ng-show="verDetalle">          
 					   <td width=\"33%\"><b>Riesgo: </b>{{riesgo}}</td>
 					   
 					</tr>
@@ -49,7 +49,28 @@
 					<tr>          
 					   <td width=\"33%\"><b>Verificador: </b>{{}}</td>					   	   			
 					</tr>
-					
+					<tr ng-show="cia_clave==44">
+					 	<td width=\"50%\">
+					   <div class="panel-body"> 												
+							<label >
+								Autoriza.- {{autoriza}}
+							</label><br>							
+							<label >
+								Autoriza.- {{envia}}
+							</label>							
+					   </td>
+					 </tr>
+					<tr>
+					   <td ng-show="telefonos" width=\"33%\">
+					   <div class="panel-body"> 
+							<label>Otros teléfonos:</label><br>
+							<div ng-repeat="tels in telefonos">
+							<label >
+								{{tels.Tel_cont}}.- {{tels.TT_tipotelefono}} -  {{tels.Tel_numero}}
+							</label><br>
+							</div>
+					   </td>
+					 </tr>
 
 
 					<tr><td colspan="3" class="text-center"><br><br><br><br><br><b>__________________________________________

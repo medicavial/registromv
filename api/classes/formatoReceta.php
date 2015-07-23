@@ -3,6 +3,8 @@ require "pac_vars.inc";
 require 'tcpdf.php';
 require 'config/lang/eng.php';
 
+$fol=$_GET['fol'];
+$usr=$_GET['usr'];
 $query="Select Not_clave From NotaMedica Where Exp_folio='".$fol."' order by Not_clave";
 $rs=mysql_query($query,$conn);
 $row=mysql_fetch_array($rs);

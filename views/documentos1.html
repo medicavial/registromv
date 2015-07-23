@@ -1,0 +1,299 @@
+<div class="container" style="width: 100%">     
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<label>Documentos para el folio <b><label>{{folio}}</label></b></label>
+		</div> 
+		<div class="Panel-body">
+			<br><br>
+				<div class="row"  ng-show="permisos.Per_cabina =='S'">
+						<div class="col-md-12">
+							<button type="button" class="btn btn-lx btn-success" data-toggle="modal" data-target="#altaMedica">
+	                           <span class="btn-label"><i class="fa fa-check"></i>
+	                           </span>Alta</button>
+						</div>
+					</div>
+				<div class="row" ng-hide='cargador' >
+					
+						<div class="col-md-4" ng-show="permisos.Per_HistoriaClinica=='S'">
+						<button    class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="irHistoriaClinica(folio)">
+							
+								<label>Historia Clínica</label>							
+						</button>
+						<button  class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="imprimirHistoriaClinica(folio)">
+							
+								<label>Imprimir Historia Clínica</label>							
+						</button>
+						</div>
+						<div class="col-md-4" ng-show="permisos.Per_Vitales=='S'">
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px" ng-click="irSignosVitales(folio)" ng-show="subsecuenciaVal">
+							
+								<label>Signos Vitales</label>							
+						</button>
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="imprimirSignosVitales(folio)" ng-show="subsecuenciaVal">
+							
+								<label>Imprimir Signos Vitales</label>							
+						</button>	
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px" ng-click="irSignosVitalesSub(folio)" ng-hide="subsecuenciaVal">
+							
+								<label>Signos Vitales Subsecuencia</label>							
+						</button>
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="imprimirSignosVitalesSub(folio)" ng-hide="subsecuenciaVal">
+							
+								<label>Imprimir Signos Vitales Subsecuencia</label>							
+						</button>						
+						</div>
+
+						<div class="col-md-4" ng-show="permisos.Per_NotaMedica=='S'">
+						<button ng-show="subsecuenciaVal"  class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irNotaMedica(folio)">
+							
+								<label>Nota Médica</label>							
+						</button>
+
+						<div ng-hide ="subsecuenciaVal">
+						<button ng-show="veEditaNota" class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irNotaMedica(folio)">
+							
+								<label>Continuar Nota Médica</label>							
+						</button>						
+						<button ng-hide="veEditaNota"  class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="imprimirNota(folio)">
+							
+								<label>Imprimir Nota Médica</label>							
+						</button>
+						<button ng-hide="veEditaNota"  class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="imprimirRecetaNuevo(folio)">
+							
+								<label>Imprimir Receta</label>							
+						</button>																														
+						</div>
+						</div>
+					
+				</div>
+				<div class="row" ng-hide='cargador'  >
+						<div class="col-md-4"  ng-show="permisos.Per_subsecuencia=='S'">
+						<button ng-disabled="subsecuenciaVal&&validaProducto" class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="irSubsecuencia(folio)">							
+								<label>Subsecuencias</label>							
+						</button>
+						<button ng-disabled="subsecuenciaVal&&validaProducto" class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="irSubsecuenciaListado(folio)">							
+								<label>Listado Subsecuencias</label>							
+						</button>
+						</div>
+						<div class="col-md-4" >
+						<button ng-disabled="subsecuenciaVal&&validaProducto" ng-show="permisos.Per_PaseRehabilitacion=='S'"  class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:2.5em;font-size:16px"
+							ng-click="irSolRehab(folio)">
+							
+								<label>Solicitud de Rehabilitación</label>							
+						</button>
+						<button ng-disabled="paseReha==false && esParticular==false && soloReha==true"  ng-show="permisos.Per_Rehabilitacion=='S'" class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:2.5em;font-size:16px"
+							ng-click="irSolRehabForm(folio)">
+							
+								<label>Formato de Rehabilitación</label>							
+						</button>
+						<button ng-disabled="paseReha==false && esParticular==false && soloReha==true" ng-show="permisos.Per_Rehabilitacion=='S'" class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:2.5em;font-size:16px"
+							ng-click="imprimirRehabilitacion(folio)">
+							
+								<label>Imprimir Rehabilitacion(es)</label>							
+						</button>
+						<button class="btn btn-primary" ng-show="permisos.Per_PaseRehabilitacion=='S'" ng-disabled="paseReha==false"  style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:2.5em;font-size:16px"
+							ng-click="imprimirPaseReha(folio)">
+							
+								<label>Imprimir Pase a Rehabilitación</label>							
+						</button>
+						</div>
+						<div class="col-md-4">
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irSolicitud(folio)">
+								<label>Solicitud a Coordinación Médica</label>							
+						</button>
+						</div>
+				</div>
+				<div class="row" ng-hide='cargador'> 
+					<div class="col-md-4" ng-show='esAba'>
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="irConsatancia(folio)">
+								<label>Formato de Constancia</label>							
+						</button>
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:5em;font-size:16px"
+							ng-click="imprimirConstancia(folio)">
+								<label>Imprimir Constancia</label>							
+						</button>
+					</div>
+		            <div class="col-md-4" ng-show='esParticular'>
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irReciboPar(folio)">
+								<label>Crear Recibo</label>							
+						</button>
+					</div>
+					<div class="col-md-4" ng-show='esParticular'>
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irSolFact(folio)">
+								<label>Solicitud Factura</label>							
+						</button>
+					</div>
+		        </div>  
+		        <div class="row" ng-hide='cargador'> 
+		            <div class="col-md-4" >
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irDigitalizacion(folio)">
+								<label>Documentos Digitales</label>							
+						</button>
+					</div>
+					<!--<div class="col-md-4" >
+						<button class="btn btn-primary" style="width:100%;border-radius: 4px 4px 4px 4px;
+							-moz-border-radius: 4px 4px 4px 4px;
+							-webkit-border-radius: 4px 4px 4px 4px;
+							border: 2px groove #2b61b3; background:#5b6e94; height:10em;font-size:16px"
+							ng-click="irCambioUnidad(folio)">
+								<label>Cambio de Unidad</label>							
+						</button>
+					</div>-->
+		        </div>  
+				<div class="row" ng-show='cargador'> 
+		            <div class="col-md-12">
+		              <div ng-show="cargador" align="center" style="hight:10em;">
+		                <img ng-src="imgs/cargador.gif">
+		              </div>
+		            </div>
+		        </div>
+		        <div class="modal fade" id="altaMedica" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title" id="myModalLabel">Alta de paciente</h4>
+                </div>
+                <div class="modal-body">
+                  <form name="alta" ng-submit="guardaAlta()">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="input-group">                
+                        <label class="input-group-addon">Motivo de alta:</label>
+                        <select   style="width:100%" ng-model="alta.tipo" class= "form-control" class="form-control" required>
+                            <option value=""> * Seleccione </option>
+                            <option value="1">alta médica</option>
+                            <option value="2">el paciente se retiro</option>
+                            <option value="3">termino de çonsulta</option>
+                            <option value="4">fin de rehabilitación</option>                                                       
+                            <option value="5">Otro</option>                              
+                        </select>
+                      </div>                                         
+                    </div>
+                    </div>                    
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="input-group">                
+                          <label class="input-group-addon">Observaciones:</label>
+                          <textarea class="form-control" name="" id="" cols="30" rows="3" ng-model="alta.observaciones"></textarea>
+                        </div>                                         
+                      </div>
+                    </div>                    
+                    <div class="row" ng-show="msjTel">
+                       <div class="col-md-12">
+                          <div  class="validacion">
+                              Los campos son obligatorios
+                          </div>
+                       </div>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <div ng-show="cargador1" align="center">
+                                    <img ng-src="imgs/cargador.gif">
+                            </div>
+                        </div>
+                    </div>
+                     <div class="row" ng-show="msjIncidencia">
+                       <div class="col-md-12">
+                          <div  class="alert alert-success" >
+                              La incidencia se agregó correctamente.
+                          </div>
+                       </div>
+                     </div>  
+                     
+                     <div class="row">
+                     	<div class="col-md-12" align="right">                     		
+                  			<button type="button" class="btn btn-default" data-dismiss="modal" >Cerrar</button>   				
+                  			<button type="submit" class="btn btn-info">Agregar</button>
+                     	</div>
+                     </div>
+                     </form>                   
+                  </div>                                               
+              </div>
+            </div>
+          </div>
+  
+		</div>
+	</div>
+</div>

@@ -3,8 +3,11 @@ require "pac_vars.inc";//con
 require 'tcpdf.php';
 require 'config/lang/eng.php';
 
+
+$fol=$_GET['fol'];
+$vit=$_GET['vit'];
 ////////Correo por mas de 5 suministros Symio
-$nosuministros="SELECT SUM(Nsum_cantidad) as numero, ObsNot_diagnosticoRx as dx, concat(Med_Nombre,' ',Med_paterno,' ',Med_materno) as medico, concat(Exp_nombre,' ',Exp_paterno,' ',Exp_materno) as lesionado, Not_fechareg as fecha, Uni_nombrecorto as unidad
+$nosuministros="SELECT SUM(Nsum_cantidad) as numero, ObsNot_diagnosticoRx as dx, concat(Med_Nombre,' ',Med_paterno,' ',Med_materno) as medico, concat(Exp_nombre,' ',Exp_paterno,' ',Exp_materno) as lesionado, Not_fechareg as fecha, Uni_nombrecorto as unidad,Unidad.Uni_clave as uni
 FROM SymioNotaSuministro
 INNER JOIN ObsNotaMed ON ObsNotaMed.Exp_folio=SymioNotaSuministro.Exp_folio
 INNER JOIN NotaMedica ON NotaMedica.Exp_folio=SymioNotaSuministro.Exp_folio
@@ -20,6 +23,7 @@ $medicosuministros=$rowsuministros['medico'];
 $lesionadosuministros=$rowsuministros['lesionado'];
 $fechasuministros=$rowsuministros['fecha'];
 $unidadsuministros=$rowsuministros['unidad'];
+$uni=$rowsuministros['uni'];
 
 $desglose="SELECT Nsum_Cantidad, Nombre_producto, SymioProducto.Clave_producto
 FROM SymioNotaSuministro
@@ -361,8 +365,11 @@ $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, 
 $html="";
     }
 /////Signos vitales
-   
-        $query="Select Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."'";
+        if($vit==''){
+          $query="Select Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."' limit 1";
+        }else{
+          $query="Select Vit_temperatura, Vit_talla, Vit_peso, Vit_ta, Vit_fc, Vit_fr , Vit_imc , Vit_observaciones, Vit_fecha, Usu_registro, IMC_categoria, IMC_comentario From Vitales  Inner Join IMC on IMC.IMC_clave=Vitales.IMC_clave  Where Exp_folio='".$fol."' and Vit_clave=".$vit ;
+        }
    
 $rs= mysql_query($query,$conn);
 if($row= mysql_fetch_array($rs)){
@@ -600,6 +607,11 @@ $html="
                $html2=$html2.$html1;
            }while($row=  mysql_fetch_array($rs));
 
+        }else{
+          $html1= "<tr>
+                            <td colspan=\"3\">no requiere</td>                            
+                     </tr>";
+               $html2=$html2.$html1;
         }
         $html3="
           <tr>
@@ -694,7 +706,7 @@ $html="
 
 $query="SELECT Nsum_clave, Nombre_producto, Nsum_obs, Nsum_Cantidad  FROM SymioNotaSuministro inner Join SymioProducto on SymioProducto.Clave_producto =SymioNotaSuministro.Sum_clave Where Exp_folio='".$fol."'";
 $rs=mysql_query($query,$conn);
-
+  if($rs!=null){
        if($row = mysql_fetch_array($rs))
            {
              do{
@@ -706,6 +718,27 @@ $rs=mysql_query($query,$conn);
                  $html2=$html2.$html1;
                 }while($row = mysql_fetch_array($rs));
            }
+  }else{
+    $query="select * from NotaSuministroAlternativa where Exp_folio='".$fol."'";
+    $rs=mysql_query($query,$conn);
+     if($row = mysql_fetch_array($rs))
+           {
+             do{
+                 $html1="<tr>
+                              <td>".utf8_encode($row['NsumAl_Cantidad'])."</td>
+                              <td>".utf8_encode($row['NsumAl_medicamento'])."</td>
+                              <td>".utf8_encode($row['NsumAl_posologia'])."</td>
+                         </tr>";
+                 $html2=$html2.$html1;
+                }while($row = mysql_fetch_array($rs));
+           }
+    else{
+      $html1="<tr>                  
+                  <td colspan 3>no requiere</td>
+             </tr>";
+      $html2=$html2.$html1;
+    }
+  }
 $html3="</table>";
 
 // Print text using writeHTMLCell()
@@ -760,20 +793,42 @@ $html="
                 <td width=\"60%\"><b>Indicaciones</b></td>
           </tr>";
 
-$query="SELECT Nsum_clave, Sum_nombre, Nsum_obs, Nsum_Cantidad  FROM NotaSuministro inner Join Suministro on Suministro.Sum_clave =NotaSuministro.Sum_clave Where Exp_folio='".$fol."'";
+$query="Select Sum_clave as clave, Nsum_Cantidad as cantidad, Sym_denominacion as sustancia, Sym_presentacion as medicamento, Sym_forma_far as presentacion, Nsum_obs as posologia from NotaSuministro 
+inner join SymioCuadroBasico on NotaSuministro.Sum_clave=SymioCuadroBasico.Clave_producto
+ where Exp_folio='".$fol."' order by Sum_clave asc";
 $rs=mysql_query($query,$conn);
 
-       if($row = mysql_fetch_array($rs))
+if($row = mysql_fetch_array($rs)){       
+             do{
+                 $html1="<tr>
+                              <td>".utf8_encode($row['cantidad'])."</td>
+                              <td>".utf8_encode($row['sustancia'].' / '.$row['medicamento'])."</td>
+                              <td>".utf8_encode($row['posologia'])."</td>
+                         </tr>";
+                 $html2=$html2.$html1;
+                }while($row = mysql_fetch_array($rs));           
+}else{
+    $query="select * from NotaSuministroAlternativa where Exp_folio='".$fol."'";
+    $rs=mysql_query($query,$conn);
+    if($row = mysql_fetch_array($rs))
            {
              do{
                  $html1="<tr>
-                              <td>".utf8_encode($row['Nsum_Cantidad'])."</td>
-                              <td>".utf8_encode($row['Sum_nombre'])."</td>
-                              <td>".utf8_encode($row['Nsum_obs'])."</td>
+                              <td>".utf8_encode($row['NsumAl_Cantidad'])."</td>
+                              <td>".utf8_encode($row['NsumAl_medicamento'])."</td>
+                              <td>".utf8_encode($row['NsumAl_posologia'])."</td>
                          </tr>";
                  $html2=$html2.$html1;
                 }while($row = mysql_fetch_array($rs));
            }
+    else{
+      $html1="<tr>                  
+                  <td colspan=\"3\">no requiere</td>
+             </tr>";
+      $html2=$html2.$html1;
+    }
+  }
+
 $html3="</table>";
 
 // Print text using writeHTMLCell()
@@ -790,26 +845,47 @@ $html="
            </tr>
            <tr>
                   <td width=\"10%\"><b>Cantidad</b></td>
-                  <td width=\"15%\"><b>Ortesis</b></td>
+                  <td width=\"30%\"><b>Ortesis</b></td>
                   <td width=\"15%\"><b>Presentación</b></td>
-                  <td width=\"60%\"><b>Indicaciones</b></td>
+                  <td width=\"45%\"><b>Indicaciones</b></td>
             </tr>";
-    $query="SELECT Notor_clave, Ort_nombre, Ortpre_nombre, Notor_cantidad, Notor_indicaciones FROM NotaOrtesis inner Join Ortesis on Ortesis.Ort_clave=NotaOrtesis.Ort_clave inner Join  Ortpresentacion on Ortpresentacion.Ortpre_clave=NotaOrtesis.Ortpre_clave Where Exp_folio='".$fol."'";
+    $query="Select Ort_clave as clave, Notor_Cantidad as cantidad, Sym_denominacion as sustancia, Sym_presentacion as medicamento, Sym_forma_far as presentacion, Notor_indicaciones as posologia from NotaOrtesis 
+inner join SymioCuadroBasico on NotaOrtesis.Ort_clave=SymioCuadroBasico.Clave_producto
+ where Exp_folio='".$fol."' order by Ort_clave asc";
+    $rs=mysql_query($query,$conn);    
+ if($row = mysql_fetch_array($rs)){   
+              do{
+                    $html1="<tr>
+                                <td>".utf8_encode($row['cantidad'])."</td>
+                                <td>".utf8_encode($row['sustancia'])."</td>
+                                <td>".utf8_encode($row['presentacion'])."</td>
+                                 <td>".utf8_encode($row['posologia'])."</td>
+                            </tr>";
+                    $html2=$html2.$html1;
+
+                }while($row = mysql_fetch_array($rs));  
+  }else{
+    $query="select * from NotaOrtesisAlternativa where Exp_folio='".$fol."'";
     $rs=mysql_query($query,$conn);
-
-if($row = mysql_fetch_array($rs))
-    {
-          do{
-                $html1="<tr>
-                            <td>".utf8_encode($row['Notor_cantidad'])."</td>
-                            <td>".utf8_encode($row['Ort_nombre'])."</td>
-                            <td>".utf8_encode($row['Ortpre_nombre'])."</td>
-                             <td>".utf8_encode($row['Notor_indicaciones'])."</td>
-                        </tr>";
-                $html2=$html2.$html1;
-
-            }while($row = mysql_fetch_array($rs));
+    if($row = mysql_fetch_array($rs))
+           {
+             do{
+                 $html1="<tr>
+                              <td>".utf8_encode($row['NortAl_Cantidad'])."</td>
+                              <td>".utf8_encode($row['NortAl_ortesis'])."</td>
+                              <td>Según Item</td>
+                              <td>".utf8_encode($row['NortAl_posologia'])."</td>
+                         </tr>";
+                 $html2=$html2.$html1;
+                }while($row = mysql_fetch_array($rs));
+           }
+    else{
+      $html1="<tr>                  
+                  <td colspan=\"4\">no requiere</td>
+             </tr>";
+      $html2=$html2.$html1;
     }
+  }
 
 $html3="</table>";
 
@@ -970,6 +1046,88 @@ $html="
     </table>
       ";
 $pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+if($uni==3){
+$html="
+    <br><br><br>
+    <table>";
+            
+             
+           $html.="<tr>
+                   <td align=\"center\" colspan=\"3\" style=\" margin:2px 2px 2px 2px; font-size:40px\">
+                   <b>Cita abierta las 24hrs en caso de continuar con molestas, favor de agendar.</b><br>
+                   <b>Para agendar comunicarse al 01 800 99 912 22.</b>
+                   </td>
+            </tr>            
+            </table>";
+            /*else{
+            $html.="<tr>
+                   <td align=\"center\" colspan=\"3\" style=\" margin:2px 2px 2px 2px; font-size:40px\">
+                   <b>Cita abierta las 24hrs en caso de continuar con molestas, favor de agendar.</b>                   
+                   </td>
+            </tr>            
+            </table>
+            ";
+            }*/
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+}
+$query1 = "select Exp_fecreg from Expediente where Exp_folio='".$fol."'";
+$rs1=mysql_query($query1,$conn);
+$row1=mysql_fetch_array($rs1);
+$fechaAtencion = $row1['Exp_fecreg'];
+$query="Select Addendum.*, Usuario.Usu_nombre  from Addendum
+inner join Usuario on Addendum.Usu_reg = Usuario.Usu_login
+where Exp_folio='".$fol."' and Add_tipoDoc=3";
+$rs=mysql_query($query,$conn);
+$fecha = date("Y-m-d H:i:s");
+
+if($row=mysql_fetch_array($rs)){
+$cont=1;
+$pdf->AddPage();
+        $html="
+           <table  border=\"1\" cellspacing=\"3\" cellpadding=\"4\">
+           <tr><th bgcolor=\"#cccccc\">
+                  <b>Addendum</b>
+                </th>                
+                <th align=\"right\" bgcolor=\"#cccccc\">
+                  fecha atención: ".$fechaAtencion."<br>
+                  fecha impresión: ".$fecha."
+                </th>
+           </tr>";
+
+                  do{
+                     $html.="<tr>
+                                  <td colspan=\"2\">
+                                    <table>
+                                      <tr>
+                                        <th colspan=\"3\"  bgcolor=\"#e6e6e6\">
+                                            Addendum #".$cont." <br>
+                                            <small>login: ".$row['Usu_reg']."</small>
+                                        </th>
+                                        <th colspan=\"2\" align=\"right\"  bgcolor=\"#e6e6e6\">
+                                            fecha: ".$row['Add_fecha']."
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <td colspan=\"5\">
+                                         <b>".utf8_encode($row['Add_comentario'])."</b>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan=\"5\" align=\"center\">
+                                        <br><br>Firma<br><br><br>
+                                        __________________________________________<br>
+
+                                         ".utf8_encode($row['Usu_nombre'])."
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>                                              
+                             </tr>"; 
+                             $cont++;                    
+                 }while($row = mysql_fetch_array($rs));
+        $html.=" </table>";  
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+}
 
 $pdf->output("NM_".$fol.".pdf",'D');
 

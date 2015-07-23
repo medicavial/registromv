@@ -6,20 +6,26 @@
     		<h3 class="panel-title" align="center"><b>Suministros</b></h3>
   		</div><!-- End panel-heading -->
   		<div class="panel-body">
-  		<form ng-submit="guardaMedicamento()">
+  		<form name="formularios.medic" ng-submit="guardaMedicamento()" novalidate>
     		<div class="row">
 				<div class="col-md-6">
 					<div class="input-group" style="width:100%">											 
 					  	<span class="input-group-addon">Medicamentos: </span>
-						<select class="form-control" ng-model="medica.medica" style="width:100%;" name="tipoSumin" id="tipoSumin" required="required" ng-options="medicamento.Sum_clave as medicamento.Sum_presentacion for medicamento in listaMedicamento" ng-change="verIndicacion()" required="">
+						<select class="form-control" ng-model="medica.medica" style="width:100%;" name="medica" id="medica" required="required" ng-options="medicamento.Sum_clave as medicamento.Sum_presentacion for medicamento in listaMedicamento" ng-change="verIndicacion()" required="">
 							<option value="" > - Seleccione - </option>							
 						</select>
+		            </div>
+		            <div class="validacion" role="alert" ng-if="interacted6(formularios.medic.medica)" ng-messages="formularios.medic.medica.$error">
+		              <div ng-message="required">campo requerido</div>            
 		            </div>
 		            <br>
 		            <div class="input-group">
 						<span class="input-group-addon">Posología: </span>
-						<textarea class="form-control" ng-model="medica.posologia" rows="1" id="obs" name="obs" style="resize:none;" required=""></textarea>
+						<textarea class="form-control" ng-model="medica.posologia" rows="1" id="posologia" name="posologia" style="resize:none;" required=""></textarea>
 					</div>
+					<div class="validacion" role="alert" ng-if="interacted6(formularios.medic.posologia)" ng-messages="formularios.medic.posologia.$error">
+		              <div ng-message="required">campo requerido</div>            
+		            </div>
 				</div>    		
 				
 				<div class="col-md-3" style="height:100%,width:100%">					
@@ -32,7 +38,14 @@
 				
 						<input type="submit" class="btn btn-success" value="Agregar">				
 				</div>				
-    		</div><!-- End row -->      		
+    		</div><!-- End row --> 
+    		<div class="row"> 
+                <div class="col-md-12">
+                  <div ng-show="cargador" align="center">
+                    <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>      		
     		<div class="row">
 	 			<div class="col-md-12">
 	 				<div ng-show="listaMedicamentosAgreg" class="mianimacion">
@@ -55,28 +68,37 @@
     		</div> 				    	
     	</form>	
     	<hr>
-    	<form ng-submit="guardaOrtesis()">
+    	<form name="formularios.orte" ng-submit="guardaOrtesis()" novalidate>
     		<div class="row">
-				<div class="col-md-6">
+				<div class="col-md-5">
 					<div class="input-group" style="width:100%">											 
 					  	<span class="input-group-addon">Ortesis: </span>
-						<select class="form-control" ng-model="ortesis.ortesis" style="width:100%;" name="tipoSumin" id="tipoSumin" required="required" ng-options="ortesis.Ort_clave as ortesis.Ort_nombre for ortesis in listaOrt">
+						<select class="form-control" ng-model="ortesis.ortesis" style="width:100%;" name="ortesis" id="ortesis" required ng-options="ortesis.Ort_clave as ortesis.Ort_nombre for ortesis in listaOrt">
 							<option value="" > - Seleccione - </option>							
 						</select>
+		            </div>
+		            <div class="validacion" role="alert" ng-if="interacted7(formularios.orte.ortesis)" ng-messages="formularios.orte.ortesis.$error">
+	              	<div ng-message="required">campo requerido</div>            
 		            </div>
 		            <br>
 		            <div class="input-group">
 						<span class="input-group-addon">Indicaciones: </span>
-						<textarea class="form-control" ng-model="ortesis.indicaciones" rows="2" id="obs" name="obs" style="resize:none;" required=""></textarea>
+						<textarea class="form-control" ng-model="ortesis.indicaciones" rows="2" id="indicaciones" name="indicaciones" style="resize:none;" required=""></textarea>
 					</div>
+					<div class="validacion" role="alert" ng-if="interacted7(formularios.orte.indicaciones)" ng-messages="formularios.orte.indicaciones.$error">
+	              	<div ng-message="required">campo requerido</div>            
+		            </div>
 				</div>    		
-				<div class="col-md-3" style="height:100%,width:100%">					
+				<div class="col-md-4" style="height:100%,width:100%">					
 					<div class="input-group" style="width:100%">											 
 					  	<span class="input-group-addon">Presentación: </span>
-						<select class="form-control" ng-model='ortesis.presentacion' style="width:100%;" name="tipoSumin" id="tipoSumin" required=''>
-							<option value="0" > - Seleccione - </option>
+						<select class="form-control" ng-model='ortesis.presentacion' style="width:100%;" name="tipoSumin" id="tipoSumin" required>
+							<option value="" > - Seleccione - </option>
 							<option value="1" > Según Item </option>							
 						</select>
+		            </div>
+		            <div class="validacion" role="alert" ng-if="interacted7(formularios.orte.presentacion)" ng-messages="formularios.orte.presentacion.$error">
+	              	<div ng-message="required">campo requerido</div>            
 		            </div>				
 				</div>
 				<div class="col-md-3" style="height:100%,width:100%" align="right">					
@@ -87,7 +109,14 @@
 					<br>																		
 					<input align="right" type="submit" class="btn btn-success" value="Agregar">				
 				</div>	
-    		</div><!-- End row -->      		
+    		</div><!-- End row -->  
+    		<div class="row"> 
+                <div class="col-md-12">
+                  <div ng-show="cargador1" align="center">
+                    <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>          		
     		<div class="row">
 	 			<div class="col-md-12">
 	 				<div ng-show="listaOrtesisAgreg" class="mianimacion">
@@ -112,26 +141,37 @@
     		</div> 				    	
     	</form>	
     	<hr>
-    	<form ng-submit="guardaIndicaciones()">
+    	<form name="formularios.indica" ng-submit="guardaIndicaciones()" novalidate>
     		<div class="row">
 				<div class="col-md-6">
 					<div class="input-group" style="width:100%">											 
 					  	<span class="input-group-addon">Indicaciones Generales: </span>
-						<select class="form-control" ng-model="indicacion.indicacion" style="width:100%;" name="tipoSumin" id="tipoSumin" required="required" ng-options="indicacion.Ind_nombre as indicacion.Ind_nombre for indicacion in listaIndicacion" ng-change="verIndicacionCam()" required="">
+						<select class="form-control" ng-model="indicacion.indicacion" style="width:100%;" name="tipoSumin" id="tipoSumin" required="required" ng-options="indicacion.Ind_nombre as indicacion.Ind_nombre for indicacion in listaIndicacion" ng-change="verIndicacionCam()">
 							<option value="" > - Seleccione - </option>							
 						</select>
 		            </div>
 		            <br>
 		            <div class="input-group" style="width:100%">						
-						<textarea class="form-control" ng-model="indicacion.obs" rows="1" id="obs" name="obs" style="resize:none;" required=""></textarea>
+						<textarea class="form-control" ng-model="indicacion.obs" rows="1" id="obs" name="obs" style="resize:none;" required></textarea>
 					</div>
+					<div class="validacion" role="alert" ng-if="interacted8(formularios.indica.obs)" ng-messages="formularios.indica.obs.$error">
+	              	<div ng-message="required">campo requerido</div>            
+		            </div>	
+
 				</div>    		
 							
 				<div class="col-md-3 col-md-offset-3" style="vertical-align:middle;" align="right">					
 				
 						<input type="submit" class="btn btn-success" value="Agregar">				
 				</div>				
-    		</div><!-- End row -->      		
+    		</div><!-- End row --> 
+    		<div class="row"> 
+                <div class="col-md-12">
+                  <div ng-show="cargador2" align="center">
+                    <img ng-src="imgs/cargador.gif">
+                  </div>
+                </div>
+            </div>       		
     		<div class="row">
 	 			<div class="col-md-12">
 	 				<div ng-show="listaIndicAgreg" class="mianimacion">

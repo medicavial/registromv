@@ -1,16 +1,20 @@
 app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busquedas,$http) {
-	$rootScope.rutaAse=	$cookies.rutaImgCom; 
+	//$rootScope.rutaAse=	$cookies.rutaImgCom; 
 	$rootScope.folio= 	$cookies.folio;
-	$rootScope.rutaPro=	$cookies.rutaImgPro;	
+	//$rootScope.rutaPro=	$cookies.rutaImgPro;	
 	$scope.cia='';
 	$scope.uniMed='';
 	$scope.poliza='';
 	$scope.sinicestro='';
 	$scope.reporte='';
 	$scope.riesgo='';
+    $scope.telefonos='';
+    $scope.verDetalle=false;
+    $scope.autoriza='';
+    $scope.envia='';
 	busquedas.buscarFolio($rootScope.folio).success(function(data){		
-        $scope.cia_clave=data.Cia_clave;
-        $scope.pro_clave=data.Pro_clave;  	
+        $scope.cia_clave=data.Cia_clave;        
+        $scope.pro_clave=data.Pro_clave;        
 		$scope.cia=data.Cia_nombrecorto;	
 		$scope.uniMed = data.Uni_nombre;
 		$scope.poliza = data.Exp_poliza;
@@ -20,16 +24,35 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
 		$scope.lesionado = data.Exp_nombre+' '+data.Exp_paterno+' '+data.Exp_materno;
 		$scope.usuario=data.Usu_registro;
 		$scope.registro=data.Exp_fecreg;       
-         if($rootScope.rutaAse==''||$rootScope.rutaAse==null){
+        
         cveCia=$scope.cia_clave;
         imgCia=$scope.imgCompania(cveCia);        
-        $rootScope.rutaAse=imgCia;       
-        }
-        if($rootScope.rutaPro==''||$rootScope.rutaPro==null){
-            cvePro=$scope.pro_clave;
-            imgPro=$scope.validarutaProducto(cvePro);
-            $rootScope.rutaPro=imgPro;
-        }
+        $rootScope.rutaAse=imgCia;
+
+        if($scope.cia_clave==44||$scope.cia_clave==51||$scope.cia_clave==53){
+            $scope.verDetalle=false;
+            if($scope.cia_clave==44){
+                $http.get('api/api.php?funcion=detalleCortesia&folio='+$rootScope.folio).success(function (data){                                  
+                        $scope.autoriza=data.autoriza;
+                        $scope.envia=data.envia;                    
+                });
+            }
+        }else{
+            $scope.verDetalle=true;
+        }             
+        
+        cvePro=$scope.pro_clave;
+        imgPro=$scope.validarutaProducto(cvePro);
+        $rootScope.rutaPro=imgPro;
+
+        $http.get('api/api.php?funcion=listaTelefonos&folio='+$rootScope.folio).success(function (data){          
+                    if(data!=''){
+                        $scope.telefonos = data;
+                    }else{
+                        $scope.telefonos= '';
+                    }                    
+          });
+       
 	});
    
 	$scope.imprimePortada = function(){  
@@ -157,7 +180,7 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
             img="multiva.jpg";
             break;
          case '51':
-            img="Ortho.jpg";
+            img="individual.jpg";
             break;
          case '18':
             img="potosi.jpg";
@@ -180,6 +203,10 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
          case '34':
             img="travol.jpg";
             break;
+         case '53':
+            img="empleado.jpg";
+            break;
+
         }        
         return img;
     }
@@ -210,6 +237,12 @@ app.controller('portadaCtrl', function($scope,$rootScope,$location,$cookies,busq
             break;
         case '8':
             imgPro="sn.jpg";
+            break;
+        case '9':
+            imgPro="av+.jpg";
+            break;
+         case '10':
+            imgPro="pa.jpg";
             break;
         }
         return imgPro;

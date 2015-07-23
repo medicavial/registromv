@@ -92,17 +92,18 @@ if($CiaClave==33){ $imagen="../../imgs/logos/ace.bmp"; $tipo="BMP"; $sise=30;}
 if($CiaClave==34){ $imagen="../../imgs/logos/TTRAVOL.jpg"; $tipo="JPG"; $sise=25;}
 if($CiaClave==35){ $imagen="../../imgs/logos/multiasistencia.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==36){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
-if($CiaClave==37){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
+if($CiaClave==37){ $imagen="../../imgs/logos/multiafirme.jpg"; $tipo="JPG"; $sise=40;}
 if($CiaClave==38){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==39){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==40){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==41){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
 if($CiaClave==43){ $imagen="../../imgs/logos/ci.jpg"; $tipo="JPG"; $sise=22;}
-if($CiaClave==44){ $imagen="../../imgs/logos/blanco.jpg"; $tipo="JPG"; $sise=22;}
+if($CiaClave==44){ $imagen="../../imgs/logos/cortesia.jpg"; $tipo="JPG"; $sise=40;}
 if($CiaClave==45){ $imagen="../../imgs/logos/inbursa.jpg"; $tipo="JPG"; $sise=22;}
-if($CiaClave==46){ $imagen="../../imgs/logos/orthofam.jpg"; $tipo="JPG"; $sise=40;}
+if($CiaClave==46){ $imagen="../../imgs/logos/individual.jpg"; $tipo="JPG"; $sise=40;}
 if($CiaClave==47){ $imagen="../../imgs/logos/thona.jpg"; $tipo="JPG"; $sise=22;}
-if($CiaClave==51){ $imagen="../../imgs/logos/particulares.jpg"; $tipo="JPG"; $sise=40;}
+if($CiaClave==51){ $imagen="../../imgs/logos/individual.jpg"; $tipo="JPG"; $sise=40;}
+if($CiaClave==53){ $imagen="../../imgs/logos/empleado.jpg"; $tipo="JPG"; $sise=40;}
 
 /****************************validación de identificador de prodcuto ofrecido   EEGR  **///////
 		if($producto == 1) $imgProd = '../../imgs/producto/av.jpg';
@@ -114,6 +115,7 @@ if($CiaClave==51){ $imagen="../../imgs/logos/particulares.jpg"; $tipo="JPG"; $si
 		else if($producto == 7) $imgProd = '../../imgs/producto/sn.jpg';
     else if($producto == 8) $imgProd = '../../imgs/producto/sn.jpg';
     else if($producto == 9) $imgProd = '../../imgs/producto/av+.jpg';
+    else if($producto == 10) $imgProd = '../../imgs/producto/pa.jpg';
 		else $imgProd = '../../imgs/producto/av.jpg';
 		/******************************* fin de la validacion del producto*//////////////////////
                           ////////////////////////////////////////////////////////////////////////////////////////////

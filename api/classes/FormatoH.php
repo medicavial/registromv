@@ -4,7 +4,18 @@ require 'tcpdf.php';
 require 'config/lang/eng.php';
 
 ////////// Datos del Expediente/////
+$fol      = $_GET['fol'];
+$motivo   = $_GET['motivo'];
+$usr      = $_GET['usr'];
 
+$query="select Exp_folio from Consulta where Exp_folio='".$fol."'";
+$rs=mysql_query($query,$conn);
+$row= mysql_fetch_array($rs);
+if(!$row){
+$query = "insert into Consulta(Exp_folio,Con_fecha,Con_motivo,Usu_registro)
+                      values('".$fol."', now(),'".$motivo."', '".$usr."')";  
+$rs=mysql_query($query,$conn);
+}
 //$query="Select Exp_nombre, Exp_paterno, Exp_materno, Exp_fechaNac, Exp_edad, Exp_meses, Exp_sexo, Rel_clave, Ocu_clave, Edo_clave, Exp_mail, Exp_telefono From Expediente Where Exp_folio='".$fol."'";
 $query="Select Exp_nombre, Exp_paterno, Exp_materno, Exp_fechaNac, Exp_edad, Exp_meses, Exp_sexo, Rel_clave, Ocu_clave, Edo_clave, Exp_mail, Exp_telefono From Expediente Where Exp_cancelado=0 and Exp_folio='".$fol."'";
 $rs=mysql_query($query,$conn);
@@ -896,7 +907,7 @@ $pdf->Ln(10);
                  </tr>
                  <tr>
                       <td width=\"40%\" align=\"center\">
-                                                Nombre y Firma del Doctor
+                                                Nombre y Firma del Médico
                       </td>
                       <td width=\"20%\">
                       </td>
@@ -908,6 +919,65 @@ $pdf->Ln(10);
          ";
 
 $pdf->writeHTMLCell($w=0, $h=0, $x='42', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+
+$query1 = "select Exp_fecreg from Expediente where Exp_folio='".$fol."'";
+$rs1=mysql_query($query1,$conn);
+$row1=mysql_fetch_array($rs1);
+$fechaAtencion = $row1['Exp_fecreg'];
+$query="Select Addendum.*, Usuario.Usu_nombre  from Addendum
+inner join Usuario on Addendum.Usu_reg = Usuario.Usu_login
+where Exp_folio='".$fol."' and Add_tipoDoc=1";
+$rs=mysql_query($query,$conn);
+$fecha = date("Y-m-d H:i:s");
+
+if($row=mysql_fetch_array($rs)){
+$cont=1;
+$pdf->AddPage();
+        $html="
+           <table  border=\"1\" cellspacing=\"3\" cellpadding=\"4\">
+           <tr><th bgcolor=\"#cccccc\">
+                  <b>Addendum</b>
+                </th>                
+                <th align=\"right\" bgcolor=\"#cccccc\">
+                  fecha atención: ".$fechaAtencion."<br>
+                  fecha impresión: ".$fecha."
+                </th>
+           </tr>";
+
+                  do{
+                     $html.="<tr>
+                                  <td colspan=\"2\">
+                                    <table>
+                                      <tr>
+                                        <th colspan=\"3\"  bgcolor=\"#e6e6e6\">
+                                            Addendum #".$cont." <br>
+                                            <small>login: ".$row['Usu_reg']."</small>
+                                        </th>
+                                        <th colspan=\"2\" align=\"right\"  bgcolor=\"#e6e6e6\">
+                                            fecha: ".$row['Add_fecha']."
+                                        </th>
+                                      </tr>
+                                      <tr>
+                                        <td colspan=\"5\">
+                                         <b>".utf8_encode($row['Add_comentario'])."</b>
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                        <td colspan=\"5\" align=\"center\">
+                                        <br><br>Firma<br><br><br>
+                                        __________________________________________<br>
+
+                                         ".utf8_encode($row['Usu_nombre'])."
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </td>                                              
+                             </tr>"; 
+                             $cont++;                    
+                 }while($row = mysql_fetch_array($rs));
+        $html.=" </table>";  
+$pdf->writeHTMLCell($w=0, $h=0, $x='', $y='', $html, $border=0, $ln=1, $fill=0, $reseth=true, $align='', $autopadding=true);
+}
 $pdf->output("HC_".$fol.".pdf",'D');
 
 

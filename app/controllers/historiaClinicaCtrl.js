@@ -1,6 +1,9 @@
-app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cookies,WizardHandler,busquedas,$http) {
-	$rootScope.folio=$cookies.folio;
-  $scope.formularios={};	
+app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cookies,WizardHandler,busquedas,$http,webStorage) {
+  $rootScope.folio= webStorage.session.get('folio'); 
+  console.log($rootScope.folio);
+  $rootScope.folio=$cookies.folio;
+  $rootScope.usrLogin= $cookies.usrLogin;
+  $scope.formularios={};  
   $scope.cargador=false;
   $scope.cargador1=false;
   $scope.cargador2=false;
@@ -20,12 +23,21 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
     $scope.adic='No';    
     $scope.padObs='';
     $scope.siEmb='No';
+    $scope.msjTel=false;
+    $scope.motivoCon='';
+
+  $scope.telefonos={
+    tipo:'',
+    telefono:''
+  }
     
     $scope.datos={
         nombre:'',
         pat:'',
         mat:'',
         fecnac:'',
+        anios:'',
+        meses:'',
         tel:'',
         numeroTel:'',
         mail:'',
@@ -73,7 +85,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
     $scope.acc={      
         opc:'Si',
         lugar:'',
-        obs:''
+        obs:'',
+        fecha:''
     };
      $scope.vitales={      
         tem:"",
@@ -185,21 +198,34 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             //console.log(data);
         })
 
-        busquedas.datosPaciente($rootScope.folio).success(function(data){
-
+        busquedas.datosPaciente($rootScope.folio).success(function(data){            
             $rootScope.nombre= data.Exp_nombre + ' '+data.Exp_paterno+ ' ' + data.Exp_materno;                                  
-            $scope.datos.fecnac= data.Exp_fechaNac;            
+            $scope.datos.fecnac= data.Exp_fechaNac;
+            $scope.datos.anios= data.Exp_edad;
+            $scope.datos.meses= data.Exp_meses;          
             $scope.datos.mail=data.Exp_mail;
             $scope.datos.obs=data.Rel_clave;
             $scope.datos.tel=data.Exp_telefono;
             $scope.datos.ocu = data.Ocu_clave;
             $scope.datos.edoC= data.Edo_clave;
             $scope.datos.sexo= data.Exp_sexo;
-
-            edad=chkdate($scope.datos.fecnac,1);
-            $scope.datos.anios=edad[0];
-            $scope.datos.meses=edad[1]; 
-            $scope.datos.folio= $rootScope.folio;      
+        
+            $scope.datos.folio= $rootScope.folio;                       
+            if(($scope.datos.anios==null&& $scope.datos.meses==null)&&$scope.datos.fecnac!=null){              
+                $http({
+                    url:'api/api.php?funcion=calFecha&fechaNac='+$scope.datos.fecnac,
+                    method:'POST', 
+                    contentType: 'application/json', 
+                    dataType: "json", 
+                    data: {'clave':'valor'}
+                    }).success( function (data){                           
+                        $scope.datos.anios= data.anios;
+                        $scope.datos.meses= data.meses;                          
+                    }).error( function (xhr,status,data){
+                        $scope.mensaje ='no entra';            
+                        alert('Error');
+                    });
+                }
             
         });     
          $scope.finished = function() {
@@ -215,10 +241,7 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
         }
 
         $scope.calculaFecha = function(){            
-            
-            edad=chkdate($scope.datos.fecnac,1);
-            $scope.datos.anios=edad[0];
-            $scope.datos.meses=edad[1]; 
+                      
         }
         $scope.obsRelig = function(){        
             if($scope.defaultRelig.obsReligDefault){
@@ -228,6 +251,25 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
               $scope.datos.obs=''; 
             }
         }
+
+        $scope.calculaFecha = function(){                         
+            $http({
+                    url:'api/api.php?funcion=calFecha&fechaNac='+$scope.datos.fecnac,
+                    method:'POST', 
+                    contentType: 'application/json', 
+                    dataType: "json", 
+                    data: {'calve':'valor'}
+                    }).success( function (data){   
+                      //console.log(data);
+                        $scope.datos.anios= data.anios;
+                        $scope.datos.meses= data.meses;       
+                    }).error( function (xhr,status,data){
+                        $scope.mensaje ='no entra';            
+                        alert('Error');
+                    });
+        }
+
+
         $scope.enviaDatos = function(){            
             if($scope.formularios.pac.$valid){
               $scope.cargador=true;
@@ -956,7 +998,8 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         $scope.acc={
                           opc:'Si',
                           lugar:'',
-                          obs:''                          
+                          obs:'',
+                          fecha:''
                         }
                         $scope.formularios.ante.$submitted=false;
                         $scope.cargador=false;
@@ -996,9 +1039,9 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
                         alert('Error');
                     });
         }
-        $scope.imprimirHistoriaClinica = function(){        	
-           	var fileName = "Reporte";
-            var uri = 'api/classes/FormatoH.php?fol='+$rootScope.folio;
+        $scope.imprimirHistoriaClinica = function(motivo){          
+            var fileName = "Reporte";
+            var uri = 'api/classes/FormatoH.php?fol='+$rootScope.folio+'&motivo='+motivo+'&usr='+$rootScope.usrLogin;
             var link = document.createElement("a");    
             link.href = uri;
             
@@ -1011,172 +1054,84 @@ app.controller('historiaClinicaCtrl', function($scope,$rootScope,$location,$cook
             link.click();
             document.body.removeChild(link);
         }
-         $scope.irDocumentos = function(){         
-              $location.path("/documentos");          
+         $scope.irDocumentos = function(motivo){         
+              $http.get('api/api.php?funcion=guardamotivoCons&fol='+$rootScope.folio+'&motivo='+motivo+'&usr='+$rootScope.usrLogin).success(function (data){                                                
+                if(data.respuesta=='correcto'){
+                  $location.path("/documentos");  
+                }else{
+                  $location.path("/documentos");  
+                }
+              });             
+        }
+
+        $scope.irNotaMedica = function(motivo){  
+          $http.get('api/api.php?funcion=guardamotivoCons&fol='+$rootScope.folio+'&motivo='+motivo+'&usr='+$rootScope.usrLogin).success(function (data){                                                
+                if(data.respuesta=='correcto'){
+                  $location.path("/notaMedica");  
+                }else{
+                  $location.path("/notaMedica");  
+                }
+              });   
+        }
+
+        $scope.agregaTel = function(){         
+              
+              if($scope.telefonos.tipo!='' && $scope.telefonos.telefono!=''){                
+                $scope.msjTel=false;               
+              $http({
+                    url:'api/api.php?funcion=guardaTels&fol='+$rootScope.folio,
+                    method:'POST', 
+                    contentType: 'application/json', 
+                    dataType: "json", 
+                    data: $scope.telefonos
+                    }).success( function (data){   
+                      console.log(data);
+                      $scope.telefonos={
+                        tipo:'',
+                        telefono:''
+                      }
+                      if(!data.respuesta){                               
+                          $scope.listTelefonos=data;                                                                              
+                      }
+                      else{
+                        alert('error en la inserción');
+                      }
+                    }).error( function (xhr,status,data){
+                        $scope.mensaje ='no entra';            
+                        alert('Error');
+                    });
+              }else{
+                $scope.msjTel=true;
+              }
+
+        }
+        $scope.borrarTels = function(cveTel){                                     
+              $http({
+                    url:'api/api.php?funcion=borraTels&fol='+$rootScope.folio+'&cveTel='+cveTel,
+                    method:'POST', 
+                    contentType: 'application/json', 
+                    dataType: "json", 
+                    data: $scope.telefonos
+                    }).success( function (data){                                               
+                      if(!data.respuesta){                               
+                          if(data.length>0){
+                            $scope.listTelefonos=data;                                                                                
+                          }else{
+                            $scope.listTelefonos='';
+                          }
+                          
+                      }
+                      else{
+                        alert('error en la inserción');
+                      }
+                    }).error( function (xhr,status,data){
+                        $scope.mensaje ='no entra';            
+                        alert('Error');
+                    });              
         }
 });
 
 
-function chkdate(objName, conedad)
-{
-//var strDatestyle = "US"; //United States date style
-var strDatestyle = "EU";  //European date style
-var strDate;
-var strDateArray;
-var strDay;
-var strMonth;
-var strYear;
-var intday;
-var intMonth;
-var intYear;
-var booFound = false;
-var datefield = objName;
-var strSeparatorArray = new Array("-"," ","/",".");
-var intElementNr;
-var err = 0;
-var strMonthArray = new Array(12);
-
-var d = new Date();
-var dhoy =d.getDate();
-var mhoy =d.getMonth()+1;
-var ahoy =d.getFullYear();
-var edad;
-
-strMonthArray[0] = "Ene";
-strMonthArray[1] = "Feb";
-strMonthArray[2] = "Mar";
-strMonthArray[3] = "Abr";
-strMonthArray[4] = "May";
-strMonthArray[5] = "Jun";
-strMonthArray[6] = "Jul";
-strMonthArray[7] = "Ago";
-strMonthArray[8] = "Sep";
-strMonthArray[9] = "Oct";
-strMonthArray[10] = "Nov";
-strMonthArray[11] = "Dic";
-strDate = datefield;
-if (strDate.length < 1) {
-return true;
-}
-for (intElementNr = 0; intElementNr < strSeparatorArray.length; intElementNr++) {
-if (strDate.indexOf(strSeparatorArray[intElementNr]) != -1) {
-strDateArray = strDate.split(strSeparatorArray[intElementNr]);
-if (strDateArray.length != 3) {
-err = 1;
-return false;
-}
-else {
-strDay = strDateArray[0];
-strMonth = strDateArray[1];
-strYear = strDateArray[2];
-}
-booFound = true;
-   }
-}
-if (booFound == false) {
-if (strDate.length>5) {
-strDay = strDate.substr(0, 2);
-strMonth = strDate.substr(2, 2);
-strYear = strDate.substr(4);
-   }
-}
-if (strYear.length == 2) {
-strYear = '20' + strYear;
-}
-// US style
-if (strDatestyle == "US") {
-strTemp = strDay;
-strDay = strMonth;
-strMonth = strTemp;
-}
-intday = parseInt(strDay, 10);
-if (isNaN(intday)) {
-err = 2;
-return false;
-}
-intMonth = parseInt(strMonth, 10);
-if (isNaN(intMonth)) {
-for (i = 0;i<12;i++) {
-if (strMonth.toUpperCase() == strMonthArray[i].toUpperCase()) {
-intMonth = i+1;
-strMonth = strMonthArray[i];
-i = 12;
-   }
-}
-if (isNaN(intMonth)) {
-err = 3;
-return false;
-   }
-}
-intYear = parseInt(strYear, 10);
-if (isNaN(intYear)) {
-err = 4;
-return false;
-}
-if (intMonth>12 || intMonth<1) {
-err = 5;
-return false;
-}
-if ((intMonth == 1 || intMonth == 3 || intMonth == 5 || intMonth == 7 || intMonth == 8 || intMonth == 10 || intMonth == 12) && (intday > 31 || intday < 1)) {
-err = 6;
-return false;
-}
-if ((intMonth == 4 || intMonth == 6 || intMonth == 9 || intMonth == 11) && (intday > 30 || intday < 1)) {
-err = 7;
-return false;
-}
-if (intMonth == 2) {
-if (intday < 1) {
-err = 8;
-return false;
-}
-if (LeapYear(intYear) == true) {
-if (intday > 29) {
-err = 9;
-return false;
-}
-}
-else {
-if (intday > 28) {
-err = 10;
-return false;
-}
-}
-}
-if (strDatestyle == "US") {
-//datefield.value = strMonthArray[intMonth-1] + " " + intday+" " + strYear;
-}
-else
-  {//Regreso de fecha *********************************************************************************
-  //datefield.value = intday + " " + strMonthArray[intMonth-1] + " " + strYear;
-  //si el mes es el mismo pero el dï¿½a inferior aun no ha cumplido aï¿½os, le quitaremos un aï¿½o al actual
-  if ((intMonth==mhoy)&&(intday > dhoy))
-  {
-  ahoy=ahoy-1;
-
-  }
-  //si el mes es superior al actual tampoco habrï¿½ cumplido aï¿½os, por eso le quitamos un aï¿½o al actual
-  if (intMonth > mhoy)
-  {
-  ahoy=ahoy-1;
-  }
-  if(intMonth==mhoy){
-    meses=0
-  }
-  else if(intMonth>mhoy){
-    meses =12-(intMonth - mhoy);
-  }
-  else if(intMonth<mhoy){
-    meses = mhoy-intMonth;
-  }
-  edad=ahoy-strYear;
-  if (conedad==1){  
-  }
-}
-var edadCom=null;
-edadCom=[edad,meses];
-return edadCom;
-}
 
 function verOpciones(opcion){
   switch(opcion){

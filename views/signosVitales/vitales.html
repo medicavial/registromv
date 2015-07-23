@@ -29,7 +29,7 @@
 					<div class="col-md-4">
 						<div class="input-group">
 							<span class="input-group-addon">Talla: </span>
-							<input type="number" step="any" ng-model="vitales.talla" min="40" max="230" class="form-control" id="talla" name="talla" placeholder="Talla" required >
+							<input type="number" step="10" ng-model="vitales.talla" min="40" max="230" class="form-control" id="talla" name="talla" placeholder="Talla" required >
 							<span class="input-group-addon">Cm.</span>
 						</div>
 						<div class="validacion" role="alert" ng-if="interacted(formularios.vital.talla)" ng-messages="formularios.vital.talla.$error">
@@ -71,16 +71,16 @@
 					<div class="col-md-6">
 						<div class="input-group">
 							<span class="input-group-addon">T. Arterial: </span>
-							<input type="number" ng-model="vitales.sistole" min="60" max="140" class="form-control" id="sistole" name="sistole" >
+							<input type="number" ng-model="vitales.sistole" class="form-control" id="sistole" name="sistole" >
 							<span class="input-group-addon"> / </span>
-							<input type="number" ng-model="vitales.astole" min="30" max="90" class="form-control" id="astole" name="astole">
+							<input type="number" ng-model="vitales.astole" class="form-control" id="astole" name="astole">
 							<span class="input-group-addon">mmHg.</span>
 						</div>
 						<div>
 							<div class="validacion" role="alert" ng-if="interacted(formularios.vital.sistole)" ng-messages="formularios.vital.sistole.$error">	
 								<div ng-message="number">valor numérico</div>			              
 				              <div ng-message="min">valor mayor a 60</div>
-				              <div ng-message="max">valor menor a 140</div>
+				              <div ng-message="max">valor menor a 200</div>
 				            </div>
 				            <div class="validacion" role="alert" ng-if="interacted(formularios.vital.astole)" ng-messages="formularios.vital.astole.$error">
 				            <div ng-message="number">valor numérico</div>
@@ -117,7 +117,11 @@
 					 <div class="col-md-2">
 			          	<input type="Button" class="btn btn-primary"  value="Documentos" ng-click="irDocumentos()" />
 			          </div>
-					<div class="col-md-3 col-md-offset-7" >						
+
+			          <div class="col-md-3 col-md-offset-3">
+			          	<input type="Button" class="btn btn-primary"  value="imprimir" ng-click="imprimirSignosVitales()" />
+			          </div>
+					<div class="col-md-3 col-md-offset-1" >						
 						<input type="submit" name="guardaVit" id="guardaVit" class="btn btn-success"  value="Guarda Signos Vitales" />						
 					</div> 
 				</div>

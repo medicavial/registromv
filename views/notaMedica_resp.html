@@ -1,0 +1,57 @@
+<div class="container" style="width: 100%">     
+<br>
+	<div class="panel panel-primary">
+    <div style="width:100%; background:gray;color:white">
+    <div class="row">
+      <div class="col-md-1" style="padding-top:1.2em" ng-show="regresar">
+        <button ng-click="regresaWizard()" style="background:transparent; border:0px"><img src="imgs/flecha.jpg" width="35" height="35" class="img-circle" /></button>
+      </div>
+    
+			<h2 style="padding-left:2%;">Nota Médica <b><label>{{folio}}</label></b></h2>
+    </div>
+		</div>     
+    <br>
+		<div class="Panel-body">
+				<div class="row">
+					<div class="col-md-12">
+						<wizard on-finish="finished()" current-step="paso" hide-indicators="true">                          
+              <wz-step title="Signos Vitales">
+                <ng-include src="'views/notaMedica/sigVitConfirm.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Datos Accidente">
+                <ng-include src="'views/notaMedica/DatosdelAccidente.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Embarazo">
+                <ng-include src="'views/notaMedica/EmbarazoRed.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Lesion">
+               <ng-include src="'views/notaMedica/LesionRed.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Estado Gral.">
+                <ng-include src="'views/notaMedica/EstadoGeneral.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Est. Realizados">
+                <ng-include src="'views/notaMedica/EstudiosSolicitados.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Proc. Médicos">
+                <ng-include src="'views/notaMedica/procMedicos.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Diagnostico">
+                <ng-include src="'views/notaMedica/diagnostico.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Suministros">
+                <ng-include src="'views/notaMedica/suministros.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Pronostico">
+                <ng-include src="'views/notaMedica/pronostico.html'"></ng-include>
+              </wz-step>
+              <wz-step title="Imprimir Nota">
+                <ng-include src="'views/notaMedica/imprimeNota.html'"></ng-include>
+              </wz-step>
+            </wizard>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+</div>

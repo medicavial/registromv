@@ -6,25 +6,31 @@
     		<h3 class="panel-title" align="center"><b>Procedimientos M&eacute;dicos</b></h3>
   		</div><!-- End panel-heading -->
   		<div class="panel-body">
-  		<form ng-submit="guardaProcMedicos()">
+  		<form name="formularios.proce" ng-submit="guardaProcMedicos()" novalidate>
     		<div class="row">
 				<div class="col-md-4">
 					<div class="input-group">
 						<span class="input-group-addon ">Procedimientos</span>
 						<CENTER>
-							<select  ng-model="procedimientos.procedimiento" class="form-control"   
-							ng-options="proc.Pro_clave as proc.Pro_nombre for proc in listaProced" required="">
+							<select  ng-model="procedimientos.procedimiento" name="procedimiento" class="form-control"   
+							ng-options="proc.Pro_clave as proc.Pro_nombre for proc in listaProced" required>
 								<option value=""> *Selecciona</option>
+								<option value="6"> Curaciones</option>
+								<option value="6"> Curaciones</option>
+								<option value="6"> Curaciones</option>
 								<option value="6"> Curaciones</option>
 							</select>
 						</CENTER>
+		            </div>
+		            <div class="validacion" role="alert" ng-if="interacted4(formularios.proce.procedimiento)" ng-messages="formularios.proce.procedimiento.$error">
+		              <div ng-message="required">campo requerido</div>            
 		            </div>
 				</div>    		
 				<div class="col-md-6">
 					<div class="input-group">
 						<span class="input-group-addon">Observaciones: </span>
-						<textarea class="form-control" ng-model="procedimientos.obs" rows="1" id="obs" name="obs" style="resize:none;" ></textarea>
-					</div>
+						<textarea class="form-control" ng-model="procedimientos.obs" rows="1" id="obs" name="obs" style="resize:none;" mayusculas></textarea>
+					</div>					
 				</div>
 				<div class="col-md-2">
 					<div class="input-group" align="right">
@@ -32,7 +38,14 @@
 					</div>
 				</div>
 				
-    		</div><!-- End row -->   
+    		</div><!-- End row --> 
+    		<div class="row"> 
+				<div class="col-md-12">
+					<div ng-show="cargador" align="center">
+						<img ng-src="imgs/cargador.gif">
+					</div>
+				</div>
+			</div>   
     		<div class="row">
 	 			<div class="col-md-12">
 	 				<div ng-show="listaProcedimientos" class="mianimacion">

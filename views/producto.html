@@ -37,13 +37,19 @@
 	  </div>
 	  
 	  <div class="row" ng-show="clave == 19">
-	  	<div class="col-md-4">
+	  	<div class="col-md-4" ng-hide="zona==6">
 	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(1)">
 				<img ng-src="imgs/producto/av.jpg"/>
 				<label>ACCIDENTE VIAL</label>
 			</a>
 	  	</div>
-	  	<div class="col-md-4">
+	  	<div class="col-md-4" ng-show="zona==6">
+	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(9)">
+				<img ng-src="imgs/producto/av+.jpg"/>
+				<label>ACCIDENTE VIAL</label>
+			</a>
+	  	</div>
+	  	<div class="col-md-4" >
 	  		<a  data-dismiss="modal" href="" ng-click="registraLesionado(5);" >
 				<img ng-src="imgs/producto/rh.jpg"/>
 				<label>SOLO REHABILITACION (ZIMA)</label>
@@ -83,13 +89,19 @@
 				<img ng-src="imgs/producto/sn.jpg"/>
 				<label>SEGUNDO NUEVO</label>
 			</a>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal" href="" ng-click="registraLesionado(4);" >
+				<img ng-src="imgs/producto/rh.jpg"/>
+				<label>SOLO REHABILITACION </label>
+			</a>
 	  	</div>	  
 	  </div>
 	  <div class="row" ng-show="(cveUnidad==1||cveUnidad==2||cveUnidad==3||cveUnidad==184)&&(!accPersonal)">
 	  	<div class="col-md-4">
 	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(1)">
 				<img ng-src="imgs/producto/av.jpg"/>
-				<label>ACCIDENTE VialL</label>
+				<label>ACCIDENTE VIAL</label>
 			</a>
 	  	</div>
 	  	<div class="col-md-4">
@@ -105,7 +117,48 @@
 			</a>
 	  	</div>	   	
 	  </div>
-	  <div class="row" ng-hide="clave == 19 || clave == 9 || clave == 7 || clave == 8||cveUnidad==1||cveUnidad==2||cveUnidad==3||cveUnidad==184">
+	  <div class="row" ng-show="cia==51">
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(1)">
+				<img ng-src="imgs/producto/av.jpg"/>
+				<label>ACCIDENTE VIAL</label>
+			</a>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal" href="" ng-click="registraLesionado(2);" >
+				<img ng-src="imgs/producto/ap.jpg"/>
+				<label>ACCIDENTE PERSONAL</label>
+			</a>
+	  	</div>	
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal" href="" ng-click="registraLesionado(4);" >
+				<img ng-src="imgs/producto/rh.jpg"/>
+				<label>SOLO REHABILITACION </label>
+			</a>
+	  	</div>	   	
+	  </div>
+	  <div class="row" ng-show="cia==45">
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(1)">
+				<img ng-src="imgs/producto/av.jpg"/>
+				<label>ACCIDENTE VIAL</label>
+			</a>
+	  	</div>
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal" href="" ng-click="registraLesionado(4);" >
+				<img ng-src="imgs/producto/rh.jpg"/>
+				<label>SOLO REHABILITACION </label>
+			</a>
+	  	</div>	  
+	  	<div class="col-md-4">
+	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(8)">
+				<img ng-src="imgs/producto/sn.jpg"/>
+				<label>SEGUNDO NUEVO</label>
+			</a>
+	  	</div>
+	  	 	
+	  </div>
+	  <div class="row" ng-hide="clave == 19 || clave == 9 || clave == 7 || clave == 8||cveUnidad==1||cveUnidad==2||cveUnidad==3||cveUnidad==184||cia==51||cia==45">
 	  	<div class="col-md-6">
 	  		<a  data-dismiss="modal"  href="" ng-click="registraLesionado(1)">
 				<img ng-src="imgs/producto/av.jpg"/>

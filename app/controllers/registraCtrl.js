@@ -1,7 +1,8 @@
 app.controller('registraCtrl', function($scope,$rootScope, $http,$cookies,$location) {	
 
 $scope.inicio = function(){
-
+    $rootScope.usrLogin= $cookies.usrLogin;
+    
     $rootScope.rutaImgPro=$cookies.rutaImgPro;
     $rootScope.rutaImgCom= $cookies.rutaImgCom;
     $rootScope.ciaClave= $cookies.clave;
@@ -18,9 +19,13 @@ $scope.inicio = function(){
     $scope.cargador=false;
     $scope.cargador1=false;
     $scope.valida=false;
+    $scope.desactivaBoton=false;
+    $scope.divParticulares= false;
+    $scope.divEmpleado= false;
     if($rootScope.ciaClave==19){
         $scope.valida=true
     }
+    $scope.checado=true;
 
     $scope.datos={
     	nombre:'',
@@ -29,7 +34,8 @@ $scope.inicio = function(){
     	fecnac:'',
     	tel:'',
     	numeroTel:'',
-    	correo:''
+    	correo:'',
+        codPostal:''
     }
     $scope.datosSin={
         cobAfec:'',
@@ -39,10 +45,39 @@ $scope.inicio = function(){
         siniestro:'',
         reporte:'',
         folPase:'',
+        obs:'',
+        ajustador:'',
+        cveAjustador:'',
+        telAjustador:'',
+        deducibleMonto:'',
+        obsDed:'',
+        deducible:''
+    }
+    $scope.obsPart={
+        observacion:'',
+        entero:0
+    }
+    $scope.cor={
+        autoriza:'',
+        manda:'',
         obs:''
     }
-
-    $scope.prueba = 'algo';
+     $scope.empleado={
+        noEmp:'',
+        area:'',
+        jefeInm:'',
+        obs:''
+    }
+    $scope.telefonos={
+        cont:'',
+        tip:'',
+        tel:''
+    }  
+     $scope.msjTel=false;
+     $scope.telSum=[];
+     $scope.sumaTel =[] ;     
+    
+   
 }
 $scope.interacted = function(field) {
           //$dirty es una propiedad de formulario que detecta cuando se esta escribieno algo en el input
@@ -69,20 +104,172 @@ $scope.$watch('datos.correo',function(valorant,valornuev){
         $scope.veCupon=false;   
     }
 });
+
+$scope.veTabla=false;
+if($scope.sumaTel==undefined){
+   $scope.veTabla=false; 
+}else{
+    $scope.veTabla=true; 
+}
+
+
+    var cont=1;
+    $scope.agregaTel = function(){  
+        if($scope.telefonos.tip!='' && $scope.telefonos.tel!=''){
+            $scope.msjTel=false;
+            if($scope.sumaTel==undefined){
+               $scope.veTabla=false; 
+            }else{
+                $scope.veTabla=true; 
+            }          
+            $scope.cont ={} ;
+            switch($scope.telefonos.tip){
+                case "1":
+                    $scope.telefonos.tipoLe="Particular";                    
+                break;
+                case "2":
+                    $scope.telefonos.tipoLe="Oficina";                    
+                break;
+                case "3":
+                    $scope.telefonos.tipoLe="Móvil";                    
+                break;
+                case "4":
+                    $scope.telefonos.tipoLe="Otro";                    
+                break;
+
+            }
+            $scope.cont.tip=$scope.telefonos.tip;
+            $scope.cont.tipoLe=$scope.telefonos.tipoLe;
+            $scope.cont.tel=$scope.telefonos.tel; 
+            $scope.cont.cont=cont;            
+            $scope.sumaTel.push($scope.cont); 
+            $scope.telefonos={
+                tip:'',
+                tel:''
+            }                     
+            cont++; 
+            console.log($scope.sumaTel);   
+        }else{
+            $scope.msjTel=true;
+        }
+    }
+
+    $scope.eliminaTelefono = function(contaTel){  
+        console.log('entró');
+        contaTel=contaTel-1;
+        delete $scope.sumaTel[contaTel]; 
+        $scope.sumaTel.splice(contaTel,1);               
+        console.log($scope.sumaTel);
+    }  
+
 $scope.guardaEtapa1 = function(){
     if($scope.etapa1.$valid){
-        $scope.cargador=true;		
+        $scope.cargador=true;
+        $scope.desactivaBoton=true;		
 		$rootScope.usrLogin =  $cookies.usrLogin;
 		$rootScope.uniClave = $cookies.uniClave;
 		$scope.mensaje = '';       
-        edad=chkdate($scope.datos.fecnac,1);        
+        if($scope.sumaTel!=''){
+           $scope.todo= [$scope.datos,$scope.sumaTel];
+        }else{
+            $scope.todo=[$scope.datos];
+        }
+
+        //edad=chkdate($scope.datos.fecnac,1);        
         $http({
-            url:'api/api.php?funcion=registra&usr='+$rootScope.usrLogin+'&uniClave='+$rootScope.uniClave+'&ciaClave='+$rootScope.ciaClave+'&prod='+$rootScope.cveProd+'&anios='+edad[0]+'&meses='+edad[1],
+                    url:'api/api.php?funcion=checaDuplicado&usr='+$rootScope.usrLogin+'&uniClave='+$rootScope.uniClave+'&ciaClave='+$rootScope.ciaClave+'&prod='+$rootScope.cveProd,
+                    method:'POST', 
+                    contentType: 'application/json', 
+                    dataType: "json", 
+                    data: $scope.todo
+                    }).success( function (data){
+                        if(data!='nada'){  
+                            $scope.desactivaBoton=false;                       
+                            $('#modalDuplicado').modal();  
+                            $scope.listadoFolDupli=data; 
+                            $scope.cargador=false;                                    
+                        }else{
+                            $http({
+                                url:'api/api.php?funcion=registra&usr='+$rootScope.usrLogin+'&uniClave='+$rootScope.uniClave+'&ciaClave='+$rootScope.ciaClave+'&prod='+$rootScope.cveProd,
+                                method:'POST', 
+                                contentType: 'application/json', 
+                                dataType: "json", 
+                                data: $scope.todo
+                            }).success( function (data){                             
+                                $scope.mensaje = data.respuesta;
+                                $scope.folio = data.folio;
+                                $scope.cargador=false;
+                                $scope.veCDB=true;        
+                                if($rootScope.ciaClave==44){
+                                    $scope.autoriza=true;             
+                                    $scope.primeraEtapa=true;
+                                    $scope.btnGuardar=true;
+                                }
+                                else if($rootScope.ciaClave==51){
+                                    $scope.divParticulares=true;             
+                                    $scope.primeraEtapa=true;
+                                    $scope.btnGuardar=true;
+                                }
+                                else if($rootScope.ciaClave==53){
+                                    $scope.divEmpleado=true;             
+                                    $scope.primeraEtapa=true;
+                                    $scope.btnGuardar=true;
+                                }
+                                else{
+                                    if($rootScope.ciaClave==19){
+                                        $scope.noCompania='Folio Electrónico';
+                                    }
+                                    else if($rootScope.ciaClave=10){
+                                        $scope.noCompania='Folio de Derivación';   
+                                    }
+                                    else {
+                                        $scope.noCompania='No. Compañía';
+                                    }
+                                    $scope.validaPase=true;
+                                    $scope.primeraEtapa=true;
+                                    $scope.btnGuardar=true;
+                                    
+                                    $http({
+                                        url:'api/api.php?funcion=catCobertura',
+                                        method:'POST', 
+                                        contentType: 'application/json', 
+                                        dataType: "json", 
+                                        data: {'clave':1}
+                                        }).success( function (data){                                     
+                                            $scope.list= data;
+                                        }).error( function (xhr,status,data){
+                                            $scope.mensaje ='no entra ';            
+                                            alert('Error cobertura');
+
+                                        });
+                                    }                                    
+                                    }).error( function (xhr,status,data){
+                                        $scope.mensaje ='no entra ';            
+                                        alert('Error insercion');
+                                    });
+                        }
+                        
+                    }).error( function (xhr,status,data){
+                        $scope.mensaje ='no entra ';            
+                        alert('Error cobertura');
+
+                    });
+               
+    }
+}
+
+$scope.registroValidado= function(){
+        $scope.cargador=true;
+        $scope.desactivaBoton=true;     
+        $('#modalDuplicado').modal('hide');  
+       $http({
+            url:'api/api.php?funcion=registra&usr='+$rootScope.usrLogin+'&uniClave='+$rootScope.uniClave+'&ciaClave='+$rootScope.ciaClave+'&prod='+$rootScope.cveProd,
             method:'POST', 
             contentType: 'application/json', 
             dataType: "json", 
-            data: $scope.datos
-        }).success( function (data){            
+            data: $scope.todo
+        }).success( function (data){ 
+            console.log(data);      
             $scope.mensaje = data.respuesta;
             $scope.folio = data.folio;
             $scope.cargador=false;
@@ -91,7 +278,13 @@ $scope.guardaEtapa1 = function(){
                 $scope.autoriza=true;             
                 $scope.primeraEtapa=true;
                 $scope.btnGuardar=true;
-            }else{
+            }
+            else if($rootScope.ciaClave==51){
+                $scope.divParticulares=true;             
+                $scope.primeraEtapa=true;
+                $scope.btnGuardar=true;
+            }
+            else{
                 if($rootScope.ciaClave==19){
                     $scope.noCompania='Folio Electrónico';
                 }
@@ -114,18 +307,17 @@ $scope.guardaEtapa1 = function(){
                     }).success( function (data){                                     
                         $scope.list= data;
                     }).error( function (xhr,status,data){
-                        $scope.mensaje ='no entra';            
-                        alert('Error');
+                        $scope.mensaje ='no entra ';            
+                        alert('Error cobertura');
 
                     });
                 }                                    
                 }).error( function (xhr,status,data){
-                	$scope.mensaje ='no entra';            
-                    alert('Error');
+                    $scope.mensaje ='no entra ';            
+                    alert('Error insercion');
                 });
-        }
     }
-    
+
     $scope.validaAutorizacion= function(){
         $scope.validaInputAut=true;
         $scope.errorAut=false;
@@ -165,12 +357,13 @@ $scope.guardaEtapa1 = function(){
             }else{
                 $scope.mensajeError=false;
             $http({
-                url:'api/api.php?funcion=registraSin&fol='+$scope.folio,
+                url:'api/api.php?funcion=registraSin&fol='+$scope.folio+'&usr='+$rootScope.usrLogin,
                 method:'POST', 
                 contentType: 'application/json', 
                 dataType: "json", 
                 data: $scope.datosSin
-                }).success( function (data){                   
+                }).success( function (data){  
+                    console.log(data);                 
                     if(data.respuesta=='correcto'){ 
                         $scope.cargador1=false;                           
                       $cookies.folio = data.folio;
@@ -185,8 +378,92 @@ $scope.guardaEtapa1 = function(){
                 });
             }    
         }
-    }    
+    }
+
+    $scope.registraParticular = function(){ 
+        $scope.cargador1=true;        
+        if($scope.obsPart.observacion!=''){                
+        $http({
+            url:'api/api.php?funcion=registraPart&fol='+$scope.folio,
+            method:'POST', 
+            contentType: 'application/json', 
+            dataType: "json", 
+            data: $scope.obsPart
+            }).success( function (data){                   
+                if(data.respuesta=='correcto'){ 
+                    $scope.cargador1=false;                           
+                  $cookies.folio = data.folio;
+                  $location.path("/portada");
+                } 
+                else{
+                    $scope.errorAut=true;
+                }                                        
+                $scope.respuesta= data.aut;
+            }).error( function (xhr,status,data){
+                $scope.mensaje ='no entra';                            
+            });
+        }else {
+            $scope.cargador1=false;                           
+            $cookies.folio = $scope.folio;
+            $location.path("/portada");
+        }                       
+    }  
+
+    $scope.registraEmpleado = function(){ 
+
+        console.log($scope.empleado);
+        $scope.cargador1=true;                            
+        $http({
+            url:'api/api.php?funcion=registraEmpleado&fol='+$scope.folio,
+            method:'POST', 
+            contentType: 'application/json', 
+            dataType: "json", 
+            data: $scope.empleado
+            }).success( function (data){                   
+                if(data.respuesta=='correcto'){ 
+                    $scope.cargador1=false;                           
+                  $cookies.folio = data.folio;
+                  $location.path("/portada");
+                } 
+                else{
+                    $scope.errorAut=true;
+                }                                        
+                $scope.respuesta= data.aut;
+            }).error( function (xhr,status,data){
+                $scope.mensaje ='no entra';                            
+            });                            
+    }  
+    
+    $scope.registraCortesia = function(){ 
+        $scope.cargador1=true; 
+        console.log($scope.cor);                   
+        $http({
+            url:'api/api.php?funcion=registraCort&fol='+$scope.folio,
+            method:'POST', 
+            contentType: 'application/json', 
+            dataType: "json", 
+            data: $scope.cor
+            }).success( function (data){                   
+                if(data.respuesta=='correcto'){ 
+                    $scope.cargador1=false;                           
+                  $cookies.folio = data.folio;
+                  $location.path("/portada");
+                } 
+                else{
+                    $scope.errorAut=true;
+                }                                        
+                $scope.respuesta= data.aut;
+            }).error( function (xhr,status,data){
+                $scope.mensaje ='no entra';                            
+            });                        
+    }  
+
+  
 });
+
+
+
+
 
 function valMail(valor) {
   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3,4})+$/.test(valor)){

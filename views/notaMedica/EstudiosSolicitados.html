@@ -4,18 +4,21 @@
       <h3 class="panel-title" align="center">Estudios Solicitados</h3>
     </div>    
     <div class="panel-body">
-      <form ng-submit="guardaEstudios()">
+      <form name="formularios.estudio" ng-submit="guardaEstudios()" novalidate>
         <div class="row">
           <div class="col-md-6" >
             <div class="input-group">
               <span class="input-group-addon ">Rx</span>
               <CENTER>
-                <select  ng-model="estudios.rx" class="form-control"   
-                ng-options="rx.Rx_clave as rx.Rx_nombre for rx in listRX" required="">
+                <select  ng-model="estudios.rx" name="rx" class="form-control"   
+                ng-options="rx.Rx_clave as rx.Rx_nombre for rx in listRX" required>
                 <option value=""> *Selecciona</option>
                 </select>
               </CENTER>
             </div>
+            <div class="validacion" role="alert" ng-if="interacted3(formularios.estudio.rx)" ng-messages="formularios.estudio.rx.$error">
+              <div ng-message="required">campo requerido</div>            
+            </div> 
           </div>
           <div class="col-md-6" >
             <div class="input-group">
@@ -29,7 +32,10 @@
           <div class="col-md-8" >
             <div class="input-group">
               <span class="input-group-addon" > Interpretacion de Rx Ortopédica: </span>
-              <textarea class="form-control" rows="2" ng-model="estudios.interp" onpaste="return false" style="resize:none; width:100%" required=""></textarea>
+              <textarea class="form-control" name="interp" rows="2" ng-model="estudios.interp" onpaste="return false" style="resize:none; width:100%" required=""></textarea>
+            </div>
+            <div class="validacion" role="alert" ng-if="interacted3(formularios.estudio.interp)" ng-messages="formularios.estudio.interp.$error">
+              <div ng-message="required">campo requerido</div>            
             </div>
           </div>
           <div class="col-md-4"> 
@@ -39,8 +45,13 @@
           </div>
         </div>
       </form>
-        <br>
-        <br>
+        <div class="row"> 
+          <div class="col-md-12">
+            <div ng-show="cargador" align="center">
+              <img ng-src="imgs/cargador.gif">
+            </div>
+          </div>
+        </div> 
         <!-- *******************************-->
         <div class="row">
           <div class="col-md-12">
@@ -64,9 +75,12 @@
         </div>       
         <div class="row">
           <div class="col-md-10">
+            <div class="checkbox" ng-show="sinEstudios">
+              <label><input type="checkbox" ng-model="sinEstud">Ninguno</label>
+            </div>
           </div>
           <div class="col-md-2">
-            <input type="Button" class="btn btn-primary btn-lg"  value="Siguiente" ng-click="proMedSig()" />
+            <input type="Button" class="btn btn-primary btn-lg" ng-disabled="estudioAgreg&&sinEstud==false"  value="Siguiente" ng-click="proMedSig()" />
           </div>
         </div>     
     </div>          

@@ -1,12 +1,11 @@
-<div class="container" style="width:100%" >
 <div class="panel panel-primary">
 <div class="panel-heading">
-<h3 class="panel-title" align="center">El paciente presenta:</h3>
+<h3 class="panel-title" align="center">Signos y síntomas:</h3>
 </div>
 <div class="panel-body"> 
 
 <div class="row">
-<div class="col-md-4">
+<div class="col-md-6">
 <div class="container" style="width:100%"  >
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -19,7 +18,7 @@
 <div class="col-md-12"> <CENTER>
 
 
-<select name="lesionRed" id="lesionRed" ng-model="lesion.lesion" ng-change="validaLista()" size="13" class="form-control"   
+<select name="lesionRed" id="lesionRed" ng-model="lesion.lesion" ng-change="validaLista()" size="11" class="form-control"   
 ng-options="lesion.LES_clave as lesion.LES_nombre for lesion in listLesion">
 <option value=""> *Selecciona</option>
 </select></CENTER>
@@ -35,7 +34,7 @@ ng-options="lesion.LES_clave as lesion.LES_nombre for lesion in listLesion">
 </div>                     
 
 
-<div class="col-md-4">
+<div class="col-md-6">
 <div class="container" style="width:100%" >
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -124,8 +123,9 @@ ng-options="lesion.LES_clave as lesion.LES_nombre for lesion in listLesion">
 </div>
 </div>
 </div>
-
-<div class="col-md-4">
+</div>
+<div class="row">
+<div class="col-md-6">
 <div class="container" style="width:100%" >
 <div class="panel panel-default">
 <div class="panel-heading">
@@ -158,6 +158,9 @@ ng-options="lesion.LES_clave as lesion.LES_nombre for lesion in listLesion">
 </div>
 </div>
 </div>
+<div class="col-md-2 col-md-offset-2">
+<input type="Button" class="btn btn-primary btn-lg"  value="Siguiente" ng-click="siguienteEdoGral()" />
+</div>
 </DIV> <!-- CIERRE DE ROW -->
 <div class="row">
   <div class="col-md-12">
@@ -167,16 +170,11 @@ ng-options="lesion.LES_clave as lesion.LES_nombre for lesion in listLesion">
   </div>
 </div>
 <div class="row">
-<div class="col-md-10">
-</div>
-<div class="col-md-2">
-<input type="Button" class="btn btn-primary btn-lg"  value="Siguiente" ng-click="siguienteEdoGral()" />
-</div>
+
 
 </div>
 
 <!-- CIERRE DE PANEL Y CONTAINER -->
-</div>
 </div>
 </div>
 

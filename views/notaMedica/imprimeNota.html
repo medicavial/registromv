@@ -1,16 +1,32 @@
-<div class="container">
-	<div class="row">
+<div class="container" style="width:100%">
+	<div class="row" ng-hide="cargador1">
 		<div class="col-md-2" align="center">
-			<button type="button" ng-click="irDocumentos()" id="btn-addProcMedicos" class="btn btn-primary btn-sm " >Documentos</button>
+			<button type="button" ng-click="irDocumentos()" id="btn-addProcMedicos" class="btn btn-primary" >Documentos</button>
 		</div>
-		<div class="col-md-2" align="center">
-			<button type="button" ng-click="imprimirNota()" id="btn-addProcMedicos" class="btn btn-success btn-sm" >Imprime</button>
+		<div class="col-md-3" align="center">
+			<button type="button" ng-click="imprimirNota()" id="btn-addProcMedicos" class="btn btn-success" >Imprime Nota Médica</button>
 		</div>
-		<div class="col-md-2" align="center">
-			<button type="button" ng-click="imprimirReceta()" id="btn-addProcMedicos" class="btn btn-success btn-sm" >Imprime Receta</button>
-		</div>
+		<div class="col-md-3" align="center">
+			<button type="button" ng-click="imprimirReceta()" id="btn-addProcMedicos" class="btn btn-success" >Imprime Receta</button>
+		</div>		
 		<div class="col-md-4" align="center">
-			<a type="button" href="#/solicitud/{{folio}}" id="btn-addProcMedicos" class="btn btn-success btn-sm">Generar Solicitud de Autorización</a>
+			<a type="button" href="#/solicitud/{{folio}}" id="btn-addProcMedicos" class="btn btn-success">Generar Solicitud de Autorización</a>
 		</div>
-	</div>    		
+	</div>
+	<!--<div class="row"> 
+        <div class="col-md-4">	
+    	  <div class="hidden" >
+            <qr id="qr" text="string" type-number="6" correction-level="Q" size="100"></qr>
+          </div>         
+	          <receta data="datos"></receta>
+        </div>
+    </div>-->  
+	<br><br><br>
+	<div class="row"> 
+        <div class="col-md-12">
+	          <div ng-show="cargador1" align="center">
+	            <img ng-src="imgs/cargador.gif">
+	          </div>
+        </div>
+    </div>       		
 </div>

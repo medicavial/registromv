@@ -1,5 +1,5 @@
 //inicializamos la aplicacion
-var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle','datatables','ngMessages','xml']);
+var app = angular.module('app', ['ui.bootstrap', 'ngCookies','ngRoute','ngAnimate' ,'mgo-angular-wizard','angularFileUpload','akoenig.deckgrid','ngDialog','ngIdle','datatables','ja.qr','ngMessages','barcodeGenerator','webStorageModule','cgNotify','ngSanitize','ngVideo','ui.calendar','datatables','angularSpinner']);
 
 //configuramos nuestra aplicacion
 app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
@@ -26,10 +26,14 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/material.html',
             controller : 'materialCtrl'
     });
-    
+
+   
 
     // apertura de un expediente y seguimiento
-    $routeProvider.when('/aperturaExp',{
+    $routeProvider.when('/registro',{
+            templateUrl: 'views/registro.html'
+    });
+    $routeProvider.when('/aperturaExp/:opcion',{
             templateUrl: 'views/aperturaExp.html',
             controller : 'aperturaExpCtrl'
     });
@@ -67,6 +71,11 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             controller : 'signosVitalesCtrl'           
     });
 
+    $routeProvider.when('/signosVitalesSub',{
+            templateUrl: 'views/signosVitalesSub.html',
+            controller : 'signosVitalesSubCtrl'           
+    });
+
     $routeProvider.when('/notaMedica',{
             templateUrl: 'views/notaMedica.html',
             controller : 'notaMedicaCtrl'           
@@ -75,11 +84,69 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
             templateUrl: 'views/subsecuencia.html',
             controller : 'subsecuenciaCtrl'           
     });
+    $routeProvider.when('/subsecuenciaListado',{
+            templateUrl: 'views/subsecuenciaListado.html',
+            controller : 'subsecuenciaListadoCtrl'           
+    });
+
+    $routeProvider.when('/rehabilitacion',{
+            templateUrl: 'views/rehabilitacion.html',
+            controller : 'rehabilitacionCtrl'           
+    });
+    $routeProvider.when('/rehabilitacionForm',{
+            templateUrl: 'views/rehabilitacionForm.html',
+            controller : 'rehabilitacionFormCtrl'           
+    });
+
+    $routeProvider.when('/reciboParticular',{
+            templateUrl: 'views/reciboParticular.html',
+            controller : 'reciboParticularCtrl'           
+    });
+
+    $routeProvider.when('/solicitudFactura',{
+            templateUrl: 'views/solicitudFactura.html',
+            controller : 'solicitudFacturaCtrl'           
+    });
+
+    $routeProvider.when('/cambioUnidad',{
+            templateUrl: 'views/cambioUnidad.html',
+            controller : 'cambioUnidadCtrl'           
+    });
+
+    $routeProvider.when('/constancia',{
+            templateUrl: 'views/constancia.html',
+            controller : 'constanciaCtrl'           
+    });
+
+    $routeProvider.when('/directorio',{
+            templateUrl: 'views/directorio.html'            
+    });
+
+    $routeProvider.when('/enDirecto',{
+            templateUrl: 'views/enDirecto.html',
+            controller : 'enDirectoCtrl' 
+    });
+
+    $routeProvider.when('/avisos',{
+            templateUrl: 'views/avisos.html',
+            controller : 'avisosCtrl' 
+    });
+
+    $routeProvider.when('/calendario',{
+            templateUrl: 'views/calendario.html',
+            controller : 'calendarioCtrl'
+    });
+
 
     // apartado de solicitudes 
     $routeProvider.when('/detalle/solicitud/:clave',{
             templateUrl: 'views/solicitudes/detalleSolicitud.html',
             controller : 'detalleSolicitudCtrl'
+    });
+
+    $routeProvider.when('/digitalizacion',{
+            templateUrl: 'views/digitalizacion.html',
+            controller : 'digitalizacionCtrl'
     });
 
     $routeProvider.when('/solicitudes',{
@@ -103,11 +170,15 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
     });
 
 
+
+
+
+
     $routeProvider.otherwise({redirectTo:'/login'});
 
     //$locationProvider.html5Mode(true);
 
-    $idleProvider.idleDuration(900); // tiempo en activarse el modo en reposo 
+    $idleProvider.idleDuration(7200); // tiempo en activarse el modo en reposo 
     $idleProvider.warningDuration(10); // tiempo que dura la alerta de sesion cerrada
     $keepaliveProvider.interval(10); // 
 
@@ -115,11 +186,17 @@ app.config(function($routeProvider,$idleProvider, $keepaliveProvider){
 
 
 //sirve para ejecutar cualquier cosa cuando inicia la aplicacion
-app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
+app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle, $http,notify){
 
     
     $rootScope.admin = true;
+    $rootScope.bus = true;
+    $rootScope.docs = true;
     $rootScope.cerrar = false;
+    $rootScope.msjIncidencia=false;
+    $rootScope.cargador=false; 
+    $rootScope.adminis=true; 
+    $rootScope.imagenes=true; 
    
 
 
@@ -192,7 +269,37 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
         $rootScope.permisos = JSON.parse($cookies.permisos);
     };
 
-    
+    $rootScope.incidencias={
+        tipo:'',
+        severidad:'',
+        observaciones:''
+    }
+
+     $rootScope.guardaInsidencia = function(){                 
+        $rootScope.cargador=true;        
+        $http({
+            url:'api/api1.php?funcion=guardaIncidencia&usr='+$cookies.usrLogin+'&uni='+$rootScope.uniClave,
+            method:'POST', 
+            contentType: 'application/json', 
+            dataType: "json", 
+            data: $rootScope.incidencias
+            }).success( function (data){                 
+                $rootScope.cargador=false;
+                if(data=='exito'){
+                    $rootScope.msjIncidencia=true;
+                    $rootScope.incidencias={
+                        tipo:'',
+                        severidad:'',
+                        observaciones:''
+                    }
+                }else{
+                    alert('error en la inserción!!')
+                }
+            }).error( function (xhr,status,data){
+                $scope.mensaje ='no entra';            
+                alert('Error');
+            });   
+    }
 
 
     //verificamos el estatus del usuario en la aplicacion
@@ -220,7 +327,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
     $rootScope.$on('$idleTimeout', function() {
        //Entra en el estado de reposo cerramos session guardamos la ultima ruta en la que se encontraba
        //ademas de verificar si no estaban en la pagina del login ni en la de bloqueo 
-        if($location.path() != "/login" && $location.path() != "/solicitud" && $location.path() != '/notaMedica' && $location.path() != '/registra'){
+        if($location.path() != "/login" && $location.path() != "/solicitud" && $location.path() != '/notaMedica' && $location.path() != '/registra'&& $location.path() != '/subsecuencia'&& $location.path() != '/rehabilitacion'){
 
             if ($location.path() != "/bloqueo") {
 
@@ -252,7 +359,7 @@ app.run(function ($rootScope ,$cookies, $cookieStore, sesion, $location, $idle){
 
 
 //servicio que verifica sesiones de usuario
-app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $http)
+app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $http,notify)
 {
     return{
         login : function(username, password)
@@ -287,6 +394,70 @@ app.factory("sesion", function($cookies,$cookieStore,$location, $rootScope, $htt
                         $cookies.permisos=JSON.stringify(data); 
                         $rootScope.permisos=JSON.parse($cookies.permisos);                           
                     });
+
+                    $http({
+                        url:'api/api.php?funcion=registraAcceso&usr='+$cookies.usrLogin,
+                        method:'POST', 
+                        contentType: 'application/json', 
+                        dataType: "json", 
+                        data:{user:username}
+                    }).success( function (data){                                               
+                    });
+
+                    $http({
+                        url:'api/api.php?funcion=zona',
+                        method:'POST', 
+                        contentType: 'application/json', 
+                        dataType: "json", 
+                        data:{unidad:$cookies.uniClave}
+                    }).success( function (data){
+                       $cookies.zona=data.Zon_clave;                                       
+                    });
+
+                    $http({
+                        url:'api/api.php?funcion=listaAvisos',
+                        method:'POST', 
+                        contentType: 'application/json', 
+                        dataType: "json", 
+                        data:{unidad:$cookies.uniClave}
+                    }).success( function (data){                        
+                        $rootScope.avisos  = data;
+                        console.log($rootScope.avisos);
+                        $rootScope.noAviso = $rootScope.avisos.length;
+                        $rootScope.msg = 'Tienes '+$rootScope.noAviso+' avisos nuevos';
+                    $rootScope.template = '';
+
+                    $rootScope.positions = ['right', 'left', 'center'];
+                    $rootScope.position = $rootScope.positions[0];
+
+                    $rootScope.duration = 10000;
+                    $rootScope.msjTit='';
+
+                    $rootScope.mensajes='<div class="list-group"><span class="list-group">Mensajes</span>';
+                    if($rootScope.avisos){
+                    $.each($rootScope.avisos, function(k,v){
+                        if($rootScope.mensajes==''){
+                            $rootScope.mensajes='- '+v.Aviso_titulo+'<br>';
+                        }else{
+                            $rootScope.mensajes=$rootScope.mensajes+' <a href="#/home" class="list-group-item" >'+v.Aviso_titulo+'</a> ';
+                        }                        
+                    });
+                    $rootScope.mensajes=$rootScope.mensajes+'</div>';
+                    }                    
+
+                    var messageTemplate = $rootScope.mensajes;
+                    if($rootScope.avisos.length!=0){
+                        notify({
+                            messageTemplate: messageTemplate,
+                            classes: $rootScope.classes,
+                            scope:$rootScope,
+                            templateUrl: $rootScope.template,
+                            position: $rootScope.position,
+                        });            
+                    }
+                    });
+
+
 
                     $location.path("/home");
                     //console.log(data);
@@ -338,6 +509,9 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         datosPaciente: function(folio){            
             return $http.get('api/api.php?funcion=getDatosPaciente&folio='+folio);
+        },
+        datosPacienteRe: function(folio){            
+            return $http.get('api/api.php?funcion=getDatosPacienteRe&folio='+folio);
         },
         ocupacion: function(){
             return $http.get('api/api.php?funcion=getOcupacion');
@@ -412,6 +586,34 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
             $rootScope.cargador=true;
             return $http.get('api/api.php?funcion=getListVitales&fol='+folio);
         },
+        listaVitalesSub: function(folio,sub){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=getListVitalesSub&fol='+folio+'&sub='+sub);
+        },
+        listaMedSymio: function(uni){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=listMedicSymio&uni='+uni);
+        },
+        listaOrtSymio: function(uni){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=listOrtesisSymio&uni='+uni);
+        },
+        listaDatosPacRec: function(folio){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=listDatPacRec&fol='+folio);
+        },
+        medicos: function(uni){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=listMedicos&uni='+uni);
+        },
+        estatusNota: function(folio){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=estatusNotaM&fol='+folio);
+        },
+        validaHistoriaClinica: function(folio){
+            $rootScope.cargador=true;
+            return $http.get('api/api.php?funcion=validaHistoriaClinica&fol='+folio);
+        },
         // Apartado de solicitudes
         detalleSolicitud:function(clave){
             return $http.get('api/api.php?funcion=detalleSolicitud&clave='+ clave);
@@ -423,7 +625,7 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
             return $http.get('api/api.php?funcion=busquedaExpedientes&unidad=' + $rootScope.uniClave);
         },
         folio:function(folio){
-            return $http.get('api/api.php?funcion=busquedaFolio&folioapi='+ folio);
+            return $http.get('api/api.php?funcion=busquedaFolio&folioapi='+ folio + '&unidad=' + $rootScope.uniClave);
         },
         loginfast:function(usuario){
             return $http.get('api/api.php?funcion=loginfast&usuario='+ usuario);
@@ -470,11 +672,23 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         listaProcedimientos:function(folio){
             return $http.get('api/api.php?funcion=getListProRea&fol='+folio);
         },
+        listaOtrosEstudios:function(folio){
+            return $http.get('api/api.php?funcion=getListadoOtrosEst&fol='+folio);
+        },
+        listadoMedAgregSymio:function(folio){
+            return $http.get('api/api.php?funcion=getListadoMedAgreSymio&fol='+folio);
+        },
+        listadoOrtAgregSymio:function(folio){
+            return $http.get('api/api.php?funcion=getListadoOrtAgreSymio&fol='+folio);
+        },
         listaDiagnosticos:function(){
             return $http.get('api/api.php?funcion=getListDiagnostic');
         },
         despDiagnosticos:function(diagnos){
             return $http.get('api/api.php?funcion=getListDiag&diag='+diagnos);
+        },
+        listaOtrosEst:function(){
+            return $http.get('api/api.php?funcion=getListOtrosEst');
         },
         listaMedicamentos:function(){
             return $http.get('api/api.php?funcion=getListMedicamentos');
@@ -494,14 +708,20 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         listaMedicamentosAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListMedicamentosAgreg&fol='+folio);
         },
-        listaMedicamentosAgregSub:function(folio){
-            return $http.get('api/api.php?funcion=getListMedicamentosAgregSub&fol='+folio);
+        listaMedicamentosAgregSub:function(folio,cont){
+            return $http.get('api/api.php?funcion=getListMedicamentosAgregSub&fol='+folio+'&cont='+cont);
         },
         listaOrtesisAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListOrtesisAgreg&fol='+folio);
         },
+        listaOrtesisAgregSub:function(folio,cont){
+            return $http.get('api/api.php?funcion=getListOrtesisAgregSub&fol='+folio+'&cont='+cont);
+        },
         listaIndicAgreg:function(folio){
             return $http.get('api/api.php?funcion=getListIndicAgreg&fol='+folio);
+        },
+        listaIndicAgregSub:function(folio,cont){
+            return $http.get('api/api.php?funcion=getListIndicAgregSub&fol='+folio+'&cont='+cont);
         },
         listaUnidades:function(folio){
             return $http.get('api/api.php?funcion=unidades');
@@ -511,7 +731,77 @@ app.factory("busquedas", function($http, $rootScope, $cookies){
         },
         validaSubsec:function(folio){
             return $http.get('api/api.php?funcion=validaSubsecuencia&fol='+folio);
+        },
+        validaNota:function(folio){
+            return $http.get('api/api.php?funcion=validaNotaM&fol='+folio);
+        },
+        validaPaseM:function(folio){
+            return $http.get('api/api.php?funcion=validaPaseMed&fol='+folio);
+        },
+        validaPaseMed:function(folio){
+            return $http.get('api/api.php?funcion=validaPaseMedic&fol='+folio);
+        },
+        rehabNum:function(folio){
+            return $http.get('api/api.php?funcion=rehabNo&fol='+folio);
+        },
+        listSubsecuencias:function(folio){
+            return $http.get('api/api.php?funcion=datosExp&folio='+folio);
+        },
+        validaParticular:function(folio){
+            return $http.get('api/api.php?funcion=particular&folio='+folio);
+        },
+        datosRecibo:function(folio){            
+            return $http.get('api/api.php?funcion=datosReciboInf&folio='+folio);
+        },
+        familiaItems:function(folio){            
+            return $http.get('api/api.php?funcion=familiaItem&folio='+folio);
+        },
+        contRecibos:function(folio){            
+            return $http.get('api/api.php?funcion=contadorRecibos&folio='+folio);
+        },
+        nomUsuario:function(usr){            
+            return $http.get('api/api.php?funcion=nombreUsu&usr='+usr);
+        },
+        digitalizados:function(folio){            
+            return $http.get('api/api.php?funcion=digitalizados&fol='+folio);
+        },
+        unidadDetalle:function(folio){            
+            return $http.get('api/api.php?funcion=unidadDetalle&fol='+folio);
+        },
+        quienAutoriza:function(){            
+            return $http.get('api/api.php?funcion=quienAut');
+        },
+        unidadDestino:function(){            
+            return $http.get('api/api.php?funcion=uniDestino');
+        },
+        motivo:function(){            
+            return $http.get('api/api.php?funcion=motivo');
+        },
+        listaAvisos:function(){            
+            return $http.get('api/api.php?funcion=listaAvisos');
+        }, 
+        /******************************* modulo de citas *********************************/
+       clientes:function(){
+            return $http.get('api/apiCita.php?funcion=clientes');
+        },
+
+        estado:function(){
+            return $http.get('api/apiCita.php?funcion=estados');
+        },
+
+        unidades:function(){
+            return $http.get('api/apiCita.php?funcion=unidades');
+        },
+
+        lesionado:function(clave){
+            return $http.get('api/apiCita.php?funcion=lesionadoregistrado&clave='+clave);
+        },
+
+        tipocita:function(){
+            return $http.get('api/apiCita.php?funcion=tipocita');
+       
         }
+        /****************************** fin de modulo de cito ****************************/ 
 
 
     }
@@ -576,6 +866,64 @@ app.controller('materialCtrl', function($scope){
             {ruta:'imgs/pdf.png',nombre:'Columna Dorsolumbar',ubicacion:'ejercicios/Columna_Dorsolumbar.pdf'}
         ];
     }
+
+$scope.abreVideo = function(video){ 
+     $('#pruebaModal').modal('show');       
+        $scope.ruta=''; 
+        $scope.titulo='';       
+        switch(video){
+            case 1:
+            $scope.ruta='views/videos/1.html';
+            $scope.titulo='1.-Objetivo y mecánica de bono. por LIC. MARIANA SANCHEZ';  
+            break;
+            case 2:
+            $scope.ruta='views/videos/2.html';
+            $scope.titulo='2.- Cero quejas MARICURZ FLOREZ';
+            break;
+            case 3:
+            $scope.ruta='views/videos/3.html';
+            $scope.titulo='3.- Número de faltas y retardos LIC. MARIANA SANCHEZ';
+            break;
+            case 4:
+            $scope.ruta='views/videos/4.html';
+            $scope.titulo='4.- Inventario LIC. ANGELICALOZANO';
+            break;
+            case 5:
+            $scope.ruta='views/videos/5.html';
+            $scope.titulo='5.- Expedientes completos ING. ALFREDO GUTIERREZ';
+            break;
+            case 6:
+            $scope.ruta='views/videos/6.html';
+            $scope.titulo='6.- Ventas particulares LIC. HUGO ZARICH';
+            break;
+            case 7:
+            $scope.ruta='views/videos/7.html';
+            $scope.titulo='7.- Tiempo de espera ING. ALFREDO GUTIERREZ';
+            break;
+            case 8:
+            $scope.ruta='views/videos/8.html';
+            $scope.titulo='8.- Sondeo de calidad LIC. MARIANA SANCHEZ';
+            break;
+            case 9:
+            $scope.ruta='views/videos/9.html';
+            $scope.titulo='9.- Reglamento de clínicas ANGELICA MERCADO';
+            break;
+            case 10:
+            $scope.ruta='views/videos/10.html';
+            $scope.titulo='10.- Requisitos por persona_LIC. MARIANA SANCHEZ';
+            break;
+        }
+        console.log($scope.ruta);
+    }
+    $scope.pausarVideo = function(){ 
+        var v = document.getElementsByTagName("video")[0];
+     v.pause();   
+    }
+     
+
+
+
+
 });
 
 

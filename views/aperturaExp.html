@@ -15,7 +15,7 @@
         </div> 
 </div>
   <div class="Panel-body">
-<div class="row">
+<div class="row" ng-show="opcion==1">
       <div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
@@ -108,7 +108,7 @@
 
     </div>
 
-    <div class="row">
+    <div class="row" ng-show="opcion==1">
 
 <div class="col-md-3">
 
@@ -206,7 +206,7 @@
 
 
     </div>
-    <div class="row">
+    <div class="row" ng-show="opcion==1">
 
 <div class="col-md-3">
 
@@ -302,7 +302,7 @@
 				      	
 </div>
  </div>
-    <div class="row">
+    <div class="row" ng-show="opcion==1">
 <div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
@@ -395,7 +395,7 @@
 
     	
  </div>
-      <div class="row">   
+      <div class="row" ng-show="opcion==1">   
 
  
 
@@ -490,7 +490,7 @@
 
 
   </div>
-      <div class="row">  	
+      <div class="row" ng-show="opcion==1">  	
     
 
  <div class="col-md-3">
@@ -583,7 +583,7 @@
 </div>
  </div>
 
-     <div class="row">
+     <div class="row" ng-show="opcion==1">
 
 <div class="col-md-3">
 
@@ -607,20 +607,19 @@
 				      	
 </div>
 
-
-    <div class="col-md-3">
+<div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
 				   <div class="panel panel-INFO">
 				        <div class="panel-heading">
-				         	<h3 class="panel-title" align="center">PARTICULARES</h3>
+				         	<h3 class="panel-title" align="center">PRIMERO SEGUROS</h3>
 				        </div> 
 				  			<div class="Panel-body">
 								<div class="row">
 				      					<div class="col-md-12">
 
-				 							<a href="" ng-click="asignaProducto(51)" class="thumbnail">
-				      						<img ng-src="imgs/logosregmv/Ortho.jpg"  title="ORTHO FAM">
+				 							<a href="" ng-click="asignaProducto(22)" class="thumbnail">
+				      						<img ng-src="imgs/logosregmv/primero.jpg"  title="PRIMERO SEGUROS">
 				   							 </a>
 				   						</div>	
 				   				</div>
@@ -628,10 +627,7 @@
 				   		</div>
 				   	</div> 
 				      	
-</div>
-
- 
-     
+</div>    
 
 <div class="col-md-3">
 
@@ -656,30 +652,6 @@
 </div>
 
 
-
- <div class="col-md-3">
-
-				<div class="container" style="width: 100%"> 
-				   <div class="panel panel-INFO">
-				        <div class="panel-heading">
-				         	<h3 class="panel-title" align="center">PRIMERO SEGUROS</h3>
-				        </div> 
-				  			<div class="Panel-body">
-								<div class="row">
-				      					<div class="col-md-12">
-
-				 							<a href="" ng-click="asignaProducto(22)" class="thumbnail">
-				      						<img ng-src="imgs/logosregmv/primero.jpg"  title="PRIMERO SEGUROS">
-				   							 </a>
-				   						</div>	
-				   				</div>
-				   			</div>
-				   		</div>
-				   	</div> 
-				      	
-</div>
-</div>
-      <div class="row">
 <div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
@@ -700,7 +672,11 @@
 				   		</div>
 				   	</div> 
 				      	
-</div><div class="col-md-3">
+</div>
+
+</div>
+      <div class="row" ng-show="opcion==1">
+<div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
 				   <div class="panel panel-INFO">
@@ -723,7 +699,7 @@
 </div>
           
           
-        
+  
   
 
  <div class="col-md-3">
@@ -768,8 +744,6 @@
 				   	</div> 
 				      	
 </div>
-</div>
-      <div class="row">
 <div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
@@ -790,7 +764,105 @@
 				   		</div>
 				   	</div> 
 				      	
+</div>      
 </div>
+<div class="row" ng-show="opcion==2">
+<div class="col-md-3">
+
+				<div class="container" style="width: 100%"> 
+				   <div class="panel panel-INFO">
+				        <div class="panel-heading">
+				         	<h3 class="panel-title" align="center">INDIVIDUAL</h3>
+				        </div> 
+				  			<div class="Panel-body">
+								<div class="row">
+				      					<div class="col-md-12">
+
+				 							<a href="" ng-click="asignaProducto(51)" class="thumbnail">
+				      						<img ng-src="imgs/logosregmv/individual.jpg"  title="INDIVIDUAL">
+				   							 </a>
+				   						</div>	
+				   				</div>
+				   			</div>
+				   		</div>
+				   	</div> 
+				      	
+</div>
+<div class="col-md-3">
+
+				<div class="container" style="width: 100%"> 
+				   <div class="panel panel-INFO">
+				        <div class="panel-heading">
+				         	<h3 class="panel-title" align="center">POR MÉDICO</h3>
+				        </div> 
+				  			<div class="Panel-body">
+								<div class="row">
+				      					<div class="col-md-12">
+
+				 							<a href=""  class="thumbnail">
+				      						<img ng-src="imgs/logosregmv/medico.png"  title="POR MÉDICO">
+				      						<label align="center">En construcción</label>
+				   							 </a>
+				   						</div>	
+				   				</div>
+				   			</div>
+				   		</div>
+				   	</div> 
+				      	
+</div>
+<div class="col-md-3">
+
+				<div class="container" style="width: 100%"> 
+				   <div class="panel panel-INFO">
+				        <div class="panel-heading">
+				         	<h3 class="panel-title" align="center">EMPLEADO MV</h3>
+				        </div> 
+				  			<div class="Panel-body">
+								<div class="row">
+				      					<div class="col-md-12">
+
+				 							<a href="" ng-click="asignaProducto(53)" class="thumbnail">
+				      						<img ng-src="imgs/logosregmv/empleado.jpg"  title="EMPLEADO MV">
+				   							 </a>
+				   						</div>	
+				   				</div>
+				   			</div>
+				   		</div>
+				   	</div> 
+				      	
+</div>
+<div class="col-md-3">
+
+				<div class="container" style="width: 100%"> 
+				   <div class="panel panel-INFO">
+				        <div class="panel-heading">
+				         	<h3 class="panel-title" align="center">CONVENIO</h3>
+				        </div> 
+				  			<div class="Panel-body">
+								<div class="row">
+				      					<div class="col-md-12">
+
+				 							<a href=""  class="thumbnail">
+				      						<img ng-src="imgs/logosregmv/convenio.png"  title="CONVENIO">
+				      						<label align="center">En construcción</label>
+				   							 </a>
+				   						</div>	
+				   				</div>
+				   			</div>
+				   		</div>
+				   	</div> 
+				      	
+</div>
+
+
+
+
+
+
+
+    </div>
+
+<div class="row" ng-show="opcion==2">
 <div class="col-md-3">
 
 				<div class="container" style="width: 100%"> 
@@ -816,76 +888,6 @@
 
     </div>
 
-
-
-
- 
-
-<!--
-	<div class="col-md-3">
-
-				<div class="container" style="width: 100%"> 
-				   <div class="panel panel-INFO">
-				        <div class="panel-heading">
-				         	<h3 class="panel-title" align="center">ZURICH</h3>
-				        </div> 
-				  			<div class="Panel-body">
-								<div class="row">
-				      					<div class="col-md-12">
-
-				 							<a href="marco.php?op=4&ase=21" class="thumbnail">
-				      						<img ng-src="imgs/logosregmv/zurich.jpg"  title="ZURICH">
-				   							 </a>
-				   						</div>	
-				   				</div>
-				   			</div>
-				   		</div>
-				   	</div> 
-				      	
-</div>
-
- <div class="col-md-3">
-
-				<div class="container" style="width: 100%"> 
-				   <div class="panel panel-INFO">
-				        <div class="panel-heading">
-				         	<h3 class="panel-title" align="center">INTERACCION</h3>
-				        </div> 
-				  			<div class="Panel-body">
-								<div class="row">
-				      					<div class="col-md-12">
-
-				 							<a href="registro.php?ase=" class="thumbnail">
-				      						<img ng-src="imgs/logosregmv/interacciones.jpg"  title="INTERACCION">
-				   							 </a>
-				   						</div>	
-				   				</div>
-				   			</div>
-				   		</div>
-				   	</div> 
-				      	
-</div>
- <div class="col-md-3">
-
-				<div class="container" style="width: 100%"> 
-				   <div class="panel panel-INFO">
-				        <div class="panel-heading">
-				         	<h3 class="panel-title" align="center">MULTIASISTENCIA</h3>
-				        </div> 
-				  			<div class="Panel-body">
-								<div class="row">
-				      					<div class="col-md-12">
-
-				 							<a href="registro.php?ase=" class="thumbnail">
-				      						<img ng-src="imgs/logosregmv/multiasistencia.jpg"  title="MULTIASISTENCIA">
-				   							 </a>
-				   						</div>	
-				   				</div>
-				   			</div>
-				   		</div>
-				   	</div> 
-				      	
-</div> -->
 
     </div>
 

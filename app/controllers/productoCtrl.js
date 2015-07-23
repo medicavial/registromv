@@ -1,6 +1,7 @@
 app.controller('productoCtrl', function($scope,$rootScope,$location,$cookies) {
 	$scope.cveUnidad= $cookies.uniClave;
-	
+	$rootScope.zona = $cookies.zona;
+	$scope.cia=$cookies.clave;	
 	$scope.registraLesionado = function(claveProducto){
 		rutaImgProd = $scope.validarutaProducto(claveProducto);
     	$cookies.rutaImgPro = rutaImgProd;    
@@ -34,6 +35,8 @@ app.controller('productoCtrl', function($scope,$rootScope,$location,$cookies) {
 	    case 8:
 	        imgPro="sn.jpg";
 	        break;
+	    case 9:
+	    	imgPro="av+.jpg";
 		}
 		return imgPro;
     }

@@ -1,4 +1,4 @@
-<form ng-submit="guardaEmbarazo()">
+<form name="formularios.embarazoForm" ng-submit="guardaEmbarazo()" novalidate>
     <div class="container" style="width: 100%"> 
         <div class="panel panel-primary">
             <div class="panel-heading">
@@ -27,8 +27,14 @@
                     <div class="col-md-5 ">
                         <div class="input-group">
                             <span class="input-group-addon">Semanas de gestaci&oacute;n</span>                            
-                            <input type="number" ng-model="embarazo.semanas" class="form-control" min="1" max="45" required="">                                                  
+                            <input type="number" name="semanas" ng-model="embarazo.semanas" class="form-control" min="1" max="45" placeholder='Ingresa Semanas' required>                                                  
                         </div>
+                        <div class="validacion" role="alert" ng-if="interacted1(formularios.embarazoForm.semanas)" ng-messages="formularios.embarazoForm.semanas.$error">
+                          <div ng-message="required">campo requerido</div>
+                          <div ng-message="number">valor numérico</div>
+                          <div ng-message="min">valor mayor a 1</div>
+                          <div ng-message="max">valor menor a 45</div>
+                        </div> 
                     </div>                     
                 </div>
                 <br>
@@ -44,7 +50,7 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon">Descripci&oacute;n: </span>
-                            <textarea  id="descEmb" ng-model="embarazo.desc" name="descEmb" class="form-control" style="width:250px; height: 35px; resize:none;" ></textarea>
+                            <textarea  id="descEmb" ng-model="embarazo.desc" name="descEmb" class="form-control" style="width:250px; height: 35px; resize:none;" mayusculas></textarea>
                         </div>
                     </div>
                 </div>
@@ -53,8 +59,11 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon"> Frecuencia card&iacute;aca fetal </span>
-                            <input type="number" name="edoEmb" id="edoEmb" class="form-control" ng-model="embarazo.fcFet" >
+                            <input type="number" name="fcFet" id="fcFet" class="form-control" ng-model="embarazo.fcFet">
                         </div>
+                        <div class="validacion" role="alert" ng-if="interacted1(formularios.embarazoForm.fcFet)" ng-messages="formularios.embarazoForm.fcFet.$error">                          
+                          <div ng-message="number">valor numérico</div>                          
+                        </div> 
                     </div>
                     <div class="col-md-1">
                         <div class="input-group">
@@ -70,11 +79,17 @@
                     <div class="col-md-6">
                         <div class="input-group">
                             <span class="input-group-addon">Justificaci&oacute;n y obs.  </span>
-                            <textarea rows="1" ng-model="embarazo.justif" cols="60" name="obsEmb" id="obsEmb" class="form-control" onpaste="return false" style="resize:none; " ></textarea>
+                            <textarea rows="1" ng-model="embarazo.justif" cols="60" name="obsEmb" id="obsEmb" class="form-control" onpaste="return false" style="resize:none; " mayusculas></textarea>
                         </div>
                     </div>
                 </div> 
-                <br>
+                <div class="row"> 
+                    <div class="col-md-12">
+                      <div ng-show="cargador" align="center">
+                        <img ng-src="imgs/cargador.gif">
+                      </div>
+                    </div>
+                </div>   
                 <DIV class= "row">  
                     <div class="col-md-5 ">
                     </div>   
@@ -128,11 +143,3 @@
         </div>
     </div>
 </form>
-
-
-
-
-
-
-
-

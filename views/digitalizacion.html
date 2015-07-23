@@ -1,0 +1,118 @@
+<style type="text/css">
+	
+	.button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 100px;
+}
+.drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+.dragover {
+    border: 5px dashed blue;
+}
+</style>
+
+
+<div class="container" style="width: 100%"> 
+
+
+
+<div class="panel panel-primary">
+      <div class="panel-heading">
+        <h3 class="panel-title" align="center">Digitalización de Documentos para el folio <b>{{folio}}</b></h3>
+      </div>
+      <div class="panel-body">
+        <form ng-submit="guardaDigital()">
+        <div class="row" >
+            <div class="col-md-4">
+                <div class="input-group">
+                  <span class="input-group-addon">tipo:</span>
+                  <select ng-model="digital.tipo"  class="form-control" ng-model="rehabilitacionForm.escala"  id="escala" name="escala" required >
+                            <option value="">- Seleccione - </option>
+                            <option value="1">Pase Médico</option>
+                            <option value="2">Cuestionario de Atención</option>
+                            <option value="3">Identificación</option>
+                            <option value="4">Historia Clínica</option>
+                            <option value="5">Nota Médica</option>
+                            <option value="6">Aviso de Privacidad</option>
+                            <option value="7">Informe Compañia</option>
+                            <option value="8">Finiquito</option>
+                            <option value="9">Constancia Médica</option>                            
+                  </select>
+                </div>
+
+            </div>
+            <div class="col-md-5">
+                <input type="file" ng-file-select="onFileSelect_xml($files)" required>                
+                <div ng-file-drop="onFileSelect_xml($files)" class="drop-box"  ng-file-drag-over-class="optional-css-class-name-or-function"
+                ng-show="dropSupported">Arrastra tu archivo
+
+                </div>
+                <div ng-file-drop-available="dropSupported=true" 
+                ng-show="!dropSupported">HTML5 Drop File is not supported!
+                </div>
+
+
+            </div>             
+             <div class="col-md-3">
+                <input type="submit" class="btn btn-primary" value="Guardar">
+            </div>
+        </div>
+        </form>
+            <!--fin del row principal-->
+        <div class="row"> 
+            <div class="col-md-12">
+              <div ng-show="cargador" align="center">
+                <img ng-src="imgs/cargador.gif">
+              </div>
+            </div>
+        </div>  
+         <div class="row"> 
+            <div class="col-md-12">
+              <div ng-show="msjerror" align="center">
+                <div class="alert alert-warning">No se pudo subir el archivo. revise la extención y tamaño del archivo</div>
+              </div>
+            </div>
+        </div>  
+        <div class="row" ng-show="listaDigitales"> 
+            <div class="col-md-12">
+                    <table  align="center" style='font-size:13px;' class="table table-striped table-hover table-condensed table-responsive" >
+                        <tr>          
+                            <th width="10%"><b>Contador</b></th>
+                             <th width="15%"><b>Tipo</b></th>         
+                            <th width="10%"><b>Archivo</b></th>                                                       
+                            <th width="15%"><b>Fecha</b></th>       
+                            <th width="10%"><b>Eliminar</b></th>                   
+                        </tr>
+                        <tr ng-repeat="listado in listaDigitales">                            
+                            <td>{{listado.Doc_clave}}</td>
+                            <td>{{listado.tipoDoc_nombre}}</td>
+                            <td><a href="api/{{listado.doc_ruta_archivo}}" target="_blank">{{listado.doc_ruta_archivo}}</a></td>                            
+                            <td>{{listado.doc_fecreg}}</td>
+                            <td><input type="button" ng-click="eliminaDigital(listado.Doc_clave,listado.doc_tipo)" class="btn btn-danger btn-xs" value='Eliminar'/></td>
+                            
+                        </tr>
+                    </table>
+            </div>
+        </div>
+         <div class="row">
+            <div class="col-md-3 " align="left">
+                <button class='btn btn-primary' ng-click="irDocumentos()">Documentos</button>
+            </div>                              
+        </div>                 
+      </div>
+    </div>
+  </div>
+ 
+</div>

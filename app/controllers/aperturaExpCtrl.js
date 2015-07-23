@@ -1,6 +1,7 @@
-app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies) {
+app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies,$routeParams) {
     $rootScope.permisos=JSON.parse($cookies.permisos);
     $rootScope.accPersonal=false;
+    $scope.opcion=$routeParams.opcion;
     $scope.asignaProducto = function(claveCompania){
     	claveDefault=1;
     	$rootScope.clave = claveCompania;
@@ -15,12 +16,15 @@ app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies)
     	$cookies.rutaImgCom = rutaImgCompania;
     	rutaImgProducto= "av.jpg";    	
     	$cookies.rutaImgPro = rutaImgProducto;
-        if(claveCompania){        
-        	$location.path("/producto");
+       if(claveCompania==44||claveCompania==51||claveCompania==53){
+            $cookies.clavePro = 10;
+            rutaImgProducto= "pa.jpg"; 
+            $cookies.rutaImgPro = rutaImgProducto;     
+            $location.path("/registra");
         }
         else{
 
-        	$location.path("/registra");
+        	$location.path("/producto");
         }
     }
 
@@ -109,7 +113,7 @@ app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies)
             img="multiva.jpg";
             break;
          case 51:
-            img="Ortho.jpg";
+            img="individual.jpg";
             break;
          case 18:
             img="potosi.jpg";
@@ -131,6 +135,9 @@ app.controller('aperturaExpCtrl', function($scope,$rootScope,$location,$cookies)
             break;
          case 34:
             img="travol.jpg";
+            break;
+         case 53:
+            img="empleado.jpg";
             break;
         }        
     	return img;
